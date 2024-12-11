@@ -3,8 +3,10 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import random
+from gradient_util import compute_server_gradient, compute_client_gradient
 from torchvision import datasets, transforms
-
+from collections import Counter
+from sklearn.model_selection import train_test_split
 
 # 先定义一个简单的CNN模型（原文采用的是LeNet-5）
 class CNNModel(nn.Module):
@@ -29,17 +31,7 @@ class CNNModel(nn.Module):
         x = self.fc2(x)
         return x
     
-# 定义数据转换
-transform = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.1307,), (0.3081,)) # 这两个值更加符合MNIST数据集的实际分布
-])
-
-# 下载MNIST数据集
-train_dataset = datasets.MNIST('../data/MNIST', train=True, download=True, transform=transform)
-test_dataset = datasets.MNIST('../data/MNIST', train=False, download=True, transform=transform)
-
-
+    
 # 将数据集划分给客户端
 def partition_dataset(dataset, num_clients, non_iid):
     dataset_size = len(dataset)
@@ -50,7 +42,7 @@ def partition_dataset(dataset, num_clients, non_iid):
     if non_iid:
         # 非独立同分布划分
         rand_idxs = np.random.permutation(dataset_size)
-        labels = np.array(dataset.targets)[rand_idxs]
+        labels = np.array(dataset.dataset.targets)[rand_idxs]
         idxs_train = rand_idxs
         
         idxs_labels = np.vstack((idxs_train, labels))
@@ -66,10 +58,7 @@ def partition_dataset(dataset, num_clients, non_iid):
             client_idxs.append(rand_idxs[i * data_per_client: (i + 1) * data_per_client])
     return client_idxs
 
-# 设置客户端数量和数据划分   论文中MNIST是200个client（每个150samples）
-num_clients = 200
-non_iid = True  # 设置为True表示非IID划分
-client_idxs = partition_dataset(train_dataset, num_clients, non_iid)
+
 
 
 def client_update(client_model, optimizer, train_loader, epoch, device, correction=None):
@@ -101,12 +90,13 @@ def server_update(global_model, server_model, server_optimizer, server_loader, e
             loss = nn.CrossEntropyLoss()(output, target)
             loss.backward()
             server_optimizer.step()
-    global_model.load_state_dict(server_model.state_dict())
+    global_model.load_state_dict(server_model.state_dict())  #将server模型参数更新到global模型
     
     
 
 def fedclg_c(global_model, clients_models, server_model, server_loader, client_loaders, num_rounds, num_clients_per_round, 
              client_epochs, server_epochs, client_lr, server_lr, device):
+    
     num_clients = len(clients_models)
     global_model.to(device)
     server_model.to(device)
@@ -117,30 +107,45 @@ def fedclg_c(global_model, clients_models, server_model, server_loader, client_l
     server_scheduler = optim.lr_scheduler.ExponentialLR(server_optimizer, gamma=0.99)
     min_lr = 0.001  # 最小学习率
     
+    client_optimizers = []  # 存储每个客户端的优化器
+    client_schedulers = []  # 存储每个客户端的学习率调度器
+    
     for round_idx in range(num_rounds):
         print(f'Round {round_idx+1}/{num_rounds}')
+   
+        # ---------- 服务器计算梯度 g_s ----------
+        # TODO: 这部分需要在server上进行，之后要区分；
+        # TODO：并且这里server需要将g_s传给client，后面考虑体现
+        server_model.load_state_dict(global_model.state_dict())  # 同步全局模型参数到服务器
+        g_s = compute_server_gradient(server_model, server_loader, device)  # 调用服务器梯度计算函数
+        
+        
         # 选择参与的客户端
         selected_clients = np.random.choice(range(num_clients), num_clients_per_round, replace=False)
-        
-        
-        # 服务器计算梯度g_s
-        server_model.load_state_dict(global_model.state_dict())
-        server_model.eval()
-        g_s = []
-        for data, target in server_loader:
-            data, target = data.to(device), target.to(device)
-            output = server_model(data)
-            loss = nn.CrossEntropyLoss()(output, target)
-            loss.backward()   # 反向传播，计算梯度
-            for param in server_model.parameters():
-                g_s.append(param.grad.data.clone())   # 将每个参数的梯度存入g_s
-            break  # 仅加载一batch(64)用于计算g_s，论文中也可以用全部数据。数据越多越准确
+     
 
+        # 用于存储客户端的更新 Δ_i 和梯度 g_i
+        delta_list = []
+        g_i_list = []
+        
         # 客户端更新
         for client_idx in selected_clients:
             client_model = clients_models[client_idx]
             client_model.load_state_dict(global_model.state_dict())       # 将全局模型参数分发到clients
             client_model.to(device)
+            
+            
+            # ---------- 客户端计算梯度 g_i ----------
+            g_i = compute_client_gradient(client_model, client_loaders[client_idx], device)  # 调用客户端梯度计算函数
+            g_i_list.append(g_i)  # 上传客户端梯度到服务器
+
+
+            # 计算校正项c_i = g_s - g_i  (这个理论上是要在server上进行，后续看怎么调整)
+            correction = []
+            for gs, gi in zip(g_s, g_i):
+                correction.append(gs - gi)
+                
+            # client训练
             optimizer = optim.SGD(client_model.parameters(), lr=client_lr)
             
             # 为客户端设置学习率调度器
@@ -148,40 +153,45 @@ def fedclg_c(global_model, clients_models, server_model, server_loader, client_l
             client_optimizers.append(optimizer)
             client_schedulers.append(scheduler)
             
-            # 计算校正项c_i = g_s - g_i
-            client_model.eval()
-            g_i = []
-            for data, target in client_loaders[client_idx]:
-                data, target = data.to(device), target.to(device)
-                output = client_model(data)
-                loss = nn.CrossEntropyLoss()(output, target)
-                loss.backward()
-                for param in client_model.parameters():
-                    g_i.append(param.grad.data.clone())
-                break  # 仅计算一批（64）用于计算g_i，论文中提出了也可以用全部数据
-
-            correction = []
-            for gs, gi in zip(g_s, g_i):
-                correction.append(gs - gi)
-            
             # 客户端训练
             client_update(client_model, optimizer, client_loaders[client_idx], client_epochs, device, correction)
+           
+           
+            # 计算模型更新 Δ_i = x_i^K - x_t
+            delta_i = {}
+            for key in global_model.state_dict().keys():
+                delta_i[key] = (client_model.state_dict()[key] - global_model.state_dict()[key]).detach().cpu()
+            delta_list.append(delta_i)
             
-            # 从客户端收集更新
-            client_model.to('cpu')
-            client_params = client_model.state_dict()
-            if client_idx == selected_clients[0]:
-                global_params = client_params
-            else:
-                for key in global_params:
-                    global_params[key] += client_params[key]
-
-        # 聚合更新全局模型参数
-        for key in global_params:
-            global_params[key] = global_params[key] / num_clients_per_round
-        global_model.load_state_dict(global_params)
-
+            # 将客户端模型移回 CPU
+            client_model.to('cpu') 
+            
+    
+    
+        # ---------- 服务器端聚合更新 ----------
+        # TODO：这一段开始是在server上进行的
+        
+        # 初始化累计更新
+        aggregated_update = {}
+        for key in global_model.state_dict().keys():
+            aggregated_update[key] = torch.zeros_like(global_model.state_dict()[key])
+            
+        # 服务器聚合
+        for i in range(len(delta_list)):
+            delta_i = delta_list[i]
+            for idx, key in enumerate(global_model.state_dict().keys()):
+                # delta_i[key] 是 Δ_i
+                aggregated_update[key] += delta_i[key] / num_clients_per_round  # 平均化
+             
+        # 更新全局模型参数 x_{t+1}^s = x_t + η_g * aggregated_update
+        global_model.to(device)   # 这里用gpu并行计算的原因是，模型更新操作(add_)涉及多个张量的加法操作 
+        with torch.no_grad():
+            for key in global_model.state_dict().keys():
+                # global_lr是全局学习率
+                global_model.state_dict()[key].add_(global_lr, aggregated_update[key].to(device)) 
+        
         # 服务器本地训练
+        # TODO: 这里将这一步放在同一个gpu上，后续可以修改
         server_update(global_model, server_model, server_optimizer, server_loader, server_epochs, device)
         
         # 在每一轮结束后，执行学习率衰减
@@ -201,10 +211,11 @@ def adjust_learning_rate(optimizer, min_lr):
             
 
 
-
   
 def fedclg_s(global_model, clients_models, server_model, server_loader, client_loaders, num_rounds, num_clients_per_round, 
              client_epochs, server_epochs, client_lr, server_lr, device):
+    
+    
     num_clients = len(clients_models)
     global_model.to(device)
     server_model.to(device)
@@ -215,23 +226,16 @@ def fedclg_s(global_model, clients_models, server_model, server_loader, client_l
     server_scheduler = optim.lr_scheduler.ExponentialLR(server_optimizer, gamma=0.99)
     min_lr = 0.001  # 最小学习率
     
+    client_optimizers = []  # 存储每个客户端的优化器
+    client_schedulers = []  # 存储每个客户端的学习率调度器
+    
     for round_idx in range(num_rounds):
         print(f'Round {round_idx+1}/{num_rounds}')
 
-        # 服务器计算梯度g_s
-        server_model.load_state_dict(global_model.state_dict())
-        server_model.eval()
-        g_s = []
-        for data, target in server_loader:
-            data, target = data.to(device), target.to(device)
-            output = server_model(data)
-            loss = nn.CrossEntropyLoss()(output, target)
-            loss.backward()
-            for param in server_model.parameters():
-                g_s.append(param.grad.data.clone())
-            break  # 仅计算一批用于计算g_s，实际可根据论文进行修改
-        
-        g_s = [g.cpu() for g in g_s]  # 将梯度移动到 CPU
+        # ---------- 服务器计算梯度 g_s ----------
+        # TODO: 这部分需要在server上进行，之后要区分
+        server_model.load_state_dict(global_model.state_dict())  # 同步全局模型参数到服务器
+        g_s = compute_server_gradient(server_model, server_loader, device)  # 调用服务器梯度计算函数
         
         # 选择参与的客户端
         selected_clients = np.random.choice(range(num_clients), num_clients_per_round, replace=False)
@@ -245,7 +249,16 @@ def fedclg_s(global_model, clients_models, server_model, server_loader, client_l
         for client_idx in selected_clients:
             client_model = clients_models[client_idx]
             client_model.load_state_dict(global_model.state_dict())
-            client_model.to(device)
+            client_model.to(device)   # 转移到gpu上进行
+            
+        
+            # ---------- 客户端计算梯度 g_i ----------
+            # TODO: 这部分在client上实现
+            g_i = compute_client_gradient(client_model, client_loaders[client_idx], device)  # 调用客户端梯度计算函数
+            g_i_list.append(g_i)  # 上传客户端梯度到服务器
+            
+            
+            # 客户端训练
             optimizer = optim.SGD(client_model.parameters(), lr=client_lr)
                         
             # 为客户端设置学习率调度器
@@ -253,22 +266,6 @@ def fedclg_s(global_model, clients_models, server_model, server_loader, client_l
             client_optimizers.append(optimizer)
             client_schedulers.append(scheduler)
             
-            # ---------- 计算 g_i ----------
-            client_model.eval()
-            g_i = []
-            for data, target in client_loaders[client_idx]:
-                data, target = data.to(device), target.to(device)
-                client_model.zero_grad()
-                output = client_model(data)
-                loss = nn.CrossEntropyLoss()(output, target)
-                loss.backward()
-                for param in client_model.parameters():
-                    g_i.append(param.grad.data.clone())
-                break  # 仅使用一个批次来计算 g_i，可根据需要调整
-            g_i = [g.cpu() for g in g_i]  # 将梯度移动到 CPU
-            g_i_list.append(g_i)
-            
-            # 客户端训练
             client_update(client_model, optimizer, client_loaders[client_idx], client_epochs, device)
             
             # 计算模型更新 Δ_i = x_i^K - x_t
@@ -281,7 +278,9 @@ def fedclg_s(global_model, clients_models, server_model, server_loader, client_l
             client_model.to('cpu')
             
        
-       # ---------- 服务器端聚合更新 ----------
+        # ---------- 服务器端聚合更新 ----------
+        # TODO：这一段开始是在server上进行的
+        
         # 初始化累计更新
         aggregated_update = {}
         for key in global_model.state_dict().keys():
@@ -301,16 +300,15 @@ def fedclg_s(global_model, clients_models, server_model, server_loader, client_l
                 aggregated_update[key] += (delta_i[key] - correction[idx]) / num_clients_per_round  # 平均化
              
         # 更新全局模型参数 x_{t+1}^s = x_t + η_g * aggregated_update
-        global_model.to(device)           #再GPU上进行聚合，这个后面考虑修改
+        global_model.to(device)   # 这里用gpu并行计算的原因是，模型更新操作(add_)涉及多个张量的加法操作 
         with torch.no_grad():
             for key in global_model.state_dict().keys():
                 global_model.state_dict()[key].add_(global_lr, aggregated_update[key].to(device)) # eta_g是全局学习率
-        global_model.to('cpu')   
-
-
-        # 服务器本地训练
-        server_update(global_model, server_model, server_optimizer, server_loader, server_epochs, device)
         
+        
+        # 服务器本地训练
+        # TODO: 这里将这一步放在同一个gpu上，后续可以修改
+        server_update(global_model, server_model, server_optimizer, server_loader, server_epochs, device)
         
         # 在每一轮结束后，执行学习率衰减
         for scheduler, optimizer in zip(client_schedulers, client_optimizers):
@@ -319,29 +317,47 @@ def fedclg_s(global_model, clients_models, server_model, server_loader, client_l
         server_scheduler.step()
         adjust_learning_rate(server_optimizer, min_lr)
   
+  
+  
+# 定义数据转换
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.1307,), (0.3081,)) # 这两个值更加符合MNIST数据集的实际分布
+])
+
+# 下载MNIST数据集
+train_dataset = datasets.MNIST('../data/MNIST', train=True, download=True, transform=transform)
+test_dataset = datasets.MNIST('../data/MNIST', train=False, download=True, transform=transform)  
+
+
+# ---------从中按照类别平衡选择30000个样本-----------
+# 获取数据和标签
+data = train_dataset.data
+targets = train_dataset.targets
+
+# 使用 sklearn 的分层采样工具
+train_indices, _ = train_test_split(
+    np.arange(len(targets)),  # 样本索引
+    test_size=(len(targets) - 30000) / len(targets),  # 保留 30,000 个样本
+    stratify=targets,  # 按类别分层
+    random_state=42    # 设置随机种子，保证结果可复现
+)
+
+# 根据选中的索引创建子数据集
+train_dataset = torch.utils.data.Subset(train_dataset, train_indices)
+
+# 获取划分后的类别分布
+labels = [train_dataset.dataset.targets[i] for i in train_dataset.indices]
+print("Class distribution:", Counter(labels))
 
   
-        
-# 初始化模型
-global_model = CNNModel()
-server_model = CNNModel()
-clients_models = [CNNModel() for _ in range(num_clients)]
-
-# 准备服务器数据加载器（服务器拥有的小数据集）
-server_dataset_size = int(len(train_dataset) * 0.01)  # 服务器数据集占1%
-server_dataset, _ = torch.utils.data.random_split(train_dataset, [server_dataset_size, len(train_dataset) - server_dataset_size])
-server_loader = torch.utils.data.DataLoader(server_dataset, batch_size=64, shuffle=True)
-
-# 准备客户端数据加载器
-client_loaders = []
-for idxs in client_idxs:
-    client_dataset = torch.utils.data.Subset(train_dataset, idxs)
-    loader = torch.utils.data.DataLoader(client_dataset, batch_size=64, shuffle=True)
-    client_loaders.append(loader)
-
-# 设置设备
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+# 设置客户端数量和数据划分   论文中MNIST是200个client（每个150samples）
+# TODO: 这里考虑client还是全量IID数据，后续考虑调整
+num_clients = 200
+non_iid = True  # 设置为True表示非IID划分
+client_idxs = partition_dataset(train_dataset, num_clients, non_iid)
+  
+  
 # 设置训练参数
 num_rounds = 100
 num_clients_per_round = 4   # MNIST参加数目设置为4
@@ -352,12 +368,46 @@ server_lr = 0.05  #MNIST: 从0.01，0.05，0.25三个中调优
 global_lr = 1   # MNIST: 全局学习率为1
 gamma = 0.99      # 衰减系数
 
+server_size = 0.01  # Server数据量占比（MNIST:0.01）
+batch_size = 64 # client和server的训练batch size
+
+        
+# 初始化模型
+global_model = CNNModel()
+server_model = CNNModel()
+clients_models = [CNNModel() for _ in range(num_clients)]
+
+# 准备服务器数据加载器（服务器拥有的小数据集）
+server_dataset_size = int(len(train_dataset) * server_size)  # 服务器数据集占1%
+# 将数据集随机分为server和client两部分
+# TODO：这里是完全随机的，没有考虑类别。后续可以调整
+server_dataset, _ = torch.utils.data.random_split(train_dataset, [server_dataset_size, len(train_dataset) - server_dataset_size])
+server_loader = torch.utils.data.DataLoader(server_dataset, batch_size=64, shuffle=True)
+
+# 输出获取 server_dataset 中所有样本的标签
+server_labels = [train_dataset.dataset.targets[i] for i in server_dataset.indices]
+print("Server dataset class distribution:", Counter(server_labels))
+
+# 准备客户端数据加载器
+client_loaders = []
+for idxs in client_idxs:
+    client_dataset = torch.utils.data.Subset(train_dataset, idxs)
+    loader = torch.utils.data.DataLoader(client_dataset, batch_size=64, shuffle=True)
+    client_loaders.append(loader)
+
+# 设置设备
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Runnning device:", device)
+
+
+
 # 选择要运行的算法：fedclg_c 或 fedclg_s
-# fedclg_c(global_model, clients_models, server_model, server_loader, client_loaders, num_rounds, num_clients_per_round, 
+fedclg_c(global_model, clients_models, server_model, server_loader, client_loaders, num_rounds, num_clients_per_round, 
+         client_epochs, server_epochs, client_lr, server_lr, device)
+
+# fedclg_s(global_model, clients_models, server_model, server_loader, num_rounds, num_clients_per_round, 
 #          client_epochs, server_epochs, client_lr, server_lr, device)
 
-fedclg_s(global_model, clients_models, server_model, server_loader, num_rounds, num_clients_per_round, 
-         client_epochs, server_epochs, client_lr, server_lr, device)
 
 
 def test_model(model, test_loader, device):
@@ -375,5 +425,6 @@ def test_model(model, test_loader, device):
     model.to('cpu')
     print(f'测试集上的准确率为：{100 * correct / total}%')
 
-test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 test_model(global_model, test_loader, device)
