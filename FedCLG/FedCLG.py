@@ -7,6 +7,7 @@ from gradient_util import compute_server_gradient, compute_client_gradient
 from torchvision import datasets, transforms
 from collections import Counter
 from sklearn.model_selection import train_test_split
+from config import *  # 导入 config 中的所有变量
 
 
 # 先定义一个简单的CNN模型（原文采用的是LeNet-5）
@@ -64,7 +65,6 @@ def client_update(
     client_model, optimizer, train_loader, epoch, device, correction=None
 ):
     client_model.train()
-    print(f"Client Learning Rate: {optimizer.param_groups[0]['lr']}")
     for _ in range(epoch):  # client local epoch
         for data, target in train_loader:
             data, target = data.to(device), target.to(device)
@@ -84,7 +84,7 @@ def server_update(
 ):
     server_model.load_state_dict(global_model.state_dict())
     server_model.train()
-    print(f"Server Learning Rate: {server_optimizer.param_groups[0]['lr']}")
+    # print(f"Server Learning Rate: {server_optimizer.param_groups[0]['lr']}")
     for _ in range(epoch):
         for data, target in server_loader:
             data, target = data.to(device), target.to(device)
@@ -110,6 +110,8 @@ def fedclg_c(
     client_lr,
     server_lr,
     device,
+    test_loader,
+    test_intervals,
 ):
 
     num_clients = len(clients_models)
@@ -131,8 +133,14 @@ def fedclg_c(
         client_optimizers.append(optimizer)
         client_schedulers.append(scheduler)
 
+    results = []  # 用于记录指定轮次的结果
+
     for round_idx in range(num_rounds):
         print(f"Round {round_idx+1}/{num_rounds}")
+
+        # 获取当前客户端的学习率（所有客户端的学习率此时应相同）
+        # current_lr = client_optimizers[0].param_groups[0]["lr"]
+        # print(f"Client Learning Rate: {current_lr}")
 
         # ---------- 服务器计算梯度 g_s ----------
         # TODO: 这部分需要在server上进行，之后要区分；
@@ -165,8 +173,8 @@ def fedclg_c(
             optimizer = client_optimizers[client_idx]
             scheduler = client_schedulers[client_idx]
 
-            # 重置优化器的状态
-            optimizer.state = {}
+            # 更新优化器的参数组的参数引用
+            optimizer.param_groups[0]["params"] = list(client_model.parameters())
 
             # ---------- 客户端计算梯度 g_i ----------
             g_i = compute_client_gradient(
@@ -178,7 +186,6 @@ def fedclg_c(
             correction = []
             for gs, gi in zip(g_s, g_i):
                 correction.append(gs - gi)
-
 
             # 客户端训练
             client_update(
@@ -233,7 +240,7 @@ def fedclg_c(
             for key in global_model.state_dict().keys():
                 # global_lr是全局学习率
                 global_model.state_dict()[key].add_(
-                    global_lr, aggregated_update[key].to(device)
+                    aggregated_update[key].to(device), alpha=global_lr
                 )
 
         # 服务器本地训练
@@ -247,12 +254,22 @@ def fedclg_c(
             device,
         )
 
-        # 在每一轮结束后，执行学习率衰减
-        for scheduler, optimizer in zip(client_schedulers, client_optimizers):
-            scheduler.step()
-            adjust_learning_rate(optimizer, min_lr)
-        server_scheduler.step()
-        adjust_learning_rate(server_optimizer, min_lr)
+        # 如果是指定的测试轮次，记录测试结果
+        #  TODO: 但这里测试会增加额外的时延，后面要考虑
+        if round_idx + 1 in test_intervals:
+            accuracy = test_model(global_model, test_loader, device, verbose=False)
+            print(f"Accuracy at round {round_idx+1}: {accuracy:.2f}%")
+            results.append((round_idx + 1, accuracy))
+
+        for optimizer, scheduler in zip(client_optimizers, client_schedulers):
+            optimizer.step()  # 先执行参数更新
+            scheduler.step()  # 再调整学习率
+            adjust_learning_rate(optimizer, min_lr)  # 可选：设置最小学习率
+        server_optimizer.step()  # 服务器优化器更新
+        server_scheduler.step()  # 调整服务器学习率
+        adjust_learning_rate(server_optimizer, min_lr)  # 可选：设置最小学习率
+
+    return results
 
 
 def adjust_learning_rate(optimizer, min_lr):
@@ -274,22 +291,37 @@ def fedclg_s(
     client_lr,
     server_lr,
     device,
+    test_loader,
+    test_intervals,
 ):
 
     num_clients = len(clients_models)
     global_model.to(device)
     server_model.to(device)
 
+    results = []  # 用于记录指定轮次的结果
+
     # 初始化优化器
     server_optimizer = optim.SGD(server_model.parameters(), lr=server_lr)
     # 为server设置学习率调度器
     server_scheduler = optim.lr_scheduler.ExponentialLR(server_optimizer, gamma)
 
-    client_optimizers = []  # 存储每个客户端的优化器
-    client_schedulers = []  # 存储每个客户端的学习率调度器
+    # 初始化客户端优化器和调度器
+    client_optimizers = []
+    client_schedulers = []
+    for client_idx in range(num_clients):
+        client_model = clients_models[client_idx]
+        optimizer = optim.SGD(client_model.parameters(), lr=client_lr)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma)
+        client_optimizers.append(optimizer)
+        client_schedulers.append(scheduler)
 
     for round_idx in range(num_rounds):
         print(f"Round {round_idx+1}/{num_rounds}")
+
+        # 获取当前客户端的学习率（所有客户端的学习率此时应相同）
+        # current_lr = client_optimizers[0].param_groups[0]["lr"]
+        # print(f"Client Learning Rate: {current_lr}")
 
         # ---------- 服务器计算梯度 g_s ----------
         # TODO: 这部分需要在server上进行，之后要区分
@@ -316,20 +348,19 @@ def fedclg_s(
             client_model.load_state_dict(global_model.state_dict())
             client_model.to(device)  # 转移到gpu上进行
 
+            # 获取已初始化的优化器和调度器
+            optimizer = client_optimizers[client_idx]
+            scheduler = client_schedulers[client_idx]
+
+            # 更新优化器的参数组的参数引用
+            optimizer.param_groups[0]["params"] = list(client_model.parameters())
+
             # ---------- 客户端计算梯度 g_i ----------
             # TODO: 这部分在client上实现
             g_i = compute_client_gradient(
                 client_model, client_loaders[client_idx], device
             )  # 调用客户端梯度计算函数
             g_i_list.append(g_i)  # 上传客户端梯度到服务器
-
-            # 客户端训练
-            optimizer = optim.SGD(client_model.parameters(), lr=client_lr)
-
-            # 为客户端设置学习率调度器
-            scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma)
-            client_optimizers.append(optimizer)
-            client_schedulers.append(scheduler)
 
             client_update(
                 client_model,
@@ -358,7 +389,9 @@ def fedclg_s(
         # 初始化累计更新
         aggregated_update = {}
         for key in global_model.state_dict().keys():
-            aggregated_update[key] = torch.zeros_like(global_model.state_dict()[key])
+            aggregated_update[key] = torch.zeros_like(
+                global_model.state_dict()[key], device="cpu"
+            )
 
         for i in range(len(delta_list)):
             delta_i = delta_list[i]
@@ -383,9 +416,10 @@ def fedclg_s(
         )  # 这里用gpu并行计算的原因是，模型更新操作(add_)涉及多个张量的加法操作
         with torch.no_grad():
             for key in global_model.state_dict().keys():
+                # global_lr是全局学习率
                 global_model.state_dict()[key].add_(
-                    global_lr, aggregated_update[key].to(device)
-                )  # eta_g是全局学习率
+                    aggregated_update[key].to(device), alpha=global_lr
+                )
 
         # 服务器本地训练
         # TODO: 这里将这一步放在同一个gpu上，后续可以修改
@@ -398,127 +432,26 @@ def fedclg_s(
             device,
         )
 
-        # 在每一轮结束后，执行学习率衰减
-        for scheduler, optimizer in zip(client_schedulers, client_optimizers):
-            scheduler.step()
-            adjust_learning_rate(optimizer, min_lr)
-        server_scheduler.step()
-        adjust_learning_rate(server_optimizer, min_lr)
+        # 如果是指定的测试轮次，记录测试结果
+        #  TODO: 但这里测试会增加额外的时延，后面要考虑
+        if round_idx + 1 in test_intervals:
+            accuracy = test_model(global_model, test_loader, device, verbose=False)
+            print(f"Accuracy at round {round_idx+1}: {accuracy:.2f}%")
+            results.append((round_idx + 1, accuracy))
+
+        for optimizer, scheduler in zip(client_optimizers, client_schedulers):
+            optimizer.step()  # 先执行参数更新
+            scheduler.step()  # 再调整学习率
+            adjust_learning_rate(optimizer, min_lr)  # 可选：设置最小学习率
+        server_optimizer.step()  # 服务器优化器更新
+        server_scheduler.step()  # 调整服务器学习率
+        adjust_learning_rate(server_optimizer, min_lr)  # 可选：设置最小学习率
+
+    return results
 
 
-# 定义数据转换
-transform = transforms.Compose(
-    [
-        transforms.ToTensor(),
-        transforms.Normalize(
-            (0.1307,), (0.3081,)
-        ),  # 这两个值更加符合MNIST数据集的实际分布
-    ]
-)
-
-# 下载MNIST数据集
-train_dataset = datasets.MNIST(
-    "../data/MNIST", train=True, download=True, transform=transform
-)
-test_dataset = datasets.MNIST(
-    "../data/MNIST", train=False, download=True, transform=transform
-)
-
-
-# ---------从中按照类别平衡选择30000个样本-----------
-# 获取数据和标签
-data = train_dataset.data
-targets = train_dataset.targets
-
-# 使用 sklearn 的分层采样工具
-train_indices, _ = train_test_split(
-    np.arange(len(targets)),  # 样本索引
-    test_size=(len(targets) - 30000) / len(targets),  # 保留 30,000 个样本
-    stratify=targets,  # 按类别分层
-    random_state=42,  # 设置随机种子，保证结果可复现
-)
-
-# 根据选中的索引创建子数据集
-train_dataset = torch.utils.data.Subset(train_dataset, train_indices)
-
-# 获取划分后的类别分布
-labels = [train_dataset.dataset.targets[i] for i in train_dataset.indices]
-# print("Class distribution:", Counter(labels))
-
-
-# 设置客户端数量和数据划分   论文中MNIST是200个client（每个150samples）
-# TODO: 这里考虑client还是全量IID数据，后续考虑调整
-num_clients = 200
-non_iid = True  # 设置为True表示非IID划分
-client_idxs = partition_dataset(train_dataset, num_clients, non_iid)
-
-
-# 设置训练参数
-num_rounds = 100
-num_clients_per_round = 4  # MNIST参加数目设置为4
-client_epochs = 1
-server_epochs = 1
-client_lr = 0.05  # MNIST: 从0.01，0.05，0.25三个中调优
-server_lr = 0.05  # MNIST: 从0.01，0.05，0.25三个中调优
-global_lr = 1  # MNIST: 全局学习率为1
-min_lr = 0.001  # 最小学习率（衰减之后的最小学习率）
-gamma = 0.99  # 衰减系数
-
-server_size = 0.01  # Server数据量占比（MNIST:0.01）
-batch_size = 64  # client和server的训练batch size
-
-
-# 初始化模型
-global_model = CNNModel()
-server_model = CNNModel()
-clients_models = [CNNModel() for _ in range(num_clients)]
-
-# 准备服务器数据加载器（服务器拥有的小数据集）
-server_dataset_size = int(len(train_dataset) * server_size)  # 服务器数据集占1%
-# 将数据集随机分为server和client两部分
-# TODO：这里是完全随机的，没有考虑类别。后续可以调整
-server_dataset, _ = torch.utils.data.random_split(
-    train_dataset, [server_dataset_size, len(train_dataset) - server_dataset_size]
-)
-server_loader = torch.utils.data.DataLoader(server_dataset, batch_size=64, shuffle=True)
-
-# 输出获取 server_dataset 中所有样本的标签
-server_labels = [train_dataset.dataset.targets[i] for i in server_dataset.indices]
-# print("Server dataset class distribution:", Counter(server_labels))
-
-# 准备客户端数据加载器
-client_loaders = []
-for idxs in client_idxs:
-    client_dataset = torch.utils.data.Subset(train_dataset, idxs)
-    loader = torch.utils.data.DataLoader(client_dataset, batch_size=64, shuffle=True)
-    client_loaders.append(loader)
-
-# 设置设备
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("Running device:", device)
-
-
-# 选择要运行的算法：fedclg_c 或 fedclg_s
-fedclg_c(
-    global_model,
-    clients_models,
-    server_model,
-    server_loader,
-    client_loaders,
-    num_rounds,
-    num_clients_per_round,
-    client_epochs,
-    server_epochs,
-    client_lr,
-    server_lr,
-    device,
-)
-
-# fedclg_s(global_model, clients_models, server_model, server_loader, num_rounds, num_clients_per_round,
-#          client_epochs, server_epochs, client_lr, server_lr, device)
-
-
-def test_model(model, test_loader, device):
+# 测试函数（改为返回值）
+def test_model(model, test_loader, device, verbose=True):
     model.eval()
     correct = 0
     total = 0
@@ -530,11 +463,9 @@ def test_model(model, test_loader, device):
             _, predicted = torch.max(outputs.data, 1)
             total += target.size(0)
             correct += (predicted == target).sum().item()
-    model.to("cpu")
-    print(f"测试集上的准确率为：{100 * correct / total}%")
-
-
-test_loader = torch.utils.data.DataLoader(
-    test_dataset, batch_size=batch_size, shuffle=False
-)
-test_model(global_model, test_loader, device)
+    # TODO: 这里因为后面还要训练，不移动到CPU上
+    # model.to("cpu")
+    accuracy = 100 * correct / total
+    if verbose:
+        print(f"测试集上的准确率为：{accuracy:.2f}%")
+    return accuracy
