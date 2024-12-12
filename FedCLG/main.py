@@ -161,8 +161,6 @@ labels = [train_dataset.dataset.targets[i] for i in train_dataset.indices]
 
 # 设置客户端数量和数据划分   论文中MNIST是200个client（每个150samples）
 # TODO: 这里考虑client还是全量IID数据，后续考虑调整
-num_clients = 200
-non_iid = True  # 设置为True表示非IID划分
 client_idxs = partition_dataset(train_dataset, num_clients, non_iid)
 
 
@@ -174,7 +172,7 @@ clients_models = [CNNModel() for _ in range(num_clients)]
 # 准备服务器数据加载器（服务器拥有的小数据集）
 server_dataset_size = int(len(train_dataset) * server_size)  # 服务器数据集占1%
 # 将数据集随机分为server和client两部分
-# TODO：这里是完全随机的，没有考虑类别。后续可以调整
+# TODO：这里是完全随机的，没有考虑平衡类别。后续可以调整
 server_dataset, _ = torch.utils.data.random_split(
     train_dataset, [server_dataset_size, len(train_dataset) - server_dataset_size]
 )

@@ -14,3 +14,6 @@ batch_size = 64  # client和server的训练batch size
 
 test_intervals = [5, 10, 20, 50]  # 指定的测试轮次
 num_experiments = 5  # 设置重复实验次数
+
+num_clients = 200
+non_iid = True  # 设置为True表示非IID划分
