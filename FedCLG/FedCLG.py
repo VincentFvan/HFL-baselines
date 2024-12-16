@@ -456,7 +456,7 @@ def test_model(model, test_loader, device, verbose=True):
     correct = 0
     total = 0
     model.to(device)
-    with torch.no_grad():
+    with torch.no_grad():  # 在测试过程中不需要计算梯度，节省内存和加速计算
         for data, target in test_loader:
             data, target = data.to(device), target.to(device)
             outputs = model(data)
