@@ -1,9 +1,13 @@
 # 设置训练参数 -- CIFAR100
 
+# 随机性
+data_random_fix = False  # 是否固定数据采样的随机性
+seed_num = 42
+
 client_num = 200
 non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 size_per_client = 200  # 每个客户端的数据量（训练+测试）
-server_percentage = 0.05  # 服务器端用于微调的数据比例
+server_percentage = 0.01  # 服务器端用于微调的数据比例
 
 momentum = 0.9
 weight_decay = 0.0001  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样
