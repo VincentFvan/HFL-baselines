@@ -68,18 +68,33 @@ def non_iid(dataset, num_users, num_shards, num_imgs, case=1):
     if case == 1:
         return noniid_ratio_r_label_1(dataset, num_users, num_shards, num_imgs)
     elif case == 2:
-        return noniid_label_2(dataset, num_users, int(num_shards * 2), int(num_imgs / 2))
+        return noniid_label_2(
+            dataset, num_users, int(num_shards * 2), int(num_imgs / 2)
+        )
     elif case == 3:
-        return noniid_ratio_r_label_1(dataset, num_users, num_shards, num_imgs, ratio=0.8)
+        return noniid_ratio_r_label_1(
+            dataset, num_users, num_shards, num_imgs, ratio=0.8
+        )
     elif case == 4:
-        return noniid_ratio_r_label_1(dataset, num_users, num_shards, num_imgs, ratio=0.5)
+        return noniid_ratio_r_label_1(
+            dataset, num_users, num_shards, num_imgs, ratio=0.5
+        )
     else:
-        exit('Error: unrecognized noniid case')
+        exit("Error: unrecognized noniid case")
 
 
+# 以CIFAR-100为例, non-iid程度从1到4逐渐降低
+# case=1: 每个用户主要拥有一个标签的数据（比例为 1，即全部数据来自一个标签）
+# case=2: 每个用户拥有两个不同标签的数据。
+# case=3: 每个用户主要拥有一个标签的数据，比例为 0.8。
+# case=4: 每个用户主要拥有一个标签的数据，比例为 0.5。
+
+
+# 将数据划分成num_shards（每个shards是同一类），然后将这些shard随机分给num_users个用户
+# ratio代表单个用户中有ratio%的数据来自某一主要标签（shard），剩下 1-ratio% 的数据总所有剩余数据随机抽取
 def noniid_ratio_r_label_1(dataset, num_users, num_shards, num_imgs, ratio=1):
     idx_shard = [i for i in range(num_shards)]
-    dict_users = {i: np.array([], dtype='int64') for i in range(num_users)}
+    dict_users = {i: np.array([], dtype="int64") for i in range(num_users)}
     idxs = np.arange(num_shards * num_imgs)
     labels = dataset.targets
 
@@ -92,15 +107,20 @@ def noniid_ratio_r_label_1(dataset, num_users, num_shards, num_imgs, ratio=1):
         rand_set = set(np.random.choice(idx_shard, 1, replace=False))
         idx_shard = list(set(idx_shard) - rand_set)
         for rand in rand_set:
-            dict_users[i] = np.concatenate((dict_users[i], idxs[rand * num_imgs:int((rand + ratio) * num_imgs)]),
-                                           axis=0)
+            dict_users[i] = np.concatenate(
+                (dict_users[i], idxs[rand * num_imgs : int((rand + ratio) * num_imgs)]),
+                axis=0,
+            )
             random.shuffle(dict_users[i])
 
     if ratio < 1:
-        rest_idxs = np.array([], dtype='int64')
+        rest_idxs = np.array([], dtype="int64")
         idx_shard = [i for i in range(num_shards)]
         for i in idx_shard:
-            rest_idxs = np.concatenate((rest_idxs, idxs[int((i + ratio) * num_imgs):(i + 1) * num_imgs]), axis=0)
+            rest_idxs = np.concatenate(
+                (rest_idxs, idxs[int((i + ratio) * num_imgs) : (i + 1) * num_imgs]),
+                axis=0,
+            )
         num_items = int(len(dataset) / num_users * (1 - ratio))
         for i in range(num_users):
             rest_to_add = set(np.random.choice(rest_idxs, num_items, replace=False))
@@ -114,9 +134,10 @@ def noniid_ratio_r_label_1(dataset, num_users, num_shards, num_imgs, ratio=1):
     return dict_users
 
 
+# 将数据划分成两倍shards，其余和上面一样
 def noniid_label_2(dataset, num_users, num_shards, num_imgs):
     idx_shard = [i for i in range(num_shards)]
-    dict_users = {i: np.array([], dtype='int64') for i in range(num_users)}
+    dict_users = {i: np.array([], dtype="int64") for i in range(num_users)}
     idxs = np.arange(num_shards * num_imgs)
     labels = dataset.targets
 
@@ -127,19 +148,28 @@ def noniid_label_2(dataset, num_users, num_shards, num_imgs):
 
     for i in range(num_users):
         len_idx_shard = len(idx_shard)
-        rand1 = np.random.choice(idx_shard[0:int(len_idx_shard / 2)], 1, replace=False)[0]
-        rand2 = np.random.choice(idx_shard[int(len_idx_shard / 2):len_idx_shard], 1, replace=False)[0]
+        rand1 = np.random.choice(
+            idx_shard[0 : int(len_idx_shard / 2)], 1, replace=False
+        )[0]
+        rand2 = np.random.choice(
+            idx_shard[int(len_idx_shard / 2) : len_idx_shard], 1, replace=False
+        )[0]
         idx_shard = list(set(idx_shard) - set([rand1, rand2]))
         for rand in [rand1, rand2]:
-            dict_users[i] = np.concatenate((dict_users[i], idxs[rand * num_imgs:int((rand + 1) * num_imgs)]), axis=0)
+            dict_users[i] = np.concatenate(
+                (dict_users[i], idxs[rand * num_imgs : int((rand + 1) * num_imgs)]),
+                axis=0,
+            )
             random.shuffle(dict_users[i])
     return dict_users
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     trans = transforms.Compose([transforms.ToTensor()])
-    dataset_train = datasets.SVHN('../data/svhn/', split='train', download=True, transform=trans)
+    dataset_train = datasets.SVHN(
+        "../data/svhn/", split="train", download=True, transform=trans
+    )
     # trans = transforms.Compose([transforms.ToTensor()])
     # dataset_train = datasets.FashionMNIST('../data/fashion-mnist/', train=True, download=True, transform=trans)
     # trans_mnist = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])

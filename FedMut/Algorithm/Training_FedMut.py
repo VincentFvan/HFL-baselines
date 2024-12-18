@@ -6,7 +6,7 @@ import copy
 import numpy as np
 import random
 from models.Fed import Aggregation
-from utils.utils import save_result, save_fedmut_result,save_model
+from utils.utils import save_result, save_fedmut_result, save_model
 from models.test import test_img
 from models.Update import DatasetSplit
 from optimizer.Adabelief import AdaBelief
@@ -17,21 +17,25 @@ class LocalUpdate_FedMut(object):
         self.args = args
         self.loss_func = nn.CrossEntropyLoss()
         self.selected_clients = []
-        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size=self.args.local_bs, shuffle=True)
-        self.ensemble_alpha = args.ensemble_alpha
-        self.verbose = verbose
+        self.ldr_train = DataLoader(
+            DatasetSplit(dataset, idxs), batch_size=self.args.local_bs, shuffle=True
+        )
+        self.ensemble_alpha = args.ensemble_alpha  # FedGKD中用到的，FedMut没用
+        self.verbose = verbose  # 表示是否启用详细信息打印模式
 
     def train(self, net):
 
         net.to(self.args.device)
 
-        net.train()
+        net.train()  # PyTorch 中的一个方法，用于将模型设置为 训练模式，对应的是net.eval()
         # train and update
-        if self.args.optimizer == 'sgd':
-            optimizer = torch.optim.SGD(net.parameters(), lr=self.args.lr, momentum=self.args.momentum)
-        elif self.args.optimizer == 'adam':
+        if self.args.optimizer == "sgd":
+            optimizer = torch.optim.SGD(
+                net.parameters(), lr=self.args.lr, momentum=self.args.momentum
+            )
+        elif self.args.optimizer == "adam":
             optimizer = torch.optim.Adam(net.parameters(), lr=self.args.lr)
-        elif self.args.optimizer == 'adaBelief':
+        elif self.args.optimizer == "adaBelief":
             optimizer = AdaBelief(net.parameters(), lr=self.args.lr)
 
         Predict_loss = 0
@@ -39,10 +43,12 @@ class LocalUpdate_FedMut(object):
         for iter in range(self.args.local_ep):
 
             for batch_idx, (images, labels) in enumerate(self.ldr_train):
-                images, labels = images.to(self.args.device), labels.to(self.args.device)
+                images, labels = images.to(self.args.device), labels.to(
+                    self.args.device
+                )
                 net.zero_grad()
                 model_output = net(images)
-                predictive_loss = self.loss_func(model_output['output'], labels)
+                predictive_loss = self.loss_func(model_output["output"], labels)
 
                 loss = predictive_loss
                 Predict_loss += predictive_loss.item()
@@ -50,13 +56,18 @@ class LocalUpdate_FedMut(object):
                 loss.backward()
                 optimizer.step()
 
+        # 输出本地客户端的平均预测损失
         if self.verbose:
-            info = '\nUser predict Loss={:.4f}'.format(Predict_loss / (self.args.local_ep * len(self.ldr_train)))
+            info = "\nUser predict Loss={:.4f}".format(
+                Predict_loss / (self.args.local_ep * len(self.ldr_train))
+            )
             print(info)
 
         # net.to('cpu')
 
+        # 返回 模型的所有参数和缓冲区的状态字典
         return net.state_dict()
+
 
 def FedMut(args, net_glob, dataset_train, dataset_test, dict_users):
     net_glob.train()
@@ -64,51 +75,57 @@ def FedMut(args, net_glob, dataset_train, dataset_test, dict_users):
     w_locals = []
     sim_arr = []
 
-    m = max(int(args.frac * args.num_users), 1)
+    m = max(int(args.frac * args.num_users), 1)  # 选择参与的client数量
     for i in range(m):
         w_locals.append(copy.deepcopy(net_glob.state_dict()))
-    
+
     delta_list = []
     max_rank = 0
     w_old = copy.deepcopy(net_glob.state_dict())
     w_old_s1 = copy.deepcopy(net_glob.state_dict())
 
+    # 这里的epoch是FL总体训练的轮次round
     for iter in range(args.epochs):
         w_old = copy.deepcopy(net_glob.state_dict())
-        print('*' * 80)
-        print('Round {:3d}'.format(iter))
-
+        print("*" * 80)
+        print("Round {:3d}".format(iter))
 
         m = max(int(args.frac * args.num_users), 1)
         idxs_users = np.random.choice(range(args.num_users), m, replace=False)
         for i, idx in enumerate(idxs_users):
 
             net_glob.load_state_dict(w_locals[i])
-            local = LocalUpdate_FedMut(args=args, dataset=dataset_train, idxs=dict_users[idx])
+            local = LocalUpdate_FedMut(
+                args=args, dataset=dataset_train, idxs=dict_users[idx]
+            )
             w = local.train(net=net_glob)
             w_locals[i] = copy.deepcopy(w)
 
         # update global weights
-        w_glob = Aggregation(w_locals, None) # Global Model Generation
+        w_glob = Aggregation(w_locals, None)  # Global Model Generation
 
         # copy weight to net_glob
         net_glob.load_state_dict(w_glob)
 
+        # 计算聚合后模型的准确率，存入acc
         acc.append(test(net_glob, dataset_test, args))
 
+        # 计算模型与上一轮相比的梯度（差值）
         w_delta = FedSub(w_glob, w_old, 1.0)
-        rank = delta_rank(args,w_delta)
+        # 计算模型更新w_delta的L2范数（平方和），衡量模型更新程度的大小
+        rank = delta_rank(args, w_delta)
         print(rank)
         if rank > max_rank:
             max_rank = rank
-        alpha = args.radius
+        alpha = args.radius  # 论文中的alpha，衡量Mutation的幅度
         # alpha = min(max(args.radius, max_rank/rank),(10.0-args.radius) * (1 - iter/args.epochs) + args.radius)
-        w_locals = mutation_spread(args, iter, w_glob, w_old, w_locals, m, w_delta, alpha)
-        
+        # TODO：241218 17：30到这里
+        w_locals = mutation_spread(
+            args, iter, w_glob, w_old, w_locals, m, w_delta, alpha
+        )
 
-
-    save_fedmut_result(acc, 'test_acc', args)
-    save_model(net_glob.state_dict(), 'test_model', args)
+    save_fedmut_result(acc, "test_acc", args)
+    save_model(net_glob.state_dict(), "test_model", args)
     # save_result(sim_arr, 'sim', args)
 
 
@@ -117,17 +134,16 @@ def mutation_spread(args, iter, w_glob, w_old, w_locals, m, w_delta, alpha):
     # if iter/args.epochs > 0.5:
     #     w_delta = FedSub(w_glob,w_old,(args.radius - args.min_radius) * (1.0 - iter/args.epochs)*2 + args.min_radius)
     # else:
-        # w_delta = FedSub(w_glob,w_old,(args.radius - args.min_radius) * (iter/args.epochs)*2 + args.min_radius)
+    # w_delta = FedSub(w_glob,w_old,(args.radius - args.min_radius) * (iter/args.epochs)*2 + args.min_radius)
     # w_delta = FedSub(w_glob, w_old, args.radius)
-
 
     w_locals_new = []
     ctrl_cmd_list = []
-    ctrl_rate = args.mut_acc_rate * (1.0 - min(iter*1.0/args.mut_bound,1.0))
+    ctrl_rate = args.mut_acc_rate * (1.0 - min(iter * 1.0 / args.mut_bound, 1.0))
 
     for k in w_glob.keys():
         ctrl_list = []
-        for i in range(0,int(m/2)):
+        for i in range(0, int(m / 2)):
             ctrl = random.random()
             if ctrl > 0.5:
                 ctrl_list.append(1.0)
@@ -140,14 +156,13 @@ def mutation_spread(args, iter, w_glob, w_old, w_locals, m, w_delta, alpha):
     cnt = 0
     for j in range(m):
         w_sub = copy.deepcopy(w_glob)
-        if not (cnt == m -1 and m%2 == 1):
+        if not (cnt == m - 1 and m % 2 == 1):
             ind = 0
             for k in w_sub.keys():
-                w_sub[k] = w_sub[k] + w_delta[k]*ctrl_cmd_list[ind][j]*alpha
+                w_sub[k] = w_sub[k] + w_delta[k] * ctrl_cmd_list[ind][j] * alpha
                 ind += 1
         cnt += 1
         w_locals_new.append(w_sub)
-
 
     return w_locals_new
 
@@ -164,11 +179,12 @@ def test(net_glob, dataset_test, args):
 def FedSub(w, w_old, weight):
     w_sub = copy.deepcopy(w)
     for k in w_sub.keys():
-        w_sub[k] = (w[k] - w_old[k])*weight
+        w_sub[k] = (w[k] - w_old[k]) * weight
 
     return w_sub
 
-def delta_rank(args,delta_dict):
+
+def delta_rank(args, delta_dict):
     cnt = 0
     dict_a = torch.Tensor(0)
     s = 0
@@ -179,8 +195,8 @@ def delta_rank(args,delta_dict):
             dict_a = a
         else:
             dict_a = torch.cat((dict_a, a), dim=0)
-               
+
         cnt += 1
-            # print(sim)
+        # print(sim)
     s = torch.norm(dict_a, dim=0)
     return s

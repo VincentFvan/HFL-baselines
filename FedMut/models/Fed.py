@@ -6,6 +6,7 @@ import copy
 import torch
 
 
+# 加权平均聚合，lens代表了权重，如果没有定义就是普通平均（FedMut就每定义）
 def Aggregation(w, lens):
     w_avg = None
     if lens == None:

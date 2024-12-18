@@ -9,17 +9,27 @@ import torch
 import random
 
 
-def check(config_path, train_path, test_path, num_clients, num_labels, niid=False,
-        real=True, partition=None):
+def check(
+    config_path,
+    train_path,
+    test_path,
+    num_clients,
+    num_labels,
+    niid=False,
+    real=True,
+    partition=None,
+):
     # check existing dataset
     if os.path.exists(config_path):
-        with open(config_path, 'r') as f:
+        with open(config_path, "r") as f:
             config = ujson.load(f)
-        if config['num_clients'] == num_clients and \
-            config['num_labels'] == num_labels and \
-            config['non_iid'] == niid and \
-            config['real_world'] == real and \
-            config['partition'] == partition:
+        if (
+            config["num_clients"] == num_clients
+            and config["num_labels"] == num_labels
+            and config["non_iid"] == niid
+            and config["real_world"] == real
+            and config["partition"] == partition
+        ):
             print("\nDataset already generated.\n")
             return True
 
@@ -32,25 +42,27 @@ def check(config_path, train_path, test_path, num_clients, num_labels, niid=Fals
 
     return False
 
+
 def read_record(file):
-    with open(file,"r") as f:
+    with open(file, "r") as f:
         dataJson = json.load(f)
         users_train = dataJson["train_data"]
-        #users_test = dataJson["test_data"]
+        # users_test = dataJson["test_data"]
     dict_users_train = {}
-    #dict_users_test = {}
-    for key,value in users_train.items():
+    # dict_users_test = {}
+    for key, value in users_train.items():
         newKey = int(key)
         dict_users_train[newKey] = value
-    '''
+    """
     for key,value in users_test.items():
         newKey = int(key)
         dict_users_test[newKey] = value
-    '''
-    return dict_users_train #, dict_users_test
+    """
+    return dict_users_train  # , dict_users_test
 
+
+#  通过 Dirichlet 分布 来生成 非IID 数据分布，beta[0-1]是分布系数，越小代表越不均匀
 def separate_data(train_data, num_clients, num_classes, beta=0.4):
-
 
     y_train = np.array(train_data.targets)
 
@@ -68,10 +80,22 @@ def separate_data(train_data, num_clients, num_classes, beta=0.4):
             idx_k_train = np.where(y_train == k)[0]
             np.random.shuffle(idx_k_train)
             proportions = np.random.dirichlet(np.repeat(beta, num_clients))
-            proportions_train = np.array([p * (len(idx_j) < N_train / num_clients) for p, idx_j in zip(proportions, idx_batch_train)])
+            proportions_train = np.array(
+                [
+                    p * (len(idx_j) < N_train / num_clients)
+                    for p, idx_j in zip(proportions, idx_batch_train)
+                ]
+            )
             proportions_train = proportions_train / proportions_train.sum()
-            proportions_train = (np.cumsum(proportions_train) * len(idx_k_train)).astype(int)[:-1]
-            idx_batch_train = [idx_j + idx.tolist() for idx_j, idx in zip(idx_batch_train, np.split(idx_k_train, proportions_train))]
+            proportions_train = (
+                np.cumsum(proportions_train) * len(idx_k_train)
+            ).astype(int)[:-1]
+            idx_batch_train = [
+                idx_j + idx.tolist()
+                for idx_j, idx in zip(
+                    idx_batch_train, np.split(idx_k_train, proportions_train)
+                )
+            ]
             min_size_train = min([len(idx_j) for idx_j in idx_batch_train])
             # if K == 2 and n_parties <= 10:
             #     if np.min(proportions) < 200:
@@ -82,9 +106,10 @@ def separate_data(train_data, num_clients, num_classes, beta=0.4):
         np.random.shuffle(idx_batch_train[j])
         dict_users_train[j] = idx_batch_train[j]
 
-    train_cls_counts = record_net_data_stats(y_train,dict_users_train)
+    train_cls_counts = record_net_data_stats(y_train, dict_users_train)
 
     return dict_users_train
+
 
 def record_net_data_stats(y_train, net_dataidx_map):
     net_cls_counts = {}
@@ -95,38 +120,49 @@ def record_net_data_stats(y_train, net_dataidx_map):
         tmp = {unq[i]: unq_cnt[i] for i in range(len(unq))}
         net_cls_counts[net_i] = tmp
 
-
-    data_list=[]
+    data_list = []
     for net_id, data in net_cls_counts.items():
-        n_total=0
+        n_total = 0
         for class_id, n_data in data.items():
             n_total += n_data
         data_list.append(n_total)
-    print('mean:', np.mean(data_list))
-    print('std:', np.std(data_list))
+    print("mean:", np.mean(data_list))
+    print("std:", np.std(data_list))
 
     return net_cls_counts
 
-def save_file(config_path, train_path, test_path, train_data, test_data, num_clients,
-                num_labels, statistic, niid=False, real=True, partition=None):
+
+def save_file(
+    config_path,
+    train_path,
+    test_path,
+    train_data,
+    test_data,
+    num_clients,
+    num_labels,
+    statistic,
+    niid=False,
+    real=True,
+    partition=None,
+):
     config = {
-        'num_clients': num_clients,
-        'num_labels': num_labels,
-        'non_iid': niid,
-        'real_world': real,
-        'partition': partition,
-        'Size of samples for labels in clients': statistic,
+        "num_clients": num_clients,
+        "num_labels": num_labels,
+        "non_iid": niid,
+        "real_world": real,
+        "partition": partition,
+        "Size of samples for labels in clients": statistic,
     }
 
     # gc.collect()
 
     for idx, train_dict in enumerate(train_data):
-        with open(train_path[:-5] + str(idx)  + '_' + '.json', 'w') as f:
+        with open(train_path[:-5] + str(idx) + "_" + ".json", "w") as f:
             ujson.dump(train_dict, f)
     for idx, test_dict in enumerate(test_data):
-        with open(test_path[:-5] + str(idx)  + '_' + '.json', 'w') as f:
+        with open(test_path[:-5] + str(idx) + "_" + ".json", "w") as f:
             ujson.dump(test_dict, f)
-    with open(config_path, 'w') as f:
+    with open(config_path, "w") as f:
         ujson.dump(config, f)
 
     print("Finish generating dataset.\n")
@@ -155,7 +191,10 @@ def get_num_classes_samples(dataset):
     num_classes = len(classes)
     return num_classes, num_samples, data_labels_list
 
-def gen_classes_per_node(dataset, num_users, classes_per_user=2, high_prob=0.6, low_prob=0.4):
+
+def gen_classes_per_node(
+    dataset, num_users, classes_per_user=2, high_prob=0.6, low_prob=0.4
+):
     """
     creates the data distribution of each client
     :param dataset: pytorch dataset object
@@ -170,7 +209,9 @@ def gen_classes_per_node(dataset, num_users, classes_per_user=2, high_prob=0.6, 
     # -------------------------------------------#
     # Divide classes + num samples for each user #
     # -------------------------------------------#
-    assert (classes_per_user * num_users) % num_classes == 0, "equal classes appearance is needed"
+    assert (
+        classes_per_user * num_users
+    ) % num_classes == 0, "equal classes appearance is needed"
     count_per_class = (classes_per_user * num_users) // num_classes
     class_dict = {}
     for i in range(num_classes):
@@ -178,7 +219,7 @@ def gen_classes_per_node(dataset, num_users, classes_per_user=2, high_prob=0.6, 
         probs = np.random.uniform(low_prob, high_prob, size=count_per_class)
         # normalizing
         probs_norm = (probs / probs.sum()).tolist()
-        class_dict[i] = {'count': count_per_class, 'prob': probs_norm}
+        class_dict[i] = {"count": count_per_class, "prob": probs_norm}
 
     # -------------------------------------#
     # Assign each client with data indexes #
@@ -187,13 +228,14 @@ def gen_classes_per_node(dataset, num_users, classes_per_user=2, high_prob=0.6, 
     for i in range(num_users):
         c = []
         for _ in range(classes_per_user):
-            class_counts = [class_dict[i]['count'] for i in range(num_classes)]
+            class_counts = [class_dict[i]["count"] for i in range(num_classes)]
             max_class_counts = np.where(np.array(class_counts) == max(class_counts))[0]
             c.append(np.random.choice(max_class_counts))
-            class_dict[c[-1]]['count'] -= 1
-        class_partitions['class'].append(c)
-        class_partitions['prob'].append([class_dict[i]['prob'].pop() for i in c])
+            class_dict[c[-1]]["count"] -= 1
+        class_partitions["class"].append(c)
+        class_partitions["prob"].append([class_dict[i]["prob"].pop() for i in c])
     return class_partitions
+
 
 def gen_data_split(dataset, num_users, class_partitions):
     """
@@ -221,14 +263,17 @@ def gen_data_split(dataset, num_users, class_partitions):
     # ------------------------------ #
     user_data_idx = {i: [] for i in range(num_users)}
     for usr_i in range(num_users):
-        for c, p in zip(class_partitions['class'][usr_i], class_partitions['prob'][usr_i]):
+        for c, p in zip(
+            class_partitions["class"][usr_i], class_partitions["prob"][usr_i]
+        ):
             end_idx = int(num_samples[c] * p)
             user_data_idx[usr_i].extend(data_class_idx[c][:end_idx])
             data_class_idx[c] = data_class_idx[c][end_idx:]
 
     return user_data_idx
 
-def gen_random_loaders(dataset, num_users, rand_set_all = None, classes_per_user=2):
+
+def gen_random_loaders(dataset, num_users, rand_set_all=None, classes_per_user=2):
     """
     generates train/val/test loaders of each client
     :param data_name: name of dataset, choose from [cifar10, cifar100]
@@ -243,6 +288,6 @@ def gen_random_loaders(dataset, num_users, rand_set_all = None, classes_per_user
 
     usr_subset_idx = gen_data_split(dataset, num_users, rand_set_all)
 
-    #cls_counts = record_net_data_stats(dataset.targets, usr_subset_idx)
+    # cls_counts = record_net_data_stats(dataset.targets, usr_subset_idx)
 
-    return usr_subset_idx,rand_set_all
+    return usr_subset_idx, rand_set_all
