@@ -130,8 +130,8 @@ def args_parser():
     # FedMut
     parser.add_argument("--radius", type=float, default=4.0)  #论文中的alpha，衡量Mutation的幅度
     parser.add_argument("--min_radius", type=float, default=0.1)
-    parser.add_argument("--mut_acc_rate", type=float, default=0.3)
-    parser.add_argument("--mut_bound", type=int, default=50)
+    parser.add_argument("--mut_acc_rate", type=float, default=0.3)  # 论文中的β0
+    parser.add_argument("--mut_bound", type=int, default=50)   #论文中的Tb
 
     args = parser.parse_args()
     return args

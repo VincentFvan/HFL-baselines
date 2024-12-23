@@ -90,14 +90,14 @@ def FedMut(args, net_glob, dataset_train, dataset_test, dict_users):
         print("*" * 80)
         print("Round {:3d}".format(iter))
 
-        m = max(int(args.frac * args.num_users), 1)
+        m = max(int(args.frac * args.num_users), 1)  # 一轮选择参与的client数量
         idxs_users = np.random.choice(range(args.num_users), m, replace=False)
         for i, idx in enumerate(idxs_users):
 
             net_glob.load_state_dict(w_locals[i])
             local = LocalUpdate_FedMut(
                 args=args, dataset=dataset_train, idxs=dict_users[idx]
-            )
+            )  # 本地训练
             w = local.train(net=net_glob)
             w_locals[i] = copy.deepcopy(w)
 
@@ -119,7 +119,6 @@ def FedMut(args, net_glob, dataset_train, dataset_test, dict_users):
             max_rank = rank
         alpha = args.radius  # 论文中的alpha，衡量Mutation的幅度
         # alpha = min(max(args.radius, max_rank/rank),(10.0-args.radius) * (1 - iter/args.epochs) + args.radius)
-        # TODO：241218 17：30到这里
         w_locals = mutation_spread(
             args, iter, w_glob, w_old, w_locals, m, w_delta, alpha
         )
@@ -139,19 +138,23 @@ def mutation_spread(args, iter, w_glob, w_old, w_locals, m, w_delta, alpha):
 
     w_locals_new = []
     ctrl_cmd_list = []
-    ctrl_rate = args.mut_acc_rate * (1.0 - min(iter * 1.0 / args.mut_bound, 1.0))
+    ctrl_rate = args.mut_acc_rate * (
+        1.0 - min(iter * 1.0 / args.mut_bound, 1.0)
+    )  # 论文中的βt，随着iter逐渐从β0s减小到0
 
+    # k代表模型中的参数数量，对每个参数按照client数量分配v（论文中是按照每一层分配）
     for k in w_glob.keys():
         ctrl_list = []
         for i in range(0, int(m / 2)):
-            ctrl = random.random()
+            ctrl = random.random()  # 随机数，范围：[0,1)
+            # 这里分ctrl感觉没什么必要，shuffle后都会随机掉
             if ctrl > 0.5:
                 ctrl_list.append(1.0)
                 ctrl_list.append(1.0 * (-1.0 + ctrl_rate))
             else:
                 ctrl_list.append(1.0 * (-1.0 + ctrl_rate))
                 ctrl_list.append(1.0)
-        random.shuffle(ctrl_list)
+        random.shuffle(ctrl_list)  # 打乱列表
         ctrl_cmd_list.append(ctrl_list)
     cnt = 0
     for j in range(m):
