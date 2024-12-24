@@ -221,6 +221,10 @@ if __name__ == "__main__":
     net_glob.to(args.device)
     print(net_glob)
 
+    # 输出训练集和测试集的大小
+    print(f"Training set size: {len(dataset_train)}")
+    print(f"Test set size: {len(dataset_test)}")
+
     if args.algorithm == "FedAvg":
         FedAvg(net_glob, dataset_train, dataset_test, dict_users)
     elif args.algorithm == "FedProx":
