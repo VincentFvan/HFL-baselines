@@ -70,9 +70,11 @@ def args_parser():
     parser.add_argument(
         "--generate_data", type=int, default=0, help="whether generate new dataset"
     )
-    parser.add_argument("--iid", type=int, default=1, help="whether i.i.d or not")
     parser.add_argument(
-        "--noniid_case", type=int, default=0, help="non i.i.d case (1, 2, 3, 4)"
+        "--iid", type=int, default=1, help="whether i.i.d or not"
+    )  # 0代表non-iid
+    parser.add_argument(
+        "--noniid_case", type=int, default=5, help="non i.i.d case (1, 2, 3, 4)"
     )
     parser.add_argument(
         "--data_beta",
@@ -80,10 +82,12 @@ def args_parser():
         default=0.5,
         help="The parameter for the dirichlet distribution for data partitioning",
     )
-    parser.add_argument("--num_classes", type=int, default=10, help="number of classes")
+    parser.add_argument(
+        "--num_classes", type=int, default=10, help="number of classes"
+    )  # 分类任务中的类别数量，CIFAR100——20
     parser.add_argument(
         "--num_channels", type=int, default=3, help="number of channels of imges"
-    )
+    )  # 输入图像的通道数，RGB对应3  CIFAR100——3
     parser.add_argument("--gpu", type=int, default=0, help="GPU ID, -1 for CPU")
     parser.add_argument(
         "--stopping_rounds", type=int, default=10, help="rounds of early stopping"
@@ -128,10 +132,12 @@ def args_parser():
     )
 
     # FedMut
-    parser.add_argument("--radius", type=float, default=4.0)  #论文中的alpha，衡量Mutation的幅度
+    parser.add_argument(
+        "--radius", type=float, default=4.0
+    )  # 论文中的alpha，衡量Mutation的幅度
     parser.add_argument("--min_radius", type=float, default=0.1)
     parser.add_argument("--mut_acc_rate", type=float, default=0.3)  # 论文中的β0
-    parser.add_argument("--mut_bound", type=int, default=50)   #论文中的Tb
+    parser.add_argument("--mut_bound", type=int, default=50)  # 论文中的Tb
 
     args = parser.parse_args()
     return args
