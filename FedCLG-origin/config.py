@@ -17,7 +17,7 @@ server_percentage = 0.01  # 服务器端用于微调的数据比例
 momentum = 0.9
 weight_decay = 0.0001  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样
 bc_size = 128
-
+num_classes = 20  # 分别数量，CIFAR100中是20（FedMut和CLGG都是这么采用的）
 
 # 联邦训练的超参数
 global_round = 100  # 全局训练轮数，可根据需要调整
@@ -27,7 +27,7 @@ K = 5  # 客户端本地训练轮数，从1，3，5中选
 E = 5  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
 
-
-
 # FedMut中参数
 radius = 4.0  # alpha，控制mutation的幅度
+mut_acc_rate = 0.3  # 论文中的β0
+mut_bound = 50  # Tb
