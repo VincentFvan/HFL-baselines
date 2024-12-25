@@ -4,13 +4,19 @@
 data_random_fix = False  # 是否固定数据采样的随机性
 seed_num = 42
 
+gpu = 1  # 默认使用gpu
+verbose = False  # 调试模式，输出一些中间信息
+
 client_num = 200
 non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 size_per_client = 200  # 每个客户端的数据量（训练+测试）
 server_percentage = 0.01  # 服务器端用于微调的数据比例
 
+
+# 模型相关
 momentum = 0.9
 weight_decay = 0.0001  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样
+bc_size = 128
 
 
 # 联邦训练的超参数
@@ -20,3 +26,8 @@ gamma = 0.05  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
 E = 5  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
+
+
+
+# FedMut中参数
+radius = 4.0  # alpha，控制mutation的幅度
