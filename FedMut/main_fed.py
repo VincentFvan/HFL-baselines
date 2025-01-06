@@ -219,11 +219,39 @@ if __name__ == "__main__":
         net_glob = VGG16(args)
 
     net_glob.to(args.device)
-    print(net_glob)
 
     # 输出训练集和测试集的大小
     print(f"Training set size: {len(dataset_train)}")
     print(f"Test set size: {len(dataset_test)}")
+
+    # 打印训练集和测试集的标签类别数及每个标签的样本数量
+    from collections import Counter
+
+    train_labels = (
+        dataset_train.targets
+        if isinstance(dataset_train.targets, list)
+        else dataset_train.targets.numpy()
+    )
+    test_labels = (
+        dataset_test.targets
+        if isinstance(dataset_test.targets, list)
+        else dataset_test.targets.numpy()
+    )
+
+    # 统计每个标签的样本数量
+    train_label_count = Counter(train_labels)
+    test_label_count = Counter(test_labels)
+
+    # 打印训练集和测试集中的标签类别及样本数量
+    print(f"Training set label count: {len(train_label_count)}")
+    print("Training set label distribution:")
+    for label, count in train_label_count.items():
+        print(f"  Label {label}: {count} samples")
+
+    print(f"Test set label count: {len(test_label_count)}")
+    print("Test set label distribution:")
+    for label, count in test_label_count.items():
+        print(f"  Label {label}: {count} samples")
 
     if args.algorithm == "FedAvg":
         FedAvg(net_glob, dataset_train, dataset_test, dict_users)

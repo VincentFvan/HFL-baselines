@@ -65,6 +65,7 @@ def get_dataset(args):
         dataset_test = datasets.CIFAR10(
             "./data/cifar10", train=False, download=True, transform=trans_cifar10_val
         )
+
         if args.generate_data:
             if args.iid:
                 dict_users = cifar_iid(dataset_train, args.num_users)
@@ -99,6 +100,11 @@ def get_dataset(args):
             download=True,
             transform=trans_cifar100,
         )
+
+        # 输出训练集和测试集的大小
+        print(f"Origin Training set size: {len(dataset_train)}")
+        print(f"Origin Test set size origin: {len(dataset_test)}")
+
         if args.generate_data:
             if args.iid:
                 dict_users = cifar_iid(dataset_train, args.num_users)
