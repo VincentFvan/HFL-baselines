@@ -21,9 +21,9 @@ from utils.ShakeSpeare_reduce import ShakeSpeare
 from models.lstm import *
 
 # %% [markdown]
-# v4.0
+# v5.0
 #
-# 加上shake数据集的测试，也保留原有CIFAR100的逻辑
+# 加上CNN+CIFAR10的实验
 
 # %%
 import os
@@ -896,6 +896,8 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
         model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        model = cnncifar().to(device)
 
     model.load_state_dict(model_weight)
 
@@ -909,7 +911,7 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
     )
     criterion = nn.CrossEntropyLoss()
 
-    if origin_model == "resnet":
+    if origin_model == "resnet" or "cnn":
         Tensor_set = TensorDataset(
             torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device)
         )
@@ -972,6 +974,8 @@ def update_weights_correction(
         model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        model = cnncifar().to(device)
 
     model.load_state_dict(model_weight)
 
@@ -985,9 +989,15 @@ def update_weights_correction(
     )
     criterion = nn.CrossEntropyLoss()
 
-    Tensor_set = TensorDataset(
-        torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device)
-    )
+    if origin_model == "resnet" or "cnn":
+        Tensor_set = TensorDataset(
+            torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device)
+        )
+    elif origin_model == "lstm":
+        Tensor_set = TensorDataset(
+            torch.LongTensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device)
+        )
+
     data_loader = DataLoader(Tensor_set, batch_size=bc_size, shuffle=True)
 
     for iter in range(local_epoch):
@@ -1032,6 +1042,8 @@ def server_only(initial_w, global_round, gamma, E):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(initial_w)
     test_acc = []
@@ -1067,6 +1079,8 @@ def fedavg(initial_w, global_round, eta, K, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(initial_w)
     test_acc = []
@@ -1121,6 +1135,8 @@ def hybridFL(initial_w, global_round, eta, K, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(initial_w)  # 当前全局权重
     test_acc = []  # 保存每轮测试精度
@@ -1177,6 +1193,8 @@ def CLG_SGD(initial_w, global_round, eta, gamma, K, E, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(initial_w)
     test_acc = []
@@ -1233,6 +1251,8 @@ def FedMut(net_glob, global_round, eta, K, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(net_glob.state_dict())
     test_acc = []
@@ -1305,6 +1325,8 @@ def CLG_Mut(net_glob, global_round, eta, gamma, K, E, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(net_glob.state_dict())
     test_acc = []
@@ -1376,6 +1398,8 @@ def CLG_Mut_2(net_glob, global_round, eta, gamma, K, E, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(net_glob.state_dict())
     test_acc = []
@@ -1447,10 +1471,13 @@ def CLG_Mut_2(net_glob, global_round, eta, gamma, K, E, M):
 def CLG_Mut_3(net_glob, global_round, eta, gamma, K, E, M):
 
     net_glob.train()
+
     if origin_model == "resnet":
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
 
     train_w = copy.deepcopy(net_glob.state_dict())
     test_acc = []
@@ -1614,7 +1641,7 @@ seed_num = 42
 random_fix = True
 seed = 2
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
@@ -1631,7 +1658,7 @@ momentum = 0.5
 weight_decay = 0  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样（设为0表示不引入）
 bc_size = 50
 test_bc_size = 128
-num_classes = 20  # 分别数量，CIFAR100中是20（FedMut和CLGG都是这么采用的）
+num_classes = 20  # 分别数量，CIFAR100中是20, CIFAR10是10
 
 # 联邦训练的超参数
 global_round = 100  # 全局训练轮数，可根据需要调整
@@ -1639,7 +1666,7 @@ eta = 0.01  # 客户端端学习率，从{0.01, 0.1, 1}中调优
 gamma = 0.01  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
 E = 1  # 服务器本地训练轮数，从1，3，5中选
-M = 20  # 每一轮抽取客户端
+M = 10  # 每一轮抽取客户端
 
 # FedMut中参数
 radius = 4.0  # alpha，控制mutation的幅度
@@ -1743,6 +1770,59 @@ elif origin_model == "lstm":
     # Shakespeare —— 用FedMut中提出的LSTM网络
     init_model = CharLSTM().to(device)
     initial_w = copy.deepcopy(init_model.state_dict())
+elif origin_model == "cnn":
+    trans_cifar10_train = transforms.Compose(
+        [
+            transforms.ToTensor(),
+            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+        ]
+    )
+    trans_cifar10_val = transforms.Compose(
+        [
+            transforms.ToTensor(),
+            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+        ]
+    )
+
+    train_dataset = torchvision.datasets.CIFAR10(
+        "./data/cifar10", train=True, download=True, transform=trans_cifar10_train
+    )
+    test_dataset = torchvision.datasets.CIFAR10(
+        "./data/cifar10", train=False, download=True, transform=trans_cifar10_val
+    )
+
+    # 输出训练集和测试集的大小
+    print(f"Origin CIFAR10 Training set size: {len(train_dataset)}")
+    print(f"Origin CIFAR10 Test set size origin: {len(test_dataset)}")
+
+    # 将训练集图像数据与标签转换成 numpy 数组（与 CIFAR-100 部分类似）
+    total_img, total_label = [], []
+    for img, label in train_dataset:
+        total_img.append(np.array(img))
+        total_label.append(label)
+    total_img = np.array(total_img)
+    total_label = np.array(total_label)
+    cifar = [total_img, total_label]
+
+    # 根据 Dirichlet 分布生成客户端数据概率矩阵（注意：这里类别数为10）
+    prob = get_prob(non_iid, client_num, class_num=10)
+
+    # 构造每个客户端的本地数据（这里依然使用 create_data_all_train）
+    client_data = create_data_all_train(prob, size_per_client, cifar, N=10)
+
+    # 从训练集挑选出服务器训练使用的数据子集
+    if server_iid:
+        server_images, server_labels = select_server_subset(
+            cifar, percentage=server_percentage, mode="iid"
+        )
+    else:
+        server_images, server_labels = select_server_subset(
+            cifar, percentage=server_percentage, mode="non-iid", dirichlet_alpha=0.5
+        )
+
+    # 初始化基于 CNN 的模型，这里使用你已定义好的 CNNCifar 网络
+    init_model = cnncifar().to(device)
+    initial_w = copy.deepcopy(init_model.state_dict())
 
 
 #  打印数据集情况
@@ -1795,13 +1875,13 @@ for i, (imgs, lbls) in enumerate(client_data[:10]):
 # 为了与后续代码兼容，这里将 server_data 定义为一个列表：[images, labels]
 server_data = [server_images, server_labels]
 
-# 输出测试集数据
-total_count = len(test_dataset)
-labels = np.array(test_dataset.label)
-_, counts = np.unique(labels, return_counts=True)
+# # 输出测试集数据
+# total_count = len(test_dataset)
+# labels = np.array(test_dataset.label)
+# _, counts = np.unique(labels, return_counts=True)
 
-print(f"测试集总数量 {total_count}")
-print(", ".join(str(c) for c in counts))
+# print(f"测试集总数量 {total_count}")
+# print(", ".join(str(c) for c in counts))
 
 # 打印服务器数据情况
 s_imgs, s_lbls = server_data
@@ -1881,6 +1961,8 @@ for algo in results_test_acc:
             f"{algo} - 第二十轮测试精度: {results_test_acc[algo][19]:.2f}%, 第二十轮训练损失: {results_train_loss[algo][19]:.4f}"
         )
 
+print("\n")
+
 # 打印最终训练结果
 for algo in results_test_acc:
     print(
@@ -1917,9 +1999,9 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.grid(True)
 plt.tight_layout()
+plt.savefig(f"output/test_accuracy_{origin_model}_{timestamp}.png")  # 保存图像
 plt.show()
 
-plt.savefig(f"output/test_accuracy_comparison_{timestamp}.png")  # 保存图像
 
 # Plot Train Loss Comparison
 plt.figure(figsize=(12, 6))
@@ -1933,6 +2015,5 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.grid(True)
 plt.tight_layout()
+plt.savefig(f"output/train_loss_{origin_model}_{timestamp}.png")  # 保存图像
 plt.show()
-
-plt.savefig(f"output/train_loss_comparison_{timestamp}.png")  # 保存图像
