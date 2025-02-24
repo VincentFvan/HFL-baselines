@@ -49,6 +49,11 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = (
 # else:
 #   print(gpu_info)
 
+import torch
+
+print("Torch version:", torch.__version__)
+print("CUDA available:", torch.cuda.is_available())
+
 # %%
 
 
@@ -1685,7 +1690,6 @@ if origin_model == "resnet":
             cifar, percentage=server_percentage, mode="non-iid", dirichlet_alpha=0.5
         )
 
-    # CIFAR100——用了FedMut中定义的CNN网络
     init_model = ResNet18_cifar10().to(device)
     initial_w = copy.deepcopy(init_model.state_dict())
 elif origin_model == "lstm":
