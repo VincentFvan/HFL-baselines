@@ -1,3 +1,5 @@
 # 忽略文件夹及其所有内容
 
 FedMut/data/
+
+data/
