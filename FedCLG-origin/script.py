@@ -911,7 +911,7 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
     )
     criterion = nn.CrossEntropyLoss()
 
-    if origin_model == "resnet" or "cnn":
+    if origin_model == "resnet" or origin_model == "cnn":
         Tensor_set = TensorDataset(
             torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device)
         )
@@ -989,7 +989,7 @@ def update_weights_correction(
     )
     criterion = nn.CrossEntropyLoss()
 
-    if origin_model == "resnet" or "cnn":
+    if origin_model == "resnet" or origin_model == "cnn":
         Tensor_set = TensorDataset(
             torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device)
         )
@@ -1649,7 +1649,7 @@ non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根�
 size_per_client = 400  # 每个客户端的数据量（训练）
 
 server_iid = True  # True代表server数据iid分布，否则为Non-iid分布
-server_percentage = 0.1  # 服务器端用于微调的数据比例
+server_percentage = 0.05  # 服务器端用于微调的数据比例
 
 # 模型相关
 origin_model = "lstm"  # 采用模型
@@ -1666,7 +1666,7 @@ eta = 0.01  # 客户端端学习率，从{0.01, 0.1, 1}中调优
 gamma = 0.01  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
 E = 1  # 服务器本地训练轮数，从1，3，5中选
-M = 10  # 每一轮抽取客户端
+M = 20  # 每一轮抽取客户端
 
 # FedMut中参数
 radius = 4.0  # alpha，控制mutation的幅度
