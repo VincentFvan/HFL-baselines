@@ -1870,40 +1870,6 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
                 f"Round {round}, Test Accuracy: {current_acc:.2f}%, Train Loss: {loss_avg:.4f}"
             )
 
-    # 训练结束后可视化参数变化，帮助诊断
-    if len(tau_eff_history) > 0:
-        plt.figure(figsize=(15, 10))
-
-        plt.subplot(2, 2, 1)
-        plt.plot(range(global_round), tau_eff_history)
-        plt.title("Effective Steps (τ_eff)")
-        plt.xlabel("Round")
-        plt.ylabel("τ_eff")
-
-        plt.subplot(2, 2, 2)
-        plt.plot(range(global_round), ratio_history)
-        plt.title("Distribution Ratio")
-        plt.xlabel("Round")
-        plt.ylabel("Ratio")
-
-        plt.subplot(2, 2, 3)
-        plt.plot(range(global_round), f_prime_acc_history)
-        plt.title("f'(acc)")
-        plt.xlabel("Round")
-        plt.ylabel("f'(acc)")
-
-        plt.subplot(2, 2, 4)
-        plt.plot(range(global_round), grad_norm_history)
-        plt.title("Gradient Norm")
-        plt.xlabel("Round")
-        plt.ylabel("||g||")
-
-        plt.tight_layout()
-        plt.savefig(
-            f'feddu_diagnostics_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.png'
-        )
-        plt.show()
-
     return test_acc, train_loss
 
 
