@@ -2064,16 +2064,16 @@ seed_num = 42
 random_fix = True
 seed = 2
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
-is_iid = True  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+is_iid =  True # True表示client数据IID分布，False表示Non-IID分布
+non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
-server_iid = True  # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
-server_percentage = 0.1  # 服务器端用于微调的数据比例
+server_iid = False  # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
+server_percentage = 0.05  #服务器端用于微调的数据比例
 
 # 模型相关
 origin_model = "resnet"  # 采用模型
@@ -2332,16 +2332,17 @@ print(
 
 # %%
 
+# 总体对比
 # 初始化结果存储字典
 results_test_acc = {}
 results_train_loss = {}
 
-# CLG_Mut 训练
-test_acc_CLG_Mut, train_loss_CLG_Mut = CLG_Mut(
-    copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-)
-results_test_acc["CLG_Mut"] = test_acc_CLG_Mut
-results_train_loss["CLG_Mut"] = train_loss_CLG_Mut
+# # CLG_Mut 训练
+# test_acc_CLG_Mut, train_loss_CLG_Mut = CLG_Mut(
+#     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+# )
+# results_test_acc["CLG_Mut"] = test_acc_CLG_Mut
+# results_train_loss["CLG_Mut"] = train_loss_CLG_Mut
 
 # CLG_Mut_2 训练
 test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(
@@ -2350,31 +2351,31 @@ test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(
 results_test_acc["CLG_Mut_2"] = test_acc_CLG_Mut_2
 results_train_loss["CLG_Mut_2"] = train_loss_CLG_Mut_2
 
-# CLG_Mut_3 训练
-test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
-    copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-)
-results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
-results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
+# # CLG_Mut_3 训练
+# test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
+#     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+# )
+# results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
+# results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
 
-# FedMut 训练
-test_acc_FedMut, train_loss_FedMut = FedMut(
-    copy.deepcopy(init_model), global_round, eta, K, M
-)
-results_test_acc["FedMut"] = test_acc_FedMut
-results_train_loss["FedMut"] = train_loss_FedMut
+# # FedMut 训练
+# test_acc_FedMut, train_loss_FedMut = FedMut(
+#     copy.deepcopy(init_model), global_round, eta, K, M
+# )
+# results_test_acc["FedMut"] = test_acc_FedMut
+# results_train_loss["FedMut"] = train_loss_FedMut
 
-# Server-only 训练
-test_acc_server_only, train_loss_server_only = server_only(
-    initial_w, global_round, gamma, E
-)
-results_test_acc["Server_only"] = test_acc_server_only
-results_train_loss["Server_only"] = train_loss_server_only
+# # Server-only 训练
+# test_acc_server_only, train_loss_server_only = server_only(
+#     initial_w, global_round, gamma, E
+# )
+# results_test_acc["Server_only"] = test_acc_server_only
+# results_train_loss["Server_only"] = train_loss_server_only
 
-# FedAvg 训练
-test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
-results_test_acc["FedAvg"] = test_acc_fedavg
-results_train_loss["FedAvg"] = train_loss_fedavg
+# # FedAvg 训练
+# test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
+# results_test_acc["FedAvg"] = test_acc_fedavg
+# results_train_loss["FedAvg"] = train_loss_fedavg
 
 # CLG_SGD 训练
 test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(
@@ -2394,8 +2395,8 @@ results_train_loss["FedDU"] = train_loss_CLG_SGD
 test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(
     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
 )
-results_test_acc["FedDU_Mut"] = test_acc_FedDU_Mut
 results_train_loss["FedDU_Mut"] = train_loss_FedDU_Mut
+results_test_acc["FedDU_Mut"] = test_acc_FedDU_Mut
 
 # 如果存在至少20轮训练，则输出第二十轮的测试精度和训练损失
 for algo in results_test_acc:
@@ -2411,7 +2412,6 @@ for algo in results_test_acc:
     print(
         f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, 最终训练损失: {results_train_loss[algo][-1]:.4f}"
     )
-
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -2460,8 +2460,10 @@ plt.tight_layout()
 plt.savefig(f"output/train_loss_{origin_model}_{timestamp}.png")  # 保存图像
 plt.show()
 
+
+
 # %%
-# # ablation study for raidus
+# ablation study for raidus
 # import matplotlib.pyplot as plt
 # import seaborn as sns
 # import matplotlib
@@ -2475,7 +2477,7 @@ plt.show()
 # os.makedirs("output", exist_ok=True)
 
 # # 定义要测试的radius值
-# radius_values = [3, 4, 5, 6, 7]
+# radius_values = [3, 4, 5, 6]
 
 # # 创建结果存储结构 - 增加第20轮的结果
 # all_results = {
@@ -2485,8 +2487,8 @@ plt.show()
 #     # "CLG_Mut_r20_loss": [],
 #     "CLG_Mut_2_r20_acc": [],
 #     "CLG_Mut_2_r20_loss": [],
-#     "CLG_Mut_3_r20_acc": [],
-#     "CLG_Mut_3_r20_loss": [],
+#     # "CLG_Mut_3_r20_acc": [],
+#     # "CLG_Mut_3_r20_loss": [],
 #     # "FedMut_r20_acc": [],
 #     # "FedMut_r20_loss": [],
 #     "FedDU_Mut_r20_acc": [],
@@ -2496,8 +2498,8 @@ plt.show()
 #     # "CLG_Mut_final_loss": [],
 #     "CLG_Mut_2_final_acc": [],
 #     "CLG_Mut_2_final_loss": [],
-#     "CLG_Mut_3_final_acc": [],
-#     "CLG_Mut_3_final_loss": [],
+#     # "CLG_Mut_3_final_acc": [],
+#     # "CLG_Mut_3_final_loss": [],
 #     # "FedMut_final_acc": [],
 #     # "FedMut_final_loss": [],
 #     "FedDU_Mut_final_acc": [],
@@ -2529,12 +2531,12 @@ plt.show()
 #     results_test_acc["CLG_Mut_2"] = test_acc_CLG_Mut_2
 #     results_train_loss["CLG_Mut_2"] = train_loss_CLG_Mut_2
 
-#     # CLG_Mut_3 训练
-#     test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
-#         copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-#     )
-#     results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
-#     results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
+#     # # CLG_Mut_3 训练
+#     # test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
+#     #     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+#     # )
+#     # results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
+#     # results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
 
 #     # # FedMut 训练
 #     # test_acc_FedMut, train_loss_FedMut = FedMut(
@@ -2557,8 +2559,8 @@ plt.show()
 #         # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][19])
 #         all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][19])
 #         all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][19])
-#         all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][19])
-#         all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][19])
+#         # all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][19])
+#         # all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][19])
 #         # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][19])
 #         # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][19])
 #         all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][19])
@@ -2569,8 +2571,8 @@ plt.show()
 #         # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][-1])
 #         all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][-1])
 #         all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][-1])
-#         all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][-1])
-#         all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][-1])
+#         # all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][-1])
+#         # all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][-1])
 #         # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][-1])
 #         # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][-1])
 #         all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][-1])
@@ -2581,8 +2583,8 @@ plt.show()
 #     # all_results["CLG_Mut_final_loss"].append(results_train_loss["CLG_Mut"][-1])
 #     all_results["CLG_Mut_2_final_acc"].append(results_test_acc["CLG_Mut_2"][-1])
 #     all_results["CLG_Mut_2_final_loss"].append(results_train_loss["CLG_Mut_2"][-1])
-#     all_results["CLG_Mut_3_final_acc"].append(results_test_acc["CLG_Mut_3"][-1])
-#     all_results["CLG_Mut_3_final_loss"].append(results_train_loss["CLG_Mut_3"][-1])
+#     # all_results["CLG_Mut_3_final_acc"].append(results_test_acc["CLG_Mut_3"][-1])
+#     # all_results["CLG_Mut_3_final_loss"].append(results_train_loss["CLG_Mut_3"][-1])
 #     # all_results["FedMut_final_acc"].append(results_test_acc["FedMut"][-1])
 #     # all_results["FedMut_final_loss"].append(results_train_loss["FedMut"][-1])
 #     all_results["FedDU_Mut_final_acc"].append(results_test_acc["FedDU_Mut"][-1])
@@ -2664,7 +2666,7 @@ plt.show()
 # plt.figure(figsize=(14, 8))
 # # plt.plot(results_df["radius"], results_df["CLG_Mut_r20_acc"], "o-", label="CLG_Mut")
 # plt.plot(results_df["radius"], results_df["CLG_Mut_2_r20_acc"], "s-", label="CLG_Mut_2")
-# plt.plot(results_df["radius"], results_df["CLG_Mut_3_r20_acc"], "^-", label="CLG_Mut_3")
+# # plt.plot(results_df["radius"], results_df["CLG_Mut_3_r20_acc"], "^-", label="CLG_Mut_3")
 # # plt.plot(results_df["radius"], results_df["FedMut_r20_acc"], "d-", label="FedMut")
 # plt.plot(results_df["radius"], results_df["FedDU_Mut_r20_acc"], "*-", label="FedDU_Mut")
 # plt.xlabel("Radius Value", fontsize=14)
@@ -2685,9 +2687,9 @@ plt.show()
 # plt.plot(
 #     results_df["radius"], results_df["CLG_Mut_2_final_acc"], "s-", label="CLG_Mut_2"
 # )
-# plt.plot(
-#     results_df["radius"], results_df["CLG_Mut_3_final_acc"], "^-", label="CLG_Mut_3"
-# )
+# # plt.plot(
+# #     results_df["radius"], results_df["CLG_Mut_3_final_acc"], "^-", label="CLG_Mut_3"
+# # )
 # # plt.plot(results_df["radius"], results_df["FedMut_final_acc"], "d-", label="FedMut")
 # plt.plot(results_df["radius"], results_df["FedDU_Mut_final_acc"], "*-", label="FedDU_Mut")
 # plt.xlabel("Radius Value", fontsize=14)
@@ -2702,7 +2704,7 @@ plt.show()
 # )
 # plt.show()
 
-# # %%
+# %%
 # # ablation study for acc_rate
 # import matplotlib.pyplot as plt
 # import seaborn as sns
@@ -2717,7 +2719,7 @@ plt.show()
 # os.makedirs("output", exist_ok=True)
 
 # # 定义要测试的mut_acc_rate值
-# mut_acc_rate_values = [0.3, 0.4, 0.5, 0.6, 0.7]
+# mut_acc_rate_values = [0.4, 0.5, 0.6]
 
 # # 创建结果存储结构 - 增加第20轮的结果
 # all_results = {
@@ -2727,8 +2729,8 @@ plt.show()
 #     # "CLG_Mut_r20_loss": [],
 #     "CLG_Mut_2_r20_acc": [],
 #     "CLG_Mut_2_r20_loss": [],
-#     "CLG_Mut_3_r20_acc": [],
-#     "CLG_Mut_3_r20_loss": [],
+#     # "CLG_Mut_3_r20_acc": [],
+#     # "CLG_Mut_3_r20_loss": [],
 #     # "FedMut_r20_acc": [],
 #     # "FedMut_r20_loss": [],
 #     "FedDU_Mut_r20_acc": [],
@@ -2738,8 +2740,8 @@ plt.show()
 #     # "CLG_Mut_final_loss": [],
 #     "CLG_Mut_2_final_acc": [],
 #     "CLG_Mut_2_final_loss": [],
-#     "CLG_Mut_3_final_acc": [],
-#     "CLG_Mut_3_final_loss": [],
+#     # "CLG_Mut_3_final_acc": [],
+#     # "CLG_Mut_3_final_loss": [],
 #     # "FedMut_final_acc": [],
 #     # "FedMut_final_loss": [],
 #     "FedDU_Mut_final_acc": [],
@@ -2771,12 +2773,12 @@ plt.show()
 #     results_test_acc["CLG_Mut_2"] = test_acc_CLG_Mut_2
 #     results_train_loss["CLG_Mut_2"] = train_loss_CLG_Mut_2
 
-#     # CLG_Mut_3 训练
-#     test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
-#         copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-#     )
-#     results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
-#     results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
+#     # # CLG_Mut_3 训练
+#     # test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
+#     #     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+#     # )
+#     # results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
+#     # results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
 
 #     # # FedMut 训练
 #     # test_acc_FedMut, train_loss_FedMut = FedMut(
@@ -2801,8 +2803,8 @@ plt.show()
 #         # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][19])
 #         all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][19])
 #         all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][19])
-#         all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][19])
-#         all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][19])
+#         # all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][19])
+#         # all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][19])
 #         # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][19])
 #         # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][19])
 #         all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][19])
@@ -2813,8 +2815,8 @@ plt.show()
 #         # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][-1])
 #         all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][-1])
 #         all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][-1])
-#         all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][-1])
-#         all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][-1])
+#         # all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][-1])
+#         # all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][-1])
 #         # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][-1])
 #         # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][-1])
 #         all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][-1])
@@ -2825,8 +2827,8 @@ plt.show()
 #     # all_results["CLG_Mut_final_loss"].append(results_train_loss["CLG_Mut"][-1])
 #     all_results["CLG_Mut_2_final_acc"].append(results_test_acc["CLG_Mut_2"][-1])
 #     all_results["CLG_Mut_2_final_loss"].append(results_train_loss["CLG_Mut_2"][-1])
-#     all_results["CLG_Mut_3_final_acc"].append(results_test_acc["CLG_Mut_3"][-1])
-#     all_results["CLG_Mut_3_final_loss"].append(results_train_loss["CLG_Mut_3"][-1])
+#     # all_results["CLG_Mut_3_final_acc"].append(results_test_acc["CLG_Mut_3"][-1])
+#     # all_results["CLG_Mut_3_final_loss"].append(results_train_loss["CLG_Mut_3"][-1])
 #     # all_results["FedMut_final_acc"].append(results_test_acc["FedMut"][-1])
 #     # all_results["FedMut_final_loss"].append(results_train_loss["FedMut"][-1])
 #     all_results["FedDU_Mut_final_acc"].append(results_test_acc["FedDU_Mut"][-1])
@@ -2917,9 +2919,9 @@ plt.show()
 # plt.plot(
 #     results_df["mut_acc_rate"], results_df["CLG_Mut_2_r20_acc"], "s-", label="CLG_Mut_2"
 # )
-# plt.plot(
-#     results_df["mut_acc_rate"], results_df["CLG_Mut_3_r20_acc"], "^-", label="CLG_Mut_3"
-# )
+# # plt.plot(
+# #     results_df["mut_acc_rate"], results_df["CLG_Mut_3_r20_acc"], "^-", label="CLG_Mut_3"
+# # )
 # # plt.plot(results_df["mut_acc_rate"], results_df["FedMut_r20_acc"], "d-", label="FedMut")
 # plt.plot(
 #     results_df["mut_acc_rate"], results_df["FedDU_Mut_r20_acc"], "*-", label="FedDU_Mut"
@@ -2947,12 +2949,12 @@ plt.show()
 #     "s-",
 #     label="CLG_Mut_2",
 # )
-# plt.plot(
-#     results_df["mut_acc_rate"],
-#     results_df["CLG_Mut_3_final_acc"],
-#     "^-",
-#     label="CLG_Mut_3",
-# )
+# # plt.plot(
+# #     results_df["mut_acc_rate"],
+# #     results_df["CLG_Mut_3_final_acc"],
+# #     "^-",
+# #     label="CLG_Mut_3",
+# # )
 # # plt.plot(
 # #     results_df["mut_acc_rate"], results_df["FedMut_final_acc"], "d-", label="FedMut"
 # # )
@@ -2990,7 +2992,7 @@ plt.show()
 # print("\n===== 开始du_C参数消融实验 =====")
 
 # # 定义要测试的du_C值
-# du_C_values = [0.25, 0.5, 1.0, 1.5, 2.0]
+# du_C_values = [0.25, 0.5, 1.0, 1.5, 2.0, 3.0]
 
 # # 创建结果存储结构
 # du_C_results = {
