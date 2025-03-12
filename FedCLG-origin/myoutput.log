@@ -17,739 +17,568 @@ Client 8: 395 0 0 3 0 0 232 2 0 158
 Client 9: 397 0 0 158 4 0 125 110
 Server: 2500 47 110 42 586 17 467 560 60 358 253
 
-===== 开始du_C参数消融实验 =====
+--- 测试 decay_rate = 0.9 ---
+FedDU-Mut初始设置:
+  服务器数据量: 2500
+  服务器数据非IID度: 0.166608
+  衰减率: 0.9
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:07<12:53,  7.81s/it]  2%|▏         | 2/100 [00:15<12:14,  7.49s/it]  3%|▎         | 3/100 [00:22<11:42,  7.24s/it]  4%|▍         | 4/100 [00:28<11:18,  7.07s/it]  5%|▌         | 5/100 [00:35<11:02,  6.98s/it]  6%|▌         | 6/100 [00:42<10:54,  6.97s/it]  7%|▋         | 7/100 [00:49<10:43,  6.91s/it]  8%|▊         | 8/100 [00:56<10:33,  6.89s/it]  9%|▉         | 9/100 [01:03<10:24,  6.86s/it] 10%|█         | 10/100 [01:09<10:17,  6.86s/it] 11%|█         | 11/100 [01:17<10:18,  6.95s/it] 12%|█▏        | 12/100 [01:23<10:09,  6.93s/it] 13%|█▎        | 13/100 [01:30<10:00,  6.90s/it] 14%|█▍        | 14/100 [01:37<09:51,  6.88s/it] 15%|█▌        | 15/100 [01:44<09:42,  6.86s/it] 16%|█▌        | 16/100 [01:51<09:33,  6.83s/it] 17%|█▋        | 17/100 [01:58<09:27,  6.84s/it] 18%|█▊        | 18/100 [02:04<09:22,  6.85s/it] 19%|█▉        | 19/100 [02:11<09:14,  6.84s/it] 20%|██        | 20/100 [02:18<09:06,  6.84s/it] 21%|██        | 21/100 [02:25<08:59,  6.83s/it] 22%|██▏       | 22/100 [02:32<08:52,  6.83s/it] 23%|██▎       | 23/100 [02:39<08:48,  6.86s/it] 24%|██▍       | 24/100 [02:45<08:39,  6.84s/it] 25%|██▌       | 25/100 [02:52<08:34,  6.86s/it] 26%|██▌       | 26/100 [02:59<08:26,  6.84s/it] 27%|██▋       | 27/100 [03:06<08:18,  6.83s/it] 28%|██▊       | 28/100 [03:13<08:12,  6.84s/it] 29%|██▉       | 29/100 [03:20<08:04,  6.82s/it] 30%|███       | 30/100 [03:26<07:58,  6.84s/it] 31%|███       | 31/100 [03:34<08:02,  7.00s/it] 32%|███▏      | 32/100 [03:41<07:56,  7.01s/it] 33%|███▎      | 33/100 [03:48<07:45,  6.95s/it] 34%|███▍      | 34/100 [03:54<07:35,  6.91s/it] 35%|███▌      | 35/100 [04:01<07:27,  6.88s/it] 36%|███▌      | 36/100 [04:08<07:18,  6.86s/it] 37%|███▋      | 37/100 [04:15<07:11,  6.84s/it] 38%|███▊      | 38/100 [04:22<07:03,  6.83s/it] 39%|███▉      | 39/100 [04:29<06:57,  6.85s/it] 40%|████      | 40/100 [04:35<06:50,  6.85s/it] 41%|████      | 41/100 [04:42<06:42,  6.83s/it] 42%|████▏     | 42/100 [04:49<06:35,  6.82s/it] 43%|████▎     | 43/100 [04:56<06:28,  6.82s/it] 44%|████▍     | 44/100 [05:03<06:21,  6.82s/it] 45%|████▌     | 45/100 [05:09<06:14,  6.80s/it] 46%|████▌     | 46/100 [05:16<06:07,  6.81s/it] 47%|████▋     | 47/100 [05:23<06:00,  6.81s/it] 48%|████▊     | 48/100 [05:30<05:53,  6.81s/it] 49%|████▉     | 49/100 [05:37<05:47,  6.81s/it] 50%|█████     | 50/100 [05:43<05:40,  6.81s/it] 51%|█████     | 51/100 [05:50<05:32,  6.80s/it] 52%|█████▏    | 52/100 [05:57<05:26,  6.81s/it] 53%|█████▎    | 53/100 [06:04<05:21,  6.83s/it] 54%|█████▍    | 54/100 [06:11<05:13,  6.83s/it] 55%|█████▌    | 55/100 [06:18<05:06,  6.82s/it] 56%|█████▌    | 56/100 [06:24<04:59,  6.81s/it] 57%|█████▋    | 57/100 [06:31<04:52,  6.81s/it] 58%|█████▊    | 58/100 [06:38<04:45,  6.81s/it] 59%|█████▉    | 59/100 [06:45<04:38,  6.80s/it] 60%|██████    | 60/100 [06:52<04:33,  6.83s/it] 61%|██████    | 61/100 [06:58<04:26,  6.82s/it] 62%|██████▏   | 62/100 [07:05<04:19,  6.82s/it] 63%|██████▎   | 63/100 [07:12<04:12,  6.81s/it] 64%|██████▍   | 64/100 [07:19<04:05,  6.81s/it] 65%|██████▌   | 65/100 [07:26<03:58,  6.80s/it] 66%|██████▌   | 66/100 [07:32<03:50,  6.79s/it] 67%|██████▋   | 67/100 [07:39<03:44,  6.79s/it] 68%|██████▊   | 68/100 [07:46<03:38,  6.82s/it] 69%|██████▉   | 69/100 [07:53<03:31,  6.81s/it] 70%|███████   | 70/100 [08:00<03:24,  6.80s/it] 71%|███████   | 71/100 [08:06<03:17,  6.80s/it] 72%|███████▏  | 72/100 [08:13<03:10,  6.80s/it] 73%|███████▎  | 73/100 [08:20<03:03,  6.79s/it] 74%|███████▍  | 74/100 [08:27<02:56,  6.80s/it] 75%|███████▌  | 75/100 [08:34<02:49,  6.80s/it] 76%|███████▌  | 76/100 [08:41<02:43,  6.82s/it] 77%|███████▋  | 77/100 [08:47<02:36,  6.81s/it] 78%|███████▊  | 78/100 [08:54<02:29,  6.81s/it] 79%|███████▉  | 79/100 [09:01<02:22,  6.80s/it] 80%|████████  | 80/100 [09:08<02:15,  6.80s/it] 81%|████████  | 81/100 [09:14<02:08,  6.78s/it] 82%|████████▏ | 82/100 [09:21<02:02,  6.78s/it] 83%|████████▎ | 83/100 [09:28<01:55,  6.79s/it] 84%|████████▍ | 84/100 [09:35<01:48,  6.79s/it] 85%|████████▌ | 85/100 [09:42<01:42,  6.81s/it] 86%|████████▌ | 86/100 [09:48<01:35,  6.81s/it] 87%|████████▋ | 87/100 [09:55<01:28,  6.80s/it] 88%|████████▊ | 88/100 [10:02<01:21,  6.80s/it] 89%|████████▉ | 89/100 [10:09<01:14,  6.80s/it] 90%|█████████ | 90/100 [10:16<01:07,  6.80s/it] 91%|█████████ | 91/100 [10:22<01:01,  6.80s/it] 92%|█████████▏| 92/100 [10:29<00:54,  6.79s/it] 93%|█████████▎| 93/100 [10:36<00:47,  6.79s/it] 94%|█████████▍| 94/100 [10:43<00:40,  6.82s/it] 95%|█████████▌| 95/100 [10:50<00:34,  6.81s/it] 96%|█████████▌| 96/100 [10:56<00:27,  6.81s/it] 97%|█████████▋| 97/100 [11:03<00:20,  6.80s/it] 98%|█████████▊| 98/100 [11:10<00:13,  6.80s/it] 99%|█████████▉| 99/100 [11:17<00:06,  6.80s/it]100%|██████████| 100/100 [11:24<00:00,  6.80s/it]100%|██████████| 100/100 [11:24<00:00,  6.84s/it]
+Round 0: Server fixing with alpha=0.4751, iters=18/50
+Round 0: Acc=17.18%, Loss=0.0125, D_P_t=0.0967, Alpha=0.4751
+Round 1: Server fixing with alpha=0.6798, iters=27/50
+Round 2: Server fixing with alpha=0.3504, iters=13/50
+Round 3: Server fixing with alpha=0.3376, iters=13/50
+Round 4: Server fixing with alpha=0.1532, iters=6/50
+Round 5: Server fixing with alpha=0.1243, iters=4/50
+Round 6: Server fixing with alpha=0.2490, iters=9/50
+Round 7: Server fixing with alpha=0.2490, iters=9/50
+Round 8: Server fixing with alpha=0.1728, iters=6/50
+Round 9: Server fixing with alpha=0.1041, iters=4/50
+Round 10: Server fixing with alpha=0.0776, iters=3/50
+Round 10: Acc=30.58%, Loss=0.0140, D_P_t=0.0495, Alpha=0.0776
+Round 11: Server fixing with alpha=0.1450, iters=5/50
+Round 12: Server fixing with alpha=0.1744, iters=6/50
+Round 13: Server fixing with alpha=0.1572, iters=6/50
+Round 14: Server fixing with alpha=0.0852, iters=3/50
+Round 15: Server fixing with alpha=0.0965, iters=3/50
+Round 16: Server fixing with alpha=0.0888, iters=3/50
+Round 17: Server fixing with alpha=0.0578, iters=2/50
+Round 18: Server fixing with alpha=0.0638, iters=2/50
+Round 19: Server fixing with alpha=0.0800, iters=3/50
+Round 20: Server fixing with alpha=0.0238, iters=0/50
+Round 20: Acc=37.45%, Loss=0.0128, D_P_t=0.0490, Alpha=0.0238
+Round 21: Server fixing with alpha=0.0262, iters=1/50
+Round 22: Server fixing with alpha=0.0139, iters=0/50
+Round 23: Server fixing with alpha=0.0350, iters=1/50
+Round 24: Server fixing with alpha=0.0230, iters=0/50
+Round 25: Server fixing with alpha=0.0148, iters=0/50
+Round 26: Server fixing with alpha=0.0281, iters=1/50
+Round 27: Server fixing with alpha=0.0140, iters=0/50
+Round 28: Server fixing with alpha=0.0236, iters=0/50
+Round 29: Server fixing with alpha=0.0131, iters=0/50
+Round 30: Server fixing with alpha=0.0119, iters=0/50
+Round 30: Acc=45.56%, Loss=0.0059, D_P_t=0.0916, Alpha=0.0119
+Round 31: Server fixing with alpha=0.0139, iters=0/50
+Round 32: Server fixing with alpha=0.0090, iters=0/50
+Round 33: Server fixing with alpha=0.0068, iters=0/50
+Round 34: Server fixing with alpha=0.0065, iters=0/50
+Round 35: Server fixing with alpha=0.0082, iters=0/50
+Round 36: Server fixing with alpha=0.0045, iters=0/50
+Round 37: Server fixing with alpha=0.0063, iters=0/50
+Round 38: Server fixing with alpha=0.0071, iters=0/50
+Round 39: Server fixing with alpha=0.0038, iters=0/50
+Round 40: Server fixing with alpha=0.0049, iters=0/50
+Round 40: Acc=45.87%, Loss=0.0052, D_P_t=0.1167, Alpha=0.0049
+Round 41: Server fixing with alpha=0.0070, iters=0/50
+Round 42: Server fixing with alpha=0.0032, iters=0/50
+Round 43: Server fixing with alpha=0.0031, iters=0/50
+Round 44: Server fixing with alpha=0.0026, iters=0/50
+Round 45: Server fixing with alpha=0.0023, iters=0/50
+Round 46: Server fixing with alpha=0.0019, iters=0/50
+Round 47: Server fixing with alpha=0.0021, iters=0/50
+Round 48: Server fixing with alpha=0.0025, iters=0/50
+Round 50: Server fixing with alpha=0.0014, iters=0/50
+Round 50: Acc=46.86%, Loss=0.0045, D_P_t=0.0899, Alpha=0.0014
+Round 51: Server fixing with alpha=0.0015, iters=0/50
+Round 53: Server fixing with alpha=0.0013, iters=0/50
+Round 56: Server fixing with alpha=0.0012, iters=0/50
+Round 60: Acc=44.78%, Loss=0.0036, D_P_t=0.1487, Alpha=0.0007
+Round 70: Acc=48.22%, Loss=0.0042, D_P_t=0.0255, Alpha=0.0001
+Round 80: Acc=49.13%, Loss=0.0032, D_P_t=0.0790, Alpha=0.0001
+Round 90: Acc=50.50%, Loss=0.0048, D_P_t=0.0995, Alpha=0.0000
 
---- 测试 du_C = 0.25 ---
+Results for decay_rate = 0.9:
+FedDU_Mut - 第20轮测试精度: 29.41%, 最终测试精度: 45.36%, 最终训练损失: 0.0032
+
+--- 测试 decay_rate = 0.99 ---
+FedDU-Mut初始设置:
+  服务器数据量: 2500
+  服务器数据非IID度: 0.166608
+  衰减率: 0.99
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:20,  6.88s/it]  2%|▏         | 2/100 [00:13<11:09,  6.83s/it]  3%|▎         | 3/100 [00:20<11:01,  6.82s/it]  4%|▍         | 4/100 [00:27<10:53,  6.81s/it]  5%|▌         | 5/100 [00:34<10:46,  6.81s/it]  6%|▌         | 6/100 [00:40<10:39,  6.81s/it]  7%|▋         | 7/100 [00:47<10:31,  6.80s/it]  8%|▊         | 8/100 [00:54<10:25,  6.79s/it]  9%|▉         | 9/100 [01:01<10:18,  6.80s/it] 10%|█         | 10/100 [01:08<10:14,  6.83s/it] 11%|█         | 11/100 [01:14<10:06,  6.82s/it] 12%|█▏        | 12/100 [01:21<09:59,  6.81s/it] 13%|█▎        | 13/100 [01:28<09:52,  6.81s/it] 14%|█▍        | 14/100 [01:35<09:45,  6.81s/it] 15%|█▌        | 15/100 [01:42<09:38,  6.81s/it] 16%|█▌        | 16/100 [01:48<09:31,  6.80s/it] 17%|█▋        | 17/100 [01:55<09:24,  6.80s/it] 18%|█▊        | 18/100 [02:02<09:18,  6.81s/it] 19%|█▉        | 19/100 [02:09<09:13,  6.83s/it] 20%|██        | 20/100 [02:16<09:05,  6.82s/it] 21%|██        | 21/100 [02:23<08:58,  6.82s/it] 22%|██▏       | 22/100 [02:29<08:50,  6.81s/it] 23%|██▎       | 23/100 [02:36<08:43,  6.80s/it] 24%|██▍       | 24/100 [02:43<08:37,  6.80s/it] 25%|██▌       | 25/100 [02:50<08:30,  6.80s/it] 26%|██▌       | 26/100 [02:57<08:23,  6.80s/it] 27%|██▋       | 27/100 [03:03<08:16,  6.80s/it] 28%|██▊       | 28/100 [03:10<08:12,  6.83s/it] 29%|██▉       | 29/100 [03:17<08:04,  6.82s/it] 30%|███       | 30/100 [03:24<07:56,  6.81s/it] 31%|███       | 31/100 [03:31<07:49,  6.81s/it] 32%|███▏      | 32/100 [03:37<07:42,  6.81s/it] 33%|███▎      | 33/100 [03:44<07:35,  6.80s/it] 34%|███▍      | 34/100 [03:51<07:28,  6.80s/it] 35%|███▌      | 35/100 [03:58<07:22,  6.80s/it] 36%|███▌      | 36/100 [04:05<07:15,  6.80s/it] 37%|███▋      | 37/100 [04:12<07:10,  6.84s/it] 38%|███▊      | 38/100 [04:18<07:03,  6.83s/it] 39%|███▉      | 39/100 [04:25<06:55,  6.82s/it] 40%|████      | 40/100 [04:32<06:48,  6.81s/it] 41%|████      | 41/100 [04:39<06:41,  6.81s/it] 42%|████▏     | 42/100 [04:46<06:35,  6.81s/it] 43%|████▎     | 43/100 [04:52<06:28,  6.81s/it] 44%|████▍     | 44/100 [04:59<06:21,  6.80s/it] 45%|████▌     | 45/100 [05:06<06:14,  6.80s/it] 46%|████▌     | 46/100 [05:13<06:08,  6.83s/it] 47%|████▋     | 47/100 [05:20<06:01,  6.82s/it] 48%|████▊     | 48/100 [05:27<05:54,  6.81s/it] 49%|████▉     | 49/100 [05:33<05:47,  6.81s/it] 50%|█████     | 50/100 [05:40<05:40,  6.81s/it] 51%|█████     | 51/100 [05:47<05:33,  6.81s/it] 52%|█████▏    | 52/100 [05:54<05:26,  6.81s/it] 53%|█████▎    | 53/100 [06:01<05:19,  6.81s/it] 54%|█████▍    | 54/100 [06:07<05:12,  6.80s/it] 55%|█████▌    | 55/100 [06:14<05:07,  6.84s/it] 56%|█████▌    | 56/100 [06:21<05:00,  6.83s/it] 57%|█████▋    | 57/100 [06:28<04:53,  6.82s/it] 58%|█████▊    | 58/100 [06:35<04:46,  6.81s/it] 59%|█████▉    | 59/100 [06:41<04:39,  6.81s/it] 60%|██████    | 60/100 [06:48<04:32,  6.80s/it] 61%|██████    | 61/100 [06:55<04:25,  6.80s/it] 62%|██████▏   | 62/100 [07:02<04:18,  6.80s/it] 63%|██████▎   | 63/100 [07:09<04:11,  6.80s/it] 64%|██████▍   | 64/100 [07:16<04:05,  6.83s/it] 65%|██████▌   | 65/100 [07:22<03:58,  6.81s/it] 66%|██████▌   | 66/100 [07:29<03:51,  6.81s/it] 67%|██████▋   | 67/100 [07:36<03:44,  6.80s/it] 68%|██████▊   | 68/100 [07:43<03:37,  6.80s/it] 69%|██████▉   | 69/100 [07:49<03:30,  6.80s/it] 70%|███████   | 70/100 [07:56<03:23,  6.80s/it] 71%|███████   | 71/100 [08:03<03:17,  6.79s/it] 72%|███████▏  | 72/100 [08:10<03:10,  6.79s/it] 73%|███████▎  | 73/100 [08:17<03:04,  6.82s/it] 74%|███████▍  | 74/100 [08:24<02:57,  6.82s/it] 75%|███████▌  | 75/100 [08:30<02:50,  6.81s/it] 76%|███████▌  | 76/100 [08:37<02:43,  6.81s/it] 77%|███████▋  | 77/100 [08:44<02:36,  6.81s/it] 78%|███████▊  | 78/100 [08:51<02:29,  6.80s/it] 79%|███████▉  | 79/100 [08:58<02:22,  6.80s/it] 80%|████████  | 80/100 [09:04<02:15,  6.79s/it] 81%|████████  | 81/100 [09:11<02:09,  6.79s/it] 82%|████████▏ | 82/100 [09:18<02:02,  6.82s/it] 83%|████████▎ | 83/100 [09:25<01:55,  6.81s/it] 84%|████████▍ | 84/100 [09:32<01:48,  6.81s/it] 85%|████████▌ | 85/100 [09:38<01:42,  6.80s/it] 86%|████████▌ | 86/100 [09:45<01:35,  6.80s/it] 87%|████████▋ | 87/100 [09:52<01:28,  6.80s/it] 88%|████████▊ | 88/100 [09:59<01:21,  6.80s/it] 89%|████████▉ | 89/100 [10:06<01:14,  6.80s/it] 90%|█████████ | 90/100 [10:12<01:07,  6.79s/it] 91%|█████████ | 91/100 [10:19<01:01,  6.83s/it] 92%|█████████▏| 92/100 [10:26<00:54,  6.82s/it] 93%|█████████▎| 93/100 [10:33<00:47,  6.81s/it] 94%|█████████▍| 94/100 [10:40<00:40,  6.80s/it] 95%|█████████▌| 95/100 [10:46<00:33,  6.79s/it] 96%|█████████▌| 96/100 [10:53<00:27,  6.80s/it] 97%|█████████▋| 97/100 [11:00<00:20,  6.79s/it] 98%|█████████▊| 98/100 [11:07<00:13,  6.80s/it] 99%|█████████▉| 99/100 [11:14<00:06,  6.80s/it]100%|██████████| 100/100 [11:20<00:00,  6.83s/it]100%|██████████| 100/100 [11:20<00:00,  6.81s/it]
+Round 0: Server fixing with alpha=0.4817, iters=19/50
+Round 0: Acc=14.58%, Loss=0.0136, D_P_t=0.1049, Alpha=0.4817
+Round 1: Server fixing with alpha=0.4425, iters=17/50
+Round 2: Server fixing with alpha=0.2572, iters=10/50
+Round 3: Server fixing with alpha=0.6621, iters=26/50
+Round 4: Server fixing with alpha=0.4525, iters=17/50
+Round 5: Server fixing with alpha=0.2661, iters=10/50
+Round 6: Server fixing with alpha=0.2678, iters=10/50
+Round 7: Server fixing with alpha=0.3395, iters=13/50
+Round 8: Server fixing with alpha=0.5273, iters=20/50
+Round 9: Server fixing with alpha=0.4893, iters=19/50
+Round 10: Server fixing with alpha=0.2907, iters=11/50
+Round 10: Acc=33.63%, Loss=0.0135, D_P_t=0.0763, Alpha=0.2907
+Round 11: Server fixing with alpha=0.2929, iters=11/50
+Round 12: Server fixing with alpha=0.1453, iters=5/50
+Round 13: Server fixing with alpha=0.3022, iters=11/50
+Round 14: Server fixing with alpha=0.2935, iters=11/50
+Round 15: Server fixing with alpha=0.2849, iters=11/50
+Round 16: Server fixing with alpha=0.2891, iters=11/50
+Round 17: Server fixing with alpha=0.3412, iters=13/50
+Round 18: Server fixing with alpha=0.2623, iters=10/50
+Round 19: Server fixing with alpha=0.2515, iters=9/50
+Round 20: Server fixing with alpha=0.1571, iters=6/50
+Round 20: Acc=49.11%, Loss=0.0069, D_P_t=0.0608, Alpha=0.1571
+Round 21: Server fixing with alpha=0.2261, iters=8/50
+Round 22: Server fixing with alpha=0.3183, iters=12/50
+Round 23: Server fixing with alpha=0.1625, iters=6/50
+Round 24: Server fixing with alpha=0.2543, iters=10/50
+Round 25: Server fixing with alpha=0.2416, iters=9/50
+Round 26: Server fixing with alpha=0.2928, iters=11/50
+Round 27: Server fixing with alpha=0.2284, iters=9/50
+Round 28: Server fixing with alpha=0.3251, iters=12/50
+Round 29: Server fixing with alpha=0.2143, iters=8/50
+Round 30: Server fixing with alpha=0.1575, iters=6/50
+Round 30: Acc=50.78%, Loss=0.0055, D_P_t=0.0717, Alpha=0.1575
+Round 31: Server fixing with alpha=0.2601, iters=10/50
+Round 32: Server fixing with alpha=0.3144, iters=12/50
+Round 33: Server fixing with alpha=0.2953, iters=11/50
+Round 34: Server fixing with alpha=0.2434, iters=9/50
+Round 35: Server fixing with alpha=0.1875, iters=7/50
+Round 36: Server fixing with alpha=0.2336, iters=9/50
+Round 37: Server fixing with alpha=0.1709, iters=6/50
+Round 38: Server fixing with alpha=0.1739, iters=6/50
+Round 39: Server fixing with alpha=0.1227, iters=4/50
+Round 40: Server fixing with alpha=0.1148, iters=4/50
+Round 40: Acc=53.23%, Loss=0.0051, D_P_t=0.0586, Alpha=0.1148
+Round 41: Server fixing with alpha=0.1785, iters=7/50
+Round 42: Server fixing with alpha=0.1604, iters=6/50
+Round 43: Server fixing with alpha=0.1290, iters=5/50
+Round 44: Server fixing with alpha=0.1210, iters=4/50
+Round 45: Server fixing with alpha=0.1570, iters=6/50
+Round 46: Server fixing with alpha=0.2088, iters=8/50
+Round 47: Server fixing with alpha=0.2082, iters=8/50
+Round 48: Server fixing with alpha=0.1579, iters=6/50
+Round 49: Server fixing with alpha=0.1465, iters=5/50
+Round 50: Server fixing with alpha=0.1780, iters=7/50
+Round 50: Acc=50.55%, Loss=0.0042, D_P_t=0.1037, Alpha=0.1780
+Round 51: Server fixing with alpha=0.1006, iters=3/50
+Round 52: Server fixing with alpha=0.1701, iters=6/50
+Round 53: Server fixing with alpha=0.1884, iters=7/50
+Round 54: Server fixing with alpha=0.1234, iters=4/50
+Round 55: Server fixing with alpha=0.1363, iters=5/50
+Round 56: Server fixing with alpha=0.1795, iters=7/50
+Round 57: Server fixing with alpha=0.1040, iters=4/50
+Round 58: Server fixing with alpha=0.1247, iters=4/50
+Round 59: Server fixing with alpha=0.1851, iters=7/50
+Round 60: Server fixing with alpha=0.1383, iters=5/50
+Round 60: Acc=52.56%, Loss=0.0032, D_P_t=0.0916, Alpha=0.1383
+Round 61: Server fixing with alpha=0.1345, iters=5/50
+Round 62: Server fixing with alpha=0.1352, iters=5/50
+Round 63: Server fixing with alpha=0.1639, iters=6/50
+Round 64: Server fixing with alpha=0.1224, iters=4/50
+Round 65: Server fixing with alpha=0.1259, iters=5/50
+Round 66: Server fixing with alpha=0.1816, iters=7/50
+Round 67: Server fixing with alpha=0.0793, iters=3/50
+Round 68: Server fixing with alpha=0.1346, iters=5/50
+Round 69: Server fixing with alpha=0.1641, iters=6/50
+Round 70: Server fixing with alpha=0.1492, iters=5/50
+Round 70: Acc=49.58%, Loss=0.0029, D_P_t=0.1071, Alpha=0.1492
+Round 71: Server fixing with alpha=0.0808, iters=3/50
+Round 72: Server fixing with alpha=0.1329, iters=5/50
+Round 73: Server fixing with alpha=0.1621, iters=6/50
+Round 74: Server fixing with alpha=0.1188, iters=4/50
+Round 75: Server fixing with alpha=0.2001, iters=7/50
+Round 76: Server fixing with alpha=0.0871, iters=3/50
+Round 77: Server fixing with alpha=0.0970, iters=3/50
+Round 78: Server fixing with alpha=0.1119, iters=4/50
+Round 79: Server fixing with alpha=0.1439, iters=5/50
+Round 80: Server fixing with alpha=0.1038, iters=4/50
+Round 80: Acc=52.08%, Loss=0.0056, D_P_t=0.0814, Alpha=0.1038
+Round 81: Server fixing with alpha=0.1065, iters=4/50
+Round 82: Server fixing with alpha=0.0994, iters=3/50
+Round 83: Server fixing with alpha=0.1190, iters=4/50
+Round 84: Server fixing with alpha=0.1285, iters=5/50
+Round 85: Server fixing with alpha=0.1792, iters=7/50
+Round 86: Server fixing with alpha=0.0591, iters=2/50
+Round 87: Server fixing with alpha=0.1103, iters=4/50
+Round 88: Server fixing with alpha=0.1299, iters=5/50
+Round 89: Server fixing with alpha=0.0501, iters=1/50
+Round 90: Server fixing with alpha=0.0581, iters=2/50
+Round 90: Acc=52.90%, Loss=0.0024, D_P_t=0.0468, Alpha=0.0581
+Round 91: Server fixing with alpha=0.0725, iters=2/50
+Round 92: Server fixing with alpha=0.1395, iters=5/50
+Round 93: Server fixing with alpha=0.0875, iters=3/50
+Round 94: Server fixing with alpha=0.1285, iters=5/50
+Round 95: Server fixing with alpha=0.1195, iters=4/50
+Round 96: Server fixing with alpha=0.1303, iters=5/50
+Round 97: Server fixing with alpha=0.1175, iters=4/50
+Round 98: Server fixing with alpha=0.1324, iters=5/50
+Round 99: Server fixing with alpha=0.1173, iters=4/50
+
+Results for decay_rate = 0.99:
+FedDU_Mut - 第20轮测试精度: 48.59%, 最终测试精度: 52.18%, 最终训练损失: 0.0040
+
+--- 测试 decay_rate = 0.995 ---
 FedDU-Mut初始设置:
   服务器数据量: 2500
   服务器数据非IID度: 0.166608
   衰减率: 0.995
   Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:07<12:53,  7.81s/it]  2%|▏         | 2/100 [00:15<12:25,  7.61s/it]  3%|▎         | 3/100 [00:22<12:02,  7.44s/it]  4%|▍         | 4/100 [00:29<11:44,  7.34s/it]  5%|▌         | 5/100 [00:36<11:17,  7.13s/it]  6%|▌         | 6/100 [00:43<10:58,  7.00s/it]  7%|▋         | 7/100 [00:49<10:43,  6.92s/it]  8%|▊         | 8/100 [00:56<10:30,  6.86s/it]  9%|▉         | 9/100 [01:03<10:20,  6.82s/it] 10%|█         | 10/100 [01:10<10:10,  6.78s/it] 11%|█         | 11/100 [01:17<10:07,  6.83s/it] 12%|█▏        | 12/100 [01:24<10:03,  6.86s/it] 13%|█▎        | 13/100 [01:30<09:56,  6.86s/it] 14%|█▍        | 14/100 [01:37<09:49,  6.85s/it] 15%|█▌        | 15/100 [01:44<09:42,  6.86s/it] 16%|█▌        | 16/100 [01:51<09:34,  6.83s/it] 17%|█▋        | 17/100 [01:58<09:27,  6.83s/it] 18%|█▊        | 18/100 [02:05<09:23,  6.87s/it] 19%|█▉        | 19/100 [02:11<09:15,  6.86s/it] 20%|██        | 20/100 [02:18<09:07,  6.84s/it] 21%|██        | 21/100 [02:25<09:00,  6.84s/it] 22%|██▏       | 22/100 [02:32<08:53,  6.84s/it] 23%|██▎       | 23/100 [02:39<08:45,  6.83s/it] 24%|██▍       | 24/100 [02:46<08:38,  6.83s/it] 25%|██▌       | 25/100 [02:52<08:34,  6.86s/it] 26%|██▌       | 26/100 [02:59<08:26,  6.85s/it] 27%|██▋       | 27/100 [03:06<08:19,  6.84s/it] 28%|██▊       | 28/100 [03:13<08:12,  6.84s/it] 29%|██▉       | 29/100 [03:20<08:05,  6.84s/it] 30%|███       | 30/100 [03:27<07:58,  6.84s/it] 31%|███       | 31/100 [03:34<07:51,  6.84s/it] 32%|███▏      | 32/100 [03:40<07:46,  6.86s/it] 33%|███▎      | 33/100 [03:47<07:38,  6.85s/it] 34%|███▍      | 34/100 [03:54<07:31,  6.84s/it] 35%|███▌      | 35/100 [04:01<07:23,  6.83s/it] 36%|███▌      | 36/100 [04:09<07:35,  7.12s/it] 37%|███▋      | 37/100 [04:18<08:08,  7.75s/it] 38%|███▊      | 38/100 [04:27<08:28,  8.21s/it] 39%|███▉      | 39/100 [04:36<08:37,  8.48s/it] 40%|████      | 40/100 [04:45<08:40,  8.67s/it] 41%|████      | 41/100 [04:54<08:39,  8.80s/it] 42%|████▏     | 42/100 [05:03<08:33,  8.86s/it] 43%|████▎     | 43/100 [05:13<08:29,  8.94s/it] 44%|████▍     | 44/100 [05:22<08:20,  8.94s/it] 45%|████▌     | 45/100 [05:31<08:14,  8.99s/it] 46%|████▌     | 46/100 [05:40<08:08,  9.05s/it] 47%|████▋     | 47/100 [05:49<08:01,  9.09s/it] 48%|████▊     | 48/100 [05:58<07:54,  9.13s/it] 49%|████▉     | 49/100 [06:07<07:42,  9.08s/it] 50%|█████     | 50/100 [06:16<07:35,  9.11s/it] 51%|█████     | 51/100 [06:25<07:24,  9.08s/it] 52%|█████▏    | 52/100 [06:34<07:15,  9.08s/it] 53%|█████▎    | 53/100 [06:44<07:06,  9.08s/it] 54%|█████▍    | 54/100 [06:53<06:57,  9.07s/it] 55%|█████▌    | 55/100 [07:02<06:48,  9.08s/it] 56%|█████▌    | 56/100 [07:11<06:39,  9.08s/it] 57%|█████▋    | 57/100 [07:20<06:30,  9.08s/it] 58%|█████▊    | 58/100 [07:29<06:19,  9.03s/it] 59%|█████▉    | 59/100 [07:38<06:10,  9.04s/it] 60%|██████    | 60/100 [07:47<06:03,  9.09s/it] 61%|██████    | 61/100 [07:56<05:53,  9.07s/it] 62%|██████▏   | 62/100 [08:05<05:43,  9.04s/it] 63%|██████▎   | 63/100 [08:14<05:34,  9.04s/it] 64%|██████▍   | 64/100 [08:23<05:27,  9.10s/it] 65%|██████▌   | 65/100 [08:33<05:19,  9.13s/it] 66%|██████▌   | 66/100 [08:42<05:11,  9.16s/it] 67%|██████▋   | 67/100 [08:51<05:00,  9.11s/it] 68%|██████▊   | 68/100 [09:00<04:49,  9.05s/it] 69%|██████▉   | 69/100 [09:09<04:41,  9.09s/it] 70%|███████   | 70/100 [09:18<04:32,  9.07s/it] 71%|███████   | 71/100 [09:27<04:23,  9.10s/it] 72%|███████▏  | 72/100 [09:36<04:14,  9.08s/it] 73%|███████▎  | 73/100 [09:45<04:05,  9.10s/it] 74%|███████▍  | 74/100 [09:54<03:57,  9.15s/it] 75%|███████▌  | 75/100 [10:04<03:48,  9.12s/it] 76%|███████▌  | 76/100 [10:12<03:37,  9.05s/it] 77%|███████▋  | 77/100 [10:21<03:27,  9.03s/it] 78%|███████▊  | 78/100 [10:31<03:19,  9.07s/it] 79%|███████▉  | 79/100 [10:40<03:10,  9.06s/it] 80%|████████  | 80/100 [10:49<03:01,  9.05s/it] 81%|████████  | 81/100 [10:58<02:50,  8.99s/it] 82%|████████▏ | 82/100 [11:06<02:41,  8.96s/it] 83%|████████▎ | 83/100 [11:16<02:33,  9.04s/it] 84%|████████▍ | 84/100 [11:25<02:24,  9.06s/it] 85%|████████▌ | 85/100 [11:34<02:15,  9.06s/it] 86%|████████▌ | 86/100 [11:43<02:05,  8.99s/it] 87%|████████▋ | 87/100 [11:52<01:56,  9.00s/it] 88%|████████▊ | 88/100 [12:01<01:48,  9.05s/it] 89%|████████▉ | 89/100 [12:10<01:40,  9.12s/it] 90%|█████████ | 90/100 [12:19<01:30,  9.09s/it] 91%|█████████ | 91/100 [12:28<01:21,  9.04s/it] 92%|█████████▏| 92/100 [12:37<01:12,  9.06s/it] 93%|█████████▎| 93/100 [12:46<01:03,  9.07s/it] 94%|█████████▍| 94/100 [12:55<00:54,  9.08s/it] 95%|█████████▌| 95/100 [13:04<00:45,  9.06s/it] 96%|█████████▌| 96/100 [13:13<00:36,  9.02s/it] 97%|█████████▋| 97/100 [13:22<00:27,  9.04s/it] 98%|█████████▊| 98/100 [13:31<00:18,  9.04s/it] 99%|█████████▉| 99/100 [13:40<00:09,  9.05s/it]100%|██████████| 100/100 [13:49<00:00,  9.04s/it]100%|██████████| 100/100 [13:49<00:00,  8.30s/it]
-Round 0: Server fixing with alpha=0.0594, iters=2/50
-Round 0: Acc=13.77%, Loss=0.0125, D_P_t=0.0967, Alpha=0.0594
-Round 1: Server fixing with alpha=0.0939, iters=3/50
-Round 2: Server fixing with alpha=0.0548, iters=2/50
-Round 3: Server fixing with alpha=0.0559, iters=2/50
-Round 4: Server fixing with alpha=0.0284, iters=1/50
-Round 5: Server fixing with alpha=0.0260, iters=1/50
-Round 6: Server fixing with alpha=0.0646, iters=2/50
-Round 7: Server fixing with alpha=0.0673, iters=2/50
-Round 8: Server fixing with alpha=0.0543, iters=2/50
-Round 9: Server fixing with alpha=0.0396, iters=1/50
-Round 10: Server fixing with alpha=0.0335, iters=1/50
-Round 10: Acc=10.52%, Loss=0.0237, D_P_t=0.0495, Alpha=0.0335
-Round 11: Server fixing with alpha=0.0702, iters=2/50
-Round 12: Server fixing with alpha=0.0826, iters=3/50
-Round 13: Server fixing with alpha=0.0871, iters=3/50
-Round 14: Server fixing with alpha=0.0510, iters=2/50
-Round 15: Server fixing with alpha=0.0663, iters=2/50
-Round 16: Server fixing with alpha=0.0639, iters=2/50
-Round 17: Server fixing with alpha=0.0486, iters=1/50
-Round 18: Server fixing with alpha=0.0599, iters=2/50
-Round 19: Server fixing with alpha=0.0781, iters=3/50
-Round 20: Server fixing with alpha=0.0260, iters=1/50
-Round 20: Acc=26.26%, Loss=0.0197, D_P_t=0.0490, Alpha=0.0260
-Round 21: Server fixing with alpha=0.0316, iters=1/50
-Round 22: Server fixing with alpha=0.0187, iters=0/50
-Round 23: Server fixing with alpha=0.0565, iters=2/50
-Round 24: Server fixing with alpha=0.0420, iters=1/50
-Round 25: Server fixing with alpha=0.0305, iters=1/50
-Round 26: Server fixing with alpha=0.0612, iters=2/50
-Round 27: Server fixing with alpha=0.0370, iters=1/50
-Round 28: Server fixing with alpha=0.0661, iters=2/50
-Round 29: Server fixing with alpha=0.0422, iters=1/50
-Round 30: Server fixing with alpha=0.0414, iters=1/50
-Round 30: Acc=25.89%, Loss=0.0124, D_P_t=0.0916, Alpha=0.0414
-Round 31: Server fixing with alpha=0.0530, iters=2/50
-Round 32: Server fixing with alpha=0.0396, iters=1/50
-Round 33: Server fixing with alpha=0.0350, iters=1/50
-Round 34: Server fixing with alpha=0.0374, iters=1/50
-Round 35: Server fixing with alpha=0.0459, iters=1/50
-Round 36: Server fixing with alpha=0.0259, iters=1/50
-Round 37: Server fixing with alpha=0.0422, iters=1/50
-Round 38: Server fixing with alpha=0.0632, iters=2/50
-Round 39: Server fixing with alpha=0.0319, iters=1/50
-Round 40: Server fixing with alpha=0.0466, iters=1/50
-Round 40: Acc=26.22%, Loss=0.0142, D_P_t=0.1167, Alpha=0.0466
-Round 41: Server fixing with alpha=0.0650, iters=2/50
-Round 42: Server fixing with alpha=0.0351, iters=1/50
-Round 43: Server fixing with alpha=0.0391, iters=1/50
-Round 44: Server fixing with alpha=0.0368, iters=1/50
-Round 45: Server fixing with alpha=0.0299, iters=1/50
-Round 46: Server fixing with alpha=0.0339, iters=1/50
-Round 47: Server fixing with alpha=0.0398, iters=1/50
-Round 48: Server fixing with alpha=0.0531, iters=2/50
-Round 49: Server fixing with alpha=0.0231, iters=0/50
-Round 50: Server fixing with alpha=0.0367, iters=1/50
-Round 50: Acc=27.15%, Loss=0.0116, D_P_t=0.0899, Alpha=0.0367
-Round 51: Server fixing with alpha=0.0439, iters=1/50
-Round 52: Server fixing with alpha=0.0271, iters=1/50
-Round 53: Server fixing with alpha=0.0439, iters=1/50
-Round 54: Server fixing with alpha=0.0233, iters=0/50
-Round 55: Server fixing with alpha=0.0379, iters=1/50
-Round 56: Server fixing with alpha=0.0479, iters=1/50
-Round 57: Server fixing with alpha=0.0374, iters=1/50
-Round 58: Server fixing with alpha=0.0222, iters=0/50
-Round 59: Server fixing with alpha=0.0318, iters=1/50
-Round 60: Server fixing with alpha=0.0444, iters=1/50
-Round 60: Acc=33.76%, Loss=0.0104, D_P_t=0.1487, Alpha=0.0444
-Round 61: Server fixing with alpha=0.0085, iters=0/50
-Round 62: Server fixing with alpha=0.0319, iters=1/50
-Round 63: Server fixing with alpha=0.0528, iters=2/50
-Round 64: Server fixing with alpha=0.0448, iters=1/50
-Round 65: Server fixing with alpha=0.0138, iters=0/50
-Round 66: Server fixing with alpha=0.0338, iters=1/50
-Round 67: Server fixing with alpha=0.0379, iters=1/50
-Round 68: Server fixing with alpha=0.0358, iters=1/50
-Round 69: Server fixing with alpha=0.0393, iters=1/50
-Round 70: Server fixing with alpha=0.0101, iters=0/50
-Round 70: Acc=34.79%, Loss=0.0105, D_P_t=0.0255, Alpha=0.0101
-Round 71: Server fixing with alpha=0.0357, iters=1/50
-Round 72: Server fixing with alpha=0.0398, iters=1/50
-Round 73: Server fixing with alpha=0.0148, iters=0/50
-Round 74: Server fixing with alpha=0.0282, iters=1/50
-Round 75: Server fixing with alpha=0.0179, iters=0/50
-Round 76: Server fixing with alpha=0.0374, iters=1/50
-Round 77: Server fixing with alpha=0.0251, iters=0/50
-Round 78: Server fixing with alpha=0.0206, iters=0/50
-Round 79: Server fixing with alpha=0.0210, iters=0/50
-Round 80: Server fixing with alpha=0.0262, iters=1/50
-Round 80: Acc=33.74%, Loss=0.0083, D_P_t=0.0790, Alpha=0.0262
-Round 81: Server fixing with alpha=0.0195, iters=0/50
-Round 82: Server fixing with alpha=0.0360, iters=1/50
-Round 83: Server fixing with alpha=0.0400, iters=1/50
-Round 84: Server fixing with alpha=0.0490, iters=1/50
-Round 85: Server fixing with alpha=0.0293, iters=1/50
-Round 86: Server fixing with alpha=0.0366, iters=1/50
-Round 87: Server fixing with alpha=0.0436, iters=1/50
-Round 88: Server fixing with alpha=0.0198, iters=0/50
-Round 89: Server fixing with alpha=0.0324, iters=1/50
-Round 90: Server fixing with alpha=0.0311, iters=1/50
-Round 90: Acc=29.82%, Loss=0.0099, D_P_t=0.0995, Alpha=0.0311
-Round 91: Server fixing with alpha=0.0346, iters=1/50
-Round 92: Server fixing with alpha=0.0255, iters=1/50
-Round 93: Server fixing with alpha=0.0266, iters=1/50
-Round 94: Server fixing with alpha=0.0250, iters=0/50
-Round 95: Server fixing with alpha=0.0305, iters=1/50
-Round 96: Server fixing with alpha=0.0266, iters=1/50
-Round 97: Server fixing with alpha=0.0304, iters=1/50
-Round 98: Server fixing with alpha=0.0308, iters=1/50
-Round 99: Server fixing with alpha=0.0396, iters=1/50
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:12,  6.80s/it]  2%|▏         | 2/100 [00:13<11:07,  6.81s/it]  3%|▎         | 3/100 [00:20<11:00,  6.81s/it]  4%|▍         | 4/100 [00:27<10:52,  6.80s/it]  5%|▌         | 5/100 [00:34<10:45,  6.80s/it]  6%|▌         | 6/100 [00:40<10:38,  6.79s/it]  7%|▋         | 7/100 [00:47<10:31,  6.79s/it]  8%|▊         | 8/100 [00:54<10:27,  6.82s/it]  9%|▉         | 9/100 [01:01<10:19,  6.81s/it] 10%|█         | 10/100 [01:08<10:12,  6.81s/it] 11%|█         | 11/100 [01:14<10:05,  6.80s/it] 12%|█▏        | 12/100 [01:21<09:58,  6.80s/it] 13%|█▎        | 13/100 [01:28<09:50,  6.79s/it] 14%|█▍        | 14/100 [01:35<09:43,  6.79s/it] 15%|█▌        | 15/100 [01:41<09:37,  6.79s/it] 16%|█▌        | 16/100 [01:48<09:29,  6.78s/it] 17%|█▋        | 17/100 [01:55<09:23,  6.79s/it] 18%|█▊        | 18/100 [02:02<09:19,  6.82s/it] 19%|█▉        | 19/100 [02:09<09:11,  6.81s/it] 20%|██        | 20/100 [02:16<09:04,  6.81s/it] 21%|██        | 21/100 [02:22<08:57,  6.80s/it] 22%|██▏       | 22/100 [02:29<08:49,  6.79s/it] 23%|██▎       | 23/100 [02:36<08:43,  6.79s/it] 24%|██▍       | 24/100 [02:43<08:36,  6.79s/it] 25%|██▌       | 25/100 [02:49<08:29,  6.79s/it] 26%|██▌       | 26/100 [02:56<08:22,  6.79s/it] 27%|██▋       | 27/100 [03:03<08:18,  6.82s/it] 28%|██▊       | 28/100 [03:10<08:10,  6.81s/it] 29%|██▉       | 29/100 [03:17<08:03,  6.80s/it] 30%|███       | 30/100 [03:24<07:55,  6.80s/it] 31%|███       | 31/100 [03:30<07:48,  6.79s/it] 32%|███▏      | 32/100 [03:37<07:42,  6.80s/it] 33%|███▎      | 33/100 [03:44<07:35,  6.79s/it] 34%|███▍      | 34/100 [03:51<07:27,  6.78s/it] 35%|███▌      | 35/100 [03:57<07:21,  6.79s/it] 36%|███▌      | 36/100 [04:04<07:16,  6.82s/it] 37%|███▋      | 37/100 [04:11<07:09,  6.81s/it] 38%|███▊      | 38/100 [04:18<07:02,  6.81s/it] 39%|███▉      | 39/100 [04:25<06:54,  6.79s/it] 40%|████      | 40/100 [04:31<06:47,  6.79s/it] 41%|████      | 41/100 [04:38<06:40,  6.79s/it] 42%|████▏     | 42/100 [04:45<06:34,  6.80s/it] 43%|████▎     | 43/100 [04:52<06:27,  6.79s/it] 44%|████▍     | 44/100 [04:59<06:19,  6.78s/it] 45%|████▌     | 45/100 [05:06<06:14,  6.82s/it] 46%|████▌     | 46/100 [05:12<06:07,  6.81s/it] 47%|████▋     | 47/100 [05:19<06:00,  6.81s/it] 48%|████▊     | 48/100 [05:26<05:53,  6.80s/it] 49%|████▉     | 49/100 [05:33<05:46,  6.80s/it] 50%|█████     | 50/100 [05:39<05:39,  6.79s/it] 51%|█████     | 51/100 [05:46<05:33,  6.80s/it] 52%|█████▏    | 52/100 [05:53<05:26,  6.80s/it] 53%|█████▎    | 53/100 [06:00<05:20,  6.82s/it] 54%|█████▍    | 54/100 [06:07<05:13,  6.82s/it] 55%|█████▌    | 55/100 [06:14<05:06,  6.82s/it] 56%|█████▌    | 56/100 [06:20<04:59,  6.81s/it] 57%|█████▋    | 57/100 [06:27<04:52,  6.80s/it] 58%|█████▊    | 58/100 [06:34<04:45,  6.80s/it] 59%|█████▉    | 59/100 [06:41<04:38,  6.79s/it] 60%|██████    | 60/100 [06:48<04:32,  6.82s/it] 61%|██████    | 61/100 [06:54<04:25,  6.80s/it] 62%|██████▏   | 62/100 [07:01<04:18,  6.80s/it] 63%|██████▎   | 63/100 [07:08<04:11,  6.80s/it] 64%|██████▍   | 64/100 [07:15<04:04,  6.80s/it] 65%|██████▌   | 65/100 [07:22<03:57,  6.79s/it] 66%|██████▌   | 66/100 [07:28<03:51,  6.80s/it] 67%|██████▋   | 67/100 [07:35<03:44,  6.79s/it] 68%|██████▊   | 68/100 [07:42<03:37,  6.79s/it] 69%|██████▉   | 69/100 [07:49<03:30,  6.79s/it] 70%|███████   | 70/100 [07:56<03:24,  6.82s/it] 71%|███████   | 71/100 [08:02<03:17,  6.81s/it] 72%|███████▏  | 72/100 [08:09<03:10,  6.81s/it] 73%|███████▎  | 73/100 [08:16<03:03,  6.81s/it] 74%|███████▍  | 74/100 [08:23<02:56,  6.80s/it] 75%|███████▌  | 75/100 [08:30<02:50,  6.80s/it] 76%|███████▌  | 76/100 [08:36<02:42,  6.79s/it] 77%|███████▋  | 77/100 [08:43<02:36,  6.82s/it] 78%|███████▊  | 78/100 [08:50<02:29,  6.81s/it] 79%|███████▉  | 79/100 [08:57<02:22,  6.81s/it] 80%|████████  | 80/100 [09:04<02:15,  6.79s/it] 81%|████████  | 81/100 [09:10<02:09,  6.79s/it] 82%|████████▏ | 82/100 [09:17<02:02,  6.79s/it] 83%|████████▎ | 83/100 [09:24<01:55,  6.79s/it] 84%|████████▍ | 84/100 [09:31<01:48,  6.79s/it] 85%|████████▌ | 85/100 [09:38<01:42,  6.82s/it] 86%|████████▌ | 86/100 [09:44<01:35,  6.81s/it] 87%|████████▋ | 87/100 [09:51<01:28,  6.81s/it] 88%|████████▊ | 88/100 [09:58<01:21,  6.80s/it] 89%|████████▉ | 89/100 [10:05<01:14,  6.80s/it] 90%|█████████ | 90/100 [10:12<01:08,  6.81s/it] 91%|█████████ | 91/100 [10:18<01:01,  6.81s/it] 92%|█████████▏| 92/100 [10:25<00:54,  6.80s/it] 93%|█████████▎| 93/100 [10:32<00:47,  6.83s/it] 94%|█████████▍| 94/100 [10:39<00:40,  6.82s/it] 95%|█████████▌| 95/100 [10:46<00:34,  6.81s/it] 96%|█████████▌| 96/100 [10:52<00:27,  6.80s/it] 97%|█████████▋| 97/100 [10:59<00:20,  6.80s/it] 98%|█████████▊| 98/100 [11:06<00:13,  6.80s/it] 99%|█████████▉| 99/100 [11:13<00:06,  6.80s/it]100%|██████████| 100/100 [11:20<00:00,  6.82s/it]100%|██████████| 100/100 [11:20<00:00,  6.80s/it]
+Round 0: Server fixing with alpha=0.6550, iters=26/50
+Round 0: Acc=19.77%, Loss=0.0137, D_P_t=0.1516, Alpha=0.6550
+Round 1: Server fixing with alpha=0.7420, iters=29/50
+Round 2: Server fixing with alpha=0.4045, iters=16/50
+Round 3: Server fixing with alpha=0.3778, iters=15/50
+Round 4: Server fixing with alpha=0.3644, iters=14/50
+Round 5: Server fixing with alpha=0.2944, iters=11/50
+Round 6: Server fixing with alpha=0.4144, iters=16/50
+Round 7: Server fixing with alpha=0.3227, iters=12/50
+Round 8: Server fixing with alpha=0.3900, iters=15/50
+Round 9: Server fixing with alpha=0.3480, iters=13/50
+Round 10: Server fixing with alpha=0.4139, iters=16/50
+Round 10: Acc=35.71%, Loss=0.0081, D_P_t=0.1106, Alpha=0.4139
+Round 11: Server fixing with alpha=0.4467, iters=17/50
+Round 12: Server fixing with alpha=0.2004, iters=7/50
+Round 13: Server fixing with alpha=0.3745, iters=14/50
+Round 14: Server fixing with alpha=0.1954, iters=7/50
+Round 15: Server fixing with alpha=0.3759, iters=14/50
+Round 16: Server fixing with alpha=0.1540, iters=6/50
+Round 17: Server fixing with alpha=0.3111, iters=12/50
+Round 18: Server fixing with alpha=0.3032, iters=12/50
+Round 19: Server fixing with alpha=0.1770, iters=7/50
+Round 20: Server fixing with alpha=0.1824, iters=7/50
+Round 20: Acc=46.17%, Loss=0.0047, D_P_t=0.0590, Alpha=0.1824
+Round 21: Server fixing with alpha=0.3964, iters=15/50
+Round 22: Server fixing with alpha=0.0975, iters=3/50
+Round 23: Server fixing with alpha=0.2645, iters=10/50
+Round 24: Server fixing with alpha=0.2461, iters=9/50
+Round 25: Server fixing with alpha=0.1756, iters=6/50
+Round 26: Server fixing with alpha=0.2807, iters=11/50
+Round 27: Server fixing with alpha=0.2095, iters=8/50
+Round 28: Server fixing with alpha=0.3766, iters=14/50
+Round 29: Server fixing with alpha=0.2684, iters=10/50
+Round 30: Server fixing with alpha=0.0605, iters=2/50
+Round 30: Acc=47.59%, Loss=0.0102, D_P_t=0.0189, Alpha=0.0605
+Round 31: Server fixing with alpha=0.2746, iters=10/50
+Round 32: Server fixing with alpha=0.2675, iters=10/50
+Round 33: Server fixing with alpha=0.2100, iters=8/50
+Round 34: Server fixing with alpha=0.1628, iters=6/50
+Round 35: Server fixing with alpha=0.2869, iters=11/50
+Round 36: Server fixing with alpha=0.2267, iters=9/50
+Round 37: Server fixing with alpha=0.2678, iters=10/50
+Round 38: Server fixing with alpha=0.2711, iters=10/50
+Round 39: Server fixing with alpha=0.3928, iters=15/50
+Round 40: Server fixing with alpha=0.3266, iters=12/50
+Round 40: Acc=48.38%, Loss=0.0058, D_P_t=0.1546, Alpha=0.3266
+Round 41: Server fixing with alpha=0.1413, iters=5/50
+Round 42: Server fixing with alpha=0.1417, iters=5/50
+Round 43: Server fixing with alpha=0.1085, iters=4/50
+Round 44: Server fixing with alpha=0.2218, iters=8/50
+Round 45: Server fixing with alpha=0.2468, iters=9/50
+Round 46: Server fixing with alpha=0.2531, iters=10/50
+Round 47: Server fixing with alpha=0.1033, iters=4/50
+Round 48: Server fixing with alpha=0.2786, iters=11/50
+Round 49: Server fixing with alpha=0.2294, iters=9/50
+Round 50: Server fixing with alpha=0.2931, iters=11/50
+Round 50: Acc=53.27%, Loss=0.0049, D_P_t=0.1754, Alpha=0.2931
+Round 51: Server fixing with alpha=0.1504, iters=5/50
+Round 52: Server fixing with alpha=0.1793, iters=7/50
+Round 53: Server fixing with alpha=0.2058, iters=8/50
+Round 54: Server fixing with alpha=0.1238, iters=4/50
+Round 55: Server fixing with alpha=0.2446, iters=9/50
+Round 56: Server fixing with alpha=0.2026, iters=7/50
+Round 57: Server fixing with alpha=0.2860, iters=11/50
+Round 58: Server fixing with alpha=0.1807, iters=7/50
+Round 59: Server fixing with alpha=0.2747, iters=10/50
+Round 60: Server fixing with alpha=0.2239, iters=8/50
+Round 60: Acc=50.96%, Loss=0.0027, D_P_t=0.1136, Alpha=0.2239
+Round 61: Server fixing with alpha=0.3373, iters=13/50
+Round 62: Server fixing with alpha=0.1400, iters=5/50
+Round 63: Server fixing with alpha=0.2392, iters=9/50
+Round 64: Server fixing with alpha=0.2231, iters=8/50
+Round 65: Server fixing with alpha=0.2559, iters=10/50
+Round 66: Server fixing with alpha=0.1304, iters=5/50
+Round 67: Server fixing with alpha=0.1860, iters=7/50
+Round 68: Server fixing with alpha=0.2600, iters=10/50
+Round 69: Server fixing with alpha=0.2310, iters=9/50
+Round 70: Server fixing with alpha=0.2293, iters=9/50
+Round 70: Acc=50.76%, Loss=0.0030, D_P_t=0.1244, Alpha=0.2293
+Round 71: Server fixing with alpha=0.1764, iters=6/50
+Round 72: Server fixing with alpha=0.1242, iters=4/50
+Round 73: Server fixing with alpha=0.2975, iters=11/50
+Round 74: Server fixing with alpha=0.0754, iters=2/50
+Round 75: Server fixing with alpha=0.1704, iters=6/50
+Round 76: Server fixing with alpha=0.1547, iters=6/50
+Round 77: Server fixing with alpha=0.1941, iters=7/50
+Round 78: Server fixing with alpha=0.2166, iters=8/50
+Round 79: Server fixing with alpha=0.2798, iters=10/50
+Round 80: Server fixing with alpha=0.0892, iters=3/50
+Round 80: Acc=51.73%, Loss=0.0037, D_P_t=0.0423, Alpha=0.0892
+Round 81: Server fixing with alpha=0.1832, iters=7/50
+Round 82: Server fixing with alpha=0.1409, iters=5/50
+Round 83: Server fixing with alpha=0.1947, iters=7/50
+Round 84: Server fixing with alpha=0.2135, iters=8/50
+Round 85: Server fixing with alpha=0.1290, iters=5/50
+Round 86: Server fixing with alpha=0.1161, iters=4/50
+Round 87: Server fixing with alpha=0.2622, iters=10/50
+Round 88: Server fixing with alpha=0.2580, iters=10/50
+Round 89: Server fixing with alpha=0.2061, iters=8/50
+Round 90: Server fixing with alpha=0.2305, iters=9/50
+Round 90: Acc=50.46%, Loss=0.0043, D_P_t=0.1467, Alpha=0.2305
+Round 91: Server fixing with alpha=0.2005, iters=7/50
+Round 92: Server fixing with alpha=0.0652, iters=2/50
+Round 93: Server fixing with alpha=0.1331, iters=5/50
+Round 94: Server fixing with alpha=0.2399, iters=9/50
+Round 95: Server fixing with alpha=0.1313, iters=5/50
+Round 96: Server fixing with alpha=0.1275, iters=5/50
+Round 97: Server fixing with alpha=0.2986, iters=11/50
+Round 98: Server fixing with alpha=0.1904, iters=7/50
+Round 99: Server fixing with alpha=0.2362, iters=9/50
 
-Results for du_C = 0.25:
-FedDU_Mut - 第20轮测试精度: 14.39%, 最终测试精度: 24.59%, 最终训练损失: 0.0075
+Results for decay_rate = 0.995:
+FedDU_Mut - 第20轮测试精度: 44.29%, 最终测试精度: 46.74%, 最终训练损失: 0.0076
 
---- 测试 du_C = 0.5 ---
+--- 测试 decay_rate = 0.999 ---
 FedDU-Mut初始设置:
   服务器数据量: 2500
   服务器数据非IID度: 0.166608
-  衰减率: 0.995
+  衰减率: 0.999
   Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:09<15:32,  9.42s/it]  2%|▏         | 2/100 [00:18<15:00,  9.19s/it]  3%|▎         | 3/100 [00:27<14:47,  9.15s/it]  4%|▍         | 4/100 [00:36<14:28,  9.05s/it]  5%|▌         | 5/100 [00:45<14:20,  9.06s/it]  6%|▌         | 6/100 [00:54<14:16,  9.11s/it]  7%|▋         | 7/100 [01:03<14:07,  9.11s/it]  8%|▊         | 8/100 [01:13<14:00,  9.14s/it]  9%|▉         | 9/100 [01:21<13:39,  9.01s/it] 10%|█         | 10/100 [01:30<13:33,  9.04s/it] 11%|█         | 11/100 [01:39<13:25,  9.05s/it] 12%|█▏        | 12/100 [01:49<13:19,  9.09s/it] 13%|█▎        | 13/100 [01:58<13:12,  9.11s/it] 14%|█▍        | 14/100 [02:07<12:55,  9.02s/it] 15%|█▌        | 15/100 [02:16<12:48,  9.04s/it] 16%|█▌        | 16/100 [02:25<12:41,  9.07s/it] 17%|█▋        | 17/100 [02:34<12:36,  9.11s/it] 18%|█▊        | 18/100 [02:43<12:21,  9.04s/it] 19%|█▉        | 19/100 [02:52<12:10,  9.02s/it] 20%|██        | 20/100 [03:01<12:04,  9.06s/it] 21%|██        | 21/100 [03:11<12:07,  9.20s/it] 22%|██▏       | 22/100 [03:20<11:52,  9.14s/it] 23%|██▎       | 23/100 [03:28<11:39,  9.08s/it] 24%|██▍       | 24/100 [03:38<11:31,  9.10s/it] 25%|██▌       | 25/100 [03:47<11:23,  9.11s/it] 26%|██▌       | 26/100 [03:56<11:21,  9.20s/it] 27%|██▋       | 27/100 [04:05<11:08,  9.16s/it] 28%|██▊       | 28/100 [04:15<11:03,  9.21s/it] 29%|██▉       | 29/100 [04:24<10:52,  9.19s/it] 30%|███       | 30/100 [04:33<10:49,  9.28s/it] 31%|███       | 31/100 [04:42<10:32,  9.16s/it] 32%|███▏      | 32/100 [04:51<10:19,  9.11s/it] 33%|███▎      | 33/100 [05:00<10:11,  9.13s/it] 34%|███▍      | 34/100 [05:09<10:03,  9.15s/it] 35%|███▌      | 35/100 [05:19<09:57,  9.19s/it] 36%|███▌      | 36/100 [05:28<09:40,  9.08s/it] 37%|███▋      | 37/100 [05:37<09:41,  9.23s/it] 38%|███▊      | 38/100 [05:46<09:29,  9.18s/it] 39%|███▉      | 39/100 [05:55<09:21,  9.21s/it] 40%|████      | 40/100 [06:04<09:08,  9.14s/it] 41%|████      | 41/100 [06:14<08:58,  9.12s/it] 42%|████▏     | 42/100 [06:23<08:51,  9.16s/it] 43%|████▎     | 43/100 [06:32<08:42,  9.17s/it] 44%|████▍     | 44/100 [06:41<08:37,  9.25s/it] 45%|████▌     | 45/100 [06:50<08:22,  9.13s/it] 46%|████▌     | 46/100 [07:00<08:21,  9.29s/it] 47%|████▋     | 47/100 [07:09<08:08,  9.22s/it] 48%|████▊     | 48/100 [07:18<07:55,  9.14s/it] 49%|████▉     | 49/100 [07:27<07:41,  9.06s/it] 50%|█████     | 50/100 [07:36<07:37,  9.14s/it] 51%|█████     | 51/100 [07:45<07:27,  9.13s/it] 52%|█████▏    | 52/100 [07:54<07:17,  9.11s/it] 53%|█████▎    | 53/100 [08:03<07:08,  9.11s/it] 54%|█████▍    | 54/100 [08:13<06:59,  9.11s/it] 55%|█████▌    | 55/100 [08:22<06:57,  9.28s/it] 56%|█████▌    | 56/100 [08:31<06:46,  9.23s/it] 57%|█████▋    | 57/100 [08:40<06:35,  9.21s/it] 58%|█████▊    | 58/100 [08:49<06:22,  9.11s/it] 59%|█████▉    | 59/100 [08:58<06:13,  9.10s/it] 60%|██████    | 60/100 [09:08<06:04,  9.11s/it] 61%|██████    | 61/100 [09:17<05:59,  9.22s/it] 62%|██████▏   | 62/100 [09:26<05:48,  9.17s/it] 63%|██████▎   | 63/100 [09:35<05:38,  9.16s/it] 64%|██████▍   | 64/100 [09:45<05:31,  9.21s/it] 65%|██████▌   | 65/100 [09:54<05:22,  9.22s/it] 66%|██████▌   | 66/100 [10:03<05:09,  9.10s/it] 67%|██████▋   | 67/100 [10:12<04:59,  9.08s/it] 68%|██████▊   | 68/100 [10:21<04:52,  9.14s/it] 69%|██████▉   | 69/100 [10:30<04:42,  9.11s/it] 70%|███████   | 70/100 [10:39<04:33,  9.10s/it] 71%|███████   | 71/100 [10:48<04:21,  9.02s/it] 72%|███████▏  | 72/100 [10:57<04:13,  9.04s/it] 73%|███████▎  | 73/100 [11:06<04:08,  9.19s/it] 74%|███████▍  | 74/100 [11:16<03:57,  9.15s/it] 75%|███████▌  | 75/100 [11:24<03:47,  9.09s/it] 76%|███████▌  | 76/100 [11:33<03:36,  9.03s/it] 77%|███████▋  | 77/100 [11:43<03:29,  9.10s/it] 78%|███████▊  | 78/100 [11:52<03:22,  9.20s/it] 79%|███████▉  | 79/100 [12:01<03:12,  9.15s/it] 80%|████████  | 80/100 [12:10<03:01,  9.10s/it] 81%|████████  | 81/100 [12:19<02:53,  9.11s/it] 82%|████████▏ | 82/100 [12:28<02:44,  9.15s/it] 83%|████████▎ | 83/100 [12:38<02:36,  9.20s/it] 84%|████████▍ | 84/100 [12:47<02:25,  9.08s/it] 85%|████████▌ | 85/100 [12:56<02:16,  9.07s/it] 86%|████████▌ | 86/100 [13:05<02:07,  9.10s/it] 87%|████████▋ | 87/100 [13:14<01:58,  9.11s/it] 88%|████████▊ | 88/100 [13:23<01:49,  9.09s/it] 89%|████████▉ | 89/100 [13:32<01:39,  9.03s/it] 90%|█████████ | 90/100 [13:41<01:30,  9.04s/it] 91%|█████████ | 91/100 [13:50<01:22,  9.11s/it] 92%|█████████▏| 92/100 [13:59<01:13,  9.15s/it] 93%|█████████▎| 93/100 [14:08<01:03,  9.11s/it] 94%|█████████▍| 94/100 [14:18<00:54,  9.09s/it] 95%|█████████▌| 95/100 [14:27<00:45,  9.11s/it] 96%|█████████▌| 96/100 [14:36<00:36,  9.20s/it] 97%|█████████▋| 97/100 [14:45<00:27,  9.13s/it] 98%|█████████▊| 98/100 [14:54<00:18,  9.10s/it] 99%|█████████▉| 99/100 [15:03<00:09,  9.18s/it]100%|██████████| 100/100 [15:13<00:00,  9.21s/it]100%|██████████| 100/100 [15:13<00:00,  9.13s/it]
-Round 0: Server fixing with alpha=0.1212, iters=4/50
-Round 0: Acc=13.95%, Loss=0.0136, D_P_t=0.1049, Alpha=0.1212
-Round 1: Server fixing with alpha=0.1112, iters=4/50
-Round 2: Server fixing with alpha=0.0672, iters=2/50
-Round 3: Server fixing with alpha=0.1754, iters=6/50
-Round 4: Server fixing with alpha=0.1150, iters=4/50
-Round 5: Server fixing with alpha=0.0651, iters=2/50
-Round 6: Server fixing with alpha=0.0757, iters=2/50
-Round 7: Server fixing with alpha=0.1122, iters=4/50
-Round 8: Server fixing with alpha=0.1741, iters=6/50
-Round 9: Server fixing with alpha=0.1433, iters=5/50
-Round 10: Server fixing with alpha=0.0917, iters=3/50
-Round 10: Acc=14.27%, Loss=0.0170, D_P_t=0.0763, Alpha=0.0917
-Round 11: Server fixing with alpha=0.0984, iters=3/50
-Round 12: Server fixing with alpha=0.0533, iters=2/50
-Round 13: Server fixing with alpha=0.1029, iters=4/50
-Round 14: Server fixing with alpha=0.0953, iters=3/50
-Round 15: Server fixing with alpha=0.0911, iters=3/50
-Round 16: Server fixing with alpha=0.0998, iters=3/50
-Round 17: Server fixing with alpha=0.1189, iters=4/50
-Round 18: Server fixing with alpha=0.0984, iters=3/50
-Round 19: Server fixing with alpha=0.0967, iters=3/50
-Round 20: Server fixing with alpha=0.0603, iters=2/50
-Round 20: Acc=30.03%, Loss=0.0119, D_P_t=0.0608, Alpha=0.0603
-Round 21: Server fixing with alpha=0.0804, iters=3/50
-Round 22: Server fixing with alpha=0.1052, iters=4/50
-Round 23: Server fixing with alpha=0.0561, iters=2/50
-Round 24: Server fixing with alpha=0.0819, iters=3/50
-Round 25: Server fixing with alpha=0.0843, iters=3/50
-Round 26: Server fixing with alpha=0.0993, iters=3/50
-Round 27: Server fixing with alpha=0.0772, iters=3/50
-Round 28: Server fixing with alpha=0.1127, iters=4/50
-Round 29: Server fixing with alpha=0.0774, iters=3/50
-Round 30: Server fixing with alpha=0.0532, iters=2/50
-Round 30: Acc=42.58%, Loss=0.0061, D_P_t=0.0717, Alpha=0.0532
-Round 31: Server fixing with alpha=0.0815, iters=3/50
-Round 32: Server fixing with alpha=0.1074, iters=4/50
-Round 33: Server fixing with alpha=0.0965, iters=3/50
-Round 34: Server fixing with alpha=0.0789, iters=3/50
-Round 35: Server fixing with alpha=0.0654, iters=2/50
-Round 36: Server fixing with alpha=0.0800, iters=3/50
-Round 37: Server fixing with alpha=0.0590, iters=2/50
-Round 38: Server fixing with alpha=0.0567, iters=2/50
-Round 39: Server fixing with alpha=0.0379, iters=1/50
-Round 40: Server fixing with alpha=0.0405, iters=1/50
-Round 40: Acc=46.29%, Loss=0.0048, D_P_t=0.0586, Alpha=0.0405
-Round 41: Server fixing with alpha=0.0636, iters=2/50
-Round 42: Server fixing with alpha=0.0572, iters=2/50
-Round 43: Server fixing with alpha=0.0475, iters=1/50
-Round 44: Server fixing with alpha=0.0456, iters=1/50
-Round 45: Server fixing with alpha=0.0577, iters=2/50
-Round 46: Server fixing with alpha=0.0756, iters=3/50
-Round 47: Server fixing with alpha=0.0750, iters=2/50
-Round 48: Server fixing with alpha=0.0577, iters=2/50
-Round 49: Server fixing with alpha=0.0559, iters=2/50
-Round 50: Server fixing with alpha=0.0613, iters=2/50
-Round 50: Acc=44.95%, Loss=0.0048, D_P_t=0.1037, Alpha=0.0613
-Round 51: Server fixing with alpha=0.0365, iters=1/50
-Round 52: Server fixing with alpha=0.0584, iters=2/50
-Round 53: Server fixing with alpha=0.0729, iters=2/50
-Round 54: Server fixing with alpha=0.0498, iters=1/50
-Round 55: Server fixing with alpha=0.0499, iters=1/50
-Round 56: Server fixing with alpha=0.0676, iters=2/50
-Round 57: Server fixing with alpha=0.0398, iters=1/50
-Round 58: Server fixing with alpha=0.0465, iters=1/50
-Round 59: Server fixing with alpha=0.0759, iters=3/50
-Round 60: Server fixing with alpha=0.0554, iters=2/50
-Round 60: Acc=42.20%, Loss=0.0050, D_P_t=0.0916, Alpha=0.0554
-Round 61: Server fixing with alpha=0.0571, iters=2/50
-Round 62: Server fixing with alpha=0.0537, iters=2/50
-Round 63: Server fixing with alpha=0.0666, iters=2/50
-Round 64: Server fixing with alpha=0.0542, iters=2/50
-Round 65: Server fixing with alpha=0.0526, iters=2/50
-Round 66: Server fixing with alpha=0.0687, iters=2/50
-Round 67: Server fixing with alpha=0.0308, iters=1/50
-Round 68: Server fixing with alpha=0.0546, iters=2/50
-Round 69: Server fixing with alpha=0.0708, iters=2/50
-Round 70: Server fixing with alpha=0.0605, iters=2/50
-Round 70: Acc=41.67%, Loss=0.0043, D_P_t=0.1071, Alpha=0.0605
-Round 71: Server fixing with alpha=0.0320, iters=1/50
-Round 72: Server fixing with alpha=0.0563, iters=2/50
-Round 73: Server fixing with alpha=0.0657, iters=2/50
-Round 74: Server fixing with alpha=0.0449, iters=1/50
-Round 75: Server fixing with alpha=0.0724, iters=2/50
-Round 76: Server fixing with alpha=0.0353, iters=1/50
-Round 77: Server fixing with alpha=0.0379, iters=1/50
-Round 78: Server fixing with alpha=0.0427, iters=1/50
-Round 79: Server fixing with alpha=0.0587, iters=2/50
-Round 80: Server fixing with alpha=0.0438, iters=1/50
-Round 80: Acc=45.26%, Loss=0.0037, D_P_t=0.0814, Alpha=0.0438
-Round 81: Server fixing with alpha=0.0463, iters=1/50
-Round 82: Server fixing with alpha=0.0424, iters=1/50
-Round 83: Server fixing with alpha=0.0513, iters=2/50
-Round 84: Server fixing with alpha=0.0541, iters=2/50
-Round 85: Server fixing with alpha=0.0731, iters=2/50
-Round 86: Server fixing with alpha=0.0253, iters=1/50
-Round 87: Server fixing with alpha=0.0485, iters=1/50
-Round 88: Server fixing with alpha=0.0550, iters=2/50
-Round 89: Server fixing with alpha=0.0232, iters=0/50
-Round 90: Server fixing with alpha=0.0260, iters=1/50
-Round 90: Acc=46.14%, Loss=0.0031, D_P_t=0.0468, Alpha=0.0260
-Round 91: Server fixing with alpha=0.0336, iters=1/50
-Round 92: Server fixing with alpha=0.0626, iters=2/50
-Round 93: Server fixing with alpha=0.0397, iters=1/50
-Round 94: Server fixing with alpha=0.0643, iters=2/50
-Round 95: Server fixing with alpha=0.0545, iters=2/50
-Round 96: Server fixing with alpha=0.0602, iters=2/50
-Round 97: Server fixing with alpha=0.0527, iters=2/50
-Round 98: Server fixing with alpha=0.0587, iters=2/50
-Round 99: Server fixing with alpha=0.0554, iters=2/50
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:12,  6.80s/it]  2%|▏         | 2/100 [00:13<11:06,  6.80s/it]  3%|▎         | 3/100 [00:20<10:58,  6.79s/it]  4%|▍         | 4/100 [00:27<10:51,  6.79s/it]  5%|▌         | 5/100 [00:33<10:43,  6.78s/it]  6%|▌         | 6/100 [00:40<10:37,  6.79s/it]  7%|▋         | 7/100 [00:47<10:32,  6.80s/it]  8%|▊         | 8/100 [00:54<10:28,  6.83s/it]  9%|▉         | 9/100 [01:01<10:20,  6.82s/it] 10%|█         | 10/100 [01:08<10:13,  6.81s/it] 11%|█         | 11/100 [01:14<10:06,  6.81s/it] 12%|█▏        | 12/100 [01:21<09:58,  6.80s/it] 13%|█▎        | 13/100 [01:28<09:51,  6.79s/it] 14%|█▍        | 14/100 [01:35<09:44,  6.79s/it] 15%|█▌        | 15/100 [01:41<09:37,  6.79s/it] 16%|█▌        | 16/100 [01:48<09:30,  6.80s/it] 17%|█▋        | 17/100 [01:55<09:26,  6.83s/it] 18%|█▊        | 18/100 [02:02<09:18,  6.82s/it] 19%|█▉        | 19/100 [02:09<09:11,  6.81s/it] 20%|██        | 20/100 [02:16<09:04,  6.80s/it] 21%|██        | 21/100 [02:22<08:57,  6.80s/it] 22%|██▏       | 22/100 [02:29<08:50,  6.80s/it] 23%|██▎       | 23/100 [02:36<08:43,  6.80s/it] 24%|██▍       | 24/100 [02:43<08:35,  6.79s/it] 25%|██▌       | 25/100 [02:50<08:29,  6.79s/it] 26%|██▌       | 26/100 [02:56<08:22,  6.79s/it] 27%|██▋       | 27/100 [03:03<08:18,  6.83s/it] 28%|██▊       | 28/100 [03:10<08:11,  6.82s/it] 29%|██▉       | 29/100 [03:17<08:03,  6.81s/it] 30%|███       | 30/100 [03:24<07:55,  6.80s/it] 31%|███       | 31/100 [03:30<07:48,  6.79s/it] 32%|███▏      | 32/100 [03:37<07:41,  6.79s/it] 33%|███▎      | 33/100 [03:44<07:35,  6.80s/it] 34%|███▍      | 34/100 [03:51<07:28,  6.80s/it] 35%|███▌      | 35/100 [03:58<07:21,  6.80s/it] 36%|███▌      | 36/100 [04:04<07:17,  6.83s/it] 37%|███▋      | 37/100 [04:11<07:09,  6.82s/it] 38%|███▊      | 38/100 [04:18<07:02,  6.81s/it] 39%|███▉      | 39/100 [04:25<06:55,  6.81s/it] 40%|████      | 40/100 [04:32<06:47,  6.80s/it] 41%|████      | 41/100 [04:38<06:41,  6.80s/it] 42%|████▏     | 42/100 [04:45<06:33,  6.79s/it] 43%|████▎     | 43/100 [04:52<06:27,  6.79s/it] 44%|████▍     | 44/100 [04:59<06:20,  6.79s/it] 45%|████▌     | 45/100 [05:06<06:13,  6.79s/it] 46%|████▌     | 46/100 [05:12<06:08,  6.83s/it] 47%|████▋     | 47/100 [05:19<06:01,  6.82s/it] 48%|████▊     | 48/100 [05:26<05:54,  6.81s/it] 49%|████▉     | 49/100 [05:33<05:46,  6.80s/it] 50%|█████     | 50/100 [05:40<05:40,  6.80s/it] 51%|█████     | 51/100 [05:46<05:33,  6.81s/it] 52%|█████▏    | 52/100 [05:53<05:26,  6.80s/it] 53%|█████▎    | 53/100 [06:00<05:19,  6.79s/it] 54%|█████▍    | 54/100 [06:07<05:12,  6.79s/it] 55%|█████▌    | 55/100 [06:14<05:07,  6.83s/it] 56%|█████▌    | 56/100 [06:21<05:00,  6.82s/it] 57%|█████▋    | 57/100 [06:27<04:53,  6.82s/it] 58%|█████▊    | 58/100 [06:34<04:46,  6.81s/it] 59%|█████▉    | 59/100 [06:41<04:39,  6.81s/it] 60%|██████    | 60/100 [06:48<04:32,  6.81s/it] 61%|██████    | 61/100 [06:55<04:25,  6.80s/it] 62%|██████▏   | 62/100 [07:01<04:18,  6.80s/it] 63%|██████▎   | 63/100 [07:08<04:11,  6.80s/it] 64%|██████▍   | 64/100 [07:15<04:04,  6.80s/it] 65%|██████▌   | 65/100 [07:22<03:59,  6.83s/it] 66%|██████▌   | 66/100 [07:29<03:52,  6.83s/it] 67%|██████▋   | 67/100 [07:35<03:45,  6.82s/it] 68%|██████▊   | 68/100 [07:42<03:38,  6.82s/it] 69%|██████▉   | 69/100 [07:49<03:31,  6.81s/it] 70%|███████   | 70/100 [07:56<03:24,  6.80s/it] 71%|███████   | 71/100 [08:03<03:17,  6.80s/it] 72%|███████▏  | 72/100 [08:09<03:10,  6.80s/it] 73%|███████▎  | 73/100 [08:16<03:03,  6.80s/it] 74%|███████▍  | 74/100 [08:23<02:57,  6.83s/it] 75%|███████▌  | 75/100 [08:30<02:50,  6.82s/it] 76%|███████▌  | 76/100 [08:37<02:43,  6.82s/it] 77%|███████▋  | 77/100 [08:44<02:36,  6.81s/it] 78%|███████▊  | 78/100 [08:50<02:29,  6.81s/it] 79%|███████▉  | 79/100 [08:57<02:23,  6.81s/it] 80%|████████  | 80/100 [09:04<02:16,  6.81s/it] 81%|████████  | 81/100 [09:11<02:09,  6.81s/it] 82%|████████▏ | 82/100 [09:18<02:02,  6.81s/it] 83%|████████▎ | 83/100 [09:24<01:55,  6.81s/it] 84%|████████▍ | 84/100 [09:31<01:49,  6.84s/it] 85%|████████▌ | 85/100 [09:38<01:42,  6.83s/it] 86%|████████▌ | 86/100 [09:45<01:35,  6.82s/it] 87%|████████▋ | 87/100 [09:52<01:28,  6.82s/it] 88%|████████▊ | 88/100 [09:59<01:21,  6.81s/it] 89%|████████▉ | 89/100 [10:05<01:14,  6.80s/it] 90%|█████████ | 90/100 [10:12<01:08,  6.80s/it] 91%|█████████ | 91/100 [10:19<01:01,  6.83s/it] 92%|█████████▏| 92/100 [10:26<00:54,  6.82s/it] 93%|█████████▎| 93/100 [10:33<00:47,  6.82s/it] 94%|█████████▍| 94/100 [10:39<00:40,  6.80s/it] 95%|█████████▌| 95/100 [10:46<00:33,  6.80s/it] 96%|█████████▌| 96/100 [10:53<00:27,  6.80s/it] 97%|█████████▋| 97/100 [11:00<00:20,  6.80s/it] 98%|█████████▊| 98/100 [11:07<00:13,  6.80s/it] 99%|█████████▉| 99/100 [11:13<00:06,  6.83s/it]100%|██████████| 100/100 [11:20<00:00,  6.82s/it]100%|██████████| 100/100 [11:20<00:00,  6.81s/it]
+Round 0: Server fixing with alpha=0.5016, iters=19/50
+Round 0: Acc=16.60%, Loss=0.0131, D_P_t=0.1096, Alpha=0.5016
+Round 1: Server fixing with alpha=0.5536, iters=22/50
+Round 2: Server fixing with alpha=0.3981, iters=15/50
+Round 3: Server fixing with alpha=0.3084, iters=12/50
+Round 4: Server fixing with alpha=0.5563, iters=21/50
+Round 5: Server fixing with alpha=0.2728, iters=10/50
+Round 6: Server fixing with alpha=0.3479, iters=13/50
+Round 7: Server fixing with alpha=0.3355, iters=13/50
+Round 8: Server fixing with alpha=0.4427, iters=17/50
+Round 9: Server fixing with alpha=0.5443, iters=21/50
+Round 10: Server fixing with alpha=0.4828, iters=19/50
+Round 10: Acc=39.20%, Loss=0.0113, D_P_t=0.1553, Alpha=0.4828
+Round 11: Server fixing with alpha=0.2795, iters=11/50
+Round 12: Server fixing with alpha=0.3911, iters=15/50
+Round 13: Server fixing with alpha=0.3796, iters=15/50
+Round 14: Server fixing with alpha=0.3193, iters=12/50
+Round 15: Server fixing with alpha=0.4639, iters=18/50
+Round 16: Server fixing with alpha=0.3044, iters=12/50
+Round 17: Server fixing with alpha=0.1075, iters=4/50
+Round 18: Server fixing with alpha=0.3334, iters=13/50
+Round 19: Server fixing with alpha=0.2119, iters=8/50
+Round 20: Server fixing with alpha=0.1861, iters=7/50
+Round 20: Acc=46.35%, Loss=0.0059, D_P_t=0.0564, Alpha=0.1861
+Round 21: Server fixing with alpha=0.2266, iters=8/50
+Round 22: Server fixing with alpha=0.2646, iters=10/50
+Round 23: Server fixing with alpha=0.2821, iters=10/50
+Round 24: Server fixing with alpha=0.1921, iters=7/50
+Round 25: Server fixing with alpha=0.3710, iters=14/50
+Round 26: Server fixing with alpha=0.2638, iters=10/50
+Round 27: Server fixing with alpha=0.3943, iters=15/50
+Round 28: Server fixing with alpha=0.1553, iters=6/50
+Round 29: Server fixing with alpha=0.3908, iters=15/50
+Round 30: Server fixing with alpha=0.3434, iters=13/50
+Round 30: Acc=46.06%, Loss=0.0046, D_P_t=0.1189, Alpha=0.3434
+Round 31: Server fixing with alpha=0.3552, iters=14/50
+Round 32: Server fixing with alpha=0.3055, iters=12/50
+Round 33: Server fixing with alpha=0.3160, iters=12/50
+Round 34: Server fixing with alpha=0.2731, iters=10/50
+Round 35: Server fixing with alpha=0.2397, iters=9/50
+Round 36: Server fixing with alpha=0.3569, iters=14/50
+Round 37: Server fixing with alpha=0.2122, iters=8/50
+Round 38: Server fixing with alpha=0.2332, iters=9/50
+Round 39: Server fixing with alpha=0.1513, iters=5/50
+Round 40: Server fixing with alpha=0.3473, iters=13/50
+Round 40: Acc=47.23%, Loss=0.0033, D_P_t=0.1363, Alpha=0.3473
+Round 41: Server fixing with alpha=0.2578, iters=10/50
+Round 42: Server fixing with alpha=0.3816, iters=15/50
+Round 43: Server fixing with alpha=0.1546, iters=6/50
+Round 44: Server fixing with alpha=0.3635, iters=14/50
+Round 45: Server fixing with alpha=0.1548, iters=6/50
+Round 46: Server fixing with alpha=0.3348, iters=13/50
+Round 47: Server fixing with alpha=0.3747, iters=14/50
+Round 48: Server fixing with alpha=0.2668, iters=10/50
+Round 49: Server fixing with alpha=0.1812, iters=7/50
+Round 50: Server fixing with alpha=0.2894, iters=11/50
+Round 50: Acc=50.86%, Loss=0.0040, D_P_t=0.1117, Alpha=0.2894
+Round 51: Server fixing with alpha=0.3569, iters=14/50
+Round 52: Server fixing with alpha=0.3763, iters=14/50
+Round 53: Server fixing with alpha=0.2578, iters=10/50
+Round 54: Server fixing with alpha=0.2990, iters=11/50
+Round 55: Server fixing with alpha=0.3069, iters=12/50
+Round 56: Server fixing with alpha=0.2853, iters=11/50
+Round 57: Server fixing with alpha=0.2638, iters=10/50
+Round 58: Server fixing with alpha=0.2181, iters=8/50
+Round 59: Server fixing with alpha=0.1620, iters=6/50
+Round 60: Server fixing with alpha=0.2830, iters=11/50
+Round 60: Acc=50.66%, Loss=0.0061, D_P_t=0.1076, Alpha=0.2830
+Round 61: Server fixing with alpha=0.3084, iters=12/50
+Round 62: Server fixing with alpha=0.2243, iters=8/50
+Round 63: Server fixing with alpha=0.2575, iters=10/50
+Round 64: Server fixing with alpha=0.2555, iters=10/50
+Round 65: Server fixing with alpha=0.2564, iters=10/50
+Round 66: Server fixing with alpha=0.3158, iters=12/50
+Round 67: Server fixing with alpha=0.2512, iters=9/50
+Round 68: Server fixing with alpha=0.3011, iters=11/50
+Round 69: Server fixing with alpha=0.4719, iters=18/50
+Round 70: Server fixing with alpha=0.1340, iters=5/50
+Round 70: Acc=50.27%, Loss=0.0085, D_P_t=0.0442, Alpha=0.1340
+Round 71: Server fixing with alpha=0.2097, iters=8/50
+Round 72: Server fixing with alpha=0.2145, iters=8/50
+Round 73: Server fixing with alpha=0.3694, iters=14/50
+Round 74: Server fixing with alpha=0.2460, iters=9/50
+Round 75: Server fixing with alpha=0.2841, iters=11/50
+Round 76: Server fixing with alpha=0.2734, iters=10/50
+Round 77: Server fixing with alpha=0.4395, iters=17/50
+Round 78: Server fixing with alpha=0.2580, iters=10/50
+Round 79: Server fixing with alpha=0.2536, iters=10/50
+Round 80: Server fixing with alpha=0.2046, iters=8/50
+Round 80: Acc=47.55%, Loss=0.0039, D_P_t=0.0686, Alpha=0.2046
+Round 81: Server fixing with alpha=0.2197, iters=8/50
+Round 82: Server fixing with alpha=0.2660, iters=10/50
+Round 83: Server fixing with alpha=0.2965, iters=11/50
+Round 84: Server fixing with alpha=0.3206, iters=12/50
+Round 85: Server fixing with alpha=0.2765, iters=10/50
+Round 86: Server fixing with alpha=0.2151, iters=8/50
+Round 87: Server fixing with alpha=0.2909, iters=11/50
+Round 88: Server fixing with alpha=0.3377, iters=13/50
+Round 89: Server fixing with alpha=0.3536, iters=14/50
+Round 90: Server fixing with alpha=0.2471, iters=9/50
+Round 90: Acc=52.61%, Loss=0.0036, D_P_t=0.1016, Alpha=0.2471
+Round 91: Server fixing with alpha=0.2498, iters=9/50
+Round 92: Server fixing with alpha=0.1924, iters=7/50
+Round 93: Server fixing with alpha=0.2078, iters=8/50
+Round 94: Server fixing with alpha=0.1498, iters=5/50
+Round 95: Server fixing with alpha=0.2667, iters=10/50
+Round 96: Server fixing with alpha=0.3607, iters=14/50
+Round 97: Server fixing with alpha=0.2016, iters=8/50
+Round 98: Server fixing with alpha=0.2727, iters=10/50
+Round 99: Server fixing with alpha=0.3103, iters=12/50
 
-Results for du_C = 0.5:
-FedDU_Mut - 第20轮测试精度: 26.32%, 最终测试精度: 45.17%, 最终训练损失: 0.0035
+Results for decay_rate = 0.999:
+FedDU_Mut - 第20轮测试精度: 46.48%, 最终测试精度: 52.78%, 最终训练损失: 0.0047
 
---- 测试 du_C = 1.0 ---
+--- 测试 decay_rate = 1 ---
 FedDU-Mut初始设置:
   服务器数据量: 2500
   服务器数据非IID度: 0.166608
-  衰减率: 0.995
+  衰减率: 1
   Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:08<14:47,  8.96s/it]  2%|▏         | 2/100 [00:17<14:22,  8.80s/it]  3%|▎         | 3/100 [00:26<14:08,  8.75s/it]  4%|▍         | 4/100 [00:35<13:57,  8.72s/it]  5%|▌         | 5/100 [00:43<13:48,  8.72s/it]  6%|▌         | 6/100 [00:52<13:43,  8.76s/it]  7%|▋         | 7/100 [01:01<13:39,  8.82s/it]  8%|▊         | 8/100 [01:10<13:35,  8.87s/it]  9%|▉         | 9/100 [01:19<13:22,  8.82s/it] 10%|█         | 10/100 [01:28<13:13,  8.82s/it] 11%|█         | 11/100 [01:36<13:06,  8.83s/it] 12%|█▏        | 12/100 [01:45<12:56,  8.83s/it] 13%|█▎        | 13/100 [01:54<12:46,  8.81s/it] 14%|█▍        | 14/100 [02:03<12:39,  8.83s/it] 15%|█▌        | 15/100 [02:12<12:35,  8.89s/it] 16%|█▌        | 16/100 [02:21<12:23,  8.85s/it] 17%|█▋        | 17/100 [02:29<12:11,  8.82s/it] 18%|█▊        | 18/100 [02:38<11:59,  8.78s/it] 19%|█▉        | 19/100 [02:47<11:48,  8.74s/it] 20%|██        | 20/100 [02:56<11:41,  8.77s/it] 21%|██        | 21/100 [03:04<11:29,  8.72s/it] 22%|██▏       | 22/100 [03:13<11:16,  8.68s/it] 23%|██▎       | 23/100 [03:21<11:05,  8.64s/it] 24%|██▍       | 24/100 [03:30<10:55,  8.63s/it] 25%|██▌       | 25/100 [03:38<10:45,  8.61s/it] 26%|██▌       | 26/100 [03:47<10:43,  8.70s/it] 27%|██▋       | 27/100 [03:56<10:33,  8.68s/it] 28%|██▊       | 28/100 [04:05<10:22,  8.65s/it] 29%|██▉       | 29/100 [04:13<10:11,  8.62s/it] 30%|███       | 30/100 [04:22<10:05,  8.65s/it] 31%|███       | 31/100 [04:31<10:00,  8.70s/it] 32%|███▏      | 32/100 [04:40<09:56,  8.78s/it] 33%|███▎      | 33/100 [04:48<09:47,  8.77s/it] 34%|███▍      | 34/100 [04:57<09:37,  8.74s/it] 35%|███▌      | 35/100 [05:06<09:28,  8.75s/it] 36%|███▌      | 36/100 [05:15<09:24,  8.82s/it] 37%|███▋      | 37/100 [05:24<09:18,  8.86s/it] 38%|███▊      | 38/100 [05:32<09:04,  8.79s/it] 39%|███▉      | 39/100 [05:41<08:51,  8.71s/it] 40%|████      | 40/100 [05:50<08:48,  8.81s/it] 41%|████      | 41/100 [05:59<08:38,  8.80s/it] 42%|████▏     | 42/100 [06:07<08:28,  8.76s/it] 43%|████▎     | 43/100 [06:16<08:21,  8.80s/it] 44%|████▍     | 44/100 [06:25<08:16,  8.87s/it] 45%|████▌     | 45/100 [06:34<08:05,  8.82s/it] 46%|████▌     | 46/100 [06:43<07:55,  8.81s/it] 47%|████▋     | 47/100 [06:52<07:50,  8.88s/it] 48%|████▊     | 48/100 [07:01<07:39,  8.84s/it] 49%|████▉     | 49/100 [07:09<07:30,  8.83s/it] 50%|█████     | 50/100 [07:18<07:23,  8.86s/it] 51%|█████     | 51/100 [07:27<07:17,  8.92s/it] 52%|█████▏    | 52/100 [07:36<07:05,  8.87s/it] 53%|█████▎    | 53/100 [07:45<06:57,  8.88s/it] 54%|█████▍    | 54/100 [07:54<06:49,  8.89s/it] 55%|█████▌    | 55/100 [08:03<06:40,  8.89s/it] 56%|█████▌    | 56/100 [08:12<06:32,  8.92s/it] 57%|█████▋    | 57/100 [08:21<06:22,  8.91s/it] 58%|█████▊    | 58/100 [08:30<06:18,  9.02s/it] 59%|█████▉    | 59/100 [08:39<06:09,  9.00s/it] 60%|██████    | 60/100 [08:48<06:00,  9.02s/it] 61%|██████    | 61/100 [08:57<05:53,  9.07s/it] 62%|██████▏   | 62/100 [09:06<05:42,  9.00s/it] 63%|██████▎   | 63/100 [09:15<05:30,  8.93s/it] 64%|██████▍   | 64/100 [09:24<05:21,  8.93s/it] 65%|██████▌   | 65/100 [09:33<05:13,  8.96s/it] 66%|██████▌   | 66/100 [09:42<05:05,  8.99s/it] 67%|██████▋   | 67/100 [09:51<04:54,  8.91s/it] 68%|██████▊   | 68/100 [09:59<04:44,  8.88s/it] 69%|██████▉   | 69/100 [10:08<04:34,  8.86s/it] 70%|███████   | 70/100 [10:17<04:25,  8.84s/it] 71%|███████   | 71/100 [10:26<04:15,  8.81s/it] 72%|███████▏  | 72/100 [10:34<04:05,  8.75s/it] 73%|███████▎  | 73/100 [10:43<03:56,  8.75s/it] 74%|███████▍  | 74/100 [10:52<03:49,  8.83s/it] 75%|███████▌  | 75/100 [11:01<03:40,  8.81s/it] 76%|███████▌  | 76/100 [11:10<03:30,  8.77s/it] 77%|███████▋  | 77/100 [11:18<03:21,  8.76s/it] 78%|███████▊  | 78/100 [11:27<03:13,  8.81s/it] 79%|███████▉  | 79/100 [11:36<03:05,  8.84s/it] 80%|████████  | 80/100 [11:45<02:56,  8.85s/it] 81%|████████  | 81/100 [11:54<02:48,  8.89s/it] 82%|████████▏ | 82/100 [12:03<02:40,  8.91s/it] 83%|████████▎ | 83/100 [12:12<02:31,  8.93s/it] 84%|████████▍ | 84/100 [12:21<02:22,  8.92s/it] 85%|████████▌ | 85/100 [12:30<02:13,  8.91s/it] 86%|████████▌ | 86/100 [12:39<02:04,  8.91s/it] 87%|████████▋ | 87/100 [12:48<01:55,  8.92s/it] 88%|████████▊ | 88/100 [12:56<01:46,  8.88s/it] 89%|████████▉ | 89/100 [13:05<01:37,  8.91s/it] 90%|█████████ | 90/100 [13:14<01:29,  8.95s/it] 91%|█████████ | 91/100 [13:23<01:20,  8.92s/it] 92%|█████████▏| 92/100 [13:32<01:11,  8.98s/it] 93%|█████████▎| 93/100 [13:41<01:02,  8.99s/it] 94%|█████████▍| 94/100 [13:50<00:53,  8.97s/it] 95%|█████████▌| 95/100 [13:59<00:44,  8.97s/it] 96%|█████████▌| 96/100 [14:08<00:35,  8.94s/it] 97%|█████████▋| 97/100 [14:17<00:26,  8.92s/it] 98%|█████████▊| 98/100 [14:26<00:17,  8.91s/it] 99%|█████████▉| 99/100 [14:35<00:08,  8.95s/it]100%|██████████| 100/100 [14:44<00:00,  8.96s/it]100%|██████████| 100/100 [14:44<00:00,  8.84s/it]
-Round 0: Server fixing with alpha=0.3275, iters=13/50
-Round 0: Acc=17.04%, Loss=0.0137, D_P_t=0.1516, Alpha=0.3275
-Round 1: Server fixing with alpha=0.3710, iters=14/50
-Round 2: Server fixing with alpha=0.2091, iters=8/50
-Round 3: Server fixing with alpha=0.1866, iters=7/50
-Round 4: Server fixing with alpha=0.1716, iters=6/50
-Round 5: Server fixing with alpha=0.1466, iters=5/50
-Round 6: Server fixing with alpha=0.1932, iters=7/50
-Round 7: Server fixing with alpha=0.1562, iters=6/50
-Round 8: Server fixing with alpha=0.2094, iters=8/50
-Round 9: Server fixing with alpha=0.1857, iters=7/50
-Round 10: Server fixing with alpha=0.2056, iters=8/50
-Round 10: Acc=30.60%, Loss=0.0135, D_P_t=0.1106, Alpha=0.2056
-Round 11: Server fixing with alpha=0.2419, iters=9/50
-Round 12: Server fixing with alpha=0.1084, iters=4/50
-Round 13: Server fixing with alpha=0.2009, iters=7/50
-Round 14: Server fixing with alpha=0.1057, iters=4/50
-Round 15: Server fixing with alpha=0.2075, iters=8/50
-Round 16: Server fixing with alpha=0.0896, iters=3/50
-Round 17: Server fixing with alpha=0.1684, iters=6/50
-Round 18: Server fixing with alpha=0.1621, iters=6/50
-Round 19: Server fixing with alpha=0.0885, iters=3/50
-Round 20: Server fixing with alpha=0.0951, iters=3/50
-Round 20: Acc=43.96%, Loss=0.0062, D_P_t=0.0590, Alpha=0.0951
-Round 21: Server fixing with alpha=0.2019, iters=7/50
-Round 22: Server fixing with alpha=0.0498, iters=1/50
-Round 23: Server fixing with alpha=0.1452, iters=5/50
-Round 24: Server fixing with alpha=0.1261, iters=4/50
-Round 25: Server fixing with alpha=0.0871, iters=3/50
-Round 26: Server fixing with alpha=0.1371, iters=5/50
-Round 27: Server fixing with alpha=0.1004, iters=3/50
-Round 28: Server fixing with alpha=0.2012, iters=7/50
-Round 29: Server fixing with alpha=0.1266, iters=5/50
-Round 30: Server fixing with alpha=0.0293, iters=1/50
-Round 30: Acc=49.31%, Loss=0.0066, D_P_t=0.0189, Alpha=0.0293
-Round 31: Server fixing with alpha=0.1441, iters=5/50
-Round 32: Server fixing with alpha=0.1420, iters=5/50
-Round 33: Server fixing with alpha=0.1101, iters=4/50
-Round 34: Server fixing with alpha=0.0846, iters=3/50
-Round 35: Server fixing with alpha=0.1586, iters=6/50
-Round 36: Server fixing with alpha=0.1160, iters=4/50
-Round 37: Server fixing with alpha=0.1423, iters=5/50
-Round 38: Server fixing with alpha=0.1495, iters=5/50
-Round 39: Server fixing with alpha=0.2068, iters=8/50
-Round 40: Server fixing with alpha=0.1835, iters=7/50
-Round 40: Acc=43.56%, Loss=0.0051, D_P_t=0.1546, Alpha=0.1835
-Round 41: Server fixing with alpha=0.0739, iters=2/50
-Round 42: Server fixing with alpha=0.0708, iters=2/50
-Round 43: Server fixing with alpha=0.0542, iters=2/50
-Round 44: Server fixing with alpha=0.1135, iters=4/50
-Round 45: Server fixing with alpha=0.1244, iters=4/50
-Round 46: Server fixing with alpha=0.1272, iters=5/50
-Round 47: Server fixing with alpha=0.0545, iters=2/50
-Round 48: Server fixing with alpha=0.1434, iters=5/50
-Round 49: Server fixing with alpha=0.1164, iters=4/50
-Round 50: Server fixing with alpha=0.1550, iters=6/50
-Round 50: Acc=51.44%, Loss=0.0041, D_P_t=0.1754, Alpha=0.1550
-Round 51: Server fixing with alpha=0.0729, iters=2/50
-Round 52: Server fixing with alpha=0.0914, iters=3/50
-Round 53: Server fixing with alpha=0.0988, iters=3/50
-Round 54: Server fixing with alpha=0.0655, iters=2/50
-Round 55: Server fixing with alpha=0.1154, iters=4/50
-Round 56: Server fixing with alpha=0.1023, iters=3/50
-Round 57: Server fixing with alpha=0.1516, iters=6/50
-Round 58: Server fixing with alpha=0.0961, iters=3/50
-Round 59: Server fixing with alpha=0.1343, iters=5/50
-Round 60: Server fixing with alpha=0.1167, iters=4/50
-Round 60: Acc=49.06%, Loss=0.0029, D_P_t=0.1136, Alpha=0.1167
-Round 61: Server fixing with alpha=0.1802, iters=7/50
-Round 62: Server fixing with alpha=0.0695, iters=2/50
-Round 63: Server fixing with alpha=0.1207, iters=4/50
-Round 64: Server fixing with alpha=0.1088, iters=4/50
-Round 65: Server fixing with alpha=0.1399, iters=5/50
-Round 66: Server fixing with alpha=0.0693, iters=2/50
-Round 67: Server fixing with alpha=0.0958, iters=3/50
-Round 68: Server fixing with alpha=0.1378, iters=5/50
-Round 69: Server fixing with alpha=0.1166, iters=4/50
-Round 70: Server fixing with alpha=0.1149, iters=4/50
-Round 70: Acc=50.13%, Loss=0.0039, D_P_t=0.1244, Alpha=0.1149
-Round 71: Server fixing with alpha=0.0910, iters=3/50
-Round 72: Server fixing with alpha=0.0637, iters=2/50
-Round 73: Server fixing with alpha=0.1506, iters=5/50
-Round 74: Server fixing with alpha=0.0411, iters=1/50
-Round 75: Server fixing with alpha=0.0871, iters=3/50
-Round 76: Server fixing with alpha=0.0851, iters=3/50
-Round 77: Server fixing with alpha=0.1006, iters=4/50
-Round 78: Server fixing with alpha=0.1095, iters=4/50
-Round 79: Server fixing with alpha=0.1438, iters=5/50
-Round 80: Server fixing with alpha=0.0464, iters=1/50
-Round 80: Acc=50.31%, Loss=0.0036, D_P_t=0.0423, Alpha=0.0464
-Round 81: Server fixing with alpha=0.1010, iters=4/50
-Round 82: Server fixing with alpha=0.0742, iters=2/50
-Round 83: Server fixing with alpha=0.1022, iters=4/50
-Round 84: Server fixing with alpha=0.1021, iters=4/50
-Round 85: Server fixing with alpha=0.0639, iters=2/50
-Round 86: Server fixing with alpha=0.0598, iters=2/50
-Round 87: Server fixing with alpha=0.1359, iters=5/50
-Round 88: Server fixing with alpha=0.1298, iters=5/50
-Round 89: Server fixing with alpha=0.0980, iters=3/50
-Round 90: Server fixing with alpha=0.1187, iters=4/50
-Round 90: Acc=49.42%, Loss=0.0037, D_P_t=0.1467, Alpha=0.1187
-Round 91: Server fixing with alpha=0.0962, iters=3/50
-Round 92: Server fixing with alpha=0.0310, iters=1/50
-Round 93: Server fixing with alpha=0.0669, iters=2/50
-Round 94: Server fixing with alpha=0.1211, iters=4/50
-Round 95: Server fixing with alpha=0.0722, iters=2/50
-Round 96: Server fixing with alpha=0.0641, iters=2/50
-Round 97: Server fixing with alpha=0.1422, iters=5/50
-Round 98: Server fixing with alpha=0.0989, iters=3/50
-Round 99: Server fixing with alpha=0.1128, iters=4/50
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:13,  6.80s/it]  2%|▏         | 2/100 [00:13<11:07,  6.81s/it]  3%|▎         | 3/100 [00:20<10:59,  6.80s/it]  4%|▍         | 4/100 [00:27<10:52,  6.80s/it]  5%|▌         | 5/100 [00:33<10:45,  6.80s/it]  6%|▌         | 6/100 [00:40<10:42,  6.84s/it]  7%|▋         | 7/100 [00:47<10:35,  6.83s/it]  8%|▊         | 8/100 [00:54<10:27,  6.82s/it]  9%|▉         | 9/100 [01:01<10:19,  6.81s/it] 10%|█         | 10/100 [01:08<10:11,  6.80s/it] 11%|█         | 11/100 [01:14<10:04,  6.80s/it] 12%|█▏        | 12/100 [01:21<09:58,  6.80s/it] 13%|█▎        | 13/100 [01:28<09:51,  6.80s/it] 14%|█▍        | 14/100 [01:35<09:48,  6.84s/it] 15%|█▌        | 15/100 [01:42<09:39,  6.82s/it] 16%|█▌        | 16/100 [01:48<09:32,  6.81s/it] 17%|█▋        | 17/100 [01:55<09:25,  6.81s/it] 18%|█▊        | 18/100 [02:02<09:18,  6.81s/it] 19%|█▉        | 19/100 [02:09<09:10,  6.79s/it] 20%|██        | 20/100 [02:16<09:03,  6.80s/it] 21%|██        | 21/100 [02:22<08:57,  6.80s/it] 22%|██▏       | 22/100 [02:29<08:52,  6.83s/it] 23%|██▎       | 23/100 [02:36<08:44,  6.81s/it] 24%|██▍       | 24/100 [02:43<08:36,  6.79s/it] 25%|██▌       | 25/100 [02:50<08:29,  6.80s/it] 26%|██▌       | 26/100 [02:56<08:22,  6.79s/it] 27%|██▋       | 27/100 [03:03<08:16,  6.80s/it] 28%|██▊       | 28/100 [03:10<08:09,  6.79s/it] 29%|██▉       | 29/100 [03:17<08:02,  6.80s/it] 30%|███       | 30/100 [03:24<07:57,  6.82s/it] 31%|███       | 31/100 [03:31<07:50,  6.82s/it] 32%|███▏      | 32/100 [03:37<07:43,  6.81s/it] 33%|███▎      | 33/100 [03:44<07:36,  6.81s/it] 34%|███▍      | 34/100 [03:51<07:29,  6.81s/it] 35%|███▌      | 35/100 [03:58<07:22,  6.81s/it] 36%|███▌      | 36/100 [04:05<07:15,  6.81s/it] 37%|███▋      | 37/100 [04:11<07:08,  6.80s/it] 38%|███▊      | 38/100 [04:18<07:03,  6.83s/it] 39%|███▉      | 39/100 [04:25<06:55,  6.82s/it] 40%|████      | 40/100 [04:32<06:48,  6.81s/it] 41%|████      | 41/100 [04:39<06:40,  6.80s/it] 42%|████▏     | 42/100 [04:45<06:34,  6.80s/it] 43%|████▎     | 43/100 [04:52<06:27,  6.80s/it] 44%|████▍     | 44/100 [04:59<06:20,  6.80s/it] 45%|████▌     | 45/100 [05:06<06:13,  6.79s/it] 46%|████▌     | 46/100 [05:13<06:08,  6.82s/it] 47%|████▋     | 47/100 [05:19<06:01,  6.82s/it] 48%|████▊     | 48/100 [05:26<05:54,  6.81s/it] 49%|████▉     | 49/100 [05:33<05:47,  6.81s/it] 50%|█████     | 50/100 [05:40<05:40,  6.81s/it] 51%|█████     | 51/100 [05:47<05:33,  6.81s/it] 52%|█████▏    | 52/100 [05:53<05:26,  6.81s/it] 53%|█████▎    | 53/100 [06:00<05:19,  6.80s/it] 54%|█████▍    | 54/100 [06:07<05:14,  6.83s/it] 55%|█████▌    | 55/100 [06:14<05:06,  6.82s/it] 56%|█████▌    | 56/100 [06:21<04:59,  6.80s/it] 57%|█████▋    | 57/100 [06:27<04:52,  6.80s/it] 58%|█████▊    | 58/100 [06:34<04:45,  6.80s/it] 59%|█████▉    | 59/100 [06:41<04:38,  6.80s/it] 60%|██████    | 60/100 [06:48<04:31,  6.78s/it] 61%|██████    | 61/100 [06:55<04:24,  6.79s/it] 62%|██████▏   | 62/100 [07:01<04:18,  6.81s/it] 63%|██████▎   | 63/100 [07:08<04:11,  6.80s/it] 64%|██████▍   | 64/100 [07:15<04:04,  6.80s/it] 65%|██████▌   | 65/100 [07:22<03:58,  6.80s/it] 66%|██████▌   | 66/100 [07:29<03:51,  6.80s/it] 67%|██████▋   | 67/100 [07:35<03:44,  6.79s/it] 68%|██████▊   | 68/100 [07:42<03:37,  6.80s/it] 69%|██████▉   | 69/100 [07:49<03:30,  6.80s/it] 70%|███████   | 70/100 [07:56<03:24,  6.83s/it] 71%|███████   | 71/100 [08:03<03:17,  6.82s/it] 72%|███████▏  | 72/100 [08:10<03:10,  6.81s/it] 73%|███████▎  | 73/100 [08:16<03:03,  6.81s/it] 74%|███████▍  | 74/100 [08:23<02:56,  6.81s/it] 75%|███████▌  | 75/100 [08:30<02:50,  6.80s/it] 76%|███████▌  | 76/100 [08:37<02:43,  6.80s/it] 77%|███████▋  | 77/100 [08:44<02:36,  6.80s/it] 78%|███████▊  | 78/100 [08:50<02:30,  6.83s/it] 79%|███████▉  | 79/100 [08:57<02:23,  6.82s/it] 80%|████████  | 80/100 [09:04<02:16,  6.81s/it] 81%|████████  | 81/100 [09:11<02:09,  6.81s/it] 82%|████████▏ | 82/100 [09:18<02:02,  6.81s/it] 83%|████████▎ | 83/100 [09:24<01:55,  6.81s/it] 84%|████████▍ | 84/100 [09:31<01:48,  6.80s/it] 85%|████████▌ | 85/100 [09:38<01:42,  6.80s/it] 86%|████████▌ | 86/100 [09:45<01:35,  6.83s/it] 87%|████████▋ | 87/100 [09:52<01:28,  6.82s/it] 88%|████████▊ | 88/100 [09:59<01:21,  6.80s/it] 89%|████████▉ | 89/100 [10:05<01:14,  6.80s/it] 90%|█████████ | 90/100 [10:12<01:08,  6.80s/it] 91%|█████████ | 91/100 [10:19<01:01,  6.80s/it] 92%|█████████▏| 92/100 [10:26<00:54,  6.80s/it] 93%|█████████▎| 93/100 [10:33<00:47,  6.80s/it] 94%|█████████▍| 94/100 [10:39<00:40,  6.83s/it] 95%|█████████▌| 95/100 [10:46<00:34,  6.82s/it] 96%|█████████▌| 96/100 [10:53<00:27,  6.82s/it] 97%|█████████▋| 97/100 [11:00<00:20,  6.81s/it] 98%|█████████▊| 98/100 [11:07<00:13,  6.81s/it] 99%|█████████▉| 99/100 [11:13<00:06,  6.81s/it]100%|██████████| 100/100 [11:20<00:00,  6.81s/it]100%|██████████| 100/100 [11:20<00:00,  6.81s/it]
+Round 0: Server fixing with alpha=0.6725, iters=26/50
+Round 0: Acc=21.40%, Loss=0.0135, D_P_t=0.1710, Alpha=0.6725
+Round 1: Server fixing with alpha=0.3860, iters=15/50
+Round 2: Server fixing with alpha=0.4649, iters=18/50
+Round 3: Server fixing with alpha=0.4013, iters=15/50
+Round 4: Server fixing with alpha=0.4870, iters=19/50
+Round 5: Server fixing with alpha=0.5732, iters=22/50
+Round 6: Server fixing with alpha=0.4954, iters=19/50
+Round 7: Server fixing with alpha=0.2471, iters=9/50
+Round 8: Server fixing with alpha=0.5072, iters=20/50
+Round 9: Server fixing with alpha=0.5522, iters=21/50
+Round 10: Server fixing with alpha=0.4151, iters=16/50
+Round 10: Acc=34.93%, Loss=0.0103, D_P_t=0.1047, Alpha=0.4151
+Round 11: Server fixing with alpha=0.4292, iters=17/50
+Round 12: Server fixing with alpha=0.4369, iters=17/50
+Round 13: Server fixing with alpha=0.3228, iters=12/50
+Round 14: Server fixing with alpha=0.4140, iters=16/50
+Round 15: Server fixing with alpha=0.3372, iters=13/50
+Round 16: Server fixing with alpha=0.2713, iters=10/50
+Round 17: Server fixing with alpha=0.2604, iters=10/50
+Round 18: Server fixing with alpha=0.3438, iters=13/50
+Round 19: Server fixing with alpha=0.3141, iters=12/50
+Round 20: Server fixing with alpha=0.2039, iters=8/50
+Round 20: Acc=46.76%, Loss=0.0055, D_P_t=0.0619, Alpha=0.2039
+Round 21: Server fixing with alpha=0.2524, iters=10/50
+Round 22: Server fixing with alpha=0.1188, iters=4/50
+Round 23: Server fixing with alpha=0.3081, iters=12/50
+Round 24: Server fixing with alpha=0.3097, iters=12/50
+Round 25: Server fixing with alpha=0.2937, iters=11/50
+Round 26: Server fixing with alpha=0.2673, iters=10/50
+Round 27: Server fixing with alpha=0.3867, iters=15/50
+Round 28: Server fixing with alpha=0.1125, iters=4/50
+Round 29: Server fixing with alpha=0.4831, iters=19/50
+Round 30: Server fixing with alpha=0.2591, iters=10/50
+Round 30: Acc=51.33%, Loss=0.0047, D_P_t=0.0938, Alpha=0.2591
+Round 31: Server fixing with alpha=0.1824, iters=7/50
+Round 32: Server fixing with alpha=0.2013, iters=8/50
+Round 33: Server fixing with alpha=0.2140, iters=8/50
+Round 34: Server fixing with alpha=0.3407, iters=13/50
+Round 35: Server fixing with alpha=0.2378, iters=9/50
+Round 36: Server fixing with alpha=0.3668, iters=14/50
+Round 37: Server fixing with alpha=0.4255, iters=16/50
+Round 38: Server fixing with alpha=0.3320, iters=13/50
+Round 39: Server fixing with alpha=0.3027, iters=12/50
+Round 40: Server fixing with alpha=0.2886, iters=11/50
+Round 40: Acc=52.45%, Loss=0.0033, D_P_t=0.1119, Alpha=0.2886
+Round 41: Server fixing with alpha=0.2733, iters=10/50
+Round 42: Server fixing with alpha=0.3808, iters=15/50
+Round 43: Server fixing with alpha=0.1777, iters=7/50
+Round 44: Server fixing with alpha=0.1446, iters=5/50
+Round 45: Server fixing with alpha=0.2877, iters=11/50
+Round 46: Server fixing with alpha=0.2985, iters=11/50
+Round 47: Server fixing with alpha=0.1242, iters=4/50
+Round 48: Server fixing with alpha=0.3706, iters=14/50
+Round 49: Server fixing with alpha=0.1540, iters=6/50
+Round 50: Server fixing with alpha=0.2006, iters=7/50
+Round 50: Acc=52.88%, Loss=0.0049, D_P_t=0.0702, Alpha=0.2006
+Round 51: Server fixing with alpha=0.2185, iters=8/50
+Round 52: Server fixing with alpha=0.4038, iters=16/50
+Round 53: Server fixing with alpha=0.2842, iters=11/50
+Round 54: Server fixing with alpha=0.3567, iters=14/50
+Round 55: Server fixing with alpha=0.3594, iters=14/50
+Round 56: Server fixing with alpha=0.1155, iters=4/50
+Round 57: Server fixing with alpha=0.2742, iters=10/50
+Round 58: Server fixing with alpha=0.5084, iters=20/50
+Round 59: Server fixing with alpha=0.2065, iters=8/50
+Round 60: Server fixing with alpha=0.2557, iters=10/50
+Round 60: Acc=52.76%, Loss=0.0043, D_P_t=0.0959, Alpha=0.2557
+Round 61: Server fixing with alpha=0.3358, iters=13/50
+Round 62: Server fixing with alpha=0.3399, iters=13/50
+Round 63: Server fixing with alpha=0.2036, iters=8/50
+Round 64: Server fixing with alpha=0.3761, iters=14/50
+Round 65: Server fixing with alpha=0.2811, iters=11/50
+Round 66: Server fixing with alpha=0.2705, iters=10/50
+Round 67: Server fixing with alpha=0.2218, iters=8/50
+Round 68: Server fixing with alpha=0.2930, iters=11/50
+Round 69: Server fixing with alpha=0.1579, iters=6/50
+Round 70: Server fixing with alpha=0.2882, iters=11/50
+Round 70: Acc=49.87%, Loss=0.0026, D_P_t=0.1058, Alpha=0.2882
+Round 71: Server fixing with alpha=0.3134, iters=12/50
+Round 72: Server fixing with alpha=0.1934, iters=7/50
+Round 73: Server fixing with alpha=0.4246, iters=16/50
+Round 74: Server fixing with alpha=0.3286, iters=13/50
+Round 75: Server fixing with alpha=0.1651, iters=6/50
+Round 76: Server fixing with alpha=0.3191, iters=12/50
+Round 77: Server fixing with alpha=0.1705, iters=6/50
+Round 78: Server fixing with alpha=0.1192, iters=4/50
+Round 79: Server fixing with alpha=0.2836, iters=11/50
+Round 80: Server fixing with alpha=0.2916, iters=11/50
+Round 80: Acc=52.78%, Loss=0.0029, D_P_t=0.1148, Alpha=0.2916
+Round 81: Server fixing with alpha=0.1776, iters=7/50
+Round 82: Server fixing with alpha=0.2510, iters=9/50
+Round 83: Server fixing with alpha=0.3797, iters=15/50
+Round 84: Server fixing with alpha=0.4023, iters=16/50
+Round 85: Server fixing with alpha=0.3666, iters=14/50
+Round 86: Server fixing with alpha=0.1953, iters=7/50
+Round 87: Server fixing with alpha=0.3127, iters=12/50
+Round 88: Server fixing with alpha=0.2660, iters=10/50
+Round 89: Server fixing with alpha=0.3122, iters=12/50
+Round 90: Server fixing with alpha=0.3084, iters=12/50
+Round 90: Acc=52.01%, Loss=0.0025, D_P_t=0.1172, Alpha=0.3084
+Round 91: Server fixing with alpha=0.2234, iters=8/50
+Round 92: Server fixing with alpha=0.1898, iters=7/50
+Round 93: Server fixing with alpha=0.3037, iters=12/50
+Round 94: Server fixing with alpha=0.3365, iters=13/50
+Round 95: Server fixing with alpha=0.4529, iters=17/50
+Round 96: Server fixing with alpha=0.2494, iters=9/50
+Round 97: Server fixing with alpha=0.0956, iters=3/50
+Round 98: Server fixing with alpha=0.1135, iters=4/50
+Round 99: Server fixing with alpha=0.2249, iters=8/50
 
-Results for du_C = 1.0:
-FedDU_Mut - 第20轮测试精度: 43.07%, 最终测试精度: 46.66%, 最终训练损失: 0.0041
+Results for decay_rate = 1:
+FedDU_Mut - 第20轮测试精度: 47.64%, 最终测试精度: 52.46%, 最终训练损失: 0.0023
 
---- 测试 du_C = 1.5 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.166608
-  衰减率: 0.995
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:08<14:39,  8.89s/it]  2%|▏         | 2/100 [00:17<14:36,  8.94s/it]  3%|▎         | 3/100 [00:26<14:31,  8.99s/it]  4%|▍         | 4/100 [00:35<14:22,  8.99s/it]  5%|▌         | 5/100 [00:44<14:13,  8.98s/it]  6%|▌         | 6/100 [00:54<14:09,  9.04s/it]  7%|▋         | 7/100 [01:02<13:57,  9.00s/it]  8%|▊         | 8/100 [01:11<13:46,  8.99s/it]  9%|▉         | 9/100 [01:20<13:36,  8.97s/it] 10%|█         | 10/100 [01:29<13:30,  9.01s/it] 11%|█         | 11/100 [01:38<13:17,  8.96s/it] 12%|█▏        | 12/100 [01:47<13:08,  8.96s/it] 13%|█▎        | 13/100 [01:56<12:54,  8.90s/it] 14%|█▍        | 14/100 [02:05<12:44,  8.88s/it] 15%|█▌        | 15/100 [02:14<12:37,  8.91s/it] 16%|█▌        | 16/100 [02:23<12:30,  8.94s/it] 17%|█▋        | 17/100 [02:32<12:16,  8.88s/it] 18%|█▊        | 18/100 [02:40<12:08,  8.89s/it] 19%|█▉        | 19/100 [02:49<11:59,  8.88s/it] 20%|██        | 20/100 [02:58<11:53,  8.91s/it] 21%|██        | 21/100 [03:07<11:46,  8.94s/it] 22%|██▏       | 22/100 [03:16<11:38,  8.95s/it] 23%|██▎       | 23/100 [03:25<11:29,  8.95s/it] 24%|██▍       | 24/100 [03:34<11:22,  8.98s/it] 25%|██▌       | 25/100 [03:43<11:13,  8.97s/it] 26%|██▌       | 26/100 [03:52<11:03,  8.97s/it] 27%|██▋       | 27/100 [04:01<10:48,  8.88s/it] 28%|██▊       | 28/100 [04:10<10:38,  8.87s/it] 29%|██▉       | 29/100 [04:19<10:29,  8.86s/it] 30%|███       | 30/100 [04:28<10:22,  8.89s/it] 31%|███       | 31/100 [04:36<10:13,  8.90s/it] 32%|███▏      | 32/100 [04:45<10:04,  8.89s/it] 33%|███▎      | 33/100 [04:54<09:57,  8.91s/it] 34%|███▍      | 34/100 [05:03<09:47,  8.90s/it] 35%|███▌      | 35/100 [05:12<09:41,  8.95s/it] 36%|███▌      | 36/100 [05:21<09:29,  8.91s/it] 37%|███▋      | 37/100 [05:30<09:20,  8.90s/it] 38%|███▊      | 38/100 [05:39<09:09,  8.87s/it] 39%|███▉      | 39/100 [05:48<08:59,  8.85s/it] 40%|████      | 40/100 [05:56<08:53,  8.89s/it] 41%|████      | 41/100 [06:05<08:43,  8.87s/it] 42%|████▏     | 42/100 [06:14<08:33,  8.85s/it] 43%|████▎     | 43/100 [06:23<08:24,  8.85s/it] 44%|████▍     | 44/100 [06:32<08:15,  8.85s/it] 45%|████▌     | 45/100 [06:41<08:05,  8.83s/it] 46%|████▌     | 46/100 [06:50<07:58,  8.87s/it] 47%|████▋     | 47/100 [06:58<07:49,  8.86s/it] 48%|████▊     | 48/100 [07:07<07:39,  8.84s/it] 49%|████▉     | 49/100 [07:16<07:30,  8.83s/it] 50%|█████     | 50/100 [07:25<07:24,  8.89s/it] 51%|█████     | 51/100 [07:34<07:14,  8.86s/it] 52%|█████▏    | 52/100 [07:43<07:06,  8.89s/it] 53%|█████▎    | 53/100 [07:52<06:55,  8.84s/it] 54%|█████▍    | 54/100 [08:00<06:45,  8.83s/it] 55%|█████▌    | 55/100 [08:09<06:37,  8.83s/it] 56%|█████▌    | 56/100 [08:18<06:32,  8.91s/it] 57%|█████▋    | 57/100 [08:27<06:23,  8.93s/it] 58%|█████▊    | 58/100 [08:36<06:13,  8.90s/it] 59%|█████▉    | 59/100 [08:45<06:07,  8.96s/it] 60%|██████    | 60/100 [08:54<05:57,  8.94s/it] 61%|██████    | 61/100 [09:03<05:48,  8.93s/it] 62%|██████▏   | 62/100 [09:12<05:39,  8.94s/it] 63%|██████▎   | 63/100 [09:21<05:29,  8.91s/it] 64%|██████▍   | 64/100 [09:30<05:19,  8.87s/it] 65%|██████▌   | 65/100 [09:39<05:12,  8.94s/it] 66%|██████▌   | 66/100 [09:48<05:04,  8.95s/it] 67%|██████▋   | 67/100 [09:57<04:55,  8.97s/it] 68%|██████▊   | 68/100 [10:05<04:45,  8.92s/it] 69%|██████▉   | 69/100 [10:14<04:34,  8.87s/it] 70%|███████   | 70/100 [10:23<04:25,  8.84s/it] 71%|███████   | 71/100 [10:32<04:16,  8.85s/it] 72%|███████▏  | 72/100 [10:41<04:09,  8.89s/it] 73%|███████▎  | 73/100 [10:50<04:00,  8.92s/it] 74%|███████▍  | 74/100 [10:59<03:51,  8.89s/it] 75%|███████▌  | 75/100 [11:08<03:42,  8.91s/it] 76%|███████▌  | 76/100 [11:16<03:32,  8.85s/it] 77%|███████▋  | 77/100 [11:25<03:23,  8.84s/it] 78%|███████▊  | 78/100 [11:34<03:15,  8.90s/it] 79%|███████▉  | 79/100 [11:43<03:07,  8.92s/it] 80%|████████  | 80/100 [11:52<02:59,  8.99s/it] 81%|████████  | 81/100 [12:01<02:49,  8.95s/it] 82%|████████▏ | 82/100 [12:10<02:40,  8.91s/it] 83%|████████▎ | 83/100 [12:19<02:30,  8.88s/it] 84%|████████▍ | 84/100 [12:28<02:21,  8.87s/it] 85%|████████▌ | 85/100 [12:37<02:13,  8.91s/it] 86%|████████▌ | 86/100 [12:46<02:04,  8.91s/it] 87%|████████▋ | 87/100 [12:54<01:55,  8.88s/it] 88%|████████▊ | 88/100 [13:03<01:46,  8.92s/it] 89%|████████▉ | 89/100 [13:12<01:37,  8.87s/it] 90%|█████████ | 90/100 [13:21<01:28,  8.87s/it] 91%|█████████ | 91/100 [13:30<01:20,  8.91s/it] 92%|█████████▏| 92/100 [13:39<01:11,  8.94s/it] 93%|█████████▎| 93/100 [13:48<01:02,  8.95s/it] 94%|█████████▍| 94/100 [13:57<00:53,  8.96s/it] 95%|█████████▌| 95/100 [14:06<00:44,  8.95s/it] 96%|█████████▌| 96/100 [14:15<00:35,  8.93s/it] 97%|█████████▋| 97/100 [14:24<00:26,  8.93s/it] 98%|█████████▊| 98/100 [14:33<00:17,  8.94s/it] 99%|█████████▉| 99/100 [14:42<00:08,  8.95s/it]100%|██████████| 100/100 [14:48<00:00,  8.33s/it]100%|██████████| 100/100 [14:48<00:00,  8.89s/it]
-Round 0: Server fixing with alpha=0.3750, iters=14/50
-Round 0: Acc=16.06%, Loss=0.0131, D_P_t=0.1096, Alpha=0.3750
-Round 1: Server fixing with alpha=0.4135, iters=16/50
-Round 2: Server fixing with alpha=0.2813, iters=10/50
-Round 3: Server fixing with alpha=0.2228, iters=8/50
-Round 4: Server fixing with alpha=0.4034, iters=15/50
-Round 5: Server fixing with alpha=0.2127, iters=8/50
-Round 6: Server fixing with alpha=0.2612, iters=10/50
-Round 7: Server fixing with alpha=0.2728, iters=10/50
-Round 8: Server fixing with alpha=0.3333, iters=13/50
-Round 9: Server fixing with alpha=0.3828, iters=15/50
-Round 10: Server fixing with alpha=0.3865, iters=15/50
-Round 10: Acc=31.08%, Loss=0.0168, D_P_t=0.1553, Alpha=0.3865
-Round 11: Server fixing with alpha=0.2274, iters=9/50
-Round 12: Server fixing with alpha=0.3207, iters=12/50
-Round 13: Server fixing with alpha=0.2969, iters=11/50
-Round 14: Server fixing with alpha=0.2461, iters=9/50
-Round 15: Server fixing with alpha=0.3331, iters=13/50
-Round 16: Server fixing with alpha=0.2263, iters=8/50
-Round 17: Server fixing with alpha=0.0799, iters=3/50
-Round 18: Server fixing with alpha=0.2501, iters=9/50
-Round 19: Server fixing with alpha=0.1552, iters=6/50
-Round 20: Server fixing with alpha=0.1343, iters=5/50
-Round 20: Acc=44.53%, Loss=0.0072, D_P_t=0.0564, Alpha=0.1343
-Round 21: Server fixing with alpha=0.1614, iters=6/50
-Round 22: Server fixing with alpha=0.1873, iters=7/50
-Round 23: Server fixing with alpha=0.2109, iters=8/50
-Round 24: Server fixing with alpha=0.1362, iters=5/50
-Round 25: Server fixing with alpha=0.2521, iters=9/50
-Round 26: Server fixing with alpha=0.1821, iters=7/50
-Round 27: Server fixing with alpha=0.2660, iters=10/50
-Round 28: Server fixing with alpha=0.1050, iters=4/50
-Round 29: Server fixing with alpha=0.2597, iters=10/50
-Round 30: Server fixing with alpha=0.2314, iters=9/50
-Round 30: Acc=45.59%, Loss=0.0049, D_P_t=0.1189, Alpha=0.2314
-Round 31: Server fixing with alpha=0.2421, iters=9/50
-Round 32: Server fixing with alpha=0.1965, iters=7/50
-Round 33: Server fixing with alpha=0.2047, iters=8/50
-Round 34: Server fixing with alpha=0.1792, iters=7/50
-Round 35: Server fixing with alpha=0.1593, iters=6/50
-Round 36: Server fixing with alpha=0.2201, iters=8/50
-Round 37: Server fixing with alpha=0.1392, iters=5/50
-Round 38: Server fixing with alpha=0.1463, iters=5/50
-Round 39: Server fixing with alpha=0.0973, iters=3/50
-Round 40: Server fixing with alpha=0.2169, iters=8/50
-Round 40: Acc=49.29%, Loss=0.0034, D_P_t=0.1363, Alpha=0.2169
-Round 41: Server fixing with alpha=0.1595, iters=6/50
-Round 42: Server fixing with alpha=0.2331, iters=9/50
-Round 43: Server fixing with alpha=0.0997, iters=3/50
-Round 44: Server fixing with alpha=0.2295, iters=8/50
-Round 45: Server fixing with alpha=0.0976, iters=3/50
-Round 46: Server fixing with alpha=0.2067, iters=8/50
-Round 47: Server fixing with alpha=0.2399, iters=9/50
-Round 48: Server fixing with alpha=0.1701, iters=6/50
-Round 49: Server fixing with alpha=0.1138, iters=4/50
-Round 50: Server fixing with alpha=0.1773, iters=7/50
-Round 50: Acc=50.32%, Loss=0.0043, D_P_t=0.1117, Alpha=0.1773
-Round 51: Server fixing with alpha=0.2268, iters=9/50
-Round 52: Server fixing with alpha=0.2300, iters=8/50
-Round 53: Server fixing with alpha=0.1584, iters=6/50
-Round 54: Server fixing with alpha=0.1893, iters=7/50
-Round 55: Server fixing with alpha=0.1908, iters=7/50
-Round 56: Server fixing with alpha=0.1819, iters=7/50
-Round 57: Server fixing with alpha=0.1581, iters=6/50
-Round 58: Server fixing with alpha=0.1374, iters=5/50
-Round 59: Server fixing with alpha=0.0961, iters=3/50
-Round 60: Server fixing with alpha=0.1653, iters=6/50
-Round 60: Acc=50.70%, Loss=0.0046, D_P_t=0.1076, Alpha=0.1653
-Round 61: Server fixing with alpha=0.1794, iters=7/50
-Round 62: Server fixing with alpha=0.1403, iters=5/50
-Round 63: Server fixing with alpha=0.1625, iters=6/50
-Round 64: Server fixing with alpha=0.1608, iters=6/50
-Round 65: Server fixing with alpha=0.1459, iters=5/50
-Round 66: Server fixing with alpha=0.1869, iters=7/50
-Round 67: Server fixing with alpha=0.1406, iters=5/50
-Round 68: Server fixing with alpha=0.1822, iters=7/50
-Round 69: Server fixing with alpha=0.2604, iters=10/50
-Round 70: Server fixing with alpha=0.0724, iters=2/50
-Round 70: Acc=52.30%, Loss=0.0052, D_P_t=0.0442, Alpha=0.0724
-Round 71: Server fixing with alpha=0.1189, iters=4/50
-Round 72: Server fixing with alpha=0.1200, iters=4/50
-Round 73: Server fixing with alpha=0.1935, iters=7/50
-Round 74: Server fixing with alpha=0.1301, iters=5/50
-Round 75: Server fixing with alpha=0.1648, iters=6/50
-Round 76: Server fixing with alpha=0.1598, iters=6/50
-Round 77: Server fixing with alpha=0.2462, iters=9/50
-Round 78: Server fixing with alpha=0.1461, iters=5/50
-Round 79: Server fixing with alpha=0.1442, iters=5/50
-Round 80: Server fixing with alpha=0.1137, iters=4/50
-Round 80: Acc=46.83%, Loss=0.0039, D_P_t=0.0686, Alpha=0.1137
-Round 81: Server fixing with alpha=0.1296, iters=5/50
-Round 82: Server fixing with alpha=0.1332, iters=5/50
-Round 83: Server fixing with alpha=0.1554, iters=6/50
-Round 84: Server fixing with alpha=0.1731, iters=6/50
-Round 85: Server fixing with alpha=0.1552, iters=6/50
-Round 86: Server fixing with alpha=0.1162, iters=4/50
-Round 87: Server fixing with alpha=0.1547, iters=6/50
-Round 88: Server fixing with alpha=0.1800, iters=7/50
-Round 89: Server fixing with alpha=0.1939, iters=7/50
-Round 90: Server fixing with alpha=0.1301, iters=5/50
-Round 90: Acc=51.77%, Loss=0.0032, D_P_t=0.1016, Alpha=0.1301
-Round 91: Server fixing with alpha=0.1333, iters=5/50
-Round 92: Server fixing with alpha=0.1050, iters=4/50
-Round 93: Server fixing with alpha=0.1078, iters=4/50
-Round 94: Server fixing with alpha=0.0793, iters=3/50
-Round 95: Server fixing with alpha=0.1378, iters=5/50
-Round 96: Server fixing with alpha=0.1894, iters=7/50
-Round 97: Server fixing with alpha=0.1082, iters=4/50
-Round 98: Server fixing with alpha=0.1524, iters=6/50
-Round 99: Server fixing with alpha=0.1708, iters=6/50
-
-Results for du_C = 1.5:
-FedDU_Mut - 第20轮测试精度: 43.97%, 最终测试精度: 49.11%, 最终训练损失: 0.0042
-
---- 测试 du_C = 2.0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.166608
-  衰减率: 0.995
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:15,  6.82s/it]  2%|▏         | 2/100 [00:13<11:08,  6.82s/it]  3%|▎         | 3/100 [00:20<11:06,  6.87s/it]  4%|▍         | 4/100 [00:27<10:57,  6.85s/it]  5%|▌         | 5/100 [00:34<10:50,  6.84s/it]  6%|▌         | 6/100 [00:41<10:43,  6.84s/it]  7%|▋         | 7/100 [00:47<10:36,  6.84s/it]  8%|▊         | 8/100 [00:54<10:29,  6.84s/it]  9%|▉         | 9/100 [01:01<10:21,  6.83s/it] 10%|█         | 10/100 [01:08<10:13,  6.82s/it] 11%|█         | 11/100 [01:15<10:09,  6.85s/it] 12%|█▏        | 12/100 [01:22<10:02,  6.84s/it] 13%|█▎        | 13/100 [01:28<09:54,  6.84s/it] 14%|█▍        | 14/100 [01:35<09:47,  6.83s/it] 15%|█▌        | 15/100 [01:42<09:39,  6.82s/it] 16%|█▌        | 16/100 [01:49<09:32,  6.82s/it] 17%|█▋        | 17/100 [01:56<09:26,  6.82s/it] 18%|█▊        | 18/100 [02:02<09:19,  6.82s/it] 19%|█▉        | 19/100 [02:09<09:11,  6.80s/it] 20%|██        | 20/100 [02:16<09:06,  6.83s/it] 21%|██        | 21/100 [02:23<08:59,  6.82s/it] 22%|██▏       | 22/100 [02:30<08:52,  6.82s/it] 23%|██▎       | 23/100 [02:37<08:44,  6.81s/it] 24%|██▍       | 24/100 [02:43<08:37,  6.81s/it] 25%|██▌       | 25/100 [02:50<08:30,  6.81s/it] 26%|██▌       | 26/100 [02:57<08:24,  6.81s/it] 27%|██▋       | 27/100 [03:04<08:17,  6.81s/it] 28%|██▊       | 28/100 [03:11<08:10,  6.81s/it] 29%|██▉       | 29/100 [03:17<08:03,  6.81s/it] 30%|███       | 30/100 [03:24<07:58,  6.84s/it] 31%|███       | 31/100 [03:31<07:51,  6.83s/it] 32%|███▏      | 32/100 [03:38<07:44,  6.83s/it] 33%|███▎      | 33/100 [03:45<07:37,  6.82s/it] 34%|███▍      | 34/100 [03:52<07:30,  6.82s/it] 35%|███▌      | 35/100 [03:58<07:23,  6.82s/it] 36%|███▌      | 36/100 [04:05<07:16,  6.82s/it] 37%|███▋      | 37/100 [04:12<07:09,  6.82s/it] 38%|███▊      | 38/100 [04:19<07:02,  6.81s/it] 39%|███▉      | 39/100 [04:26<06:55,  6.81s/it] 40%|████      | 40/100 [04:33<06:50,  6.84s/it] 41%|████      | 41/100 [04:39<06:42,  6.83s/it] 42%|████▏     | 42/100 [04:46<06:35,  6.83s/it] 43%|████▎     | 43/100 [04:53<06:29,  6.83s/it] 44%|████▍     | 44/100 [05:00<06:22,  6.82s/it] 45%|████▌     | 45/100 [05:07<06:14,  6.81s/it] 46%|████▌     | 46/100 [05:13<06:08,  6.82s/it] 47%|████▋     | 47/100 [05:20<06:01,  6.82s/it] 48%|████▊     | 48/100 [05:27<05:54,  6.82s/it] 49%|████▉     | 49/100 [05:34<05:49,  6.85s/it] 50%|█████     | 50/100 [05:41<05:42,  6.85s/it] 51%|█████     | 51/100 [05:48<05:35,  6.84s/it] 52%|█████▏    | 52/100 [05:55<05:28,  6.84s/it] 53%|█████▎    | 53/100 [06:01<05:21,  6.83s/it] 54%|█████▍    | 54/100 [06:08<05:14,  6.83s/it] 55%|█████▌    | 55/100 [06:15<05:07,  6.83s/it] 56%|█████▌    | 56/100 [06:22<04:59,  6.82s/it] 57%|█████▋    | 57/100 [06:29<04:54,  6.84s/it] 58%|█████▊    | 58/100 [06:36<04:47,  6.84s/it] 59%|█████▉    | 59/100 [06:42<04:40,  6.84s/it] 60%|██████    | 60/100 [06:49<04:32,  6.82s/it] 61%|██████    | 61/100 [06:56<04:26,  6.82s/it] 62%|██████▏   | 62/100 [07:03<04:18,  6.81s/it] 63%|██████▎   | 63/100 [07:10<04:12,  6.81s/it] 64%|██████▍   | 64/100 [07:16<04:05,  6.82s/it] 65%|██████▌   | 65/100 [07:23<03:59,  6.85s/it] 66%|██████▌   | 66/100 [07:30<03:52,  6.85s/it] 67%|██████▋   | 67/100 [07:37<03:45,  6.83s/it] 68%|██████▊   | 68/100 [07:44<03:38,  6.84s/it] 69%|██████▉   | 69/100 [07:51<03:31,  6.84s/it] 70%|███████   | 70/100 [07:57<03:24,  6.83s/it] 71%|███████   | 71/100 [08:04<03:18,  6.83s/it] 72%|███████▏  | 72/100 [08:11<03:11,  6.83s/it] 73%|███████▎  | 73/100 [08:18<03:04,  6.85s/it] 74%|███████▍  | 74/100 [08:25<02:57,  6.84s/it] 75%|███████▌  | 75/100 [08:32<02:50,  6.84s/it] 76%|███████▌  | 76/100 [08:38<02:43,  6.83s/it] 77%|███████▋  | 77/100 [08:45<02:36,  6.82s/it] 78%|███████▊  | 78/100 [08:52<02:30,  6.82s/it] 79%|███████▉  | 79/100 [08:59<02:23,  6.82s/it] 80%|████████  | 80/100 [09:06<02:16,  6.82s/it] 81%|████████  | 81/100 [09:13<02:10,  6.85s/it] 82%|████████▏ | 82/100 [09:19<02:03,  6.84s/it] 83%|████████▎ | 83/100 [09:26<01:56,  6.83s/it] 84%|████████▍ | 84/100 [09:33<01:49,  6.83s/it] 85%|████████▌ | 85/100 [09:40<01:42,  6.84s/it] 86%|████████▌ | 86/100 [09:47<01:35,  6.84s/it] 87%|████████▋ | 87/100 [09:54<01:28,  6.83s/it] 88%|████████▊ | 88/100 [10:00<01:21,  6.82s/it] 89%|████████▉ | 89/100 [10:07<01:15,  6.82s/it] 90%|█████████ | 90/100 [10:14<01:08,  6.83s/it] 91%|█████████ | 91/100 [10:21<01:01,  6.86s/it] 92%|█████████▏| 92/100 [10:28<00:54,  6.85s/it] 93%|█████████▎| 93/100 [10:35<00:47,  6.85s/it] 94%|█████████▍| 94/100 [10:41<00:41,  6.84s/it] 95%|█████████▌| 95/100 [10:48<00:34,  6.83s/it] 96%|█████████▌| 96/100 [10:55<00:27,  6.83s/it] 97%|█████████▋| 97/100 [11:02<00:20,  6.83s/it] 98%|█████████▊| 98/100 [11:09<00:13,  6.83s/it] 99%|█████████▉| 99/100 [11:16<00:06,  6.83s/it]100%|██████████| 100/100 [11:22<00:00,  6.83s/it]100%|██████████| 100/100 [11:22<00:00,  6.83s/it]
-Round 0: Server fixing with alpha=0.6674, iters=26/50
-Round 0: Acc=20.86%, Loss=0.0135, D_P_t=0.1710, Alpha=0.6674
-Round 1: Server fixing with alpha=0.3841, iters=15/50
-Round 2: Server fixing with alpha=0.4590, iters=18/50
-Round 3: Server fixing with alpha=0.4075, iters=16/50
-Round 4: Server fixing with alpha=0.4748, iters=18/50
-Round 5: Server fixing with alpha=0.5578, iters=22/50
-Round 6: Server fixing with alpha=0.4766, iters=18/50
-Round 7: Server fixing with alpha=0.2575, iters=10/50
-Round 8: Server fixing with alpha=0.4824, iters=19/50
-Round 9: Server fixing with alpha=0.5285, iters=20/50
-Round 10: Server fixing with alpha=0.4066, iters=16/50
-Round 10: Acc=32.69%, Loss=0.0114, D_P_t=0.1047, Alpha=0.4066
-Round 11: Server fixing with alpha=0.4132, iters=16/50
-Round 12: Server fixing with alpha=0.4180, iters=16/50
-Round 13: Server fixing with alpha=0.3053, iters=12/50
-Round 14: Server fixing with alpha=0.4081, iters=15/50
-Round 15: Server fixing with alpha=0.2959, iters=11/50
-Round 16: Server fixing with alpha=0.2499, iters=9/50
-Round 17: Server fixing with alpha=0.2461, iters=9/50
-Round 18: Server fixing with alpha=0.3086, iters=12/50
-Round 19: Server fixing with alpha=0.2801, iters=11/50
-Round 20: Server fixing with alpha=0.1812, iters=7/50
-Round 20: Acc=47.21%, Loss=0.0053, D_P_t=0.0619, Alpha=0.1812
-Round 21: Server fixing with alpha=0.2240, iters=8/50
-Round 22: Server fixing with alpha=0.1045, iters=4/50
-Round 23: Server fixing with alpha=0.2712, iters=10/50
-Round 24: Server fixing with alpha=0.2654, iters=10/50
-Round 25: Server fixing with alpha=0.2494, iters=9/50
-Round 26: Server fixing with alpha=0.2271, iters=9/50
-Round 27: Server fixing with alpha=0.3363, iters=13/50
-Round 28: Server fixing with alpha=0.0956, iters=3/50
-Round 29: Server fixing with alpha=0.4191, iters=16/50
-Round 30: Server fixing with alpha=0.2194, iters=8/50
-Round 30: Acc=52.36%, Loss=0.0046, D_P_t=0.0938, Alpha=0.2194
-Round 31: Server fixing with alpha=0.1556, iters=6/50
-Round 32: Server fixing with alpha=0.1673, iters=6/50
-Round 33: Server fixing with alpha=0.1811, iters=7/50
-Round 34: Server fixing with alpha=0.2852, iters=11/50
-Round 35: Server fixing with alpha=0.1939, iters=7/50
-Round 36: Server fixing with alpha=0.3033, iters=12/50
-Round 37: Server fixing with alpha=0.3502, iters=13/50
-Round 38: Server fixing with alpha=0.2679, iters=10/50
-Round 39: Server fixing with alpha=0.2525, iters=10/50
-Round 40: Server fixing with alpha=0.2329, iters=9/50
-Round 40: Acc=53.00%, Loss=0.0033, D_P_t=0.1119, Alpha=0.2329
-Round 41: Server fixing with alpha=0.2197, iters=8/50
-Round 42: Server fixing with alpha=0.3049, iters=12/50
-Round 43: Server fixing with alpha=0.1450, iters=5/50
-Round 44: Server fixing with alpha=0.1138, iters=4/50
-Round 45: Server fixing with alpha=0.2311, iters=9/50
-Round 46: Server fixing with alpha=0.2342, iters=9/50
-Round 47: Server fixing with alpha=0.0975, iters=3/50
-Round 48: Server fixing with alpha=0.2825, iters=11/50
-Round 49: Server fixing with alpha=0.1166, iters=4/50
-Round 50: Server fixing with alpha=0.1475, iters=5/50
-Round 50: Acc=54.98%, Loss=0.0048, D_P_t=0.0702, Alpha=0.1475
-Round 51: Server fixing with alpha=0.1634, iters=6/50
-Round 52: Server fixing with alpha=0.3162, iters=12/50
-Round 53: Server fixing with alpha=0.2123, iters=8/50
-Round 54: Server fixing with alpha=0.2637, iters=10/50
-Round 55: Server fixing with alpha=0.2726, iters=10/50
-Round 56: Server fixing with alpha=0.0875, iters=3/50
-Round 57: Server fixing with alpha=0.2062, iters=8/50
-Round 58: Server fixing with alpha=0.3861, iters=15/50
-Round 59: Server fixing with alpha=0.1523, iters=5/50
-Round 60: Server fixing with alpha=0.1853, iters=7/50
-Round 60: Acc=53.79%, Loss=0.0043, D_P_t=0.0959, Alpha=0.1853
-Round 61: Server fixing with alpha=0.2429, iters=9/50
-Round 62: Server fixing with alpha=0.2515, iters=9/50
-Round 63: Server fixing with alpha=0.1486, iters=5/50
-Round 64: Server fixing with alpha=0.2735, iters=10/50
-Round 65: Server fixing with alpha=0.2038, iters=8/50
-Round 66: Server fixing with alpha=0.1934, iters=7/50
-Round 67: Server fixing with alpha=0.1574, iters=6/50
-Round 68: Server fixing with alpha=0.2055, iters=8/50
-Round 69: Server fixing with alpha=0.1094, iters=4/50
-Round 70: Server fixing with alpha=0.1983, iters=7/50
-Round 70: Acc=50.95%, Loss=0.0026, D_P_t=0.1058, Alpha=0.1983
-Round 71: Server fixing with alpha=0.2111, iters=8/50
-Round 72: Server fixing with alpha=0.1352, iters=5/50
-Round 73: Server fixing with alpha=0.2946, iters=11/50
-Round 74: Server fixing with alpha=0.2286, iters=9/50
-Round 75: Server fixing with alpha=0.1107, iters=4/50
-Round 76: Server fixing with alpha=0.2149, iters=8/50
-Round 77: Server fixing with alpha=0.1145, iters=4/50
-Round 78: Server fixing with alpha=0.0803, iters=3/50
-Round 79: Server fixing with alpha=0.1925, iters=7/50
-Round 80: Server fixing with alpha=0.1942, iters=7/50
-Round 80: Acc=52.53%, Loss=0.0025, D_P_t=0.1148, Alpha=0.1942
-Round 81: Server fixing with alpha=0.1146, iters=4/50
-Round 82: Server fixing with alpha=0.1676, iters=6/50
-Round 83: Server fixing with alpha=0.2477, iters=9/50
-Round 84: Server fixing with alpha=0.2615, iters=10/50
-Round 85: Server fixing with alpha=0.2386, iters=9/50
-Round 86: Server fixing with alpha=0.1291, iters=5/50
-Round 87: Server fixing with alpha=0.2005, iters=7/50
-Round 88: Server fixing with alpha=0.1724, iters=6/50
-Round 89: Server fixing with alpha=0.2003, iters=7/50
-Round 90: Server fixing with alpha=0.1994, iters=7/50
-Round 90: Acc=51.16%, Loss=0.0022, D_P_t=0.1172, Alpha=0.1994
-Round 91: Server fixing with alpha=0.1441, iters=5/50
-Round 92: Server fixing with alpha=0.1229, iters=4/50
-Round 93: Server fixing with alpha=0.1888, iters=7/50
-Round 94: Server fixing with alpha=0.2069, iters=8/50
-Round 95: Server fixing with alpha=0.2786, iters=11/50
-Round 96: Server fixing with alpha=0.1565, iters=6/50
-Round 97: Server fixing with alpha=0.0614, iters=2/50
-Round 98: Server fixing with alpha=0.0677, iters=2/50
-Round 99: Server fixing with alpha=0.1330, iters=5/50
-
-Results for du_C = 2.0:
-FedDU_Mut - 第20轮测试精度: 48.73%, 最终测试精度: 53.06%, 最终训练损失: 0.0023
-
---- 测试 du_C = 3.0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.166608
-  衰减率: 0.995
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:16,  6.83s/it]  2%|▏         | 2/100 [00:13<11:08,  6.82s/it]  3%|▎         | 3/100 [00:20<11:01,  6.82s/it]  4%|▍         | 4/100 [00:27<10:54,  6.82s/it]  5%|▌         | 5/100 [00:34<10:46,  6.81s/it]  6%|▌         | 6/100 [00:40<10:40,  6.82s/it]  7%|▋         | 7/100 [00:47<10:37,  6.86s/it]  8%|▊         | 8/100 [00:54<10:29,  6.84s/it]  9%|▉         | 9/100 [01:01<10:22,  6.84s/it] 10%|█         | 10/100 [01:08<10:15,  6.84s/it] 11%|█         | 11/100 [01:15<10:08,  6.83s/it] 12%|█▏        | 12/100 [01:21<10:01,  6.83s/it] 13%|█▎        | 13/100 [01:28<09:53,  6.83s/it] 14%|█▍        | 14/100 [01:35<09:46,  6.83s/it] 15%|█▌        | 15/100 [01:42<09:39,  6.82s/it] 16%|█▌        | 16/100 [01:49<09:33,  6.83s/it] 17%|█▋        | 17/100 [01:56<09:28,  6.85s/it] 18%|█▊        | 18/100 [02:03<09:21,  6.84s/it] 19%|█▉        | 19/100 [02:09<09:13,  6.84s/it] 20%|██        | 20/100 [02:16<09:06,  6.83s/it] 21%|██        | 21/100 [02:23<08:59,  6.83s/it] 22%|██▏       | 22/100 [02:30<08:52,  6.83s/it] 23%|██▎       | 23/100 [02:37<08:45,  6.83s/it] 24%|██▍       | 24/100 [02:43<08:39,  6.83s/it] 25%|██▌       | 25/100 [02:50<08:31,  6.82s/it] 26%|██▌       | 26/100 [02:57<08:24,  6.82s/it] 27%|██▋       | 27/100 [03:04<08:19,  6.84s/it] 28%|██▊       | 28/100 [03:11<08:12,  6.84s/it] 29%|██▉       | 29/100 [03:18<08:05,  6.84s/it] 30%|███       | 30/100 [03:24<07:58,  6.84s/it] 31%|███       | 31/100 [03:31<07:51,  6.83s/it] 32%|███▏      | 32/100 [03:38<07:44,  6.83s/it] 33%|███▎      | 33/100 [03:45<07:37,  6.82s/it] 34%|███▍      | 34/100 [03:52<07:30,  6.82s/it] 35%|███▌      | 35/100 [03:59<07:23,  6.83s/it] 36%|███▌      | 36/100 [04:05<07:16,  6.82s/it] 37%|███▋      | 37/100 [04:12<07:12,  6.86s/it] 38%|███▊      | 38/100 [04:19<07:04,  6.85s/it] 39%|███▉      | 39/100 [04:26<06:57,  6.85s/it] 40%|████      | 40/100 [04:33<06:50,  6.84s/it] 41%|████      | 41/100 [04:40<06:43,  6.84s/it] 42%|████▏     | 42/100 [04:47<06:36,  6.84s/it] 43%|████▎     | 43/100 [04:53<06:29,  6.84s/it] 44%|████▍     | 44/100 [05:00<06:22,  6.82s/it] 45%|████▌     | 45/100 [05:07<06:15,  6.83s/it] 46%|████▌     | 46/100 [05:14<06:08,  6.82s/it] 47%|████▋     | 47/100 [05:21<06:03,  6.86s/it] 48%|████▊     | 48/100 [05:28<05:56,  6.85s/it] 49%|████▉     | 49/100 [05:34<05:49,  6.84s/it] 50%|█████     | 50/100 [05:41<05:41,  6.83s/it] 51%|█████     | 51/100 [05:48<05:34,  6.82s/it] 52%|█████▏    | 52/100 [05:55<05:27,  6.81s/it] 53%|█████▎    | 53/100 [06:02<05:20,  6.82s/it] 54%|█████▍    | 54/100 [06:08<05:13,  6.81s/it] 55%|█████▌    | 55/100 [06:15<05:06,  6.81s/it] 56%|█████▌    | 56/100 [06:22<04:59,  6.81s/it] 57%|█████▋    | 57/100 [06:29<04:54,  6.85s/it] 58%|█████▊    | 58/100 [06:36<04:47,  6.84s/it] 59%|█████▉    | 59/100 [06:43<04:40,  6.84s/it] 60%|██████    | 60/100 [06:49<04:33,  6.83s/it] 61%|██████    | 61/100 [06:56<04:26,  6.83s/it] 62%|██████▏   | 62/100 [07:03<04:19,  6.83s/it] 63%|██████▎   | 63/100 [07:10<04:12,  6.83s/it] 64%|██████▍   | 64/100 [07:17<04:05,  6.83s/it] 65%|██████▌   | 65/100 [07:24<03:58,  6.83s/it] 66%|██████▌   | 66/100 [07:30<03:52,  6.83s/it] 67%|██████▋   | 67/100 [07:37<03:46,  6.86s/it] 68%|██████▊   | 68/100 [07:44<03:39,  6.85s/it] 69%|██████▉   | 69/100 [07:51<03:32,  6.84s/it] 70%|███████   | 70/100 [07:58<03:25,  6.84s/it] 71%|███████   | 71/100 [08:05<03:18,  6.83s/it] 72%|███████▏  | 72/100 [08:11<03:11,  6.83s/it] 73%|███████▎  | 73/100 [08:18<03:04,  6.83s/it] 74%|███████▍  | 74/100 [08:25<02:57,  6.82s/it] 75%|███████▌  | 75/100 [08:32<02:50,  6.82s/it] 76%|███████▌  | 76/100 [08:39<02:43,  6.81s/it] 77%|███████▋  | 77/100 [08:46<02:37,  6.84s/it] 78%|███████▊  | 78/100 [08:52<02:30,  6.84s/it] 79%|███████▉  | 79/100 [08:59<02:23,  6.83s/it] 80%|████████  | 80/100 [09:06<02:16,  6.83s/it] 81%|████████  | 81/100 [09:13<02:09,  6.83s/it] 82%|████████▏ | 82/100 [09:20<02:03,  6.83s/it] 83%|████████▎ | 83/100 [09:27<01:56,  6.83s/it] 84%|████████▍ | 84/100 [09:33<01:49,  6.83s/it] 85%|████████▌ | 85/100 [09:40<01:42,  6.83s/it] 86%|████████▌ | 86/100 [09:47<01:35,  6.83s/it] 87%|████████▋ | 87/100 [09:54<01:29,  6.85s/it] 88%|████████▊ | 88/100 [10:01<01:22,  6.84s/it] 89%|████████▉ | 89/100 [10:08<01:15,  6.84s/it] 90%|█████████ | 90/100 [10:14<01:08,  6.83s/it] 91%|█████████ | 91/100 [10:21<01:01,  6.83s/it] 92%|█████████▏| 92/100 [10:28<00:54,  6.83s/it] 93%|█████████▎| 93/100 [10:35<00:47,  6.83s/it] 94%|█████████▍| 94/100 [10:42<00:40,  6.81s/it] 95%|█████████▌| 95/100 [10:48<00:34,  6.82s/it] 96%|█████████▌| 96/100 [10:55<00:27,  6.82s/it] 97%|█████████▋| 97/100 [11:02<00:20,  6.85s/it] 98%|█████████▊| 98/100 [11:09<00:13,  6.84s/it] 99%|█████████▉| 99/100 [11:16<00:06,  6.84s/it]100%|██████████| 100/100 [11:23<00:00,  6.83s/it]100%|██████████| 100/100 [11:23<00:00,  6.83s/it]
-Round 0: Server fixing with alpha=0.7539, iters=29/50
-Round 0: Acc=22.24%, Loss=0.0153, D_P_t=0.1052, Alpha=0.7539
-Round 1: Server fixing with alpha=0.1354, iters=5/50
-Round 2: Server fixing with alpha=0.4910, iters=19/50
-Round 3: Server fixing with alpha=0.6062, iters=24/50
-Round 4: Server fixing with alpha=1.1288, iters=44/50
-Round 5: Server fixing with alpha=0.6404, iters=25/50
-Round 6: Server fixing with alpha=0.3878, iters=15/50
-Round 7: Server fixing with alpha=0.3530, iters=14/50
-Round 8: Server fixing with alpha=0.6538, iters=26/50
-Round 9: Server fixing with alpha=0.3704, iters=14/50
-Round 10: Server fixing with alpha=0.3437, iters=13/50
-Round 10: Acc=38.13%, Loss=0.0096, D_P_t=0.0576, Alpha=0.3437
-Round 11: Server fixing with alpha=0.8210, iters=32/50
-Round 12: Server fixing with alpha=0.7568, iters=30/50
-Round 13: Server fixing with alpha=0.2145, iters=8/50
-Round 14: Server fixing with alpha=0.2933, iters=11/50
-Round 15: Server fixing with alpha=0.5174, iters=20/50
-Round 16: Server fixing with alpha=0.2400, iters=9/50
-Round 17: Server fixing with alpha=0.2858, iters=11/50
-Round 18: Server fixing with alpha=0.2582, iters=10/50
-Round 19: Server fixing with alpha=0.4996, iters=19/50
-Round 20: Server fixing with alpha=0.5111, iters=20/50
-Round 20: Acc=47.86%, Loss=0.0059, D_P_t=0.1334, Alpha=0.5111
-Round 21: Server fixing with alpha=0.4810, iters=19/50
-Round 22: Server fixing with alpha=0.5813, iters=23/50
-Round 23: Server fixing with alpha=0.3686, iters=14/50
-Round 24: Server fixing with alpha=0.4688, iters=18/50
-Round 25: Server fixing with alpha=0.4929, iters=19/50
-Round 26: Server fixing with alpha=0.4722, iters=18/50
-Round 27: Server fixing with alpha=0.4032, iters=15/50
-Round 28: Server fixing with alpha=0.4801, iters=19/50
-Round 29: Server fixing with alpha=0.2244, iters=8/50
-Round 30: Server fixing with alpha=0.2380, iters=9/50
-Round 30: Acc=49.33%, Loss=0.0040, D_P_t=0.0583, Alpha=0.2380
-Round 31: Server fixing with alpha=0.1993, iters=7/50
-Round 32: Server fixing with alpha=0.3056, iters=12/50
-Round 33: Server fixing with alpha=0.2812, iters=11/50
-Round 34: Server fixing with alpha=0.2333, iters=9/50
-Round 35: Server fixing with alpha=0.2623, iters=10/50
-Round 36: Server fixing with alpha=0.1753, iters=6/50
-Round 37: Server fixing with alpha=0.4026, iters=15/50
-Round 38: Server fixing with alpha=0.3080, iters=12/50
-Round 39: Server fixing with alpha=0.3460, iters=13/50
-Round 40: Server fixing with alpha=0.2642, iters=10/50
-Round 40: Acc=51.34%, Loss=0.0031, D_P_t=0.0736, Alpha=0.2642
-Round 41: Server fixing with alpha=0.2996, iters=11/50
-Round 42: Server fixing with alpha=0.4081, iters=16/50
-Round 43: Server fixing with alpha=0.3061, iters=11/50
-Round 44: Server fixing with alpha=0.2955, iters=11/50
-Round 45: Server fixing with alpha=0.4513, iters=17/50
-Round 46: Server fixing with alpha=0.4677, iters=18/50
-Round 47: Server fixing with alpha=0.2123, iters=8/50
-Round 48: Server fixing with alpha=0.1683, iters=6/50
-Round 49: Server fixing with alpha=0.4367, iters=17/50
-Round 50: Server fixing with alpha=0.2343, iters=9/50
-Round 50: Acc=53.73%, Loss=0.0036, D_P_t=0.0712, Alpha=0.2343
-Round 51: Server fixing with alpha=0.3017, iters=11/50
-Round 52: Server fixing with alpha=0.3992, iters=15/50
-Round 53: Server fixing with alpha=0.2448, iters=9/50
-Round 54: Server fixing with alpha=0.1821, iters=7/50
-Round 55: Server fixing with alpha=0.2915, iters=11/50
-Round 56: Server fixing with alpha=0.3319, iters=13/50
-Round 57: Server fixing with alpha=0.3300, iters=13/50
-Round 58: Server fixing with alpha=0.2199, iters=8/50
-Round 59: Server fixing with alpha=0.2846, iters=11/50
-Round 60: Server fixing with alpha=0.3167, iters=12/50
-Round 60: Acc=50.19%, Loss=0.0037, D_P_t=0.1047, Alpha=0.3167
-Round 61: Server fixing with alpha=0.3712, iters=14/50
-Round 62: Server fixing with alpha=0.3816, iters=15/50
-Round 63: Server fixing with alpha=0.3851, iters=15/50
-Round 64: Server fixing with alpha=0.1415, iters=5/50
-Round 65: Server fixing with alpha=0.3386, iters=13/50
-Round 66: Server fixing with alpha=0.2708, iters=10/50
-Round 67: Server fixing with alpha=0.2333, iters=9/50
-Round 68: Server fixing with alpha=0.3625, iters=14/50
-Round 69: Server fixing with alpha=0.3118, iters=12/50
-Round 70: Server fixing with alpha=0.2645, iters=10/50
-Round 70: Acc=53.03%, Loss=0.0040, D_P_t=0.0885, Alpha=0.2645
-Round 71: Server fixing with alpha=0.2715, iters=10/50
-Round 72: Server fixing with alpha=0.2445, iters=9/50
-Round 73: Server fixing with alpha=0.4460, iters=17/50
-Round 74: Server fixing with alpha=0.3700, iters=14/50
-Round 75: Server fixing with alpha=0.2371, iters=9/50
-Round 76: Server fixing with alpha=0.3346, iters=13/50
-Round 77: Server fixing with alpha=0.2524, iters=10/50
-Round 78: Server fixing with alpha=0.2248, iters=8/50
-Round 79: Server fixing with alpha=0.3165, iters=12/50
-Round 80: Server fixing with alpha=0.2353, iters=9/50
-Round 80: Acc=50.61%, Loss=0.0041, D_P_t=0.0784, Alpha=0.2353
-Round 81: Server fixing with alpha=0.2480, iters=9/50
-Round 82: Server fixing with alpha=0.2120, iters=8/50
-Round 83: Server fixing with alpha=0.3568, iters=14/50
-Round 84: Server fixing with alpha=0.2932, iters=11/50
-Round 85: Server fixing with alpha=0.2227, iters=8/50
-Round 86: Server fixing with alpha=0.4217, iters=16/50
-Round 87: Server fixing with alpha=0.1274, iters=5/50
-Round 88: Server fixing with alpha=0.2383, iters=9/50
-Round 89: Server fixing with alpha=0.1236, iters=4/50
-Round 90: Server fixing with alpha=0.3921, iters=15/50
-Round 90: Acc=52.02%, Loss=0.0034, D_P_t=0.1716, Alpha=0.3921
-Round 91: Server fixing with alpha=0.2481, iters=9/50
-Round 92: Server fixing with alpha=0.2010, iters=7/50
-Round 93: Server fixing with alpha=0.2210, iters=8/50
-Round 94: Server fixing with alpha=0.3089, iters=12/50
-Round 95: Server fixing with alpha=0.2607, iters=10/50
-Round 96: Server fixing with alpha=0.2705, iters=10/50
-Round 97: Server fixing with alpha=0.2416, iters=9/50
-Round 98: Server fixing with alpha=0.1792, iters=7/50
-Round 99: Server fixing with alpha=0.3368, iters=13/50
-
-Results for du_C = 3.0:
-FedDU_Mut - 第20轮测试精度: 47.29%, 最终测试精度: 51.62%, 最终训练损失: 0.0034
-
------ du_C参数结果表 -----
- du_C  FedDU_Mut_r20_acc  FedDU_Mut_r20_loss  FedDU_Mut_final_acc  FedDU_Mut_final_loss
- 0.25              14.39            2.46e-02                24.59              7.49e-03
- 0.50              26.32            1.24e-02                45.17              3.49e-03
- 1.00              43.07            6.16e-03                46.66              4.15e-03
- 1.50              43.97            8.99e-03                49.11              4.20e-03
- 2.00              48.73            6.10e-03                53.06              2.32e-03
- 3.00              47.29            4.62e-03                51.62              3.39e-03
+----- decay_rate参数结果表 -----
+ decay_rate  FedDU_Mut_r20_acc  FedDU_Mut_r20_loss  FedDU_Mut_final_acc  FedDU_Mut_final_loss
+      0.900          29.410000            0.016448            45.360001              0.003162
+      0.990          48.590000            0.005612            52.180000              0.004049
+      0.995          44.290001            0.005137            46.740002              0.007604
+      0.999          46.480000            0.006457            52.779999              0.004748
+      1.000          47.639999            0.006248            52.459999              0.002277
