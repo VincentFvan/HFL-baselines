@@ -1869,8 +1869,8 @@ verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
-is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+is_iid = True  # True表示client数据IID分布，False表示Non-IID分布
+non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
 server_percentage = 0.1  # 服务器端用于微调的数据比例
@@ -2748,8 +2748,8 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # print("\n===== 开始du_C参数消融实验 =====")
 
 # # 定义要测试的du_C值
-# # du_C_values = [0, 1, 5, 10, 15, 20]
-# du_C_values = [3, 4, 5, 6, 7, 8]
+# du_C_values = [0, 1, 3, 5, 7, 10, 15, 20]
+# # du_C_values = [3, 4, 5, 6, 7, 8]
 
 # # 创建结果存储结构
 # du_C_results = {
@@ -3062,160 +3062,160 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # plt.show()
 
 
-# 消融实验 - FedDU参数 (lambda_val)
-import matplotlib.pyplot as plt
-import pandas as pd
-import os
-import datetime
-import copy
+# # 消融实验 - FedDU参数 (lambda_val)
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# import os
+# import datetime
+# import copy
 
 
-# 定义要测试的lambda_val值
-lambda_val_values = [0, 0.5, 1.0, 1.5, 2.0, 2.5]
+# # 定义要测试的lambda_val值
+# lambda_val_values = [0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0]
 
-# 创建结果存储结构
-lambda_val_results = {
-    "lambda_val": [],
-    # 第20轮结果
-    # "FedDU_r20_acc": [],
-    # "FedDU_r20_loss": [],
-    "FedDU_Mut_r20_acc": [],
-    "FedDU_Mut_r20_loss": [],
-    # 最终轮结果
-    # "FedDU_final_acc": [],
-    # "FedDU_final_loss": [],
-    "FedDU_Mut_final_acc": [],
-    "FedDU_Mut_final_loss": [],
-}
+# # 创建结果存储结构
+# lambda_val_results = {
+#     "lambda_val": [],
+#     # 第20轮结果
+#     # "FedDU_r20_acc": [],
+#     # "FedDU_r20_loss": [],
+#     "FedDU_Mut_r20_acc": [],
+#     "FedDU_Mut_r20_loss": [],
+#     # 最终轮结果
+#     # "FedDU_final_acc": [],
+#     # "FedDU_final_loss": [],
+#     "FedDU_Mut_final_acc": [],
+#     "FedDU_Mut_final_loss": [],
+# }
 
-# 为每个lambda_val值运行实验
-for lambda_val_tmp in lambda_val_values:
-    print(f"\n--- 测试 lambda_val = {lambda_val_tmp} ---")
+# # 为每个lambda_val值运行实验
+# for lambda_val_tmp in lambda_val_values:
+#     print(f"\n--- 测试 lambda_val = {lambda_val_tmp} ---")
     
-    # 更新全局lambda_val参数
-    lambda_val = lambda_val_tmp
+#     # 更新全局lambda_val参数
+#     lambda_val = lambda_val_tmp
     
-    # 初始化结果存储字典
-    results_test_acc = {}
-    results_train_loss = {}
+#     # 初始化结果存储字典
+#     results_test_acc = {}
+#     results_train_loss = {}
     
-    # # FedDU 训练
-    # test_acc_FedDU, train_loss_FedDU = FedDU_modify(
-    #     initial_w, global_round, eta, gamma, K, E, M
-    # )
-    # results_test_acc["FedDU"] = test_acc_FedDU
-    # results_train_loss["FedDU"] = train_loss_FedDU
+#     # # FedDU 训练
+#     # test_acc_FedDU, train_loss_FedDU = FedDU_modify(
+#     #     initial_w, global_round, eta, gamma, K, E, M
+#     # )
+#     # results_test_acc["FedDU"] = test_acc_FedDU
+#     # results_train_loss["FedDU"] = train_loss_FedDU
     
-    # FedDU_Mut 训练
-    test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(
-        copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-    )
-    results_test_acc["FedDU_Mut"] = test_acc_FedDU_Mut
-    results_train_loss["FedDU_Mut"] = train_loss_FedDU_Mut
+#     # FedDU_Mut 训练
+#     test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(
+#         copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+#     )
+#     results_test_acc["FedDU_Mut"] = test_acc_FedDU_Mut
+#     results_train_loss["FedDU_Mut"] = train_loss_FedDU_Mut
     
-    # 保存当前lambda_val结果
-    lambda_val_results["lambda_val"].append(lambda_val_tmp)
+#     # 保存当前lambda_val结果
+#     lambda_val_results["lambda_val"].append(lambda_val_tmp)
     
-    # 保存第20轮结果
-    if len(results_test_acc["FedDU_Mut"]) >= 20:
-        # lambda_val_results["FedDU_r20_acc"].append(results_test_acc["FedDU"][19])
-        # lambda_val_results["FedDU_r20_loss"].append(results_train_loss["FedDU"][19])
-        lambda_val_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][19])
-        lambda_val_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][19])
-    else:
-        # 如果训练轮次不足20轮，使用最后一轮的结果
-        # lambda_val_results["FedDU_r20_acc"].append(results_test_acc["FedDU"][-1])
-        # lambda_val_results["FedDU_r20_loss"].append(results_train_loss["FedDU"][-1])
-        lambda_val_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][-1])
-        lambda_val_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][-1])
+#     # 保存第20轮结果
+#     if len(results_test_acc["FedDU_Mut"]) >= 20:
+#         # lambda_val_results["FedDU_r20_acc"].append(results_test_acc["FedDU"][19])
+#         # lambda_val_results["FedDU_r20_loss"].append(results_train_loss["FedDU"][19])
+#         lambda_val_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][19])
+#         lambda_val_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][19])
+#     else:
+#         # 如果训练轮次不足20轮，使用最后一轮的结果
+#         # lambda_val_results["FedDU_r20_acc"].append(results_test_acc["FedDU"][-1])
+#         # lambda_val_results["FedDU_r20_loss"].append(results_train_loss["FedDU"][-1])
+#         lambda_val_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][-1])
+#         lambda_val_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][-1])
     
-    # 保存最终轮结果
-    # lambda_val_results["FedDU_final_acc"].append(results_test_acc["FedDU"][-1])
-    # lambda_val_results["FedDU_final_loss"].append(results_train_loss["FedDU"][-1])
-    lambda_val_results["FedDU_Mut_final_acc"].append(results_test_acc["FedDU_Mut"][-1])
-    lambda_val_results["FedDU_Mut_final_loss"].append(results_train_loss["FedDU_Mut"][-1])
+#     # 保存最终轮结果
+#     # lambda_val_results["FedDU_final_acc"].append(results_test_acc["FedDU"][-1])
+#     # lambda_val_results["FedDU_final_loss"].append(results_train_loss["FedDU"][-1])
+#     lambda_val_results["FedDU_Mut_final_acc"].append(results_test_acc["FedDU_Mut"][-1])
+#     lambda_val_results["FedDU_Mut_final_loss"].append(results_train_loss["FedDU_Mut"][-1])
     
-    # 打印当前lambda_val的结果
-    print(f"\nResults for lambda_val = {lambda_val}:")
-    for algo in results_test_acc:
-        if len(results_test_acc[algo]) >= 20:
-            print(
-                f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
-                f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
-                f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
-            )
+#     # 打印当前lambda_val的结果
+#     print(f"\nResults for lambda_val = {lambda_val}:")
+#     for algo in results_test_acc:
+#         if len(results_test_acc[algo]) >= 20:
+#             print(
+#                 f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
+#                 f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+#             )
           
-        else:
-            print(
-                f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
-                f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
-            )
+#         else:
+#             print(
+#                 f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+#             )
     
-    # 绘制训练过程图
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    rounds = range(1, global_round + 1)
+#     # 绘制训练过程图
+#     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+#     rounds = range(1, global_round + 1)
     
-    # 绘制测试精度图
-    plt.figure(figsize=(12, 6))
-    for algo, acc in results_test_acc.items():
-        plt.plot(rounds, acc, label=algo)
-    plt.xlabel("Training Rounds", fontsize=14)
-    plt.ylabel("Test Accuracy (%)", fontsize=14)
-    plt.title(f"Test Accuracy Comparison (lambda_val={lambda_val})", fontsize=16)
-    plt.legend(fontsize=12)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig(f"output/test_accuracy_lambda_val{lambda_val}_{origin_model}_{timestamp}.png")
-    plt.show()
+#     # 绘制测试精度图
+#     plt.figure(figsize=(12, 6))
+#     for algo, acc in results_test_acc.items():
+#         plt.plot(rounds, acc, label=algo)
+#     plt.xlabel("Training Rounds", fontsize=14)
+#     plt.ylabel("Test Accuracy (%)", fontsize=14)
+#     plt.title(f"Test Accuracy Comparison (lambda_val={lambda_val})", fontsize=16)
+#     plt.legend(fontsize=12)
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.savefig(f"output/test_accuracy_lambda_val{lambda_val}_{origin_model}_{timestamp}.png")
+#     plt.show()
     
-    # 绘制训练损失图
-    plt.figure(figsize=(12, 6))
-    for algo, loss in results_train_loss.items():
-        plt.plot(rounds, loss, label=algo)
-    plt.xlabel("Training Rounds", fontsize=14)
-    plt.ylabel("Train Loss", fontsize=14)
-    plt.title(f"Train Loss Comparison (lambda_val={lambda_val})", fontsize=16)
-    plt.legend(fontsize=12)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig(f"output/train_loss_lambda_val{lambda_val}_{origin_model}_{timestamp}.png")
-    plt.show()
+#     # 绘制训练损失图
+#     plt.figure(figsize=(12, 6))
+#     for algo, loss in results_train_loss.items():
+#         plt.plot(rounds, loss, label=algo)
+#     plt.xlabel("Training Rounds", fontsize=14)
+#     plt.ylabel("Train Loss", fontsize=14)
+#     plt.title(f"Train Loss Comparison (lambda_val={lambda_val})", fontsize=16)
+#     plt.legend(fontsize=12)
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.savefig(f"output/train_loss_lambda_val{lambda_val}_{origin_model}_{timestamp}.png")
+#     plt.show()
 
-# 创建DataFrame
-lambda_val_df = pd.DataFrame(lambda_val_results)
+# # 创建DataFrame
+# lambda_val_df = pd.DataFrame(lambda_val_results)
 
-# 打印表格
-print("\n----- lambda_val参数结果表 -----")
-print(lambda_val_df.to_string(index=False))
+# # 打印表格
+# print("\n----- lambda_val参数结果表 -----")
+# print(lambda_val_df.to_string(index=False))
 
-# 保存到CSV文件
-timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-lambda_val_df.to_csv(f"output/ablation/lambda_val_comparison_{origin_model}_{timestamp}.csv", index=False)
+# # 保存到CSV文件
+# timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+# lambda_val_df.to_csv(f"output/ablation/lambda_val_comparison_{origin_model}_{timestamp}.csv", index=False)
 
-# 绘制第20轮精度对比图
-plt.figure(figsize=(14, 8))
-# plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_r20_acc"], "o-", label="FedDU")
-plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_Mut_r20_acc"], "s-", label="FedDU_Mut")
-plt.xlabel("lambda_val Value", fontsize=14)
-plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
-plt.title(f"Effect of lambda_val on Round 20 Accuracy ({origin_model})", fontsize=16)
-plt.legend(fontsize=12)
-plt.grid(True)
-plt.xticks(lambda_val_df["lambda_val"])
-plt.tight_layout()
-plt.savefig(f"output/ablation/lambda_val_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
-plt.show()
+# # 绘制第20轮精度对比图
+# plt.figure(figsize=(14, 8))
+# # plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_r20_acc"], "o-", label="FedDU")
+# plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_Mut_r20_acc"], "s-", label="FedDU_Mut")
+# plt.xlabel("lambda_val Value", fontsize=14)
+# plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
+# plt.title(f"Effect of lambda_val on Round 20 Accuracy ({origin_model})", fontsize=16)
+# plt.legend(fontsize=12)
+# plt.grid(True)
+# plt.xticks(lambda_val_df["lambda_val"])
+# plt.tight_layout()
+# plt.savefig(f"output/ablation/lambda_val_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
+# plt.show()
 
-# 绘制最终精度对比图
-plt.figure(figsize=(14, 8))
-# plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_final_acc"], "o-", label="FedDU")
-plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_Mut_final_acc"], "s-", label="FedDU_Mut")
-plt.xlabel("lambda_val Value", fontsize=14)
-plt.ylabel("Final Test Accuracy (%)", fontsize=14)
-plt.title(f"Effect of lambda_val on Final Accuracy ({origin_model})", fontsize=16)
-plt.legend(fontsize=12)
-plt.grid(True)
-plt.xticks(lambda_val_df["lambda_val"])
-plt.tight_layout()
-plt.savefig(f"output/ablation/lambda_val_final_accuracy_comparison_{origin_model}_{timestamp}.png")
-plt.show()
+# # 绘制最终精度对比图
+# plt.figure(figsize=(14, 8))
+# # plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_final_acc"], "o-", label="FedDU")
+# plt.plot(lambda_val_df["lambda_val"], lambda_val_df["FedDU_Mut_final_acc"], "s-", label="FedDU_Mut")
+# plt.xlabel("lambda_val Value", fontsize=14)
+# plt.ylabel("Final Test Accuracy (%)", fontsize=14)
+# plt.title(f"Effect of lambda_val on Final Accuracy ({origin_model})", fontsize=16)
+# plt.legend(fontsize=12)
+# plt.grid(True)
+# plt.xticks(lambda_val_df["lambda_val"])
+# plt.tight_layout()
+# plt.savefig(f"output/ablation/lambda_val_final_accuracy_comparison_{origin_model}_{timestamp}.png")
+# plt.show()
