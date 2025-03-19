@@ -1106,6 +1106,8 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
     # 服务器更新的最小步长
     server_min = 0
     
+    du_C = 1 # 修改为论文中推荐的参数
+    
     # 收集所有客户端数据标签以计算全局分布
     all_client_labels = []
     for i in range(client_num):
@@ -1255,6 +1257,7 @@ def FedMut(net_glob, global_round, eta, K, M):
         w_locals.append(copy.deepcopy(net_glob.state_dict()))
         
     max_rank = 0
+    radius = 4  # 这里修改为推荐的4
     
     for round in tqdm(range(global_round)):
         w_old = copy.deepcopy(net_glob.state_dict())
@@ -1695,12 +1698,12 @@ def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M):
     print("FedDU-Mut初始设置:")
     print(f"  服务器数据量: {n_0}")
     print(f"  服务器数据非IID度: {D_P_0:.6f}")
-    print(f"  衰减率: {decay_rate}")
     print(f"  Mutation幅度(radius): {radius}")
     
     # 记录 alpha_new 和 improvement 的历史（用于后续绘图）
     alpha_history = []
     improvement_history = []
+    
     
     for round in tqdm(range(global_round)):
         # 保存当前全局模型作为基准
@@ -1752,17 +1755,6 @@ def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M):
         # 评估聚合模型的准确率
         test_model.load_state_dict(w_agg)
         acc_t = test_inference(test_model, test_dataset) / 100.0  # 转换为[0,1]比例
-        
-        # # 计算每个客户端的平均迭代次数
-        # avg_iter = (num_current * K) / (M * bc_size)
-        
-        # # 计算alpha (动态更新系数)
-        # epsilon = 1e-10  # 避免除零
-        # alpha = (1 - acc_t) * (n_0 * D_P_t_prime) / (n_0 * D_P_t_prime + num_current * D_P_0 + epsilon)
-        # alpha = alpha * (decay_rate ** round) * du_C
-        
-        # # 计算服务器更新迭代次数
-        # server_iter = max(server_min, int(alpha * avg_iter))
         
         epsilon = 1e-10  # 防止除零
 
@@ -1869,11 +1861,11 @@ verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
-is_iid = True  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
+non_iid = 1.0  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
-server_percentage = 0.1  # 服务器端用于微调的数据比例
+server_percentage = 0.05  # 服务器端用于微调的数据比例
 
 # 模型相关
 origin_model = 'resnet' # 采用模型
@@ -1898,9 +1890,11 @@ radius = 5.0  # alpha，控制mutation的幅度
 mut_acc_rate = 0.5  # 论文中的β0
 mut_bound = 50  # Tb
 
-# FedDU中参数
+# FedDU_modify中参数
+decay_rate = 0.99  # 稍微提高衰减率以降低波动
+
+# DUMut中参数
 du_C = 5
-decay_rate = 0.999  # 稍微提高衰减率以降低波动
 lambda_val = 1  
 
 
@@ -2117,115 +2111,117 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 
 
 # %%
-# # 总体对比
-# # 初始化结果存储字典
-# results_test_acc = {}
-# results_train_loss = {}
+# 总体对比
+# 初始化结果存储字典
+results_test_acc = {}
+results_train_loss = {}
 
-# # # CLG_Mut 训练
-# # test_acc_CLG_Mut, train_loss_CLG_Mut = CLG_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# # results_test_acc['CLG_Mut'] = test_acc_CLG_Mut
-# # results_train_loss['CLG_Mut'] = train_loss_CLG_Mut
+# # CLG_Mut 训练
+# test_acc_CLG_Mut, train_loss_CLG_Mut = CLG_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+# results_test_acc['CLG_Mut'] = test_acc_CLG_Mut
+# results_train_loss['CLG_Mut'] = train_loss_CLG_Mut
 
-# # # CLG_Mut_2 训练
-# # test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# # results_test_acc['CLG_Mut_2'] = test_acc_CLG_Mut_2
-# # results_train_loss['CLG_Mut_2'] = train_loss_CLG_Mut_2
+# CLG_Mut_2 训练
+test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+results_test_acc['CLG_Mut_2'] = test_acc_CLG_Mut_2
+results_train_loss['CLG_Mut_2'] = train_loss_CLG_Mut_2
 
-# # # CLG_Mut_3 训练
-# # test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# # results_test_acc['CLG_Mut_3'] = test_acc_CLG_Mut_3
-# # results_train_loss['CLG_Mut_3'] = train_loss_CLG_Mut_3
+# # CLG_Mut_3 训练
+# test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+# results_test_acc['CLG_Mut_3'] = test_acc_CLG_Mut_3
+# results_train_loss['CLG_Mut_3'] = train_loss_CLG_Mut_3
 
-# # # FedMut 训练
-# # test_acc_FedMut, train_loss_FedMut = FedMut(copy.deepcopy(init_model), global_round, eta, K, M)
-# # results_test_acc['FedMut'] = test_acc_FedMut
-# # results_train_loss['FedMut'] = train_loss_FedMut
+# FedMut 训练
+test_acc_FedMut, train_loss_FedMut = FedMut(copy.deepcopy(init_model), global_round, eta, K, M)
+results_test_acc['FedMut'] = test_acc_FedMut
+results_train_loss['FedMut'] = train_loss_FedMut
 
-# # # Server-only 训练
-# # test_acc_server_only, train_loss_server_only = server_only(initial_w, global_round, gamma, E)
-# # results_test_acc['Server_only'] = test_acc_server_only
-# # results_train_loss['Server_only'] = train_loss_server_only
+# print("测试radius为：", radius)
 
-# # # FedAvg 训练
-# # test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
-# # results_test_acc['FedAvg'] = test_acc_fedavg
-# # results_train_loss['FedAvg'] = train_loss_fedavg
+# # Server-only 训练
+# test_acc_server_only, train_loss_server_only = server_only(initial_w, global_round, gamma, E)
+# results_test_acc['Server_only'] = test_acc_server_only
+# results_train_loss['Server_only'] = train_loss_server_only
 
-# # # CLG_SGD 训练
-# # test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
-# # results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
-# # results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
+# FedAvg 训练
+test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
+results_test_acc['FedAvg'] = test_acc_fedavg
+results_train_loss['FedAvg'] = train_loss_fedavg
 
-# # # FedDU 训练
-# # test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
-# # results_test_acc['FedDU'] = test_acc_CLG_SGD
-# # results_train_loss['FedDU'] = train_loss_CLG_SGD
+# CLG_SGD 训练
+test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
+results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
+results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
 
-# # FedDU-Mut 训练
-# test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# results_test_acc['FedDU_Mut'] = test_acc_FedDU_Mut
-# results_train_loss['FedDU_Mut'] = train_loss_FedDU_Mut
+# FedDU 训练
+test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
+results_test_acc['FedDU'] = test_acc_CLG_SGD
+results_train_loss['FedDU'] = train_loss_CLG_SGD
 
-# # 如果存在至少20轮训练，则输出第二十轮的测试精度和训练损失
-# for algo in results_test_acc:
-#     if len(results_test_acc[algo]) >= 20:
-#         print(f"{algo} - 第二十轮测试精度: {results_test_acc[algo][19]:.2f}%, 第二十轮训练损失: {results_train_loss[algo][19]:.4f}")
+# FedDU-Mut 训练
+test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+results_test_acc['FedDU_Mut'] = test_acc_FedDU_Mut
+results_train_loss['FedDU_Mut'] = train_loss_FedDU_Mut
 
-# print("\n")
+# 如果存在至少20轮训练，则输出第二十轮的测试精度和训练损失
+for algo in results_test_acc:
+    if len(results_test_acc[algo]) >= 20:
+        print(f"{algo} - 第二十轮测试精度: {results_test_acc[algo][19]:.2f}%, 第二十轮训练损失: {results_train_loss[algo][19]:.4f}")
 
-# # 打印最终训练结果
-# for algo in results_test_acc:
-#     print(f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, 最终训练损失: {results_train_loss[algo][-1]:.4f}")
+print("\n")
 
-
-
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import matplotlib
-# import platform
-# import datetime
+# 打印最终训练结果
+for algo in results_test_acc:
+    print(f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, 最终训练损失: {results_train_loss[algo][-1]:.4f}")
 
 
-# # 定义训练轮数
-# rounds = range(1, global_round + 1)
 
-# # 设置绘图风格（可选）
-# plt.style.use('seaborn-v0_8-darkgrid')
-
-# # 获取当前时间戳，格式为 YYYYmmdd_HHMMSS
-# timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-
-# # Plot Test Accuracy Comparison
-# plt.figure(figsize=(12, 6))
-# for algo, acc in results_test_acc.items():
-#     plt.plot(rounds, acc, label=algo)
-# plt.xlabel('Training Rounds', fontsize=14)
-# plt.ylabel('Test Accuracy (%)', fontsize=14)
-# plt.title('Test Accuracy Comparison of Different Algorithms', fontsize=16)
-# plt.legend(fontsize=12)
-# plt.xticks(fontsize=12)
-# plt.yticks(fontsize=12)
-# plt.grid(True)
-# plt.tight_layout()
-# plt.savefig(f'output/test_accuracy_{origin_model}_{timestamp}.png')  # 保存图像
-# plt.show()
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib
+import platform
+import datetime
 
 
-# # Plot Train Loss Comparison
-# plt.figure(figsize=(12, 6))
-# for algo, loss in results_train_loss.items():
-#     plt.plot(rounds, loss, label=algo)
-# plt.xlabel('Training Rounds', fontsize=14)
-# plt.ylabel('Train Loss', fontsize=14)
-# plt.title('Train Loss Comparison of Different Algorithms', fontsize=16)
-# plt.legend(fontsize=12)
-# plt.xticks(fontsize=12)
-# plt.yticks(fontsize=12)
-# plt.grid(True)
-# plt.tight_layout()
-# plt.savefig(f'output/train_loss_{origin_model}_{timestamp}.png')  # 保存图像
-# plt.show()
+# 定义训练轮数
+rounds = range(1, global_round + 1)
+
+# 设置绘图风格（可选）
+plt.style.use('seaborn-v0_8-darkgrid')
+
+# 获取当前时间戳，格式为 YYYYmmdd_HHMMSS
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# Plot Test Accuracy Comparison
+plt.figure(figsize=(12, 6))
+for algo, acc in results_test_acc.items():
+    plt.plot(rounds, acc, label=algo)
+plt.xlabel('Training Rounds', fontsize=14)
+plt.ylabel('Test Accuracy (%)', fontsize=14)
+plt.title('Test Accuracy Comparison of Different Algorithms', fontsize=16)
+plt.legend(fontsize=12)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(f'output/test_accuracy_{origin_model}_{timestamp}.png')  # 保存图像
+plt.show()
+
+
+# Plot Train Loss Comparison
+plt.figure(figsize=(12, 6))
+for algo, loss in results_train_loss.items():
+    plt.plot(rounds, loss, label=algo)
+plt.xlabel('Training Rounds', fontsize=14)
+plt.ylabel('Train Loss', fontsize=14)
+plt.title('Train Loss Comparison of Different Algorithms', fontsize=16)
+plt.legend(fontsize=12)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(f'output/train_loss_{origin_model}_{timestamp}.png')  # 保存图像
+plt.show()
 
 # %%
 # # ablation study for raidus
