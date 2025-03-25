@@ -3,16 +3,1737 @@ Torch version: 2.3.1
 CUDA available: True
 Files already downloaded and verified
 Files already downloaded and verified
-Traning Client Total: 39500 3338 3499 4358 4308 3734 3699 3961 4465 3974 4164
-Client 0: 393 47 2 66 47 45 33 19 80 29 25
-Client 1: 395 43 33 6 32 9 69 86 30 84 3
-Client 2: 395 79 7 63 11 15 103 29 12 28 48
-Client 3: 394 33 11 54 34 37 25 83 45 9 63
-Client 4: 393 95 19 63 11 23 15 16 42 21 88
-Client 5: 394 24 2 14 59 16 0 8 2 159 110
-Client 6: 394 61 35 55 7 13 28 16 1 156 22
-Client 7: 395 37 21 16 26 96 72 25 0 86 16
-Client 8: 394 40 1 50 22 31 24 19 36 166 5
-Client 9: 396 18 2 66 53 12 26 51 53 9 106
-Server: 5000 625 13 222 2027 53 27 105 844 99 985
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:43<1:11:56, 43.60s/it]  2%|▏         | 2/100 [01:23<1:07:27, 41.30s/it]  3%|▎         | 3/100 [02:02<1:05:10, 40.31s/it]  4%|▍         | 4/100 [02:42<1:04:23, 40.25s/it]  5%|▌         | 5/100 [03:22<1:03:31, 40.12s/it]
+类别 8 的数据样本不足，采样数从 5125 调整为 5000
+Traning Client Total: 39642 3145 4768 4951 4330 4002 3810 3383 3680 5000 2573
+Client 0: 397 0 4 0 0 0 15 0 0 377 1
+Client 1: 398 0 0 0 0 0 4 0 34 0 360
+Client 2: 398 22 0 0 0 0 0 0 0 369 7
+Client 3: 397 11 0 0 345 0 0 25 0 16
+Client 4: 397 4 0 0 357 0 12 0 3 0 21
+Client 5: 397 258 111 0 5 0 0 7 9 5 2
+Client 6: 399 0 0 0 0 0 0 1 374 0 24
+Client 7: 397 57 0 0 0 0 0 20 303 9 8
+Client 8: 395 0 0 3 0 0 232 2 0 158
+Client 9: 397 0 0 158 4 0 125 110
+Server: 5000 500 500 500 500 500 500 500 500 500 500
+
+===== 开始du_C参数消融实验 =====
+
+--- 测试 du_C = 0 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:51<1:25:21, 51.73s/it]  2%|▏         | 2/100 [01:35<1:16:58, 47.13s/it]  3%|▎         | 3/100 [02:25<1:18:08, 48.33s/it]  4%|▍         | 4/100 [03:14<1:18:05, 48.81s/it]  5%|▌         | 5/100 [04:04<1:17:52, 49.19s/it]  6%|▌         | 6/100 [04:54<1:17:29, 49.46s/it]  7%|▋         | 7/100 [05:43<1:16:04, 49.08s/it]  8%|▊         | 8/100 [06:33<1:15:55, 49.52s/it]  9%|▉         | 9/100 [07:23<1:15:07, 49.53s/it] 10%|█         | 10/100 [08:12<1:14:04, 49.38s/it] 11%|█         | 11/100 [09:01<1:13:20, 49.45s/it] 12%|█▏        | 12/100 [09:50<1:12:19, 49.31s/it] 13%|█▎        | 13/100 [10:39<1:11:25, 49.26s/it] 14%|█▍        | 14/100 [11:28<1:10:21, 49.08s/it] 15%|█▌        | 15/100 [12:17<1:09:35, 49.12s/it] 16%|█▌        | 16/100 [13:06<1:08:32, 48.96s/it] 17%|█▋        | 17/100 [13:56<1:08:03, 49.20s/it] 18%|█▊        | 18/100 [14:46<1:07:45, 49.58s/it] 19%|█▉        | 19/100 [15:35<1:06:48, 49.49s/it] 20%|██        | 20/100 [16:25<1:06:01, 49.52s/it] 21%|██        | 21/100 [17:14<1:05:02, 49.40s/it] 22%|██▏       | 22/100 [18:04<1:04:21, 49.51s/it] 23%|██▎       | 23/100 [18:53<1:03:30, 49.49s/it] 24%|██▍       | 24/100 [19:43<1:02:43, 49.52s/it] 25%|██▌       | 25/100 [20:33<1:02:11, 49.76s/it] 26%|██▌       | 26/100 [21:22<1:01:08, 49.57s/it] 27%|██▋       | 27/100 [22:11<1:00:08, 49.43s/it] 28%|██▊       | 28/100 [23:00<59:03, 49.21s/it]   29%|██▉       | 29/100 [23:49<57:57, 48.98s/it] 30%|███       | 30/100 [24:37<56:55, 48.80s/it] 31%|███       | 31/100 [25:25<56:00, 48.71s/it] 32%|███▏      | 32/100 [26:14<55:14, 48.75s/it] 33%|███▎      | 33/100 [26:47<49:09, 44.02s/it] 34%|███▍      | 34/100 [26:55<36:21, 33.06s/it] 35%|███▌      | 35/100 [27:02<27:29, 25.38s/it] 36%|███▌      | 36/100 [27:10<21:18, 19.97s/it] 37%|███▋      | 37/100 [27:17<16:59, 16.18s/it] 38%|███▊      | 38/100 [27:24<13:58, 13.52s/it] 39%|███▉      | 39/100 [28:04<21:45, 21.41s/it] 40%|████      | 40/100 [28:53<29:32, 29.55s/it] 41%|████      | 41/100 [29:42<34:54, 35.50s/it] 42%|████▏     | 42/100 [30:31<38:10, 39.50s/it] 43%|████▎     | 43/100 [31:20<40:11, 42.30s/it] 44%|████▍     | 44/100 [32:09<41:25, 44.39s/it] 45%|████▌     | 45/100 [32:58<42:02, 45.87s/it] 46%|████▌     | 46/100 [33:47<42:11, 46.87s/it] 47%|████▋     | 47/100 [34:36<41:52, 47.41s/it] 48%|████▊     | 48/100 [35:25<41:23, 47.75s/it] 49%|████▉     | 49/100 [36:13<40:45, 47.96s/it] 50%|█████     | 50/100 [37:02<40:06, 48.13s/it] 51%|█████     | 51/100 [37:51<39:36, 48.49s/it] 52%|█████▏    | 52/100 [38:40<38:57, 48.70s/it] 53%|█████▎    | 53/100 [39:29<38:15, 48.85s/it] 54%|█████▍    | 54/100 [40:18<37:22, 48.75s/it] 55%|█████▌    | 55/100 [41:07<36:33, 48.74s/it] 56%|█████▌    | 56/100 [41:55<35:46, 48.79s/it] 57%|█████▋    | 57/100 [42:44<35:01, 48.87s/it] 58%|█████▊    | 58/100 [43:33<34:12, 48.88s/it] 59%|█████▉    | 59/100 [44:22<33:15, 48.68s/it] 60%|██████    | 60/100 [45:10<32:25, 48.63s/it] 61%|██████    | 61/100 [45:59<31:34, 48.57s/it] 62%|██████▏   | 62/100 [46:48<30:58, 48.91s/it] 63%|██████▎   | 63/100 [47:37<30:05, 48.78s/it] 64%|██████▍   | 64/100 [48:25<29:11, 48.65s/it] 65%|██████▌   | 65/100 [49:13<28:19, 48.54s/it] 66%|██████▌   | 66/100 [50:02<27:28, 48.50s/it] 67%|██████▋   | 67/100 [50:51<26:43, 48.59s/it] 68%|██████▊   | 68/100 [51:39<25:56, 48.64s/it] 69%|██████▉   | 69/100 [52:29<25:12, 48.80s/it] 70%|███████   | 70/100 [53:18<24:26, 48.89s/it] 71%|███████   | 71/100 [54:06<23:37, 48.88s/it] 72%|███████▏  | 72/100 [54:55<22:48, 48.89s/it] 73%|███████▎  | 73/100 [55:44<21:57, 48.81s/it] 74%|███████▍  | 74/100 [56:33<21:08, 48.77s/it] 75%|███████▌  | 75/100 [57:22<20:20, 48.82s/it] 76%|███████▌  | 76/100 [58:10<19:29, 48.74s/it] 77%|███████▋  | 77/100 [58:59<18:38, 48.63s/it]Round 0: r_data=0.5619, r_noniid=0.8471, improvement=0.0000, alpha_new=0.0010
+Round 0: Acc=14.35%, Loss=0.0144, D_P_t=0.0389, Alpha=0.0010
+Round 1: r_data=0.5572, r_noniid=0.9376, improvement=0.3031, alpha_new=0.3031
+Round 1: Server fixing with alpha_new=0.3031
+Round 2: r_data=0.5573, r_noniid=0.9048, improvement=0.0000, alpha_new=0.0010
+Round 3: r_data=0.5572, r_noniid=0.9232, improvement=0.1236, alpha_new=0.1236
+Round 3: Server fixing with alpha_new=0.1236
+Round 4: r_data=0.5580, r_noniid=0.9556, improvement=0.1125, alpha_new=0.1125
+Round 4: Server fixing with alpha_new=0.1125
+Round 5: r_data=0.5577, r_noniid=0.9498, improvement=0.0000, alpha_new=0.0010
+Round 6: r_data=0.5572, r_noniid=0.9245, improvement=0.2618, alpha_new=0.2618
+Round 6: Server fixing with alpha_new=0.2618
+Round 7: r_data=0.5573, r_noniid=0.9060, improvement=0.1246, alpha_new=0.1246
+Round 7: Server fixing with alpha_new=0.1246
+Round 8: r_data=0.5570, r_noniid=0.9150, improvement=0.1125, alpha_new=0.1125
+Round 8: Server fixing with alpha_new=0.1125
+Round 9: r_data=0.5571, r_noniid=0.9445, improvement=0.0000, alpha_new=0.0010
+Round 10: r_data=0.5570, r_noniid=0.8979, improvement=0.3754, alpha_new=0.3754
+Round 10: Server fixing with alpha_new=0.3754
+Round 10: Acc=32.66%, Loss=0.0477, D_P_t=0.0618, Alpha=0.3754
+Round 11: r_data=0.5576, r_noniid=0.9386, improvement=0.0000, alpha_new=0.0010
+Round 12: r_data=0.5572, r_noniid=0.9599, improvement=0.5163, alpha_new=0.5163
+Round 12: Server fixing with alpha_new=0.5163
+Round 13: r_data=0.5573, r_noniid=0.9116, improvement=0.0008, alpha_new=0.0010
+Round 14: r_data=0.5571, r_noniid=0.9432, improvement=0.1590, alpha_new=0.1590
+Round 14: Server fixing with alpha_new=0.1590
+Round 15: r_data=0.5579, r_noniid=0.9627, improvement=0.0000, alpha_new=0.0010
+Round 16: r_data=0.5572, r_noniid=0.9266, improvement=0.0000, alpha_new=0.0010
+Round 17: r_data=0.5578, r_noniid=0.9339, improvement=0.0000, alpha_new=0.0010
+Round 18: r_data=0.5574, r_noniid=0.9353, improvement=0.0000, alpha_new=0.0010
+Round 19: r_data=0.5572, r_noniid=0.9220, improvement=0.0055, alpha_new=0.0055
+Round 19: Server fixing with alpha_new=0.0055
+Round 20: r_data=0.5572, r_noniid=0.9231, improvement=0.0000, alpha_new=0.0010
+Round 20: Acc=35.59%, Loss=0.0186, D_P_t=0.0843, Alpha=0.0010
+Round 21: r_data=0.5572, r_noniid=0.9400, improvement=0.0613, alpha_new=0.0613
+Round 21: Server fixing with alpha_new=0.0613
+Round 22: r_data=0.5573, r_noniid=0.9557, improvement=0.0099, alpha_new=0.0099
+Round 22: Server fixing with alpha_new=0.0099
+Round 23: r_data=0.5572, r_noniid=0.8785, improvement=0.1001, alpha_new=0.1001
+Round 23: Server fixing with alpha_new=0.1001
+Round 24: r_data=0.5621, r_noniid=0.9275, improvement=0.0000, alpha_new=0.0010
+Round 25: r_data=0.5575, r_noniid=0.9444, improvement=0.0000, alpha_new=0.0010
+Round 26: r_data=0.5570, r_noniid=0.8888, improvement=0.0000, alpha_new=0.0010
+Round 27: r_data=0.5571, r_noniid=0.9412, improvement=0.0000, alpha_new=0.0010
+Round 28: r_data=0.5569, r_noniid=0.8778, improvement=0.0000, alpha_new=0.0010
+Round 29: r_data=0.5574, r_noniid=0.9376, improvement=0.0000, alpha_new=0.0010
+Round 30: r_data=0.5576, r_noniid=0.9606, improvement=0.1588, alpha_new=0.1588
+Round 30: Server fixing with alpha_new=0.1588
+Round 30: Acc=42.00%, Loss=0.0077, D_P_t=0.1714, Alpha=0.1588
+Round 31: r_data=0.5571, r_noniid=0.9342, improvement=0.0000, alpha_new=0.0010
+Round 32: r_data=0.5585, r_noniid=0.8895, improvement=0.1672, alpha_new=0.1672
+Round 32: Server fixing with alpha_new=0.1672
+Round 33: r_data=0.5572, r_noniid=0.9187, improvement=0.0000, alpha_new=0.0010
+Round 34: r_data=0.5574, r_noniid=0.9549, improvement=0.0437, alpha_new=0.0437
+Round 34: Server fixing with alpha_new=0.0437
+Round 35: r_data=0.5574, r_noniid=0.7340, improvement=0.0000, alpha_new=0.0010
+Round 36: r_data=0.5569, r_noniid=0.9287, improvement=0.0325, alpha_new=0.0325
+Round 36: Server fixing with alpha_new=0.0325
+Round 37: r_data=0.5574, r_noniid=0.9612, improvement=0.1160, alpha_new=0.1160
+Round 37: Server fixing with alpha_new=0.1160
+Round 38: r_data=0.5575, r_noniid=0.9539, improvement=0.0000, alpha_new=0.0010
+Round 39: r_data=0.5617, r_noniid=0.8282, improvement=0.0000, alpha_new=0.0010
+Round 40: r_data=0.5574, r_noniid=0.9383, improvement=0.0412, alpha_new=0.0412
+Round 40: Server fixing with alpha_new=0.0412
+Round 40: Acc=47.78%, Loss=0.0075, D_P_t=0.1069, Alpha=0.0412
+Round 41: r_data=0.5570, r_noniid=0.9481, improvement=0.0000, alpha_new=0.0010
+Round 42: r_data=0.5582, r_noniid=0.9409, improvement=0.0888, alpha_new=0.0888
+Round 42: Server fixing with alpha_new=0.0888
+Round 43: r_data=0.5575, r_noniid=0.9479, improvement=0.1259, alpha_new=0.1259
+Round 43: Server fixing with alpha_new=0.1259
+Round 44: r_data=0.5574, r_noniid=0.7839, improvement=0.0000, alpha_new=0.0010
+Round 45: r_data=0.5578, r_noniid=0.9438, improvement=0.0892, alpha_new=0.0892
+Round 45: Server fixing with alpha_new=0.0892
+Round 46: r_data=0.5580, r_noniid=0.9429, improvement=0.0000, alpha_new=0.0010
+Round 47: r_data=0.5569, r_noniid=0.8457, improvement=0.0000, alpha_new=0.0010
+Round 48: r_data=0.5573, r_noniid=0.9230, improvement=0.0713, alpha_new=0.0713
+Round 48: Server fixing with alpha_new=0.0713
+Round 49: r_data=0.5574, r_noniid=0.8595, improvement=0.0000, alpha_new=0.0010
+Round 50: r_data=0.5579, r_noniid=0.9444, improvement=0.0159, alpha_new=0.0159
+Round 50: Server fixing with alpha_new=0.0159
+Round 50: Acc=50.52%, Loss=0.0061, D_P_t=0.1195, Alpha=0.0159
+Round 51: r_data=0.5570, r_noniid=0.9154, improvement=0.0408, alpha_new=0.0408
+Round 51: Server fixing with alpha_new=0.0408
+Round 52: r_data=0.5571, r_noniid=0.8909, improvement=0.0000, alpha_new=0.0010
+Round 53: r_data=0.5575, r_noniid=0.8967, improvement=0.0348, alpha_new=0.0348
+Round 53: Server fixing with alpha_new=0.0348
+Round 54: r_data=0.5625, r_noniid=0.9183, improvement=0.0000, alpha_new=0.0010
+Round 55: r_data=0.5570, r_noniid=0.8838, improvement=0.0000, alpha_new=0.0010
+Round 56: r_data=0.5579, r_noniid=0.9446, improvement=0.0638, alpha_new=0.0638
+Round 56: Server fixing with alpha_new=0.0638
+Round 57: r_data=0.5570, r_noniid=0.9497, improvement=0.0000, alpha_new=0.0010
+Round 58: r_data=0.5620, r_noniid=0.9605, improvement=0.1331, alpha_new=0.1331
+Round 58: Server fixing with alpha_new=0.1331
+Round 59: r_data=0.5574, r_noniid=0.9258, improvement=0.0000, alpha_new=0.0010
+Round 60: r_data=0.5583, r_noniid=0.9444, improvement=0.0000, alpha_new=0.0010
+Round 60: Acc=49.35%, Loss=0.0059, D_P_t=0.1193, Alpha=0.0010
+Round 61: r_data=0.5571, r_noniid=0.9495, improvement=0.2612, alpha_new=0.2612
+Round 61: Server fixing with alpha_new=0.2612
+Round 62: r_data=0.5580, r_noniid=0.8973, improvement=0.0000, alpha_new=0.0010
+Round 63: r_data=0.5577, r_noniid=0.9392, improvement=0.0000, alpha_new=0.0010
+Round 64: r_data=0.5572, r_noniid=0.9340, improvement=0.0000, alpha_new=0.0010
+Round 65: r_data=0.5619, r_noniid=0.9403, improvement=0.0366, alpha_new=0.0366
+Round 65: Server fixing with alpha_new=0.0366
+Round 66: r_data=0.5571, r_noniid=0.9193, improvement=0.0000, alpha_new=0.0010
+Round 67: r_data=0.5572, r_noniid=0.9208, improvement=0.0321, alpha_new=0.0321
+Round 67: Server fixing with alpha_new=0.0321
+Round 68: r_data=0.5574, r_noniid=0.9215, improvement=0.0000, alpha_new=0.0010
+Round 69: r_data=0.5567, r_noniid=0.9285, improvement=0.0406, alpha_new=0.0406
+Round 69: Server fixing with alpha_new=0.0406
+Round 70: r_data=0.5574, r_noniid=0.9299, improvement=0.0000, alpha_new=0.0010
+Round 70: Acc=51.13%, Loss=0.0053, D_P_t=0.0932, Alpha=0.0010
+Round 71: r_data=0.5571, r_noniid=0.9438, improvement=0.0579, alpha_new=0.0579
+Round 71: Server fixing with alpha_new=0.0579
+Round 72: r_data=0.5570, r_noniid=0.9355, improvement=0.0000, alpha_new=0.0010
+Round 73: r_data=0.5569, r_noniid=0.9517, improvement=0.1028, alpha_new=0.1028
+Round 73: Server fixing with alpha_new=0.1028
+Round 74: r_data=0.5572, r_noniid=0.9372, improvement=0.0000, alpha_new=0.0010
+Round 75: r_data=0.5569, r_noniid=0.9257, improvement=0.0000, alpha_new=0.0010
+Round 76: r_data=0.5574, r_noniid=0.8889, improvement=0.0000, alpha_new=0.0010
+ 78%|███████▊  | 78/100 [59:47<17:47, 48.53s/it] 79%|███████▉  | 79/100 [1:00:35<16:57, 48.46s/it] 80%|████████  | 80/100 [1:01:23<16:07, 48.37s/it] 81%|████████  | 81/100 [1:02:12<15:19, 48.42s/it] 82%|████████▏ | 82/100 [1:03:00<14:31, 48.40s/it] 83%|████████▎ | 83/100 [1:03:49<13:42, 48.38s/it] 84%|████████▍ | 84/100 [1:04:37<12:53, 48.33s/it] 85%|████████▌ | 85/100 [1:05:25<12:04, 48.29s/it] 86%|████████▌ | 86/100 [1:06:13<11:15, 48.26s/it] 87%|████████▋ | 87/100 [1:07:01<10:26, 48.23s/it] 88%|████████▊ | 88/100 [1:07:50<09:39, 48.32s/it] 89%|████████▉ | 89/100 [1:08:38<08:51, 48.34s/it] 90%|█████████ | 90/100 [1:09:27<08:03, 48.33s/it] 91%|█████████ | 91/100 [1:10:15<07:14, 48.30s/it] 92%|█████████▏| 92/100 [1:11:03<06:26, 48.28s/it] 93%|█████████▎| 93/100 [1:11:51<05:37, 48.22s/it] 94%|█████████▍| 94/100 [1:12:39<04:49, 48.21s/it] 95%|█████████▌| 95/100 [1:13:28<04:01, 48.30s/it] 96%|█████████▌| 96/100 [1:14:16<03:13, 48.29s/it] 97%|█████████▋| 97/100 [1:15:04<02:24, 48.29s/it] 98%|█████████▊| 98/100 [1:15:52<01:36, 48.25s/it] 99%|█████████▉| 99/100 [1:16:41<00:48, 48.25s/it]100%|██████████| 100/100 [1:17:29<00:00, 48.38s/it]100%|██████████| 100/100 [1:17:29<00:00, 46.50s/it]
+Round 77: r_data=0.5567, r_noniid=0.9688, improvement=0.1208, alpha_new=0.1208
+Round 77: Server fixing with alpha_new=0.1208
+Round 78: r_data=0.5572, r_noniid=0.9417, improvement=0.0000, alpha_new=0.0010
+Round 79: r_data=0.5572, r_noniid=0.8941, improvement=0.0000, alpha_new=0.0010
+Round 80: r_data=0.5618, r_noniid=0.9002, improvement=0.0000, alpha_new=0.0010
+Round 80: Acc=51.31%, Loss=0.0050, D_P_t=0.0634, Alpha=0.0010
+Round 81: r_data=0.5574, r_noniid=0.9311, improvement=0.0902, alpha_new=0.0902
+Round 81: Server fixing with alpha_new=0.0902
+Round 82: r_data=0.5570, r_noniid=0.9632, improvement=0.0000, alpha_new=0.0010
+Round 83: r_data=0.5570, r_noniid=0.9552, improvement=0.1750, alpha_new=0.1750
+Round 83: Server fixing with alpha_new=0.1750
+Round 84: r_data=0.5574, r_noniid=0.9157, improvement=0.0000, alpha_new=0.0010
+Round 85: r_data=0.5573, r_noniid=0.9251, improvement=0.0329, alpha_new=0.0329
+Round 85: Server fixing with alpha_new=0.0329
+Round 86: r_data=0.5575, r_noniid=0.8501, improvement=0.0000, alpha_new=0.0010
+Round 87: r_data=0.5580, r_noniid=0.9383, improvement=0.0000, alpha_new=0.0010
+Round 88: r_data=0.5571, r_noniid=0.9391, improvement=0.1551, alpha_new=0.1551
+Round 88: Server fixing with alpha_new=0.1551
+Round 89: r_data=0.5571, r_noniid=0.9347, improvement=0.0130, alpha_new=0.0130
+Round 89: Server fixing with alpha_new=0.0130
+Round 90: r_data=0.5570, r_noniid=0.9390, improvement=0.0000, alpha_new=0.0010
+Round 90: Acc=50.37%, Loss=0.0044, D_P_t=0.1082, Alpha=0.0010
+Round 91: r_data=0.5569, r_noniid=0.9528, improvement=0.0085, alpha_new=0.0085
+Round 91: Server fixing with alpha_new=0.0085
+Round 92: r_data=0.5620, r_noniid=0.9373, improvement=0.0102, alpha_new=0.0102
+Round 92: Server fixing with alpha_new=0.0102
+Round 93: r_data=0.5571, r_noniid=0.9357, improvement=0.0550, alpha_new=0.0550
+Round 93: Server fixing with alpha_new=0.0550
+Round 94: r_data=0.5582, r_noniid=0.8964, improvement=0.0000, alpha_new=0.0010
+Round 95: r_data=0.5622, r_noniid=0.9284, improvement=0.0605, alpha_new=0.0605
+Round 95: Server fixing with alpha_new=0.0605
+Round 96: r_data=0.5574, r_noniid=0.9584, improvement=0.0000, alpha_new=0.0010
+Round 97: r_data=0.5578, r_noniid=0.9085, improvement=0.0058, alpha_new=0.0058
+Round 97: Server fixing with alpha_new=0.0058
+Round 98: r_data=0.5573, r_noniid=0.9391, improvement=0.0023, alpha_new=0.0023
+Round 98: Server fixing with alpha_new=0.0023
+Round 99: r_data=0.5569, r_noniid=0.9394, improvement=0.0000, alpha_new=0.0010
+
+Results for du_C = 0:
+FedDU_Mut - 第20轮测试精度: 34.31%, 最终测试精度: 52.53%, 最终训练损失: 0.0051
+
+--- 测试 du_C = 1 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:48<1:20:50, 49.00s/it]  2%|▏         | 2/100 [01:37<1:19:27, 48.65s/it]  3%|▎         | 3/100 [02:25<1:18:35, 48.62s/it]  4%|▍         | 4/100 [03:14<1:17:37, 48.52s/it]  5%|▌         | 5/100 [04:02<1:16:47, 48.50s/it]  6%|▌         | 6/100 [04:51<1:16:03, 48.55s/it]  7%|▋         | 7/100 [05:40<1:15:19, 48.59s/it]  8%|▊         | 8/100 [06:29<1:14:40, 48.70s/it]  9%|▉         | 9/100 [07:17<1:13:41, 48.59s/it] 10%|█         | 10/100 [08:05<1:12:44, 48.49s/it] 11%|█         | 11/100 [08:53<1:11:49, 48.42s/it] 12%|█▏        | 12/100 [09:42<1:11:04, 48.46s/it] 13%|█▎        | 13/100 [10:31<1:10:20, 48.51s/it] 14%|█▍        | 14/100 [11:19<1:09:22, 48.41s/it] 15%|█▌        | 15/100 [12:08<1:08:49, 48.58s/it] 16%|█▌        | 16/100 [12:56<1:07:50, 48.45s/it] 17%|█▋        | 17/100 [13:44<1:06:59, 48.43s/it] 18%|█▊        | 18/100 [14:33<1:06:09, 48.41s/it] 19%|█▉        | 19/100 [15:21<1:05:23, 48.44s/it] 20%|██        | 20/100 [16:10<1:04:34, 48.43s/it] 21%|██        | 21/100 [16:58<1:03:45, 48.42s/it] 22%|██▏       | 22/100 [17:46<1:02:58, 48.44s/it] 23%|██▎       | 23/100 [18:35<1:02:06, 48.40s/it] 24%|██▍       | 24/100 [19:24<1:01:30, 48.56s/it] 25%|██▌       | 25/100 [20:12<1:00:37, 48.50s/it] 26%|██▌       | 26/100 [21:00<59:42, 48.41s/it]   27%|██▋       | 27/100 [21:48<58:45, 48.29s/it] 28%|██▊       | 28/100 [22:37<57:56, 48.28s/it] 29%|██▉       | 29/100 [23:25<57:02, 48.20s/it] 30%|███       | 30/100 [24:13<56:18, 48.26s/it] 31%|███       | 31/100 [25:01<55:33, 48.31s/it] 32%|███▏      | 32/100 [25:50<54:43, 48.29s/it] 33%|███▎      | 33/100 [26:39<54:09, 48.50s/it] 34%|███▍      | 34/100 [27:27<53:18, 48.46s/it] 35%|███▌      | 35/100 [28:15<52:28, 48.43s/it] 36%|███▌      | 36/100 [29:04<51:41, 48.46s/it] 37%|███▋      | 37/100 [29:52<50:51, 48.44s/it] 38%|███▊      | 38/100 [30:41<50:04, 48.46s/it] 39%|███▉      | 39/100 [31:29<49:13, 48.42s/it] 40%|████      | 40/100 [32:17<48:22, 48.37s/it] 41%|████      | 41/100 [33:06<47:36, 48.42s/it] 42%|████▏     | 42/100 [33:55<46:56, 48.56s/it] 43%|████▎     | 43/100 [34:43<46:09, 48.58s/it] 44%|████▍     | 44/100 [35:32<45:19, 48.56s/it] 45%|████▌     | 45/100 [36:20<44:26, 48.48s/it] 46%|████▌     | 46/100 [37:09<43:38, 48.49s/it] 47%|████▋     | 47/100 [37:57<42:50, 48.50s/it] 48%|████▊     | 48/100 [38:46<41:58, 48.43s/it] 49%|████▉     | 49/100 [39:34<41:10, 48.45s/it] 50%|█████     | 50/100 [40:22<40:22, 48.44s/it] 51%|█████     | 51/100 [41:11<39:40, 48.58s/it] 52%|█████▏    | 52/100 [42:00<38:51, 48.57s/it] 53%|█████▎    | 53/100 [42:48<37:58, 48.49s/it] 54%|█████▍    | 54/100 [43:36<37:07, 48.43s/it] 55%|█████▌    | 55/100 [44:25<36:19, 48.43s/it] 56%|█████▌    | 56/100 [45:13<35:30, 48.42s/it] 57%|█████▋    | 57/100 [46:02<34:44, 48.48s/it] 58%|█████▊    | 58/100 [46:50<33:54, 48.44s/it] 59%|█████▉    | 59/100 [47:39<33:06, 48.44s/it] 60%|██████    | 60/100 [48:28<32:23, 48.60s/it] 61%|██████    | 61/100 [49:16<31:34, 48.59s/it] 62%|██████▏   | 62/100 [50:05<30:44, 48.54s/it]Round 0: r_data=0.5572, r_noniid=0.9540, improvement=0.0000, alpha_new=0.4641
+Round 0: Server fixing with alpha_new=0.4641
+Round 0: Acc=17.07%, Loss=0.0159, D_P_t=0.1456, Alpha=0.4641
+Round 1: r_data=0.5570, r_noniid=0.9353, improvement=0.2120, alpha_new=0.6809
+Round 1: Server fixing with alpha_new=0.6809
+Round 2: r_data=0.5576, r_noniid=0.9620, improvement=0.0000, alpha_new=0.3901
+Round 2: Server fixing with alpha_new=0.3901
+Round 3: r_data=0.5580, r_noniid=0.9381, improvement=0.0737, alpha_new=0.4648
+Round 3: Server fixing with alpha_new=0.4648
+Round 4: r_data=0.5571, r_noniid=0.9107, improvement=0.1440, alpha_new=0.5417
+Round 4: Server fixing with alpha_new=0.5417
+Round 5: r_data=0.5570, r_noniid=0.9470, improvement=0.0000, alpha_new=0.3505
+Round 5: Server fixing with alpha_new=0.3505
+Round 6: r_data=0.5572, r_noniid=0.9674, improvement=0.2694, alpha_new=0.6763
+Round 6: Server fixing with alpha_new=0.6763
+Round 7: r_data=0.5574, r_noniid=0.9502, improvement=0.0000, alpha_new=0.3744
+Round 7: Server fixing with alpha_new=0.3744
+Round 8: r_data=0.5571, r_noniid=0.9486, improvement=0.1839, alpha_new=0.5859
+Round 8: Server fixing with alpha_new=0.5859
+Round 9: r_data=0.5574, r_noniid=0.9372, improvement=0.0000, alpha_new=0.3540
+Round 9: Server fixing with alpha_new=0.3540
+Round 10: r_data=0.5572, r_noniid=0.9524, improvement=0.0000, alpha_new=0.3548
+Round 10: Server fixing with alpha_new=0.3548
+Round 10: Acc=42.28%, Loss=0.0119, D_P_t=0.1405, Alpha=0.3548
+Round 11: r_data=0.5572, r_noniid=0.9228, improvement=0.0000, alpha_new=0.3426
+Round 11: Server fixing with alpha_new=0.3426
+Round 12: r_data=0.5569, r_noniid=0.9169, improvement=0.0000, alpha_new=0.3022
+Round 12: Server fixing with alpha_new=0.3022
+Round 13: r_data=0.5574, r_noniid=0.8834, improvement=0.0404, alpha_new=0.3399
+Round 13: Server fixing with alpha_new=0.3399
+Round 14: r_data=0.5574, r_noniid=0.8929, improvement=0.0000, alpha_new=0.2544
+Round 14: Server fixing with alpha_new=0.2544
+Round 15: r_data=0.5574, r_noniid=0.9341, improvement=0.0827, alpha_new=0.3699
+Round 15: Server fixing with alpha_new=0.3699
+Round 16: r_data=0.5578, r_noniid=0.9291, improvement=0.0000, alpha_new=0.2646
+Round 16: Server fixing with alpha_new=0.2646
+Round 17: r_data=0.5573, r_noniid=0.9083, improvement=0.0000, alpha_new=0.2576
+Round 17: Server fixing with alpha_new=0.2576
+Round 18: r_data=0.5580, r_noniid=0.9044, improvement=0.0000, alpha_new=0.2392
+Round 18: Server fixing with alpha_new=0.2392
+Round 19: r_data=0.5581, r_noniid=0.9243, improvement=0.0000, alpha_new=0.2416
+Round 19: Server fixing with alpha_new=0.2416
+Round 20: r_data=0.5572, r_noniid=0.9450, improvement=0.0337, alpha_new=0.2897
+Round 20: Server fixing with alpha_new=0.2897
+Round 20: Acc=54.83%, Loss=0.0035, D_P_t=0.1208, Alpha=0.2897
+Round 21: r_data=0.5571, r_noniid=0.9501, improvement=0.0000, alpha_new=0.2406
+Round 21: Server fixing with alpha_new=0.2406
+Round 22: r_data=0.5574, r_noniid=0.9298, improvement=0.0022, alpha_new=0.2384
+Round 22: Server fixing with alpha_new=0.2384
+Round 23: r_data=0.5570, r_noniid=0.9263, improvement=0.0000, alpha_new=0.2307
+Round 23: Server fixing with alpha_new=0.2307
+Round 24: r_data=0.5577, r_noniid=0.9365, improvement=0.0213, alpha_new=0.2611
+Round 24: Server fixing with alpha_new=0.2611
+Round 25: r_data=0.5578, r_noniid=0.8903, improvement=0.0000, alpha_new=0.2197
+Round 25: Server fixing with alpha_new=0.2197
+Round 26: r_data=0.5574, r_noniid=0.9352, improvement=0.0599, alpha_new=0.3079
+Round 26: Server fixing with alpha_new=0.3079
+Round 27: r_data=0.5575, r_noniid=0.9514, improvement=0.0000, alpha_new=0.2303
+Round 27: Server fixing with alpha_new=0.2303
+Round 28: r_data=0.5572, r_noniid=0.9192, improvement=0.0000, alpha_new=0.2212
+Round 28: Server fixing with alpha_new=0.2212
+Round 29: r_data=0.5575, r_noniid=0.9239, improvement=0.0155, alpha_new=0.2425
+Round 29: Server fixing with alpha_new=0.2425
+Round 30: r_data=0.5572, r_noniid=0.9503, improvement=0.0000, alpha_new=0.2274
+Round 30: Server fixing with alpha_new=0.2274
+Round 30: Acc=58.37%, Loss=0.0039, D_P_t=0.1344, Alpha=0.2274
+Round 31: r_data=0.5582, r_noniid=0.8968, improvement=0.0000, alpha_new=0.2142
+Round 31: Server fixing with alpha_new=0.2142
+Round 32: r_data=0.5570, r_noniid=0.9196, improvement=0.0241, alpha_new=0.2503
+Round 32: Server fixing with alpha_new=0.2503
+Round 33: r_data=0.5574, r_noniid=0.9507, improvement=0.0186, alpha_new=0.2582
+Round 33: Server fixing with alpha_new=0.2582
+Round 34: r_data=0.5572, r_noniid=0.9287, improvement=0.0000, alpha_new=0.2272
+Round 34: Server fixing with alpha_new=0.2272
+Round 35: r_data=0.5573, r_noniid=0.9323, improvement=0.0000, alpha_new=0.2188
+Round 35: Server fixing with alpha_new=0.2188
+Round 36: r_data=0.5571, r_noniid=0.9324, improvement=0.0174, alpha_new=0.2414
+Round 36: Server fixing with alpha_new=0.2414
+Round 37: r_data=0.5575, r_noniid=0.9478, improvement=0.0000, alpha_new=0.2235
+Round 37: Server fixing with alpha_new=0.2235
+Round 38: r_data=0.5621, r_noniid=0.9241, improvement=0.0159, alpha_new=0.2404
+Round 38: Server fixing with alpha_new=0.2404
+Round 39: r_data=0.5570, r_noniid=0.9313, improvement=0.0000, alpha_new=0.2132
+Round 39: Server fixing with alpha_new=0.2132
+Round 40: r_data=0.5572, r_noniid=0.9538, improvement=0.0723, alpha_new=0.3134
+Round 40: Server fixing with alpha_new=0.3134
+Round 40: Acc=58.05%, Loss=0.0042, D_P_t=0.1449, Alpha=0.3134
+Round 41: r_data=0.5578, r_noniid=0.8771, improvement=0.0000, alpha_new=0.2045
+Round 41: Server fixing with alpha_new=0.2045
+Round 42: r_data=0.5572, r_noniid=0.9373, improvement=0.0000, alpha_new=0.2130
+Round 42: Server fixing with alpha_new=0.2130
+Round 43: r_data=0.5577, r_noniid=0.9512, improvement=0.0220, alpha_new=0.2452
+Round 43: Server fixing with alpha_new=0.2452
+Round 44: r_data=0.5574, r_noniid=0.9384, improvement=0.0604, alpha_new=0.2988
+Round 44: Server fixing with alpha_new=0.2988
+Round 45: r_data=0.5574, r_noniid=0.8799, improvement=0.0000, alpha_new=0.2190
+Round 45: Server fixing with alpha_new=0.2190
+Round 46: r_data=0.5570, r_noniid=0.9400, improvement=0.0000, alpha_new=0.2231
+Round 46: Server fixing with alpha_new=0.2231
+Round 47: r_data=0.5573, r_noniid=0.9463, improvement=0.0786, alpha_new=0.3270
+Round 47: Server fixing with alpha_new=0.3270
+Round 48: r_data=0.5571, r_noniid=0.9161, improvement=0.0079, alpha_new=0.2505
+Round 48: Server fixing with alpha_new=0.2505
+Round 49: r_data=0.5569, r_noniid=0.9588, improvement=0.0476, alpha_new=0.3148
+Round 49: Server fixing with alpha_new=0.3148
+Round 50: r_data=0.5570, r_noniid=0.8934, improvement=0.0000, alpha_new=0.2198
+Round 50: Server fixing with alpha_new=0.2198
+Round 50: Acc=57.33%, Loss=0.0036, D_P_t=0.0589, Alpha=0.2198
+Round 51: r_data=0.5570, r_noniid=0.9112, improvement=0.0007, alpha_new=0.2251
+Round 51: Server fixing with alpha_new=0.2251
+Round 52: r_data=0.5574, r_noniid=0.9233, improvement=0.0000, alpha_new=0.2227
+Round 52: Server fixing with alpha_new=0.2227
+Round 53: r_data=0.5623, r_noniid=0.9424, improvement=0.0506, alpha_new=0.2951
+Round 53: Server fixing with alpha_new=0.2951
+Round 54: r_data=0.5573, r_noniid=0.9206, improvement=0.0000, alpha_new=0.2208
+Round 54: Server fixing with alpha_new=0.2208
+Round 55: r_data=0.5570, r_noniid=0.9254, improvement=0.0309, alpha_new=0.2618
+Round 55: Server fixing with alpha_new=0.2618
+Round 56: r_data=0.5573, r_noniid=0.9202, improvement=0.0000, alpha_new=0.2161
+Round 56: Server fixing with alpha_new=0.2161
+Round 57: r_data=0.5584, r_noniid=0.9397, improvement=0.0048, alpha_new=0.2274
+Round 57: Server fixing with alpha_new=0.2274
+Round 58: r_data=0.5574, r_noniid=0.9383, improvement=0.0731, alpha_new=0.3169
+Round 58: Server fixing with alpha_new=0.3169
+Round 59: r_data=0.5571, r_noniid=0.9627, improvement=0.0000, alpha_new=0.2309
+Round 59: Server fixing with alpha_new=0.2309
+Round 60: r_data=0.5580, r_noniid=0.8668, improvement=0.0000, alpha_new=0.1950
+Round 60: Server fixing with alpha_new=0.1950
+Round 60: Acc=60.29%, Loss=0.0057, D_P_t=0.0457, Alpha=0.1950
+Round 61: r_data=0.5574, r_noniid=0.9336, improvement=0.0265, alpha_new=0.2445
+Round 61: Server fixing with alpha_new=0.2445
+ 63%|██████▎   | 63/100 [50:53<29:53, 48.47s/it] 64%|██████▍   | 64/100 [51:42<29:05, 48.49s/it] 65%|██████▌   | 65/100 [52:30<28:17, 48.51s/it] 66%|██████▌   | 66/100 [53:18<27:27, 48.47s/it] 67%|██████▋   | 67/100 [54:07<26:40, 48.51s/it] 68%|██████▊   | 68/100 [54:55<25:51, 48.48s/it] 69%|██████▉   | 69/100 [55:44<25:07, 48.62s/it] 70%|███████   | 70/100 [56:33<24:19, 48.64s/it] 71%|███████   | 71/100 [57:22<23:29, 48.62s/it] 72%|███████▏  | 72/100 [58:10<22:40, 48.59s/it] 73%|███████▎  | 73/100 [58:59<21:51, 48.59s/it] 74%|███████▍  | 74/100 [59:47<21:01, 48.51s/it] 75%|███████▌  | 75/100 [1:00:36<20:13, 48.53s/it] 76%|███████▌  | 76/100 [1:01:24<19:23, 48.50s/it] 77%|███████▋  | 77/100 [1:02:12<18:34, 48.46s/it] 78%|███████▊  | 78/100 [1:03:02<17:51, 48.70s/it] 79%|███████▉  | 79/100 [1:03:50<17:01, 48.64s/it] 80%|████████  | 80/100 [1:04:39<16:13, 48.67s/it] 81%|████████  | 81/100 [1:05:27<15:22, 48.54s/it] 82%|████████▏ | 82/100 [1:06:16<14:36, 48.67s/it] 83%|████████▎ | 83/100 [1:07:05<13:47, 48.66s/it] 84%|████████▍ | 84/100 [1:07:53<12:56, 48.52s/it] 85%|████████▌ | 85/100 [1:08:41<12:07, 48.50s/it] 86%|████████▌ | 86/100 [1:09:30<11:18, 48.44s/it] 87%|████████▋ | 87/100 [1:10:18<10:30, 48.49s/it] 88%|████████▊ | 88/100 [1:11:07<09:42, 48.54s/it] 89%|████████▉ | 89/100 [1:11:55<08:53, 48.46s/it] 90%|█████████ | 90/100 [1:12:44<08:03, 48.39s/it] 91%|█████████ | 91/100 [1:13:32<07:15, 48.38s/it] 92%|█████████▏| 92/100 [1:14:20<06:26, 48.34s/it] 93%|█████████▎| 93/100 [1:15:09<05:38, 48.37s/it] 94%|█████████▍| 94/100 [1:15:57<04:50, 48.37s/it] 95%|█████████▌| 95/100 [1:16:46<04:02, 48.48s/it] 96%|█████████▌| 96/100 [1:17:35<03:14, 48.74s/it] 97%|█████████▋| 97/100 [1:18:24<02:26, 48.69s/it] 98%|█████████▊| 98/100 [1:19:12<01:37, 48.65s/it] 99%|█████████▉| 99/100 [1:20:01<00:48, 48.58s/it]100%|██████████| 100/100 [1:20:49<00:00, 48.54s/it]100%|██████████| 100/100 [1:20:49<00:00, 48.50s/it]
+Round 62: r_data=0.5570, r_noniid=0.9426, improvement=0.0236, alpha_new=0.2507
+Round 62: Server fixing with alpha_new=0.2507
+Round 63: r_data=0.5569, r_noniid=0.8509, improvement=0.0000, alpha_new=0.1942
+Round 63: Server fixing with alpha_new=0.1942
+Round 64: r_data=0.5578, r_noniid=0.8695, improvement=0.0000, alpha_new=0.1978
+Round 64: Server fixing with alpha_new=0.1978
+Round 65: r_data=0.5570, r_noniid=0.8991, improvement=0.0000, alpha_new=0.2014
+Round 65: Server fixing with alpha_new=0.2014
+Round 66: r_data=0.5577, r_noniid=0.9577, improvement=0.0144, alpha_new=0.2338
+Round 66: Server fixing with alpha_new=0.2338
+Round 67: r_data=0.5621, r_noniid=0.9219, improvement=0.0000, alpha_new=0.2095
+Round 67: Server fixing with alpha_new=0.2095
+Round 68: r_data=0.5572, r_noniid=0.9502, improvement=0.0467, alpha_new=0.2754
+Round 68: Server fixing with alpha_new=0.2754
+Round 69: r_data=0.5572, r_noniid=0.9429, improvement=0.0000, alpha_new=0.2234
+Round 69: Server fixing with alpha_new=0.2234
+Round 70: r_data=0.5571, r_noniid=0.9501, improvement=0.0468, alpha_new=0.2861
+Round 70: Server fixing with alpha_new=0.2861
+Round 70: Acc=58.22%, Loss=0.0039, D_P_t=0.1337, Alpha=0.2861
+Round 71: r_data=0.5575, r_noniid=0.9434, improvement=0.0000, alpha_new=0.2354
+Round 71: Server fixing with alpha_new=0.2354
+Round 72: r_data=0.5575, r_noniid=0.9563, improvement=0.0000, alpha_new=0.2374
+Round 72: Server fixing with alpha_new=0.2374
+Round 73: r_data=0.5619, r_noniid=0.9473, improvement=0.0000, alpha_new=0.2206
+Round 73: Server fixing with alpha_new=0.2206
+Round 74: r_data=0.5570, r_noniid=0.9557, improvement=0.1390, alpha_new=0.4030
+Round 74: Server fixing with alpha_new=0.4030
+Round 75: r_data=0.5572, r_noniid=0.9638, improvement=0.0000, alpha_new=0.2325
+Round 75: Server fixing with alpha_new=0.2325
+Round 76: r_data=0.5577, r_noniid=0.9359, improvement=0.0000, alpha_new=0.2244
+Round 76: Server fixing with alpha_new=0.2244
+Round 77: r_data=0.5570, r_noniid=0.9219, improvement=0.0054, alpha_new=0.2278
+Round 77: Server fixing with alpha_new=0.2278
+Round 78: r_data=0.5574, r_noniid=0.9209, improvement=0.0000, alpha_new=0.2184
+Round 78: Server fixing with alpha_new=0.2184
+Round 79: r_data=0.5570, r_noniid=0.8992, improvement=0.0000, alpha_new=0.2079
+Round 79: Server fixing with alpha_new=0.2079
+Round 80: r_data=0.5570, r_noniid=0.9336, improvement=0.0000, alpha_new=0.2133
+Round 80: Server fixing with alpha_new=0.2133
+Round 80: Acc=60.10%, Loss=0.0025, D_P_t=0.0987, Alpha=0.2133
+Round 81: r_data=0.5573, r_noniid=0.9095, improvement=0.0068, alpha_new=0.2168
+Round 81: Server fixing with alpha_new=0.2168
+Round 82: r_data=0.5581, r_noniid=0.9363, improvement=0.0142, alpha_new=0.2350
+Round 82: Server fixing with alpha_new=0.2350
+Round 83: r_data=0.5571, r_noniid=0.9229, improvement=0.0000, alpha_new=0.2124
+Round 83: Server fixing with alpha_new=0.2124
+Round 84: r_data=0.5570, r_noniid=0.9403, improvement=0.0019, alpha_new=0.2188
+Round 84: Server fixing with alpha_new=0.2188
+Round 85: r_data=0.5569, r_noniid=0.9451, improvement=0.0169, alpha_new=0.2401
+Round 85: Server fixing with alpha_new=0.2401
+Round 86: r_data=0.5622, r_noniid=0.8701, improvement=0.0009, alpha_new=0.2086
+Round 86: Server fixing with alpha_new=0.2086
+Round 87: r_data=0.5573, r_noniid=0.9385, improvement=0.0217, alpha_new=0.2503
+Round 87: Server fixing with alpha_new=0.2503
+Round 88: r_data=0.5580, r_noniid=0.8743, improvement=0.0000, alpha_new=0.2047
+Round 88: Server fixing with alpha_new=0.2047
+Round 89: r_data=0.5619, r_noniid=0.9450, improvement=0.0021, alpha_new=0.2255
+Round 89: Server fixing with alpha_new=0.2255
+Round 90: r_data=0.5571, r_noniid=0.8610, improvement=0.0000, alpha_new=0.1961
+Round 90: Server fixing with alpha_new=0.1961
+Round 90: Acc=60.14%, Loss=0.0019, D_P_t=0.0435, Alpha=0.1961
+Round 91: r_data=0.5573, r_noniid=0.9328, improvement=0.0315, alpha_new=0.2537
+Round 91: Server fixing with alpha_new=0.2537
+Round 92: r_data=0.5570, r_noniid=0.9414, improvement=0.0019, alpha_new=0.2266
+Round 92: Server fixing with alpha_new=0.2266
+Round 93: r_data=0.5572, r_noniid=0.8833, improvement=0.0061, alpha_new=0.2188
+Round 93: Server fixing with alpha_new=0.2188
+Round 94: r_data=0.5567, r_noniid=0.8936, improvement=0.0000, alpha_new=0.2113
+Round 94: Server fixing with alpha_new=0.2113
+Round 95: r_data=0.5616, r_noniid=0.9614, improvement=0.0000, alpha_new=0.2260
+Round 95: Server fixing with alpha_new=0.2260
+Round 96: r_data=0.5577, r_noniid=0.8052, improvement=0.0000, alpha_new=0.1858
+Round 96: Server fixing with alpha_new=0.1858
+Round 97: r_data=0.5569, r_noniid=0.9338, improvement=0.0000, alpha_new=0.2131
+Round 97: Server fixing with alpha_new=0.2131
+Round 98: r_data=0.5589, r_noniid=0.9236, improvement=0.0147, alpha_new=0.2307
+Round 98: Server fixing with alpha_new=0.2307
+Round 99: r_data=0.5574, r_noniid=0.8905, improvement=0.0144, alpha_new=0.2263
+Round 99: Server fixing with alpha_new=0.2263
+
+Results for du_C = 1:
+FedDU_Mut - 第20轮测试精度: 55.06%, 最终测试精度: 59.14%, 最终训练损失: 0.0030
+
+--- 测试 du_C = 3 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:48<1:20:21, 48.70s/it]  2%|▏         | 2/100 [01:37<1:19:19, 48.57s/it]  3%|▎         | 3/100 [02:25<1:18:35, 48.61s/it]  4%|▍         | 4/100 [03:15<1:18:10, 48.86s/it]  5%|▌         | 5/100 [04:03<1:17:16, 48.80s/it]  6%|▌         | 6/100 [04:52<1:16:22, 48.75s/it]  7%|▋         | 7/100 [05:41<1:15:29, 48.70s/it]  8%|▊         | 8/100 [06:29<1:14:36, 48.66s/it]  9%|▉         | 9/100 [07:18<1:13:48, 48.66s/it] 10%|█         | 10/100 [08:06<1:12:58, 48.65s/it] 11%|█         | 11/100 [08:56<1:12:28, 48.86s/it] 12%|█▏        | 12/100 [09:44<1:11:34, 48.81s/it] 13%|█▎        | 13/100 [10:33<1:10:39, 48.73s/it] 14%|█▍        | 14/100 [11:22<1:09:45, 48.67s/it] 15%|█▌        | 15/100 [12:10<1:08:53, 48.63s/it] 16%|█▌        | 16/100 [12:59<1:08:09, 48.69s/it] 17%|█▋        | 17/100 [13:47<1:07:14, 48.61s/it] 18%|█▊        | 18/100 [14:36<1:06:19, 48.53s/it] 19%|█▉        | 19/100 [15:25<1:05:46, 48.72s/it] 20%|██        | 20/100 [16:13<1:04:55, 48.70s/it] 21%|██        | 21/100 [17:02<1:03:57, 48.58s/it] 22%|██▏       | 22/100 [17:50<1:03:02, 48.49s/it] 23%|██▎       | 23/100 [18:38<1:02:08, 48.43s/it] 24%|██▍       | 24/100 [19:27<1:01:17, 48.39s/it] 25%|██▌       | 25/100 [20:15<1:00:26, 48.36s/it] 26%|██▌       | 26/100 [21:03<59:37, 48.34s/it]   27%|██▋       | 27/100 [21:52<59:01, 48.52s/it] 28%|██▊       | 28/100 [22:41<58:13, 48.53s/it] 29%|██▉       | 29/100 [23:29<57:25, 48.53s/it] 30%|███       | 30/100 [24:18<56:34, 48.49s/it] 31%|███       | 31/100 [25:06<55:43, 48.46s/it] 32%|███▏      | 32/100 [25:55<54:56, 48.48s/it] 33%|███▎      | 33/100 [26:43<54:05, 48.44s/it] 34%|███▍      | 34/100 [27:32<53:32, 48.67s/it] 35%|███▌      | 35/100 [28:20<52:35, 48.54s/it] 36%|███▌      | 36/100 [29:09<51:48, 48.56s/it] 37%|███▋      | 37/100 [29:57<50:56, 48.51s/it] 38%|███▊      | 38/100 [30:46<50:04, 48.47s/it] 39%|███▉      | 39/100 [31:34<49:12, 48.40s/it] 40%|████      | 40/100 [32:22<48:25, 48.42s/it] 41%|████      | 41/100 [33:11<47:35, 48.40s/it] 42%|████▏     | 42/100 [33:59<46:46, 48.39s/it] 43%|████▎     | 43/100 [34:48<45:58, 48.40s/it] 44%|████▍     | 44/100 [35:37<45:22, 48.62s/it] 45%|████▌     | 45/100 [36:25<44:31, 48.56s/it] 46%|████▌     | 46/100 [37:14<43:39, 48.51s/it] 47%|████▋     | 47/100 [38:02<42:47, 48.44s/it] 48%|████▊     | 48/100 [38:50<41:57, 48.41s/it] 49%|████▉     | 49/100 [39:39<41:08, 48.41s/it] 50%|█████     | 50/100 [40:27<40:17, 48.36s/it] 51%|█████     | 51/100 [41:15<39:34, 48.47s/it] 52%|█████▏    | 52/100 [42:04<38:43, 48.41s/it] 53%|█████▎    | 53/100 [42:53<38:01, 48.54s/it] 54%|█████▍    | 54/100 [43:41<37:09, 48.47s/it] 55%|█████▌    | 55/100 [44:29<36:19, 48.43s/it] 56%|█████▌    | 56/100 [45:18<35:30, 48.43s/it] 57%|█████▋    | 57/100 [46:06<34:38, 48.33s/it] 58%|█████▊    | 58/100 [46:54<33:49, 48.31s/it] 59%|█████▉    | 59/100 [47:42<33:01, 48.33s/it] 60%|██████    | 60/100 [48:31<32:13, 48.34s/it] 61%|██████    | 61/100 [49:19<31:25, 48.35s/it] 62%|██████▏   | 62/100 [50:08<30:37, 48.36s/it]Round 0: r_data=0.5572, r_noniid=0.9399, improvement=0.0000, alpha_new=1.0000
+Round 0: Server fixing with alpha_new=1.0000
+Round 0: Acc=34.22%, Loss=0.0132, D_P_t=0.1098, Alpha=1.0000
+Round 1: r_data=0.5569, r_noniid=0.9145, improvement=0.0000, alpha_new=1.0000
+Round 1: Server fixing with alpha_new=1.0000
+Round 2: r_data=0.5575, r_noniid=0.9609, improvement=0.0000, alpha_new=1.0000
+Round 2: Server fixing with alpha_new=1.0000
+Round 3: r_data=0.5572, r_noniid=0.9385, improvement=0.0000, alpha_new=1.0000
+Round 3: Server fixing with alpha_new=1.0000
+Round 4: r_data=0.5580, r_noniid=0.7292, improvement=0.2504, alpha_new=1.0000
+Round 4: Server fixing with alpha_new=1.0000
+Round 5: r_data=0.5569, r_noniid=0.9397, improvement=0.0000, alpha_new=1.0000
+Round 5: Server fixing with alpha_new=1.0000
+Round 6: r_data=0.5574, r_noniid=0.9381, improvement=0.0665, alpha_new=1.0000
+Round 6: Server fixing with alpha_new=1.0000
+Round 7: r_data=0.5620, r_noniid=0.9170, improvement=0.0000, alpha_new=1.0000
+Round 7: Server fixing with alpha_new=1.0000
+Round 8: r_data=0.5574, r_noniid=0.8983, improvement=0.0000, alpha_new=1.0000
+Round 8: Server fixing with alpha_new=1.0000
+Round 9: r_data=0.5569, r_noniid=0.9467, improvement=0.0000, alpha_new=1.0000
+Round 9: Server fixing with alpha_new=1.0000
+Round 10: r_data=0.5571, r_noniid=0.9295, improvement=0.2116, alpha_new=1.0000
+Round 10: Server fixing with alpha_new=1.0000
+Round 10: Acc=55.38%, Loss=0.0102, D_P_t=0.0927, Alpha=1.0000
+Round 11: r_data=0.5572, r_noniid=0.9468, improvement=0.0000, alpha_new=0.9529
+Round 11: Server fixing with alpha_new=0.9529
+Round 12: r_data=0.5621, r_noniid=0.9399, improvement=0.0214, alpha_new=0.9891
+Round 12: Server fixing with alpha_new=0.9891
+Round 13: r_data=0.5578, r_noniid=0.9679, improvement=0.0000, alpha_new=0.8579
+Round 13: Server fixing with alpha_new=0.8579
+Round 14: r_data=0.5575, r_noniid=0.9565, improvement=0.0000, alpha_new=0.8176
+Round 14: Server fixing with alpha_new=0.8176
+Round 15: r_data=0.5577, r_noniid=0.8842, improvement=0.0000, alpha_new=0.7150
+Round 15: Server fixing with alpha_new=0.7150
+Round 16: r_data=0.5573, r_noniid=0.8857, improvement=0.0101, alpha_new=0.7335
+Round 16: Server fixing with alpha_new=0.7335
+Round 17: r_data=0.5622, r_noniid=0.8447, improvement=0.0000, alpha_new=0.6670
+Round 17: Server fixing with alpha_new=0.6670
+Round 18: r_data=0.5572, r_noniid=0.9350, improvement=0.0000, alpha_new=0.7023
+Round 18: Server fixing with alpha_new=0.7023
+Round 19: r_data=0.5576, r_noniid=0.9427, improvement=0.0067, alpha_new=0.7212
+Round 19: Server fixing with alpha_new=0.7212
+Round 20: r_data=0.5574, r_noniid=0.9437, improvement=0.0298, alpha_new=0.7705
+Round 20: Server fixing with alpha_new=0.7705
+Round 20: Acc=58.31%, Loss=0.0045, D_P_t=0.1177, Alpha=0.7705
+Round 21: r_data=0.5570, r_noniid=0.8511, improvement=0.0000, alpha_new=0.6045
+Round 21: Server fixing with alpha_new=0.6045
+Round 22: r_data=0.5570, r_noniid=0.9542, improvement=0.0365, alpha_new=0.7477
+Round 22: Server fixing with alpha_new=0.7477
+Round 23: r_data=0.5578, r_noniid=0.9314, improvement=0.0258, alpha_new=0.7432
+Round 23: Server fixing with alpha_new=0.7432
+Round 24: r_data=0.5574, r_noniid=0.9615, improvement=0.0000, alpha_new=0.7123
+Round 24: Server fixing with alpha_new=0.7123
+Round 25: r_data=0.5572, r_noniid=0.9001, improvement=0.0000, alpha_new=0.6512
+Round 25: Server fixing with alpha_new=0.6512
+Round 26: r_data=0.5570, r_noniid=0.9165, improvement=0.0000, alpha_new=0.6607
+Round 26: Server fixing with alpha_new=0.6607
+Round 27: r_data=0.5571, r_noniid=0.9274, improvement=0.0000, alpha_new=0.6648
+Round 27: Server fixing with alpha_new=0.6648
+Round 28: r_data=0.5572, r_noniid=0.8820, improvement=0.0000, alpha_new=0.6181
+Round 28: Server fixing with alpha_new=0.6181
+Round 29: r_data=0.5572, r_noniid=0.9434, improvement=0.0234, alpha_new=0.7060
+Round 29: Server fixing with alpha_new=0.7060
+Round 30: r_data=0.5617, r_noniid=0.9311, improvement=0.0000, alpha_new=0.6503
+Round 30: Server fixing with alpha_new=0.6503
+Round 30: Acc=59.56%, Loss=0.0034, D_P_t=0.0950, Alpha=0.6503
+Round 31: r_data=0.5572, r_noniid=0.9585, improvement=0.0236, alpha_new=0.7097
+Round 31: Server fixing with alpha_new=0.7097
+Round 32: r_data=0.5621, r_noniid=0.9211, improvement=0.0000, alpha_new=0.6533
+Round 32: Server fixing with alpha_new=0.6533
+Round 33: r_data=0.5570, r_noniid=0.9549, improvement=0.0198, alpha_new=0.7093
+Round 33: Server fixing with alpha_new=0.7093
+Round 34: r_data=0.5617, r_noniid=0.9417, improvement=0.0000, alpha_new=0.6800
+Round 34: Server fixing with alpha_new=0.6800
+Round 35: r_data=0.5572, r_noniid=0.9654, improvement=0.0555, alpha_new=0.7981
+Round 35: Server fixing with alpha_new=0.7981
+Round 36: r_data=0.5572, r_noniid=0.8962, improvement=0.0000, alpha_new=0.6280
+Round 36: Server fixing with alpha_new=0.6280
+Round 37: r_data=0.5571, r_noniid=0.9485, improvement=0.0055, alpha_new=0.6751
+Round 37: Server fixing with alpha_new=0.6751
+Round 38: r_data=0.5575, r_noniid=0.9404, improvement=0.0390, alpha_new=0.7387
+Round 38: Server fixing with alpha_new=0.7387
+Round 39: r_data=0.5569, r_noniid=0.9510, improvement=0.0000, alpha_new=0.6790
+Round 39: Server fixing with alpha_new=0.6790
+Round 40: r_data=0.5574, r_noniid=0.8963, improvement=0.0047, alpha_new=0.6493
+Round 40: Server fixing with alpha_new=0.6493
+Round 40: Acc=59.57%, Loss=0.0036, D_P_t=0.0607, Alpha=0.6493
+Round 41: r_data=0.5572, r_noniid=0.9305, improvement=0.0000, alpha_new=0.6609
+Round 41: Server fixing with alpha_new=0.6609
+Round 42: r_data=0.5572, r_noniid=0.9492, improvement=0.0236, alpha_new=0.7194
+Round 42: Server fixing with alpha_new=0.7194
+Round 43: r_data=0.5574, r_noniid=0.9455, improvement=0.0000, alpha_new=0.6899
+Round 43: Server fixing with alpha_new=0.6899
+Round 44: r_data=0.5572, r_noniid=0.9465, improvement=0.0000, alpha_new=0.6634
+Round 44: Server fixing with alpha_new=0.6634
+Round 45: r_data=0.5578, r_noniid=0.9278, improvement=0.0000, alpha_new=0.6384
+Round 45: Server fixing with alpha_new=0.6384
+Round 46: r_data=0.5570, r_noniid=0.8861, improvement=0.0323, alpha_new=0.6692
+Round 46: Server fixing with alpha_new=0.6692
+Round 47: r_data=0.5582, r_noniid=0.9561, improvement=0.0204, alpha_new=0.7276
+Round 47: Server fixing with alpha_new=0.7276
+Round 48: r_data=0.5572, r_noniid=0.8288, improvement=0.0000, alpha_new=0.5576
+Round 48: Server fixing with alpha_new=0.5576
+Round 49: r_data=0.5619, r_noniid=0.9283, improvement=0.0291, alpha_new=0.6861
+Round 49: Server fixing with alpha_new=0.6861
+Round 50: r_data=0.5578, r_noniid=0.9126, improvement=0.0000, alpha_new=0.6284
+Round 50: Server fixing with alpha_new=0.6284
+Round 50: Acc=60.25%, Loss=0.0025, D_P_t=0.0734, Alpha=0.6284
+Round 51: r_data=0.5570, r_noniid=0.9338, improvement=0.0190, alpha_new=0.6786
+Round 51: Server fixing with alpha_new=0.6786
+Round 52: r_data=0.5570, r_noniid=0.9436, improvement=0.0092, alpha_new=0.6841
+Round 52: Server fixing with alpha_new=0.6841
+Round 53: r_data=0.5617, r_noniid=0.9630, improvement=0.0000, alpha_new=0.6928
+Round 53: Server fixing with alpha_new=0.6928
+Round 54: r_data=0.5578, r_noniid=0.8574, improvement=0.0000, alpha_new=0.5912
+Round 54: Server fixing with alpha_new=0.5912
+Round 55: r_data=0.5578, r_noniid=0.9378, improvement=0.0000, alpha_new=0.6429
+Round 55: Server fixing with alpha_new=0.6429
+Round 56: r_data=0.5619, r_noniid=0.9092, improvement=0.0213, alpha_new=0.6686
+Round 56: Server fixing with alpha_new=0.6686
+Round 57: r_data=0.5570, r_noniid=0.9403, improvement=0.0043, alpha_new=0.6719
+Round 57: Server fixing with alpha_new=0.6719
+Round 58: r_data=0.5571, r_noniid=0.9360, improvement=0.0568, alpha_new=0.7726
+Round 58: Server fixing with alpha_new=0.7726
+Round 59: r_data=0.5583, r_noniid=0.8988, improvement=0.0000, alpha_new=0.6226
+Round 59: Server fixing with alpha_new=0.6226
+Round 60: r_data=0.5575, r_noniid=0.8922, improvement=0.0000, alpha_new=0.6160
+Round 60: Server fixing with alpha_new=0.6160
+Round 60: Acc=60.37%, Loss=0.0026, D_P_t=0.0582, Alpha=0.6160
+Round 61: r_data=0.5579, r_noniid=0.9579, improvement=0.0279, alpha_new=0.7160
+Round 61: Server fixing with alpha_new=0.7160
+ 63%|██████▎   | 63/100 [50:56<29:55, 48.52s/it] 64%|██████▍   | 64/100 [51:45<29:07, 48.55s/it] 65%|██████▌   | 65/100 [52:34<28:24, 48.69s/it] 66%|██████▌   | 66/100 [53:23<27:38, 48.79s/it] 67%|██████▋   | 67/100 [54:12<26:54, 48.92s/it] 68%|██████▊   | 68/100 [55:01<26:06, 48.94s/it] 69%|██████▉   | 69/100 [55:50<25:14, 48.84s/it] 70%|███████   | 70/100 [56:38<24:21, 48.71s/it] 71%|███████   | 71/100 [57:27<23:30, 48.64s/it] 72%|███████▏  | 72/100 [58:16<22:46, 48.80s/it] 73%|███████▎  | 73/100 [59:05<21:56, 48.74s/it] 74%|███████▍  | 74/100 [59:53<21:04, 48.65s/it] 75%|███████▌  | 75/100 [1:00:41<20:14, 48.59s/it] 76%|███████▌  | 76/100 [1:01:30<19:26, 48.59s/it] 77%|███████▋  | 77/100 [1:02:18<18:35, 48.49s/it] 78%|███████▊  | 78/100 [1:03:07<17:45, 48.45s/it] 79%|███████▉  | 79/100 [1:03:55<16:55, 48.38s/it] 80%|████████  | 80/100 [1:04:43<16:08, 48.40s/it] 81%|████████  | 81/100 [1:05:32<15:19, 48.39s/it] 82%|████████▏ | 82/100 [1:06:21<14:33, 48.54s/it] 83%|████████▎ | 83/100 [1:07:09<13:45, 48.58s/it] 84%|████████▍ | 84/100 [1:07:58<12:57, 48.59s/it] 85%|████████▌ | 85/100 [1:08:46<12:08, 48.55s/it] 86%|████████▌ | 86/100 [1:09:35<11:20, 48.60s/it] 87%|████████▋ | 87/100 [1:10:23<10:31, 48.55s/it] 88%|████████▊ | 88/100 [1:11:12<09:43, 48.62s/it] 89%|████████▉ | 89/100 [1:12:01<08:55, 48.69s/it] 90%|█████████ | 90/100 [1:12:50<08:06, 48.63s/it] 91%|█████████ | 91/100 [1:13:39<07:19, 48.80s/it] 92%|█████████▏| 92/100 [1:14:28<06:30, 48.80s/it] 93%|█████████▎| 93/100 [1:15:16<05:40, 48.69s/it] 94%|█████████▍| 94/100 [1:16:05<04:51, 48.64s/it] 95%|█████████▌| 95/100 [1:16:53<04:03, 48.70s/it] 96%|█████████▌| 96/100 [1:17:42<03:14, 48.75s/it] 97%|█████████▋| 97/100 [1:18:31<02:26, 48.72s/it] 98%|█████████▊| 98/100 [1:19:20<01:37, 48.73s/it] 99%|█████████▉| 99/100 [1:20:08<00:48, 48.71s/it]100%|██████████| 100/100 [1:20:58<00:00, 48.86s/it]100%|██████████| 100/100 [1:20:58<00:00, 48.58s/it]
+Round 62: r_data=0.5569, r_noniid=0.9602, improvement=0.0082, alpha_new=0.7043
+Round 62: Server fixing with alpha_new=0.7043
+Round 63: r_data=0.5567, r_noniid=0.9395, improvement=0.0000, alpha_new=0.6672
+Round 63: Server fixing with alpha_new=0.6672
+Round 64: r_data=0.5578, r_noniid=0.9543, improvement=0.0000, alpha_new=0.6667
+Round 64: Server fixing with alpha_new=0.6667
+Round 65: r_data=0.5572, r_noniid=0.9397, improvement=0.0386, alpha_new=0.7297
+Round 65: Server fixing with alpha_new=0.7297
+Round 66: r_data=0.5582, r_noniid=0.8155, improvement=0.0000, alpha_new=0.5615
+Round 66: Server fixing with alpha_new=0.5615
+Round 67: r_data=0.5570, r_noniid=0.9139, improvement=0.0180, alpha_new=0.6621
+Round 67: Server fixing with alpha_new=0.6621
+Round 68: r_data=0.5570, r_noniid=0.9599, improvement=0.0000, alpha_new=0.6731
+Round 68: Server fixing with alpha_new=0.6731
+Round 69: r_data=0.5618, r_noniid=0.9129, improvement=0.0000, alpha_new=0.6396
+Round 69: Server fixing with alpha_new=0.6396
+Round 70: r_data=0.5573, r_noniid=0.9087, improvement=0.0000, alpha_new=0.6200
+Round 70: Server fixing with alpha_new=0.6200
+Round 70: Acc=60.38%, Loss=0.0027, D_P_t=0.0699, Alpha=0.6200
+Round 71: r_data=0.5571, r_noniid=0.9644, improvement=0.0419, alpha_new=0.7397
+Round 71: Server fixing with alpha_new=0.7397
+Round 72: r_data=0.5574, r_noniid=0.9409, improvement=0.0000, alpha_new=0.6670
+Round 72: Server fixing with alpha_new=0.6670
+Round 73: r_data=0.5572, r_noniid=0.9501, improvement=0.0656, alpha_new=0.7990
+Round 73: Server fixing with alpha_new=0.7990
+Round 74: r_data=0.5568, r_noniid=0.9397, improvement=0.0000, alpha_new=0.6836
+Round 74: Server fixing with alpha_new=0.6836
+Round 75: r_data=0.5569, r_noniid=0.9437, improvement=0.0000, alpha_new=0.6785
+Round 75: Server fixing with alpha_new=0.6785
+Round 76: r_data=0.5618, r_noniid=0.9314, improvement=0.0000, alpha_new=0.6348
+Round 76: Server fixing with alpha_new=0.6348
+Round 77: r_data=0.5570, r_noniid=0.9036, improvement=0.0060, alpha_new=0.6222
+Round 77: Server fixing with alpha_new=0.6222
+Round 78: r_data=0.5619, r_noniid=0.9525, improvement=0.0309, alpha_new=0.7153
+Round 78: Server fixing with alpha_new=0.7153
+Round 79: r_data=0.5570, r_noniid=0.8895, improvement=0.0000, alpha_new=0.6100
+Round 79: Server fixing with alpha_new=0.6100
+Round 80: r_data=0.5569, r_noniid=0.9249, improvement=0.0404, alpha_new=0.7112
+Round 80: Server fixing with alpha_new=0.7112
+Round 80: Acc=60.33%, Loss=0.0020, D_P_t=0.0865, Alpha=0.7112
+Round 81: r_data=0.5574, r_noniid=0.9257, improvement=0.0000, alpha_new=0.6553
+Round 81: Server fixing with alpha_new=0.6553
+Round 82: r_data=0.5571, r_noniid=0.9497, improvement=0.0000, alpha_new=0.6479
+Round 82: Server fixing with alpha_new=0.6479
+Round 83: r_data=0.5570, r_noniid=0.9582, improvement=0.0182, alpha_new=0.6891
+Round 83: Server fixing with alpha_new=0.6891
+Round 84: r_data=0.5578, r_noniid=0.9567, improvement=0.0148, alpha_new=0.6994
+Round 84: Server fixing with alpha_new=0.6994
+Round 85: r_data=0.5572, r_noniid=0.9062, improvement=0.0000, alpha_new=0.6260
+Round 85: Server fixing with alpha_new=0.6260
+Round 86: r_data=0.5621, r_noniid=0.9394, improvement=0.0172, alpha_new=0.6879
+Round 86: Server fixing with alpha_new=0.6879
+Round 87: r_data=0.5572, r_noniid=0.9457, improvement=0.0040, alpha_new=0.6769
+Round 87: Server fixing with alpha_new=0.6769
+Round 88: r_data=0.5574, r_noniid=0.9316, improvement=0.0000, alpha_new=0.6406
+Round 88: Server fixing with alpha_new=0.6406
+Round 89: r_data=0.5573, r_noniid=0.9523, improvement=0.1158, alpha_new=0.8791
+Round 89: Server fixing with alpha_new=0.8791
+Round 90: r_data=0.5570, r_noniid=0.9297, improvement=0.0000, alpha_new=0.6419
+Round 90: Server fixing with alpha_new=0.6419
+Round 90: Acc=60.74%, Loss=0.0029, D_P_t=0.0930, Alpha=0.6419
+Round 91: r_data=0.5580, r_noniid=0.7990, improvement=0.0000, alpha_new=0.5488
+Round 91: Server fixing with alpha_new=0.5488
+Round 92: r_data=0.5573, r_noniid=0.9423, improvement=0.0000, alpha_new=0.6383
+Round 92: Server fixing with alpha_new=0.6383
+Round 93: r_data=0.5581, r_noniid=0.9039, improvement=0.0000, alpha_new=0.6118
+Round 93: Server fixing with alpha_new=0.6118
+Round 94: r_data=0.5573, r_noniid=0.8892, improvement=0.0094, alpha_new=0.6188
+Round 94: Server fixing with alpha_new=0.6188
+Round 95: r_data=0.5577, r_noniid=0.9105, improvement=0.0069, alpha_new=0.6376
+Round 95: Server fixing with alpha_new=0.6376
+Round 96: r_data=0.5571, r_noniid=0.9259, improvement=0.0186, alpha_new=0.6761
+Round 96: Server fixing with alpha_new=0.6761
+Round 97: r_data=0.5619, r_noniid=0.9298, improvement=0.0000, alpha_new=0.6438
+Round 97: Server fixing with alpha_new=0.6438
+Round 98: r_data=0.5572, r_noniid=0.9038, improvement=0.0095, alpha_new=0.6384
+Round 98: Server fixing with alpha_new=0.6384
+Round 99: r_data=0.5584, r_noniid=0.9553, improvement=0.0091, alpha_new=0.6838
+Round 99: Server fixing with alpha_new=0.6838
+
+Results for du_C = 3:
+FedDU_Mut - 第20轮测试精度: 58.10%, 最终测试精度: 60.40%, 最终训练损失: 0.0026
+
+--- 测试 du_C = 5 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:49<1:20:52, 49.01s/it]  2%|▏         | 2/100 [01:37<1:19:50, 48.88s/it]  3%|▎         | 3/100 [02:26<1:19:02, 48.90s/it]  4%|▍         | 4/100 [03:15<1:18:18, 48.94s/it]  5%|▌         | 5/100 [04:03<1:17:05, 48.68s/it]  6%|▌         | 6/100 [04:52<1:16:14, 48.67s/it]  7%|▋         | 7/100 [05:41<1:15:23, 48.64s/it]  8%|▊         | 8/100 [06:29<1:14:26, 48.55s/it]  9%|▉         | 9/100 [07:18<1:13:59, 48.78s/it] 10%|█         | 10/100 [08:07<1:13:09, 48.77s/it] 11%|█         | 11/100 [08:56<1:12:15, 48.72s/it] 12%|█▏        | 12/100 [09:44<1:11:24, 48.69s/it] 13%|█▎        | 13/100 [10:34<1:10:52, 48.88s/it] 14%|█▍        | 14/100 [11:22<1:09:52, 48.75s/it] 15%|█▌        | 15/100 [12:11<1:09:00, 48.72s/it] 16%|█▌        | 16/100 [12:59<1:08:07, 48.66s/it] 17%|█▋        | 17/100 [13:49<1:07:37, 48.88s/it] 18%|█▊        | 18/100 [14:38<1:07:05, 49.09s/it] 19%|█▉        | 19/100 [15:27<1:06:04, 48.95s/it] 20%|██        | 20/100 [16:16<1:05:14, 48.93s/it] 21%|██        | 21/100 [17:05<1:04:22, 48.89s/it] 22%|██▏       | 22/100 [17:53<1:03:26, 48.80s/it] 23%|██▎       | 23/100 [18:41<1:02:27, 48.67s/it] 24%|██▍       | 24/100 [19:30<1:01:36, 48.64s/it] 25%|██▌       | 25/100 [20:19<1:00:49, 48.66s/it] 26%|██▌       | 26/100 [21:08<1:00:11, 48.80s/it] 27%|██▋       | 27/100 [21:56<59:17, 48.73s/it]   28%|██▊       | 28/100 [22:45<58:34, 48.81s/it] 29%|██▉       | 29/100 [23:34<57:47, 48.83s/it] 30%|███       | 30/100 [24:23<56:57, 48.83s/it] 31%|███       | 31/100 [25:12<56:15, 48.92s/it] 32%|███▏      | 32/100 [26:01<55:13, 48.73s/it] 33%|███▎      | 33/100 [26:49<54:21, 48.68s/it] 34%|███▍      | 34/100 [27:38<53:29, 48.63s/it] 35%|███▌      | 35/100 [28:26<52:35, 48.55s/it] 36%|███▌      | 36/100 [29:15<51:57, 48.71s/it] 37%|███▋      | 37/100 [30:04<51:04, 48.65s/it] 38%|███▊      | 38/100 [30:52<50:11, 48.57s/it] 39%|███▉      | 39/100 [31:41<49:28, 48.66s/it] 40%|████      | 40/100 [32:30<48:47, 48.80s/it] 41%|████      | 41/100 [33:19<47:54, 48.72s/it] 42%|████▏     | 42/100 [34:07<47:01, 48.65s/it] 43%|████▎     | 43/100 [34:55<46:08, 48.58s/it] 44%|████▍     | 44/100 [35:44<45:12, 48.44s/it] 45%|████▌     | 45/100 [36:32<44:23, 48.43s/it] 46%|████▌     | 46/100 [37:21<43:43, 48.58s/it] 47%|████▋     | 47/100 [38:10<42:56, 48.61s/it] 48%|████▊     | 48/100 [38:58<42:06, 48.59s/it] 49%|████▉     | 49/100 [39:47<41:15, 48.54s/it] 50%|█████     | 50/100 [40:35<40:30, 48.62s/it] 51%|█████     | 51/100 [41:24<39:39, 48.56s/it] 52%|█████▏    | 52/100 [42:12<38:51, 48.58s/it] 53%|█████▎    | 53/100 [43:01<38:04, 48.60s/it] 54%|█████▍    | 54/100 [43:50<37:22, 48.76s/it] 55%|█████▌    | 55/100 [44:39<36:33, 48.74s/it] 56%|█████▌    | 56/100 [45:28<35:49, 48.85s/it] 57%|█████▋    | 57/100 [46:16<34:56, 48.75s/it] 58%|█████▊    | 58/100 [47:05<34:01, 48.61s/it] 59%|█████▉    | 59/100 [47:53<33:10, 48.56s/it] 60%|██████    | 60/100 [48:42<32:23, 48.58s/it] 61%|██████    | 61/100 [49:30<31:32, 48.51s/it] 62%|██████▏   | 62/100 [50:19<30:43, 48.52s/it]Round 0: r_data=0.5572, r_noniid=0.9288, improvement=0.0000, alpha_new=1.0000
+Round 0: Server fixing with alpha_new=1.0000
+Round 0: Acc=31.29%, Loss=0.0145, D_P_t=0.0917, Alpha=1.0000
+Round 1: r_data=0.5572, r_noniid=0.9545, improvement=0.0000, alpha_new=1.0000
+Round 1: Server fixing with alpha_new=1.0000
+Round 2: r_data=0.5569, r_noniid=0.8644, improvement=0.0000, alpha_new=1.0000
+Round 2: Server fixing with alpha_new=1.0000
+Round 3: r_data=0.5623, r_noniid=0.9531, improvement=0.0000, alpha_new=1.0000
+Round 3: Server fixing with alpha_new=1.0000
+Round 4: r_data=0.5617, r_noniid=0.9442, improvement=0.0000, alpha_new=1.0000
+Round 4: Server fixing with alpha_new=1.0000
+Round 5: r_data=0.5578, r_noniid=0.9527, improvement=0.0185, alpha_new=1.0000
+Round 5: Server fixing with alpha_new=1.0000
+Round 6: r_data=0.5571, r_noniid=0.9391, improvement=0.0491, alpha_new=1.0000
+Round 6: Server fixing with alpha_new=1.0000
+Round 7: r_data=0.5571, r_noniid=0.9466, improvement=0.0000, alpha_new=1.0000
+Round 7: Server fixing with alpha_new=1.0000
+Round 8: r_data=0.5569, r_noniid=0.9308, improvement=0.0799, alpha_new=1.0000
+Round 8: Server fixing with alpha_new=1.0000
+Round 9: r_data=0.5572, r_noniid=0.9213, improvement=0.0000, alpha_new=1.0000
+Round 9: Server fixing with alpha_new=1.0000
+Round 10: r_data=0.5577, r_noniid=0.9488, improvement=0.0000, alpha_new=1.0000
+Round 10: Server fixing with alpha_new=1.0000
+Round 10: Acc=54.50%, Loss=0.0101, D_P_t=0.1303, Alpha=1.0000
+Round 11: r_data=0.5575, r_noniid=0.9107, improvement=0.0085, alpha_new=1.0000
+Round 11: Server fixing with alpha_new=1.0000
+Round 12: r_data=0.5567, r_noniid=0.9180, improvement=0.0000, alpha_new=1.0000
+Round 12: Server fixing with alpha_new=1.0000
+Round 13: r_data=0.5617, r_noniid=0.8769, improvement=0.0000, alpha_new=1.0000
+Round 13: Server fixing with alpha_new=1.0000
+Round 14: r_data=0.5570, r_noniid=0.9510, improvement=0.0000, alpha_new=1.0000
+Round 14: Server fixing with alpha_new=1.0000
+Round 15: r_data=0.5631, r_noniid=0.9254, improvement=0.0000, alpha_new=1.0000
+Round 15: Server fixing with alpha_new=1.0000
+Round 16: r_data=0.5572, r_noniid=0.9545, improvement=0.0078, alpha_new=1.0000
+Round 16: Server fixing with alpha_new=1.0000
+Round 17: r_data=0.5572, r_noniid=0.8780, improvement=0.0000, alpha_new=1.0000
+Round 17: Server fixing with alpha_new=1.0000
+Round 18: r_data=0.5616, r_noniid=0.9524, improvement=0.0306, alpha_new=1.0000
+Round 18: Server fixing with alpha_new=1.0000
+Round 19: r_data=0.5574, r_noniid=0.8781, improvement=0.0000, alpha_new=1.0000
+Round 19: Server fixing with alpha_new=1.0000
+Round 20: r_data=0.5572, r_noniid=0.9546, improvement=0.0064, alpha_new=1.0000
+Round 20: Server fixing with alpha_new=1.0000
+Round 20: Acc=58.79%, Loss=0.0042, D_P_t=0.1477, Alpha=1.0000
+Round 21: r_data=0.5572, r_noniid=0.9588, improvement=0.0296, alpha_new=1.0000
+Round 21: Server fixing with alpha_new=1.0000
+Round 22: r_data=0.5618, r_noniid=0.9387, improvement=0.0000, alpha_new=1.0000
+Round 22: Server fixing with alpha_new=1.0000
+Round 23: r_data=0.5570, r_noniid=0.9042, improvement=0.0000, alpha_new=1.0000
+Round 23: Server fixing with alpha_new=1.0000
+Round 24: r_data=0.5569, r_noniid=0.9408, improvement=0.0073, alpha_new=1.0000
+Round 24: Server fixing with alpha_new=1.0000
+Round 25: r_data=0.5569, r_noniid=0.9450, improvement=0.0712, alpha_new=1.0000
+Round 25: Server fixing with alpha_new=1.0000
+Round 26: r_data=0.5616, r_noniid=0.9549, improvement=0.0000, alpha_new=1.0000
+Round 26: Server fixing with alpha_new=1.0000
+Round 27: r_data=0.5574, r_noniid=0.9322, improvement=0.0000, alpha_new=1.0000
+Round 27: Server fixing with alpha_new=1.0000
+Round 28: r_data=0.5569, r_noniid=0.9432, improvement=0.0116, alpha_new=1.0000
+Round 28: Server fixing with alpha_new=1.0000
+Round 29: r_data=0.5570, r_noniid=0.9467, improvement=0.0000, alpha_new=1.0000
+Round 29: Server fixing with alpha_new=1.0000
+Round 30: r_data=0.5574, r_noniid=0.9415, improvement=0.0139, alpha_new=1.0000
+Round 30: Server fixing with alpha_new=1.0000
+Round 30: Acc=60.03%, Loss=0.0032, D_P_t=0.1131, Alpha=1.0000
+Round 31: r_data=0.5568, r_noniid=0.9336, improvement=0.0000, alpha_new=1.0000
+Round 31: Server fixing with alpha_new=1.0000
+Round 32: r_data=0.5570, r_noniid=0.9233, improvement=0.0000, alpha_new=1.0000
+Round 32: Server fixing with alpha_new=1.0000
+Round 33: r_data=0.5572, r_noniid=0.8861, improvement=0.0000, alpha_new=1.0000
+Round 33: Server fixing with alpha_new=1.0000
+Round 34: r_data=0.5574, r_noniid=0.9387, improvement=0.0062, alpha_new=1.0000
+Round 34: Server fixing with alpha_new=1.0000
+Round 35: r_data=0.5567, r_noniid=0.9481, improvement=0.0000, alpha_new=1.0000
+Round 35: Server fixing with alpha_new=1.0000
+Round 36: r_data=0.5567, r_noniid=0.9276, improvement=0.0050, alpha_new=1.0000
+Round 36: Server fixing with alpha_new=1.0000
+Round 37: r_data=0.5576, r_noniid=0.9352, improvement=0.0066, alpha_new=1.0000
+Round 37: Server fixing with alpha_new=1.0000
+Round 38: r_data=0.5571, r_noniid=0.9375, improvement=0.0000, alpha_new=1.0000
+Round 38: Server fixing with alpha_new=1.0000
+Round 39: r_data=0.5572, r_noniid=0.9334, improvement=0.0000, alpha_new=1.0000
+Round 39: Server fixing with alpha_new=1.0000
+Round 40: r_data=0.5575, r_noniid=0.9470, improvement=0.0362, alpha_new=1.0000
+Round 40: Server fixing with alpha_new=1.0000
+Round 40: Acc=60.05%, Loss=0.0032, D_P_t=0.1256, Alpha=1.0000
+Round 41: r_data=0.5572, r_noniid=0.9340, improvement=0.0000, alpha_new=1.0000
+Round 41: Server fixing with alpha_new=1.0000
+Round 42: r_data=0.5572, r_noniid=0.9437, improvement=0.0279, alpha_new=1.0000
+Round 42: Server fixing with alpha_new=1.0000
+Round 43: r_data=0.5615, r_noniid=0.9740, improvement=0.0012, alpha_new=1.0000
+Round 43: Server fixing with alpha_new=1.0000
+Round 44: r_data=0.5586, r_noniid=0.8627, improvement=0.0000, alpha_new=1.0000
+Round 44: Server fixing with alpha_new=1.0000
+Round 45: r_data=0.5579, r_noniid=0.9119, improvement=0.0145, alpha_new=1.0000
+Round 45: Server fixing with alpha_new=1.0000
+Round 46: r_data=0.5572, r_noniid=0.9159, improvement=0.0000, alpha_new=1.0000
+Round 46: Server fixing with alpha_new=1.0000
+Round 47: r_data=0.5573, r_noniid=0.9572, improvement=0.0000, alpha_new=1.0000
+Round 47: Server fixing with alpha_new=1.0000
+Round 48: r_data=0.5570, r_noniid=0.9320, improvement=0.0000, alpha_new=1.0000
+Round 48: Server fixing with alpha_new=1.0000
+Round 49: r_data=0.5577, r_noniid=0.9377, improvement=0.0403, alpha_new=1.0000
+Round 49: Server fixing with alpha_new=1.0000
+Round 50: r_data=0.5572, r_noniid=0.9452, improvement=0.0000, alpha_new=1.0000
+Round 50: Server fixing with alpha_new=1.0000
+Round 50: Acc=60.44%, Loss=0.0027, D_P_t=0.1211, Alpha=1.0000
+Round 51: r_data=0.5573, r_noniid=0.9688, improvement=0.0218, alpha_new=1.0000
+Round 51: Server fixing with alpha_new=1.0000
+Round 52: r_data=0.5575, r_noniid=0.9309, improvement=0.0000, alpha_new=1.0000
+Round 52: Server fixing with alpha_new=1.0000
+Round 53: r_data=0.5579, r_noniid=0.9345, improvement=0.0314, alpha_new=1.0000
+Round 53: Server fixing with alpha_new=1.0000
+Round 54: r_data=0.5578, r_noniid=0.9070, improvement=0.0000, alpha_new=1.0000
+Round 54: Server fixing with alpha_new=1.0000
+Round 55: r_data=0.5572, r_noniid=0.9202, improvement=0.0000, alpha_new=1.0000
+Round 55: Server fixing with alpha_new=1.0000
+Round 56: r_data=0.5572, r_noniid=0.9350, improvement=0.0000, alpha_new=1.0000
+Round 56: Server fixing with alpha_new=1.0000
+Round 57: r_data=0.5569, r_noniid=0.9485, improvement=0.0026, alpha_new=1.0000
+Round 57: Server fixing with alpha_new=1.0000
+Round 58: r_data=0.5572, r_noniid=0.9538, improvement=0.0024, alpha_new=1.0000
+Round 58: Server fixing with alpha_new=1.0000
+Round 59: r_data=0.5571, r_noniid=0.9398, improvement=0.0095, alpha_new=1.0000
+Round 59: Server fixing with alpha_new=1.0000
+Round 60: r_data=0.5569, r_noniid=0.9249, improvement=0.0000, alpha_new=1.0000
+Round 60: Server fixing with alpha_new=1.0000
+Round 60: Acc=60.78%, Loss=0.0027, D_P_t=0.0865, Alpha=1.0000
+Round 61: r_data=0.5570, r_noniid=0.9449, improvement=0.0017, alpha_new=1.0000
+Round 61: Server fixing with alpha_new=1.0000
+ 63%|██████▎   | 63/100 [51:07<29:54, 48.49s/it] 64%|██████▍   | 64/100 [51:56<29:05, 48.48s/it] 65%|██████▌   | 65/100 [52:44<28:18, 48.53s/it] 66%|██████▌   | 66/100 [53:33<27:35, 48.70s/it] 67%|██████▋   | 67/100 [54:22<26:46, 48.68s/it] 68%|██████▊   | 68/100 [55:10<25:54, 48.59s/it] 69%|██████▉   | 69/100 [55:59<25:05, 48.55s/it] 70%|███████   | 70/100 [56:47<24:17, 48.57s/it] 71%|███████   | 71/100 [57:36<23:28, 48.57s/it] 72%|███████▏  | 72/100 [58:25<22:40, 48.58s/it] 73%|███████▎  | 73/100 [59:13<21:51, 48.57s/it] 74%|███████▍  | 74/100 [1:00:02<21:01, 48.53s/it] 75%|███████▌  | 75/100 [1:00:50<20:14, 48.57s/it] 76%|███████▌  | 76/100 [1:01:39<19:29, 48.73s/it] 77%|███████▋  | 77/100 [1:02:28<18:40, 48.72s/it] 78%|███████▊  | 78/100 [1:03:17<17:52, 48.74s/it] 79%|███████▉  | 79/100 [1:04:05<17:02, 48.70s/it] 80%|████████  | 80/100 [1:04:54<16:13, 48.67s/it] 81%|████████  | 81/100 [1:05:42<15:23, 48.59s/it] 82%|████████▏ | 82/100 [1:06:31<14:34, 48.58s/it] 83%|████████▎ | 83/100 [1:07:20<13:45, 48.57s/it] 84%|████████▍ | 84/100 [1:08:08<12:55, 48.48s/it] 85%|████████▌ | 85/100 [1:08:57<12:09, 48.66s/it] 86%|████████▌ | 86/100 [1:09:45<11:20, 48.61s/it] 87%|████████▋ | 87/100 [1:10:34<10:31, 48.57s/it] 88%|████████▊ | 88/100 [1:11:22<09:42, 48.52s/it] 89%|████████▉ | 89/100 [1:12:10<08:52, 48.39s/it] 90%|█████████ | 90/100 [1:12:59<08:04, 48.45s/it] 91%|█████████ | 91/100 [1:13:47<07:15, 48.39s/it] 92%|█████████▏| 92/100 [1:14:36<06:27, 48.45s/it] 93%|█████████▎| 93/100 [1:15:24<05:39, 48.51s/it] 94%|█████████▍| 94/100 [1:16:13<04:50, 48.45s/it] 95%|█████████▌| 95/100 [1:17:01<04:02, 48.49s/it] 96%|█████████▌| 96/100 [1:17:50<03:14, 48.53s/it] 97%|█████████▋| 97/100 [1:18:38<02:25, 48.46s/it] 98%|█████████▊| 98/100 [1:19:27<01:36, 48.44s/it] 99%|█████████▉| 99/100 [1:20:15<00:48, 48.46s/it]100%|██████████| 100/100 [1:21:04<00:00, 48.49s/it]100%|██████████| 100/100 [1:21:04<00:00, 48.64s/it]
+Round 62: r_data=0.5618, r_noniid=0.9523, improvement=0.0114, alpha_new=1.0000
+Round 62: Server fixing with alpha_new=1.0000
+Round 63: r_data=0.5572, r_noniid=0.9562, improvement=0.0318, alpha_new=1.0000
+Round 63: Server fixing with alpha_new=1.0000
+Round 64: r_data=0.5572, r_noniid=0.9353, improvement=0.0000, alpha_new=1.0000
+Round 64: Server fixing with alpha_new=1.0000
+Round 65: r_data=0.5571, r_noniid=0.9370, improvement=0.0217, alpha_new=1.0000
+Round 65: Server fixing with alpha_new=1.0000
+Round 66: r_data=0.5576, r_noniid=0.9120, improvement=0.0000, alpha_new=1.0000
+Round 66: Server fixing with alpha_new=1.0000
+Round 67: r_data=0.5619, r_noniid=0.9233, improvement=0.0000, alpha_new=1.0000
+Round 67: Server fixing with alpha_new=1.0000
+Round 68: r_data=0.5575, r_noniid=0.8902, improvement=0.0088, alpha_new=1.0000
+Round 68: Server fixing with alpha_new=1.0000
+Round 69: r_data=0.5571, r_noniid=0.9400, improvement=0.0245, alpha_new=1.0000
+Round 69: Server fixing with alpha_new=1.0000
+Round 70: r_data=0.5573, r_noniid=0.9557, improvement=0.0266, alpha_new=1.0000
+Round 70: Server fixing with alpha_new=1.0000
+Round 70: Acc=60.89%, Loss=0.0027, D_P_t=0.1517, Alpha=1.0000
+Round 71: r_data=0.5574, r_noniid=0.9221, improvement=0.0000, alpha_new=1.0000
+Round 71: Server fixing with alpha_new=1.0000
+Round 72: r_data=0.5572, r_noniid=0.9436, improvement=0.0000, alpha_new=1.0000
+Round 72: Server fixing with alpha_new=1.0000
+Round 73: r_data=0.5571, r_noniid=0.9532, improvement=0.0179, alpha_new=1.0000
+Round 73: Server fixing with alpha_new=1.0000
+Round 74: r_data=0.5571, r_noniid=0.9605, improvement=0.0000, alpha_new=1.0000
+Round 74: Server fixing with alpha_new=1.0000
+Round 75: r_data=0.5576, r_noniid=0.9113, improvement=0.0000, alpha_new=1.0000
+Round 75: Server fixing with alpha_new=1.0000
+Round 76: r_data=0.5574, r_noniid=0.9420, improvement=0.0206, alpha_new=1.0000
+Round 76: Server fixing with alpha_new=1.0000
+Round 77: r_data=0.5570, r_noniid=0.9319, improvement=0.0108, alpha_new=1.0000
+Round 77: Server fixing with alpha_new=1.0000
+Round 78: r_data=0.5572, r_noniid=0.9424, improvement=0.0000, alpha_new=1.0000
+Round 78: Server fixing with alpha_new=1.0000
+Round 79: r_data=0.5573, r_noniid=0.9552, improvement=0.0616, alpha_new=1.0000
+Round 79: Server fixing with alpha_new=1.0000
+Round 80: r_data=0.5573, r_noniid=0.9490, improvement=0.0000, alpha_new=1.0000
+Round 80: Server fixing with alpha_new=1.0000
+Round 80: Acc=60.80%, Loss=0.0023, D_P_t=0.1308, Alpha=1.0000
+Round 81: r_data=0.5574, r_noniid=0.8983, improvement=0.0000, alpha_new=1.0000
+Round 81: Server fixing with alpha_new=1.0000
+Round 82: r_data=0.5579, r_noniid=0.9537, improvement=0.0265, alpha_new=1.0000
+Round 82: Server fixing with alpha_new=1.0000
+Round 83: r_data=0.5616, r_noniid=0.9581, improvement=0.0000, alpha_new=1.0000
+Round 83: Server fixing with alpha_new=1.0000
+Round 84: r_data=0.5581, r_noniid=0.9371, improvement=0.0000, alpha_new=1.0000
+Round 84: Server fixing with alpha_new=1.0000
+Round 85: r_data=0.5570, r_noniid=0.9445, improvement=0.0000, alpha_new=1.0000
+Round 85: Server fixing with alpha_new=1.0000
+Round 86: r_data=0.5572, r_noniid=0.9512, improvement=0.0137, alpha_new=1.0000
+Round 86: Server fixing with alpha_new=1.0000
+Round 87: r_data=0.5580, r_noniid=0.9283, improvement=0.0000, alpha_new=1.0000
+Round 87: Server fixing with alpha_new=1.0000
+Round 88: r_data=0.5619, r_noniid=0.9500, improvement=0.0000, alpha_new=1.0000
+Round 88: Server fixing with alpha_new=1.0000
+Round 89: r_data=0.5572, r_noniid=0.9258, improvement=0.0007, alpha_new=1.0000
+Round 89: Server fixing with alpha_new=1.0000
+Round 90: r_data=0.5572, r_noniid=0.9176, improvement=0.0133, alpha_new=1.0000
+Round 90: Server fixing with alpha_new=1.0000
+Round 90: Acc=60.52%, Loss=0.0020, D_P_t=0.0783, Alpha=1.0000
+Round 91: r_data=0.5570, r_noniid=0.9196, improvement=0.0000, alpha_new=1.0000
+Round 91: Server fixing with alpha_new=1.0000
+Round 92: r_data=0.5617, r_noniid=0.9389, improvement=0.0000, alpha_new=1.0000
+Round 92: Server fixing with alpha_new=1.0000
+Round 93: r_data=0.5576, r_noniid=0.9386, improvement=0.0269, alpha_new=1.0000
+Round 93: Server fixing with alpha_new=1.0000
+Round 94: r_data=0.5572, r_noniid=0.8981, improvement=0.0043, alpha_new=1.0000
+Round 94: Server fixing with alpha_new=1.0000
+Round 95: r_data=0.5574, r_noniid=0.9173, improvement=0.0000, alpha_new=1.0000
+Round 95: Server fixing with alpha_new=1.0000
+Round 96: r_data=0.5625, r_noniid=0.8231, improvement=0.0000, alpha_new=0.9341
+Round 96: Server fixing with alpha_new=0.9341
+Round 97: r_data=0.5621, r_noniid=0.9361, improvement=0.0149, alpha_new=1.0000
+Round 97: Server fixing with alpha_new=1.0000
+Round 98: r_data=0.5572, r_noniid=0.9396, improvement=0.0031, alpha_new=1.0000
+Round 98: Server fixing with alpha_new=1.0000
+Round 99: r_data=0.5575, r_noniid=0.9333, improvement=0.0203, alpha_new=1.0000
+Round 99: Server fixing with alpha_new=1.0000
+
+Results for du_C = 5:
+FedDU_Mut - 第20轮测试精度: 58.42%, 最终测试精度: 61.11%, 最终训练损失: 0.0025
+
+--- 测试 du_C = 7 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:48<1:20:50, 49.00s/it]  2%|▏         | 2/100 [01:37<1:19:39, 48.77s/it]  3%|▎         | 3/100 [02:26<1:18:40, 48.67s/it]  4%|▍         | 4/100 [03:14<1:17:37, 48.52s/it]  5%|▌         | 5/100 [04:03<1:16:50, 48.53s/it]  6%|▌         | 6/100 [04:51<1:15:58, 48.50s/it]  7%|▋         | 7/100 [05:39<1:15:10, 48.49s/it]  8%|▊         | 8/100 [06:28<1:14:19, 48.47s/it]  9%|▉         | 9/100 [07:16<1:13:26, 48.43s/it] 10%|█         | 10/100 [08:05<1:12:39, 48.44s/it] 11%|█         | 11/100 [08:54<1:12:10, 48.65s/it] 12%|█▏        | 12/100 [09:42<1:11:19, 48.63s/it] 13%|█▎        | 13/100 [10:31<1:10:25, 48.57s/it] 14%|█▍        | 14/100 [11:19<1:09:28, 48.47s/it] 15%|█▌        | 15/100 [12:07<1:08:36, 48.42s/it] 16%|█▌        | 16/100 [12:56<1:07:48, 48.43s/it] 17%|█▋        | 17/100 [13:44<1:07:00, 48.44s/it] 18%|█▊        | 18/100 [14:33<1:06:17, 48.51s/it] 19%|█▉        | 19/100 [15:21<1:05:18, 48.38s/it] 20%|██        | 20/100 [16:09<1:04:30, 48.38s/it] 21%|██        | 21/100 [16:58<1:03:57, 48.58s/it] 22%|██▏       | 22/100 [17:47<1:03:06, 48.55s/it] 23%|██▎       | 23/100 [18:36<1:02:30, 48.71s/it] 24%|██▍       | 24/100 [19:24<1:01:36, 48.63s/it] 25%|██▌       | 25/100 [20:13<1:00:45, 48.61s/it] 26%|██▌       | 26/100 [21:01<59:54, 48.57s/it]   27%|██▋       | 27/100 [21:50<59:04, 48.55s/it] 28%|██▊       | 28/100 [22:39<58:22, 48.65s/it] 29%|██▉       | 29/100 [23:27<57:30, 48.59s/it] 30%|███       | 30/100 [24:17<57:03, 48.90s/it] 31%|███       | 31/100 [25:06<56:20, 49.00s/it] 32%|███▏      | 32/100 [25:55<55:19, 48.82s/it] 33%|███▎      | 33/100 [26:43<54:27, 48.77s/it] 34%|███▍      | 34/100 [27:32<53:31, 48.66s/it] 35%|███▌      | 35/100 [28:20<52:45, 48.70s/it] 36%|███▌      | 36/100 [29:09<51:55, 48.69s/it] 37%|███▋      | 37/100 [29:58<51:03, 48.63s/it] 38%|███▊      | 38/100 [30:47<50:25, 48.80s/it] 39%|███▉      | 39/100 [31:36<49:44, 48.93s/it] 40%|████      | 40/100 [32:26<49:07, 49.12s/it] 41%|████      | 41/100 [33:15<48:14, 49.07s/it] 42%|████▏     | 42/100 [34:03<47:23, 49.03s/it] 43%|████▎     | 43/100 [34:52<46:25, 48.87s/it] 44%|████▍     | 44/100 [35:40<45:29, 48.74s/it] 45%|████▌     | 45/100 [36:29<44:34, 48.63s/it] 46%|████▌     | 46/100 [37:18<43:52, 48.75s/it] 47%|████▋     | 47/100 [38:06<42:59, 48.68s/it] 48%|████▊     | 48/100 [38:55<42:08, 48.63s/it] 49%|████▉     | 49/100 [39:43<41:17, 48.57s/it] 50%|█████     | 50/100 [40:32<40:29, 48.59s/it] 51%|█████     | 51/100 [41:21<39:43, 48.64s/it] 52%|█████▏    | 52/100 [42:09<38:52, 48.58s/it] 53%|█████▎    | 53/100 [42:58<38:02, 48.55s/it] 54%|█████▍    | 54/100 [43:46<37:10, 48.50s/it] 55%|█████▌    | 55/100 [44:35<36:30, 48.67s/it] 56%|█████▌    | 56/100 [45:23<35:38, 48.61s/it] 57%|█████▋    | 57/100 [46:12<34:48, 48.56s/it] 58%|█████▊    | 58/100 [47:01<34:00, 48.59s/it] 59%|█████▉    | 59/100 [47:49<33:10, 48.56s/it] 60%|██████    | 60/100 [48:38<32:22, 48.56s/it] 61%|██████    | 61/100 [49:26<31:35, 48.59s/it] 62%|██████▏   | 62/100 [50:15<30:42, 48.48s/it]Round 0: r_data=0.5570, r_noniid=0.9288, improvement=0.0000, alpha_new=1.0000
+Round 0: Server fixing with alpha_new=1.0000
+Round 0: Acc=31.55%, Loss=0.0137, D_P_t=0.0917, Alpha=1.0000
+Round 1: r_data=0.5572, r_noniid=0.9587, improvement=0.0000, alpha_new=1.0000
+Round 1: Server fixing with alpha_new=1.0000
+Round 2: r_data=0.5571, r_noniid=0.8334, improvement=0.0581, alpha_new=1.0000
+Round 2: Server fixing with alpha_new=1.0000
+Round 3: r_data=0.5570, r_noniid=0.9697, improvement=0.0000, alpha_new=1.0000
+Round 3: Server fixing with alpha_new=1.0000
+Round 4: r_data=0.5571, r_noniid=0.9303, improvement=0.0000, alpha_new=1.0000
+Round 4: Server fixing with alpha_new=1.0000
+Round 5: r_data=0.5577, r_noniid=0.8951, improvement=0.0954, alpha_new=1.0000
+Round 5: Server fixing with alpha_new=1.0000
+Round 6: r_data=0.5570, r_noniid=0.9120, improvement=0.2683, alpha_new=1.0000
+Round 6: Server fixing with alpha_new=1.0000
+Round 7: r_data=0.5572, r_noniid=0.9156, improvement=0.0000, alpha_new=1.0000
+Round 7: Server fixing with alpha_new=1.0000
+Round 8: r_data=0.5570, r_noniid=0.9506, improvement=0.0000, alpha_new=1.0000
+Round 8: Server fixing with alpha_new=1.0000
+Round 9: r_data=0.5580, r_noniid=0.9195, improvement=0.1169, alpha_new=1.0000
+Round 9: Server fixing with alpha_new=1.0000
+Round 10: r_data=0.5578, r_noniid=0.9474, improvement=0.0000, alpha_new=1.0000
+Round 10: Server fixing with alpha_new=1.0000
+Round 10: Acc=54.48%, Loss=0.0096, D_P_t=0.1266, Alpha=1.0000
+Round 11: r_data=0.5572, r_noniid=0.9628, improvement=0.1320, alpha_new=1.0000
+Round 11: Server fixing with alpha_new=1.0000
+Round 12: r_data=0.5573, r_noniid=0.9339, improvement=0.0000, alpha_new=1.0000
+Round 12: Server fixing with alpha_new=1.0000
+Round 13: r_data=0.5569, r_noniid=0.9445, improvement=0.0000, alpha_new=1.0000
+Round 13: Server fixing with alpha_new=1.0000
+Round 14: r_data=0.5619, r_noniid=0.9409, improvement=0.0000, alpha_new=1.0000
+Round 14: Server fixing with alpha_new=1.0000
+Round 15: r_data=0.5569, r_noniid=0.9366, improvement=0.0000, alpha_new=1.0000
+Round 15: Server fixing with alpha_new=1.0000
+Round 16: r_data=0.5572, r_noniid=0.9584, improvement=0.0000, alpha_new=1.0000
+Round 16: Server fixing with alpha_new=1.0000
+Round 17: r_data=0.5572, r_noniid=0.8932, improvement=0.0000, alpha_new=1.0000
+Round 17: Server fixing with alpha_new=1.0000
+Round 18: r_data=0.5628, r_noniid=0.8708, improvement=0.0000, alpha_new=1.0000
+Round 18: Server fixing with alpha_new=1.0000
+Round 19: r_data=0.5575, r_noniid=0.9343, improvement=0.0389, alpha_new=1.0000
+Round 19: Server fixing with alpha_new=1.0000
+Round 20: r_data=0.5572, r_noniid=0.9435, improvement=0.0000, alpha_new=1.0000
+Round 20: Server fixing with alpha_new=1.0000
+Round 20: Acc=57.97%, Loss=0.0037, D_P_t=0.1173, Alpha=1.0000
+Round 21: r_data=0.5570, r_noniid=0.8524, improvement=0.0000, alpha_new=1.0000
+Round 21: Server fixing with alpha_new=1.0000
+Round 22: r_data=0.5569, r_noniid=0.9515, improvement=0.0297, alpha_new=1.0000
+Round 22: Server fixing with alpha_new=1.0000
+Round 23: r_data=0.5573, r_noniid=0.8735, improvement=0.0000, alpha_new=1.0000
+Round 23: Server fixing with alpha_new=1.0000
+Round 24: r_data=0.5572, r_noniid=0.9091, improvement=0.0000, alpha_new=1.0000
+Round 24: Server fixing with alpha_new=1.0000
+Round 25: r_data=0.5571, r_noniid=0.9145, improvement=0.0000, alpha_new=1.0000
+Round 25: Server fixing with alpha_new=1.0000
+Round 26: r_data=0.5576, r_noniid=0.9638, improvement=0.0253, alpha_new=1.0000
+Round 26: Server fixing with alpha_new=1.0000
+Round 27: r_data=0.5576, r_noniid=0.9320, improvement=0.0000, alpha_new=1.0000
+Round 27: Server fixing with alpha_new=1.0000
+Round 28: r_data=0.5570, r_noniid=0.9503, improvement=0.0000, alpha_new=1.0000
+Round 28: Server fixing with alpha_new=1.0000
+Round 29: r_data=0.5617, r_noniid=0.9493, improvement=0.0000, alpha_new=1.0000
+Round 29: Server fixing with alpha_new=1.0000
+Round 30: r_data=0.5580, r_noniid=0.8277, improvement=0.0000, alpha_new=1.0000
+Round 30: Server fixing with alpha_new=1.0000
+Round 30: Acc=59.62%, Loss=0.0031, D_P_t=0.0338, Alpha=1.0000
+Round 31: r_data=0.5569, r_noniid=0.9301, improvement=0.0000, alpha_new=1.0000
+Round 31: Server fixing with alpha_new=1.0000
+Round 32: r_data=0.5572, r_noniid=0.9690, improvement=0.0635, alpha_new=1.0000
+Round 32: Server fixing with alpha_new=1.0000
+Round 33: r_data=0.5617, r_noniid=0.9058, improvement=0.0000, alpha_new=1.0000
+Round 33: Server fixing with alpha_new=1.0000
+Round 34: r_data=0.5576, r_noniid=0.9317, improvement=0.0092, alpha_new=1.0000
+Round 34: Server fixing with alpha_new=1.0000
+Round 35: r_data=0.5617, r_noniid=0.9420, improvement=0.0546, alpha_new=1.0000
+Round 35: Server fixing with alpha_new=1.0000
+Round 36: r_data=0.5574, r_noniid=0.9448, improvement=0.0000, alpha_new=1.0000
+Round 36: Server fixing with alpha_new=1.0000
+Round 37: r_data=0.5570, r_noniid=0.9068, improvement=0.0000, alpha_new=1.0000
+Round 37: Server fixing with alpha_new=1.0000
+Round 38: r_data=0.5574, r_noniid=0.9555, improvement=0.0114, alpha_new=1.0000
+Round 38: Server fixing with alpha_new=1.0000
+Round 39: r_data=0.5572, r_noniid=0.9343, improvement=0.0000, alpha_new=1.0000
+Round 39: Server fixing with alpha_new=1.0000
+Round 40: r_data=0.5619, r_noniid=0.9314, improvement=0.0000, alpha_new=1.0000
+Round 40: Server fixing with alpha_new=1.0000
+Round 40: Acc=60.17%, Loss=0.0029, D_P_t=0.0954, Alpha=1.0000
+Round 41: r_data=0.5570, r_noniid=0.9186, improvement=0.0156, alpha_new=1.0000
+Round 41: Server fixing with alpha_new=1.0000
+Round 42: r_data=0.5569, r_noniid=0.9416, improvement=0.0000, alpha_new=1.0000
+Round 42: Server fixing with alpha_new=1.0000
+Round 43: r_data=0.5574, r_noniid=0.8749, improvement=0.0000, alpha_new=1.0000
+Round 43: Server fixing with alpha_new=1.0000
+Round 44: r_data=0.5571, r_noniid=0.9377, improvement=0.0270, alpha_new=1.0000
+Round 44: Server fixing with alpha_new=1.0000
+Round 45: r_data=0.5582, r_noniid=0.9427, improvement=0.0000, alpha_new=1.0000
+Round 45: Server fixing with alpha_new=1.0000
+Round 46: r_data=0.5571, r_noniid=0.8919, improvement=0.0033, alpha_new=1.0000
+Round 46: Server fixing with alpha_new=1.0000
+Round 47: r_data=0.5575, r_noniid=0.9656, improvement=0.0353, alpha_new=1.0000
+Round 47: Server fixing with alpha_new=1.0000
+Round 48: r_data=0.5572, r_noniid=0.9469, improvement=0.0070, alpha_new=1.0000
+Round 48: Server fixing with alpha_new=1.0000
+Round 49: r_data=0.5574, r_noniid=0.8773, improvement=0.0000, alpha_new=1.0000
+Round 49: Server fixing with alpha_new=1.0000
+Round 50: r_data=0.5572, r_noniid=0.9432, improvement=0.0000, alpha_new=1.0000
+Round 50: Server fixing with alpha_new=1.0000
+Round 50: Acc=60.23%, Loss=0.0026, D_P_t=0.1166, Alpha=1.0000
+Round 51: r_data=0.5570, r_noniid=0.8878, improvement=0.0021, alpha_new=1.0000
+Round 51: Server fixing with alpha_new=1.0000
+Round 52: r_data=0.5572, r_noniid=0.8408, improvement=0.0000, alpha_new=1.0000
+Round 52: Server fixing with alpha_new=1.0000
+Round 53: r_data=0.5578, r_noniid=0.9395, improvement=0.0157, alpha_new=1.0000
+Round 53: Server fixing with alpha_new=1.0000
+Round 54: r_data=0.5572, r_noniid=0.9423, improvement=0.0000, alpha_new=1.0000
+Round 54: Server fixing with alpha_new=1.0000
+Round 55: r_data=0.5575, r_noniid=0.8873, improvement=0.0180, alpha_new=1.0000
+Round 55: Server fixing with alpha_new=1.0000
+Round 56: r_data=0.5571, r_noniid=0.9300, improvement=0.0000, alpha_new=1.0000
+Round 56: Server fixing with alpha_new=1.0000
+Round 57: r_data=0.5569, r_noniid=0.9527, improvement=0.0083, alpha_new=1.0000
+Round 57: Server fixing with alpha_new=1.0000
+Round 58: r_data=0.5570, r_noniid=0.9560, improvement=0.0000, alpha_new=1.0000
+Round 58: Server fixing with alpha_new=1.0000
+Round 59: r_data=0.5570, r_noniid=0.9517, improvement=0.0000, alpha_new=1.0000
+Round 59: Server fixing with alpha_new=1.0000
+Round 60: r_data=0.5575, r_noniid=0.9082, improvement=0.0000, alpha_new=1.0000
+Round 60: Server fixing with alpha_new=1.0000
+Round 60: Acc=60.31%, Loss=0.0032, D_P_t=0.0695, Alpha=1.0000
+Round 61: r_data=0.5624, r_noniid=0.9480, improvement=0.0041, alpha_new=1.0000
+Round 61: Server fixing with alpha_new=1.0000
+ 63%|██████▎   | 63/100 [51:04<30:01, 48.68s/it] 64%|██████▍   | 64/100 [51:52<29:11, 48.66s/it] 65%|██████▌   | 65/100 [52:41<28:22, 48.64s/it] 66%|██████▌   | 66/100 [53:30<27:34, 48.65s/it] 67%|██████▋   | 67/100 [54:18<26:43, 48.59s/it] 68%|██████▊   | 68/100 [55:07<25:55, 48.60s/it] 69%|██████▉   | 69/100 [55:55<25:07, 48.61s/it] 70%|███████   | 70/100 [56:44<24:17, 48.59s/it] 71%|███████   | 71/100 [57:33<23:34, 48.78s/it] 72%|███████▏  | 72/100 [58:22<22:43, 48.70s/it] 73%|███████▎  | 73/100 [59:10<21:52, 48.61s/it] 74%|███████▍  | 74/100 [59:58<21:02, 48.57s/it] 75%|███████▌  | 75/100 [1:00:47<20:15, 48.61s/it] 76%|███████▌  | 76/100 [1:01:36<19:25, 48.55s/it] 77%|███████▋  | 77/100 [1:02:24<18:36, 48.56s/it] 78%|███████▊  | 78/100 [1:03:13<17:48, 48.56s/it] 79%|███████▉  | 79/100 [1:04:01<17:01, 48.62s/it] 80%|████████  | 80/100 [1:04:50<16:12, 48.61s/it] 81%|████████  | 81/100 [1:05:39<15:23, 48.60s/it] 82%|████████▏ | 82/100 [1:06:27<14:33, 48.55s/it] 83%|████████▎ | 83/100 [1:07:16<13:45, 48.55s/it] 84%|████████▍ | 84/100 [1:08:04<12:56, 48.56s/it] 85%|████████▌ | 85/100 [1:08:53<12:08, 48.58s/it] 86%|████████▌ | 86/100 [1:09:41<11:20, 48.59s/it] 87%|████████▋ | 87/100 [1:10:30<10:31, 48.56s/it] 88%|████████▊ | 88/100 [1:11:19<09:44, 48.74s/it] 89%|████████▉ | 89/100 [1:12:08<08:55, 48.70s/it] 90%|█████████ | 90/100 [1:12:56<08:06, 48.66s/it] 91%|█████████ | 91/100 [1:13:45<07:17, 48.66s/it] 92%|█████████▏| 92/100 [1:14:33<06:28, 48.60s/it] 93%|█████████▎| 93/100 [1:15:22<05:40, 48.58s/it] 94%|█████████▍| 94/100 [1:16:10<04:51, 48.59s/it] 95%|█████████▌| 95/100 [1:16:59<04:02, 48.56s/it] 96%|█████████▌| 96/100 [1:17:48<03:14, 48.62s/it] 97%|█████████▋| 97/100 [1:18:36<02:25, 48.65s/it] 98%|█████████▊| 98/100 [1:19:26<01:37, 48.78s/it] 99%|█████████▉| 99/100 [1:20:14<00:48, 48.70s/it]100%|██████████| 100/100 [1:21:03<00:00, 48.65s/it]100%|██████████| 100/100 [1:21:03<00:00, 48.63s/it]
+Round 62: r_data=0.5570, r_noniid=0.9315, improvement=0.0164, alpha_new=1.0000
+Round 62: Server fixing with alpha_new=1.0000
+Round 63: r_data=0.5572, r_noniid=0.9447, improvement=0.0000, alpha_new=1.0000
+Round 63: Server fixing with alpha_new=1.0000
+Round 64: r_data=0.5572, r_noniid=0.9434, improvement=0.0023, alpha_new=1.0000
+Round 64: Server fixing with alpha_new=1.0000
+Round 65: r_data=0.5571, r_noniid=0.9205, improvement=0.0000, alpha_new=1.0000
+Round 65: Server fixing with alpha_new=1.0000
+Round 66: r_data=0.5572, r_noniid=0.9051, improvement=0.0000, alpha_new=1.0000
+Round 66: Server fixing with alpha_new=1.0000
+Round 67: r_data=0.5571, r_noniid=0.9434, improvement=0.0116, alpha_new=1.0000
+Round 67: Server fixing with alpha_new=1.0000
+Round 68: r_data=0.5580, r_noniid=0.9559, improvement=0.0000, alpha_new=1.0000
+Round 68: Server fixing with alpha_new=1.0000
+Round 69: r_data=0.5573, r_noniid=0.9651, improvement=0.0709, alpha_new=1.0000
+Round 69: Server fixing with alpha_new=1.0000
+Round 70: r_data=0.5569, r_noniid=0.9285, improvement=0.0000, alpha_new=1.0000
+Round 70: Server fixing with alpha_new=1.0000
+Round 70: Acc=60.67%, Loss=0.0022, D_P_t=0.0912, Alpha=1.0000
+Round 71: r_data=0.5572, r_noniid=0.8013, improvement=0.0000, alpha_new=1.0000
+Round 71: Server fixing with alpha_new=1.0000
+Round 72: r_data=0.5572, r_noniid=0.8295, improvement=0.0070, alpha_new=1.0000
+Round 72: Server fixing with alpha_new=1.0000
+Round 73: r_data=0.5569, r_noniid=0.9181, improvement=0.0000, alpha_new=1.0000
+Round 73: Server fixing with alpha_new=1.0000
+Round 74: r_data=0.5574, r_noniid=0.9374, improvement=0.0152, alpha_new=1.0000
+Round 74: Server fixing with alpha_new=1.0000
+Round 75: r_data=0.5572, r_noniid=0.6666, improvement=0.0000, alpha_new=1.0000
+Round 75: Server fixing with alpha_new=1.0000
+Round 76: r_data=0.5571, r_noniid=0.9121, improvement=0.0260, alpha_new=1.0000
+Round 76: Server fixing with alpha_new=1.0000
+Round 77: r_data=0.5575, r_noniid=0.9294, improvement=0.0000, alpha_new=1.0000
+Round 77: Server fixing with alpha_new=1.0000
+Round 78: r_data=0.5618, r_noniid=0.9705, improvement=0.0341, alpha_new=1.0000
+Round 78: Server fixing with alpha_new=1.0000
+Round 79: r_data=0.5573, r_noniid=0.9333, improvement=0.0000, alpha_new=1.0000
+Round 79: Server fixing with alpha_new=1.0000
+Round 80: r_data=0.5574, r_noniid=0.8893, improvement=0.0000, alpha_new=1.0000
+Round 80: Server fixing with alpha_new=1.0000
+Round 80: Acc=60.62%, Loss=0.0027, D_P_t=0.0564, Alpha=1.0000
+Round 81: r_data=0.5570, r_noniid=0.8824, improvement=0.0061, alpha_new=1.0000
+Round 81: Server fixing with alpha_new=1.0000
+Round 82: r_data=0.5570, r_noniid=0.9473, improvement=0.0086, alpha_new=1.0000
+Round 82: Server fixing with alpha_new=1.0000
+Round 83: r_data=0.5572, r_noniid=0.9029, improvement=0.0000, alpha_new=1.0000
+Round 83: Server fixing with alpha_new=1.0000
+Round 84: r_data=0.5569, r_noniid=0.8912, improvement=0.0083, alpha_new=1.0000
+Round 84: Server fixing with alpha_new=1.0000
+Round 85: r_data=0.5570, r_noniid=0.9600, improvement=0.0283, alpha_new=1.0000
+Round 85: Server fixing with alpha_new=1.0000
+Round 86: r_data=0.5572, r_noniid=0.9562, improvement=0.0000, alpha_new=1.0000
+Round 86: Server fixing with alpha_new=1.0000
+Round 87: r_data=0.5571, r_noniid=0.8413, improvement=0.0000, alpha_new=1.0000
+Round 87: Server fixing with alpha_new=1.0000
+Round 88: r_data=0.5578, r_noniid=0.8822, improvement=0.0169, alpha_new=1.0000
+Round 88: Server fixing with alpha_new=1.0000
+Round 89: r_data=0.5571, r_noniid=0.9422, improvement=0.0081, alpha_new=1.0000
+Round 89: Server fixing with alpha_new=1.0000
+Round 90: r_data=0.5574, r_noniid=0.8640, improvement=0.0000, alpha_new=1.0000
+Round 90: Server fixing with alpha_new=1.0000
+Round 90: Acc=60.76%, Loss=0.0017, D_P_t=0.0446, Alpha=1.0000
+Round 91: r_data=0.5578, r_noniid=0.8885, improvement=0.0140, alpha_new=1.0000
+Round 91: Server fixing with alpha_new=1.0000
+Round 92: r_data=0.5575, r_noniid=0.8804, improvement=0.0126, alpha_new=1.0000
+Round 92: Server fixing with alpha_new=1.0000
+Round 93: r_data=0.5569, r_noniid=0.9481, improvement=0.0219, alpha_new=1.0000
+Round 93: Server fixing with alpha_new=1.0000
+Round 94: r_data=0.5578, r_noniid=0.9499, improvement=0.0262, alpha_new=1.0000
+Round 94: Server fixing with alpha_new=1.0000
+Round 95: r_data=0.5573, r_noniid=0.9482, improvement=0.0000, alpha_new=1.0000
+Round 95: Server fixing with alpha_new=1.0000
+Round 96: r_data=0.5570, r_noniid=0.9631, improvement=0.0000, alpha_new=1.0000
+Round 96: Server fixing with alpha_new=1.0000
+Round 97: r_data=0.5574, r_noniid=0.9275, improvement=0.0000, alpha_new=1.0000
+Round 97: Server fixing with alpha_new=1.0000
+Round 98: r_data=0.5615, r_noniid=0.9499, improvement=0.0095, alpha_new=1.0000
+Round 98: Server fixing with alpha_new=1.0000
+Round 99: r_data=0.5576, r_noniid=0.9496, improvement=0.0324, alpha_new=1.0000
+Round 99: Server fixing with alpha_new=1.0000
+
+Results for du_C = 7:
+FedDU_Mut - 第20轮测试精度: 58.10%, 最终测试精度: 60.30%, 最终训练损失: 0.0020
+
+--- 测试 du_C = 10 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:48<1:19:48, 48.37s/it]  2%|▏         | 2/100 [01:36<1:19:09, 48.47s/it]  3%|▎         | 3/100 [02:25<1:18:19, 48.45s/it]  4%|▍         | 4/100 [03:14<1:17:57, 48.72s/it]  5%|▌         | 5/100 [04:03<1:17:15, 48.80s/it]  6%|▌         | 6/100 [04:52<1:16:30, 48.83s/it]  7%|▋         | 7/100 [05:40<1:15:31, 48.73s/it]  8%|▊         | 8/100 [06:29<1:14:33, 48.63s/it]  9%|▉         | 9/100 [07:17<1:13:43, 48.61s/it] 10%|█         | 10/100 [08:06<1:12:52, 48.58s/it] 11%|█         | 11/100 [08:54<1:12:00, 48.54s/it] 12%|█▏        | 12/100 [09:43<1:11:13, 48.56s/it] 13%|█▎        | 13/100 [10:31<1:10:22, 48.53s/it] 14%|█▍        | 14/100 [11:20<1:09:29, 48.48s/it] 15%|█▌        | 15/100 [12:08<1:08:41, 48.49s/it] 16%|█▌        | 16/100 [12:57<1:07:55, 48.52s/it] 17%|█▋        | 17/100 [13:46<1:07:17, 48.65s/it] 18%|█▊        | 18/100 [14:34<1:06:24, 48.60s/it] 19%|█▉        | 19/100 [15:23<1:05:30, 48.52s/it] 20%|██        | 20/100 [16:11<1:04:40, 48.51s/it] 21%|██        | 21/100 [16:59<1:03:50, 48.49s/it] 22%|██▏       | 22/100 [17:48<1:02:58, 48.44s/it] 23%|██▎       | 23/100 [18:36<1:02:11, 48.46s/it] 24%|██▍       | 24/100 [19:25<1:01:22, 48.46s/it] 25%|██▌       | 25/100 [20:13<1:00:39, 48.52s/it] 26%|██▌       | 26/100 [21:02<59:46, 48.47s/it]   27%|██▋       | 27/100 [21:50<58:54, 48.42s/it] 28%|██▊       | 28/100 [22:38<58:03, 48.39s/it] 29%|██▉       | 29/100 [23:27<57:14, 48.37s/it] 30%|███       | 30/100 [24:15<56:26, 48.38s/it] 31%|███       | 31/100 [25:03<55:35, 48.33s/it] 32%|███▏      | 32/100 [25:52<54:45, 48.32s/it] 33%|███▎      | 33/100 [26:40<53:55, 48.30s/it] 34%|███▍      | 34/100 [27:29<53:14, 48.41s/it] 35%|███▌      | 35/100 [28:17<52:25, 48.39s/it] 36%|███▌      | 36/100 [29:05<51:34, 48.35s/it] 37%|███▋      | 37/100 [29:54<50:46, 48.35s/it] 38%|███▊      | 38/100 [30:42<49:57, 48.34s/it] 39%|███▉      | 39/100 [31:30<49:08, 48.33s/it] 40%|████      | 40/100 [32:18<48:19, 48.33s/it] 41%|████      | 41/100 [33:07<47:37, 48.44s/it] 42%|████▏     | 42/100 [33:56<46:54, 48.52s/it] 43%|████▎     | 43/100 [34:44<46:01, 48.45s/it] 44%|████▍     | 44/100 [35:33<45:11, 48.42s/it] 45%|████▌     | 45/100 [36:21<44:19, 48.35s/it] 46%|████▌     | 46/100 [37:10<43:42, 48.56s/it] 47%|████▋     | 47/100 [37:59<42:59, 48.67s/it] 48%|████▊     | 48/100 [38:47<42:09, 48.65s/it] 49%|████▉     | 49/100 [39:36<41:23, 48.69s/it] 50%|█████     | 50/100 [40:24<40:24, 48.49s/it] 51%|█████     | 51/100 [41:13<39:38, 48.54s/it] 52%|█████▏    | 52/100 [42:01<38:45, 48.45s/it] 53%|█████▎    | 53/100 [42:49<37:55, 48.41s/it] 54%|█████▍    | 54/100 [43:38<37:05, 48.37s/it] 55%|█████▌    | 55/100 [44:26<36:15, 48.35s/it] 56%|█████▌    | 56/100 [45:14<35:26, 48.33s/it] 57%|█████▋    | 57/100 [46:02<34:37, 48.31s/it] 58%|█████▊    | 58/100 [46:51<33:47, 48.27s/it] 59%|█████▉    | 59/100 [47:39<33:04, 48.39s/it] 60%|██████    | 60/100 [48:28<32:15, 48.39s/it] 61%|██████    | 61/100 [49:16<31:27, 48.39s/it] 62%|██████▏   | 62/100 [50:04<30:38, 48.38s/it]Round 0: r_data=0.5617, r_noniid=0.9516, improvement=0.0000, alpha_new=1.0000
+Round 0: Server fixing with alpha_new=1.0000
+Round 0: Acc=34.71%, Loss=0.0136, D_P_t=0.1381, Alpha=1.0000
+Round 1: r_data=0.5579, r_noniid=0.9382, improvement=0.0000, alpha_new=1.0000
+Round 1: Server fixing with alpha_new=1.0000
+Round 2: r_data=0.5570, r_noniid=0.9510, improvement=0.5437, alpha_new=1.0000
+Round 2: Server fixing with alpha_new=1.0000
+Round 3: r_data=0.5574, r_noniid=0.8867, improvement=0.0000, alpha_new=1.0000
+Round 3: Server fixing with alpha_new=1.0000
+Round 4: r_data=0.5573, r_noniid=0.8924, improvement=0.0000, alpha_new=1.0000
+Round 4: Server fixing with alpha_new=1.0000
+Round 5: r_data=0.5572, r_noniid=0.8687, improvement=0.2505, alpha_new=1.0000
+Round 5: Server fixing with alpha_new=1.0000
+Round 6: r_data=0.5574, r_noniid=0.9253, improvement=0.0000, alpha_new=1.0000
+Round 6: Server fixing with alpha_new=1.0000
+Round 7: r_data=0.5573, r_noniid=0.9171, improvement=0.1337, alpha_new=1.0000
+Round 7: Server fixing with alpha_new=1.0000
+Round 8: r_data=0.5583, r_noniid=0.8903, improvement=0.0000, alpha_new=1.0000
+Round 8: Server fixing with alpha_new=1.0000
+Round 9: r_data=0.5582, r_noniid=0.9109, improvement=0.0240, alpha_new=1.0000
+Round 9: Server fixing with alpha_new=1.0000
+Round 10: r_data=0.5570, r_noniid=0.8592, improvement=0.0000, alpha_new=1.0000
+Round 10: Server fixing with alpha_new=1.0000
+Round 10: Acc=54.78%, Loss=0.0111, D_P_t=0.0429, Alpha=1.0000
+Round 11: r_data=0.5575, r_noniid=0.9464, improvement=0.0875, alpha_new=1.0000
+Round 11: Server fixing with alpha_new=1.0000
+Round 12: r_data=0.5567, r_noniid=0.9260, improvement=0.0000, alpha_new=1.0000
+Round 12: Server fixing with alpha_new=1.0000
+Round 13: r_data=0.5572, r_noniid=0.9383, improvement=0.0000, alpha_new=1.0000
+Round 13: Server fixing with alpha_new=1.0000
+Round 14: r_data=0.5577, r_noniid=0.9128, improvement=0.0000, alpha_new=1.0000
+Round 14: Server fixing with alpha_new=1.0000
+Round 15: r_data=0.5570, r_noniid=0.9248, improvement=0.0000, alpha_new=1.0000
+Round 15: Server fixing with alpha_new=1.0000
+Round 16: r_data=0.5572, r_noniid=0.9446, improvement=0.0045, alpha_new=1.0000
+Round 16: Server fixing with alpha_new=1.0000
+Round 17: r_data=0.5621, r_noniid=0.9229, improvement=0.0000, alpha_new=1.0000
+Round 17: Server fixing with alpha_new=1.0000
+Round 18: r_data=0.5570, r_noniid=0.9200, improvement=0.0000, alpha_new=1.0000
+Round 18: Server fixing with alpha_new=1.0000
+Round 19: r_data=0.5575, r_noniid=0.9545, improvement=0.0125, alpha_new=1.0000
+Round 19: Server fixing with alpha_new=1.0000
+Round 20: r_data=0.5572, r_noniid=0.9546, improvement=0.0000, alpha_new=1.0000
+Round 20: Server fixing with alpha_new=1.0000
+Round 20: Acc=59.76%, Loss=0.0042, D_P_t=0.1478, Alpha=1.0000
+Round 21: r_data=0.5570, r_noniid=0.8939, improvement=0.0000, alpha_new=1.0000
+Round 21: Server fixing with alpha_new=1.0000
+Round 22: r_data=0.5570, r_noniid=0.8700, improvement=0.0085, alpha_new=1.0000
+Round 22: Server fixing with alpha_new=1.0000
+Round 23: r_data=0.5572, r_noniid=0.9557, improvement=0.0362, alpha_new=1.0000
+Round 23: Server fixing with alpha_new=1.0000
+Round 24: r_data=0.5620, r_noniid=0.9101, improvement=0.0000, alpha_new=1.0000
+Round 24: Server fixing with alpha_new=1.0000
+Round 25: r_data=0.5570, r_noniid=0.9320, improvement=0.0134, alpha_new=1.0000
+Round 25: Server fixing with alpha_new=1.0000
+Round 26: r_data=0.5574, r_noniid=0.9470, improvement=0.0265, alpha_new=1.0000
+Round 26: Server fixing with alpha_new=1.0000
+Round 27: r_data=0.5572, r_noniid=0.9055, improvement=0.0000, alpha_new=1.0000
+Round 27: Server fixing with alpha_new=1.0000
+Round 28: r_data=0.5580, r_noniid=0.8804, improvement=0.0000, alpha_new=1.0000
+Round 28: Server fixing with alpha_new=1.0000
+Round 29: r_data=0.5578, r_noniid=0.9283, improvement=0.0140, alpha_new=1.0000
+Round 29: Server fixing with alpha_new=1.0000
+Round 30: r_data=0.5571, r_noniid=0.9369, improvement=0.0000, alpha_new=1.0000
+Round 30: Server fixing with alpha_new=1.0000
+Round 30: Acc=60.35%, Loss=0.0027, D_P_t=0.1044, Alpha=1.0000
+Round 31: r_data=0.5580, r_noniid=0.9365, improvement=0.0000, alpha_new=1.0000
+Round 31: Server fixing with alpha_new=1.0000
+Round 32: r_data=0.5573, r_noniid=0.9052, improvement=0.0010, alpha_new=1.0000
+Round 32: Server fixing with alpha_new=1.0000
+Round 33: r_data=0.5576, r_noniid=0.9243, improvement=0.0039, alpha_new=1.0000
+Round 33: Server fixing with alpha_new=1.0000
+Round 34: r_data=0.5577, r_noniid=0.9371, improvement=0.0065, alpha_new=1.0000
+Round 34: Server fixing with alpha_new=1.0000
+Round 35: r_data=0.5578, r_noniid=0.9477, improvement=0.0287, alpha_new=1.0000
+Round 35: Server fixing with alpha_new=1.0000
+Round 36: r_data=0.5570, r_noniid=0.9518, improvement=0.0000, alpha_new=1.0000
+Round 36: Server fixing with alpha_new=1.0000
+Round 37: r_data=0.5577, r_noniid=0.9497, improvement=0.0157, alpha_new=1.0000
+Round 37: Server fixing with alpha_new=1.0000
+Round 38: r_data=0.5580, r_noniid=0.8581, improvement=0.0000, alpha_new=1.0000
+Round 38: Server fixing with alpha_new=1.0000
+Round 39: r_data=0.5574, r_noniid=0.9482, improvement=0.0229, alpha_new=1.0000
+Round 39: Server fixing with alpha_new=1.0000
+Round 40: r_data=0.5569, r_noniid=0.9298, improvement=0.0398, alpha_new=1.0000
+Round 40: Server fixing with alpha_new=1.0000
+Round 40: Acc=61.19%, Loss=0.0032, D_P_t=0.0931, Alpha=1.0000
+Round 41: r_data=0.5577, r_noniid=0.9172, improvement=0.0000, alpha_new=1.0000
+Round 41: Server fixing with alpha_new=1.0000
+Round 42: r_data=0.5585, r_noniid=0.9501, improvement=0.0261, alpha_new=1.0000
+Round 42: Server fixing with alpha_new=1.0000
+Round 43: r_data=0.5572, r_noniid=0.9434, improvement=0.0000, alpha_new=1.0000
+Round 43: Server fixing with alpha_new=1.0000
+Round 44: r_data=0.5573, r_noniid=0.9264, improvement=0.0128, alpha_new=1.0000
+Round 44: Server fixing with alpha_new=1.0000
+Round 45: r_data=0.5571, r_noniid=0.9337, improvement=0.0021, alpha_new=1.0000
+Round 45: Server fixing with alpha_new=1.0000
+Round 46: r_data=0.5572, r_noniid=0.9255, improvement=0.0045, alpha_new=1.0000
+Round 46: Server fixing with alpha_new=1.0000
+Round 47: r_data=0.5619, r_noniid=0.9606, improvement=0.0569, alpha_new=1.0000
+Round 47: Server fixing with alpha_new=1.0000
+Round 48: r_data=0.5570, r_noniid=0.9537, improvement=0.0000, alpha_new=1.0000
+Round 48: Server fixing with alpha_new=1.0000
+Round 49: r_data=0.5618, r_noniid=0.9229, improvement=0.0000, alpha_new=1.0000
+Round 49: Server fixing with alpha_new=1.0000
+Round 50: r_data=0.5570, r_noniid=0.9478, improvement=0.0437, alpha_new=1.0000
+Round 50: Server fixing with alpha_new=1.0000
+Round 50: Acc=61.38%, Loss=0.0029, D_P_t=0.1276, Alpha=1.0000
+Round 51: r_data=0.5571, r_noniid=0.9294, improvement=0.0000, alpha_new=1.0000
+Round 51: Server fixing with alpha_new=1.0000
+Round 52: r_data=0.5572, r_noniid=0.9178, improvement=0.0055, alpha_new=1.0000
+Round 52: Server fixing with alpha_new=1.0000
+Round 53: r_data=0.5572, r_noniid=0.9432, improvement=0.0118, alpha_new=1.0000
+Round 53: Server fixing with alpha_new=1.0000
+Round 54: r_data=0.5580, r_noniid=0.9177, improvement=0.0000, alpha_new=1.0000
+Round 54: Server fixing with alpha_new=1.0000
+Round 55: r_data=0.5583, r_noniid=0.9296, improvement=0.0000, alpha_new=1.0000
+Round 55: Server fixing with alpha_new=1.0000
+Round 56: r_data=0.5573, r_noniid=0.9126, improvement=0.0063, alpha_new=1.0000
+Round 56: Server fixing with alpha_new=1.0000
+Round 57: r_data=0.5582, r_noniid=0.9554, improvement=0.0039, alpha_new=1.0000
+Round 57: Server fixing with alpha_new=1.0000
+Round 58: r_data=0.5572, r_noniid=0.9415, improvement=0.0113, alpha_new=1.0000
+Round 58: Server fixing with alpha_new=1.0000
+Round 59: r_data=0.5572, r_noniid=0.9260, improvement=0.0000, alpha_new=1.0000
+Round 59: Server fixing with alpha_new=1.0000
+Round 60: r_data=0.5579, r_noniid=0.9607, improvement=0.0643, alpha_new=1.0000
+Round 60: Server fixing with alpha_new=1.0000
+Round 60: Acc=61.28%, Loss=0.0024, D_P_t=0.1717, Alpha=1.0000
+Round 61: r_data=0.5580, r_noniid=0.8505, improvement=0.0000, alpha_new=1.0000
+Round 61: Server fixing with alpha_new=1.0000
+ 63%|██████▎   | 63/100 [50:53<29:50, 48.39s/it] 64%|██████▍   | 64/100 [51:41<29:01, 48.37s/it] 65%|██████▌   | 65/100 [52:30<28:12, 48.36s/it] 66%|██████▌   | 66/100 [53:18<27:24, 48.35s/it] 67%|██████▋   | 67/100 [54:06<26:36, 48.37s/it] 68%|██████▊   | 68/100 [54:54<25:46, 48.32s/it] 69%|██████▉   | 69/100 [55:43<24:57, 48.30s/it] 70%|███████   | 70/100 [56:32<24:13, 48.45s/it] 71%|███████   | 71/100 [57:20<23:24, 48.42s/it] 72%|███████▏  | 72/100 [58:08<22:34, 48.39s/it] 73%|███████▎  | 73/100 [58:57<21:46, 48.37s/it] 74%|███████▍  | 74/100 [59:45<20:57, 48.35s/it] 75%|███████▌  | 75/100 [1:00:33<20:08, 48.33s/it] 76%|███████▌  | 76/100 [1:01:22<19:21, 48.41s/it] 77%|███████▋  | 77/100 [1:02:10<18:33, 48.39s/it] 78%|███████▊  | 78/100 [1:02:58<17:44, 48.38s/it] 79%|███████▉  | 79/100 [1:03:47<16:54, 48.33s/it] 80%|████████  | 80/100 [1:04:35<16:09, 48.48s/it] 81%|████████  | 81/100 [1:05:24<15:20, 48.47s/it] 82%|████████▏ | 82/100 [1:06:12<14:31, 48.43s/it] 83%|████████▎ | 83/100 [1:07:01<13:43, 48.43s/it] 84%|████████▍ | 84/100 [1:07:49<12:54, 48.42s/it] 85%|████████▌ | 85/100 [1:08:37<12:04, 48.32s/it] 86%|████████▌ | 86/100 [1:09:26<11:17, 48.37s/it] 87%|████████▋ | 87/100 [1:10:14<10:27, 48.31s/it] 88%|████████▊ | 88/100 [1:11:02<09:39, 48.32s/it] 89%|████████▉ | 89/100 [1:11:51<08:52, 48.44s/it] 90%|█████████ | 90/100 [1:12:39<08:04, 48.42s/it] 91%|█████████ | 91/100 [1:13:28<07:15, 48.39s/it] 92%|█████████▏| 92/100 [1:14:16<06:26, 48.36s/it] 93%|█████████▎| 93/100 [1:15:04<05:38, 48.31s/it] 94%|█████████▍| 94/100 [1:15:52<04:49, 48.32s/it] 95%|█████████▌| 95/100 [1:16:41<04:01, 48.32s/it] 96%|█████████▌| 96/100 [1:17:29<03:13, 48.32s/it] 97%|█████████▋| 97/100 [1:18:18<02:25, 48.39s/it] 98%|█████████▊| 98/100 [1:19:06<01:36, 48.34s/it] 99%|█████████▉| 99/100 [1:19:54<00:48, 48.37s/it]100%|██████████| 100/100 [1:20:43<00:00, 48.46s/it]100%|██████████| 100/100 [1:20:43<00:00, 48.43s/it]
+Round 62: r_data=0.5572, r_noniid=0.9230, improvement=0.0018, alpha_new=1.0000
+Round 62: Server fixing with alpha_new=1.0000
+Round 63: r_data=0.5575, r_noniid=0.8484, improvement=0.0025, alpha_new=1.0000
+Round 63: Server fixing with alpha_new=1.0000
+Round 64: r_data=0.5570, r_noniid=0.9607, improvement=0.1162, alpha_new=1.0000
+Round 64: Server fixing with alpha_new=1.0000
+Round 65: r_data=0.5572, r_noniid=0.9269, improvement=0.0000, alpha_new=1.0000
+Round 65: Server fixing with alpha_new=1.0000
+Round 66: r_data=0.5571, r_noniid=0.9134, improvement=0.0000, alpha_new=1.0000
+Round 66: Server fixing with alpha_new=1.0000
+Round 67: r_data=0.5614, r_noniid=0.9189, improvement=0.0124, alpha_new=1.0000
+Round 67: Server fixing with alpha_new=1.0000
+Round 68: r_data=0.5571, r_noniid=0.9523, improvement=0.0018, alpha_new=1.0000
+Round 68: Server fixing with alpha_new=1.0000
+Round 69: r_data=0.5572, r_noniid=0.9411, improvement=0.0195, alpha_new=1.0000
+Round 69: Server fixing with alpha_new=1.0000
+Round 70: r_data=0.5573, r_noniid=0.9423, improvement=0.0000, alpha_new=1.0000
+Round 70: Server fixing with alpha_new=1.0000
+Round 70: Acc=61.25%, Loss=0.0024, D_P_t=0.1147, Alpha=1.0000
+Round 71: r_data=0.5578, r_noniid=0.9290, improvement=0.0005, alpha_new=1.0000
+Round 71: Server fixing with alpha_new=1.0000
+Round 72: r_data=0.5574, r_noniid=0.9002, improvement=0.0000, alpha_new=1.0000
+Round 72: Server fixing with alpha_new=1.0000
+Round 73: r_data=0.5570, r_noniid=0.9549, improvement=0.0215, alpha_new=1.0000
+Round 73: Server fixing with alpha_new=1.0000
+Round 74: r_data=0.5572, r_noniid=0.9221, improvement=0.0111, alpha_new=1.0000
+Round 74: Server fixing with alpha_new=1.0000
+Round 75: r_data=0.5574, r_noniid=0.9451, improvement=0.0093, alpha_new=1.0000
+Round 75: Server fixing with alpha_new=1.0000
+Round 76: r_data=0.5567, r_noniid=0.9627, improvement=0.0000, alpha_new=1.0000
+Round 76: Server fixing with alpha_new=1.0000
+Round 77: r_data=0.5571, r_noniid=0.9177, improvement=0.0088, alpha_new=1.0000
+Round 77: Server fixing with alpha_new=1.0000
+Round 78: r_data=0.5624, r_noniid=0.9494, improvement=0.0000, alpha_new=1.0000
+Round 78: Server fixing with alpha_new=1.0000
+Round 79: r_data=0.5571, r_noniid=0.9339, improvement=0.0267, alpha_new=1.0000
+Round 79: Server fixing with alpha_new=1.0000
+Round 80: r_data=0.5572, r_noniid=0.9631, improvement=0.0078, alpha_new=1.0000
+Round 80: Server fixing with alpha_new=1.0000
+Round 80: Acc=61.66%, Loss=0.0026, D_P_t=0.1836, Alpha=1.0000
+Round 81: r_data=0.5572, r_noniid=0.9379, improvement=0.0000, alpha_new=1.0000
+Round 81: Server fixing with alpha_new=1.0000
+Round 82: r_data=0.5575, r_noniid=0.9139, improvement=0.0000, alpha_new=1.0000
+Round 82: Server fixing with alpha_new=1.0000
+Round 83: r_data=0.5573, r_noniid=0.9250, improvement=0.0244, alpha_new=1.0000
+Round 83: Server fixing with alpha_new=1.0000
+Round 84: r_data=0.5623, r_noniid=0.8398, improvement=0.0000, alpha_new=1.0000
+Round 84: Server fixing with alpha_new=1.0000
+Round 85: r_data=0.5570, r_noniid=0.9474, improvement=0.0188, alpha_new=1.0000
+Round 85: Server fixing with alpha_new=1.0000
+Round 86: r_data=0.5624, r_noniid=0.9482, improvement=0.0000, alpha_new=1.0000
+Round 86: Server fixing with alpha_new=1.0000
+Round 87: r_data=0.5574, r_noniid=0.9284, improvement=0.0321, alpha_new=1.0000
+Round 87: Server fixing with alpha_new=1.0000
+Round 88: r_data=0.5573, r_noniid=0.9231, improvement=0.0000, alpha_new=1.0000
+Round 88: Server fixing with alpha_new=1.0000
+Round 89: r_data=0.5577, r_noniid=0.9036, improvement=0.0209, alpha_new=1.0000
+Round 89: Server fixing with alpha_new=1.0000
+Round 90: r_data=0.5574, r_noniid=0.8778, improvement=0.0000, alpha_new=1.0000
+Round 90: Server fixing with alpha_new=1.0000
+Round 90: Acc=61.81%, Loss=0.0025, D_P_t=0.0505, Alpha=1.0000
+Round 91: r_data=0.5572, r_noniid=0.8884, improvement=0.0040, alpha_new=1.0000
+Round 91: Server fixing with alpha_new=1.0000
+Round 92: r_data=0.5572, r_noniid=0.9046, improvement=0.0000, alpha_new=1.0000
+Round 92: Server fixing with alpha_new=1.0000
+Round 93: r_data=0.5572, r_noniid=0.9516, improvement=0.0501, alpha_new=1.0000
+Round 93: Server fixing with alpha_new=1.0000
+Round 94: r_data=0.5573, r_noniid=0.8926, improvement=0.0000, alpha_new=1.0000
+Round 94: Server fixing with alpha_new=1.0000
+Round 95: r_data=0.5569, r_noniid=0.9662, improvement=0.0424, alpha_new=1.0000
+Round 95: Server fixing with alpha_new=1.0000
+Round 96: r_data=0.5617, r_noniid=0.9310, improvement=0.0000, alpha_new=1.0000
+Round 96: Server fixing with alpha_new=1.0000
+Round 97: r_data=0.5619, r_noniid=0.6866, improvement=0.0000, alpha_new=1.0000
+Round 97: Server fixing with alpha_new=1.0000
+Round 98: r_data=0.5578, r_noniid=0.9238, improvement=0.0140, alpha_new=1.0000
+Round 98: Server fixing with alpha_new=1.0000
+Round 99: r_data=0.5573, r_noniid=0.8721, improvement=0.0000, alpha_new=1.0000
+Round 99: Server fixing with alpha_new=1.0000
+
+Results for du_C = 10:
+FedDU_Mut - 第20轮测试精度: 59.58%, 最终测试精度: 61.76%, 最终训练损失: 0.0020
+
+--- 测试 du_C = 15 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:48<1:20:15, 48.64s/it]  2%|▏         | 2/100 [01:37<1:19:21, 48.58s/it]  3%|▎         | 3/100 [02:25<1:18:28, 48.54s/it]  4%|▍         | 4/100 [03:15<1:18:10, 48.86s/it]  5%|▌         | 5/100 [04:03<1:17:14, 48.78s/it]  6%|▌         | 6/100 [04:52<1:16:34, 48.88s/it]  7%|▋         | 7/100 [05:42<1:15:58, 49.01s/it]  8%|▊         | 8/100 [06:31<1:15:09, 49.01s/it]  9%|▉         | 9/100 [07:19<1:14:09, 48.89s/it] 10%|█         | 10/100 [08:08<1:13:11, 48.80s/it] 11%|█         | 11/100 [08:56<1:12:18, 48.75s/it] 12%|█▏        | 12/100 [09:45<1:11:26, 48.71s/it] 13%|█▎        | 13/100 [10:33<1:10:31, 48.64s/it] 14%|█▍        | 14/100 [11:22<1:09:42, 48.63s/it] 15%|█▌        | 15/100 [12:11<1:09:09, 48.82s/it] 16%|█▌        | 16/100 [13:00<1:08:12, 48.72s/it] 17%|█▋        | 17/100 [13:49<1:07:23, 48.71s/it] 18%|█▊        | 18/100 [14:37<1:06:27, 48.62s/it] 19%|█▉        | 19/100 [15:25<1:05:35, 48.59s/it] 20%|██        | 20/100 [16:14<1:04:44, 48.56s/it] 21%|██        | 21/100 [17:02<1:03:54, 48.54s/it] 22%|██▏       | 22/100 [17:51<1:03:04, 48.52s/it] 23%|██▎       | 23/100 [18:39<1:02:17, 48.53s/it] 24%|██▍       | 24/100 [19:28<1:01:24, 48.47s/it] 25%|██▌       | 25/100 [20:16<1:00:33, 48.45s/it] 26%|██▌       | 26/100 [21:05<1:00:00, 48.66s/it] 27%|██▋       | 27/100 [21:54<59:08, 48.61s/it]   28%|██▊       | 28/100 [22:42<58:16, 48.56s/it] 29%|██▉       | 29/100 [23:31<57:21, 48.47s/it] 30%|███       | 30/100 [24:19<56:35, 48.50s/it] 31%|███       | 31/100 [25:08<55:46, 48.50s/it] 32%|███▏      | 32/100 [25:56<54:51, 48.40s/it] 33%|███▎      | 33/100 [26:44<54:01, 48.38s/it] 34%|███▍      | 34/100 [27:32<53:09, 48.33s/it] 35%|███▌      | 35/100 [28:21<52:22, 48.35s/it] 36%|███▌      | 36/100 [29:09<51:34, 48.35s/it] 37%|███▋      | 37/100 [29:58<50:57, 48.53s/it] 38%|███▊      | 38/100 [30:47<50:10, 48.55s/it] 39%|███▉      | 39/100 [31:35<49:19, 48.52s/it] 40%|████      | 40/100 [32:23<48:29, 48.49s/it] 41%|████      | 41/100 [33:12<47:39, 48.47s/it] 42%|████▏     | 42/100 [34:00<46:51, 48.47s/it] 43%|████▎     | 43/100 [34:49<46:03, 48.49s/it] 44%|████▍     | 44/100 [35:37<45:16, 48.51s/it] 45%|████▌     | 45/100 [36:26<44:26, 48.48s/it] 46%|████▌     | 46/100 [37:14<43:37, 48.47s/it] 47%|████▋     | 47/100 [38:03<42:50, 48.50s/it] 48%|████▊     | 48/100 [38:53<42:22, 48.90s/it] 49%|████▉     | 49/100 [39:42<41:37, 48.97s/it] 50%|█████     | 50/100 [40:31<40:43, 48.88s/it] 51%|█████     | 51/100 [41:19<39:44, 48.67s/it] 52%|█████▏    | 52/100 [42:07<38:50, 48.54s/it] 53%|█████▎    | 53/100 [42:55<37:55, 48.41s/it] 54%|█████▍    | 54/100 [43:43<37:05, 48.38s/it] 55%|█████▌    | 55/100 [44:32<36:16, 48.36s/it] 56%|█████▌    | 56/100 [45:21<35:36, 48.56s/it] 57%|█████▋    | 57/100 [46:09<34:47, 48.54s/it] 58%|█████▊    | 58/100 [46:58<33:55, 48.47s/it] 59%|█████▉    | 59/100 [47:46<33:03, 48.38s/it] 60%|██████    | 60/100 [48:34<32:17, 48.45s/it] 61%|██████    | 61/100 [49:23<31:27, 48.40s/it] 62%|██████▏   | 62/100 [50:11<30:38, 48.39s/it]Round 0: r_data=0.5571, r_noniid=0.9612, improvement=0.0000, alpha_new=1.0000
+Round 0: Server fixing with alpha_new=1.0000
+Round 0: Acc=30.03%, Loss=0.0145, D_P_t=0.1739, Alpha=1.0000
+Round 1: r_data=0.5573, r_noniid=0.9436, improvement=0.0000, alpha_new=1.0000
+Round 1: Server fixing with alpha_new=1.0000
+Round 2: r_data=0.5570, r_noniid=0.9648, improvement=0.2070, alpha_new=1.0000
+Round 2: Server fixing with alpha_new=1.0000
+Round 3: r_data=0.5570, r_noniid=0.9091, improvement=0.0000, alpha_new=1.0000
+Round 3: Server fixing with alpha_new=1.0000
+Round 4: r_data=0.5575, r_noniid=0.9217, improvement=0.2580, alpha_new=1.0000
+Round 4: Server fixing with alpha_new=1.0000
+Round 5: r_data=0.5626, r_noniid=0.9202, improvement=0.0000, alpha_new=1.0000
+Round 5: Server fixing with alpha_new=1.0000
+Round 6: r_data=0.5570, r_noniid=0.9288, improvement=0.0656, alpha_new=1.0000
+Round 6: Server fixing with alpha_new=1.0000
+Round 7: r_data=0.5572, r_noniid=0.9395, improvement=0.0000, alpha_new=1.0000
+Round 7: Server fixing with alpha_new=1.0000
+Round 8: r_data=0.5570, r_noniid=0.9023, improvement=0.0000, alpha_new=1.0000
+Round 8: Server fixing with alpha_new=1.0000
+Round 9: r_data=0.5570, r_noniid=0.9579, improvement=0.3205, alpha_new=1.0000
+Round 9: Server fixing with alpha_new=1.0000
+Round 10: r_data=0.5573, r_noniid=0.9647, improvement=0.0000, alpha_new=1.0000
+Round 10: Server fixing with alpha_new=1.0000
+Round 10: Acc=55.36%, Loss=0.0100, D_P_t=0.1918, Alpha=1.0000
+Round 11: r_data=0.5572, r_noniid=0.9284, improvement=0.0905, alpha_new=1.0000
+Round 11: Server fixing with alpha_new=1.0000
+Round 12: r_data=0.5570, r_noniid=0.9182, improvement=0.0000, alpha_new=1.0000
+Round 12: Server fixing with alpha_new=1.0000
+Round 13: r_data=0.5569, r_noniid=0.9162, improvement=0.0000, alpha_new=1.0000
+Round 13: Server fixing with alpha_new=1.0000
+Round 14: r_data=0.5570, r_noniid=0.9591, improvement=0.0000, alpha_new=1.0000
+Round 14: Server fixing with alpha_new=1.0000
+Round 15: r_data=0.5618, r_noniid=0.9573, improvement=0.0286, alpha_new=1.0000
+Round 15: Server fixing with alpha_new=1.0000
+Round 16: r_data=0.5575, r_noniid=0.9485, improvement=0.0000, alpha_new=1.0000
+Round 16: Server fixing with alpha_new=1.0000
+Round 17: r_data=0.5575, r_noniid=0.9330, improvement=0.0000, alpha_new=1.0000
+Round 17: Server fixing with alpha_new=1.0000
+Round 18: r_data=0.5576, r_noniid=0.9146, improvement=0.0000, alpha_new=1.0000
+Round 18: Server fixing with alpha_new=1.0000
+Round 19: r_data=0.5575, r_noniid=0.8992, improvement=0.0000, alpha_new=1.0000
+Round 19: Server fixing with alpha_new=1.0000
+Round 20: r_data=0.5570, r_noniid=0.9389, improvement=0.0000, alpha_new=1.0000
+Round 20: Server fixing with alpha_new=1.0000
+Round 20: Acc=58.71%, Loss=0.0052, D_P_t=0.1079, Alpha=1.0000
+Round 21: r_data=0.5572, r_noniid=0.9489, improvement=0.0000, alpha_new=1.0000
+Round 21: Server fixing with alpha_new=1.0000
+Round 22: r_data=0.5572, r_noniid=0.9467, improvement=0.0111, alpha_new=1.0000
+Round 22: Server fixing with alpha_new=1.0000
+Round 23: r_data=0.5570, r_noniid=0.9102, improvement=0.0000, alpha_new=1.0000
+Round 23: Server fixing with alpha_new=1.0000
+Round 24: r_data=0.5571, r_noniid=0.9309, improvement=0.0079, alpha_new=1.0000
+Round 24: Server fixing with alpha_new=1.0000
+Round 25: r_data=0.5580, r_noniid=0.9617, improvement=0.0327, alpha_new=1.0000
+Round 25: Server fixing with alpha_new=1.0000
+Round 26: r_data=0.5575, r_noniid=0.8695, improvement=0.0000, alpha_new=1.0000
+Round 26: Server fixing with alpha_new=1.0000
+Round 27: r_data=0.5571, r_noniid=0.9285, improvement=0.0075, alpha_new=1.0000
+Round 27: Server fixing with alpha_new=1.0000
+Round 28: r_data=0.5573, r_noniid=0.9496, improvement=0.0000, alpha_new=1.0000
+Round 28: Server fixing with alpha_new=1.0000
+Round 29: r_data=0.5570, r_noniid=0.9484, improvement=0.0000, alpha_new=1.0000
+Round 29: Server fixing with alpha_new=1.0000
+Round 30: r_data=0.5573, r_noniid=0.9134, improvement=0.0000, alpha_new=1.0000
+Round 30: Server fixing with alpha_new=1.0000
+Round 30: Acc=60.00%, Loss=0.0025, D_P_t=0.0742, Alpha=1.0000
+Round 31: r_data=0.5572, r_noniid=0.8694, improvement=0.0147, alpha_new=1.0000
+Round 31: Server fixing with alpha_new=1.0000
+Round 32: r_data=0.5572, r_noniid=0.9452, improvement=0.0038, alpha_new=1.0000
+Round 32: Server fixing with alpha_new=1.0000
+Round 33: r_data=0.5572, r_noniid=0.9387, improvement=0.0174, alpha_new=1.0000
+Round 33: Server fixing with alpha_new=1.0000
+Round 34: r_data=0.5571, r_noniid=0.9659, improvement=0.0000, alpha_new=1.0000
+Round 34: Server fixing with alpha_new=1.0000
+Round 35: r_data=0.5574, r_noniid=0.9379, improvement=0.0000, alpha_new=1.0000
+Round 35: Server fixing with alpha_new=1.0000
+Round 36: r_data=0.5571, r_noniid=0.8351, improvement=0.0000, alpha_new=1.0000
+Round 36: Server fixing with alpha_new=1.0000
+Round 37: r_data=0.5571, r_noniid=0.9172, improvement=0.0096, alpha_new=1.0000
+Round 37: Server fixing with alpha_new=1.0000
+Round 38: r_data=0.5572, r_noniid=0.9495, improvement=0.0226, alpha_new=1.0000
+Round 38: Server fixing with alpha_new=1.0000
+Round 39: r_data=0.5580, r_noniid=0.9179, improvement=0.0000, alpha_new=1.0000
+Round 39: Server fixing with alpha_new=1.0000
+Round 40: r_data=0.5620, r_noniid=0.9228, improvement=0.0198, alpha_new=1.0000
+Round 40: Server fixing with alpha_new=1.0000
+Round 40: Acc=60.01%, Loss=0.0026, D_P_t=0.0840, Alpha=1.0000
+Round 41: r_data=0.5572, r_noniid=0.9178, improvement=0.0000, alpha_new=1.0000
+Round 41: Server fixing with alpha_new=1.0000
+Round 42: r_data=0.5570, r_noniid=0.9278, improvement=0.0036, alpha_new=1.0000
+Round 42: Server fixing with alpha_new=1.0000
+Round 43: r_data=0.5572, r_noniid=0.9548, improvement=0.0256, alpha_new=1.0000
+Round 43: Server fixing with alpha_new=1.0000
+Round 44: r_data=0.5580, r_noniid=0.9490, improvement=0.0000, alpha_new=1.0000
+Round 44: Server fixing with alpha_new=1.0000
+Round 45: r_data=0.5619, r_noniid=0.9057, improvement=0.0000, alpha_new=1.0000
+Round 45: Server fixing with alpha_new=1.0000
+Round 46: r_data=0.5575, r_noniid=0.8221, improvement=0.0057, alpha_new=1.0000
+Round 46: Server fixing with alpha_new=1.0000
+Round 47: r_data=0.5576, r_noniid=0.8493, improvement=0.0100, alpha_new=1.0000
+Round 47: Server fixing with alpha_new=1.0000
+Round 48: r_data=0.5574, r_noniid=0.9279, improvement=0.0000, alpha_new=1.0000
+Round 48: Server fixing with alpha_new=1.0000
+Round 49: r_data=0.5615, r_noniid=0.9690, improvement=0.0343, alpha_new=1.0000
+Round 49: Server fixing with alpha_new=1.0000
+Round 50: r_data=0.5572, r_noniid=0.9034, improvement=0.0000, alpha_new=1.0000
+Round 50: Server fixing with alpha_new=1.0000
+Round 50: Acc=60.76%, Loss=0.0026, D_P_t=0.0657, Alpha=1.0000
+Round 51: r_data=0.5578, r_noniid=0.8896, improvement=0.0010, alpha_new=1.0000
+Round 51: Server fixing with alpha_new=1.0000
+Round 52: r_data=0.5622, r_noniid=0.8384, improvement=0.0000, alpha_new=1.0000
+Round 52: Server fixing with alpha_new=1.0000
+Round 53: r_data=0.5570, r_noniid=0.9235, improvement=0.0197, alpha_new=1.0000
+Round 53: Server fixing with alpha_new=1.0000
+Round 54: r_data=0.5571, r_noniid=0.9236, improvement=0.0135, alpha_new=1.0000
+Round 54: Server fixing with alpha_new=1.0000
+Round 55: r_data=0.5572, r_noniid=0.9499, improvement=0.0052, alpha_new=1.0000
+Round 55: Server fixing with alpha_new=1.0000
+Round 56: r_data=0.5570, r_noniid=0.9412, improvement=0.0000, alpha_new=1.0000
+Round 56: Server fixing with alpha_new=1.0000
+Round 57: r_data=0.5587, r_noniid=0.9494, improvement=0.0404, alpha_new=1.0000
+Round 57: Server fixing with alpha_new=1.0000
+Round 58: r_data=0.5581, r_noniid=0.9654, improvement=0.0094, alpha_new=1.0000
+Round 58: Server fixing with alpha_new=1.0000
+Round 59: r_data=0.5573, r_noniid=0.9415, improvement=0.0000, alpha_new=1.0000
+Round 59: Server fixing with alpha_new=1.0000
+Round 60: r_data=0.5573, r_noniid=0.9040, improvement=0.0000, alpha_new=1.0000
+Round 60: Server fixing with alpha_new=1.0000
+Round 60: Acc=60.91%, Loss=0.0022, D_P_t=0.0662, Alpha=1.0000
+Round 61: r_data=0.5572, r_noniid=0.9562, improvement=0.0453, alpha_new=1.0000
+Round 61: Server fixing with alpha_new=1.0000
+ 63%|██████▎   | 63/100 [50:59<29:51, 48.42s/it] 64%|██████▍   | 64/100 [51:48<29:00, 48.35s/it] 65%|██████▌   | 65/100 [52:36<28:17, 48.49s/it] 66%|██████▌   | 66/100 [53:25<27:28, 48.50s/it] 67%|██████▋   | 67/100 [54:13<26:38, 48.45s/it] 68%|██████▊   | 68/100 [55:02<25:48, 48.40s/it] 69%|██████▉   | 69/100 [55:50<25:01, 48.43s/it] 70%|███████   | 70/100 [56:38<24:12, 48.40s/it] 71%|███████   | 71/100 [57:27<23:24, 48.44s/it] 72%|███████▏  | 72/100 [58:15<22:35, 48.42s/it] 73%|███████▎  | 73/100 [59:04<21:50, 48.54s/it] 74%|███████▍  | 74/100 [59:52<21:00, 48.48s/it] 75%|███████▌  | 75/100 [1:00:41<20:11, 48.46s/it] 76%|███████▌  | 76/100 [1:01:29<19:23, 48.47s/it] 77%|███████▋  | 77/100 [1:02:18<18:35, 48.49s/it] 78%|███████▊  | 78/100 [1:03:06<17:44, 48.41s/it] 79%|███████▉  | 79/100 [1:03:55<16:56, 48.40s/it] 80%|████████  | 80/100 [1:04:43<16:07, 48.35s/it] 81%|████████  | 81/100 [1:05:31<15:17, 48.31s/it] 82%|████████▏ | 82/100 [1:06:19<14:30, 48.36s/it] 83%|████████▎ | 83/100 [1:07:08<13:41, 48.32s/it] 84%|████████▍ | 84/100 [1:07:56<12:54, 48.38s/it] 85%|████████▌ | 85/100 [1:08:45<12:08, 48.59s/it] 86%|████████▌ | 86/100 [1:09:34<11:19, 48.55s/it] 87%|████████▋ | 87/100 [1:10:22<10:30, 48.48s/it] 88%|████████▊ | 88/100 [1:11:10<09:40, 48.40s/it] 89%|████████▉ | 89/100 [1:11:59<08:52, 48.43s/it] 90%|█████████ | 90/100 [1:12:47<08:03, 48.37s/it] 91%|█████████ | 91/100 [1:13:35<07:14, 48.33s/it] 92%|█████████▏| 92/100 [1:14:24<06:26, 48.37s/it] 93%|█████████▎| 93/100 [1:15:12<05:38, 48.32s/it] 94%|█████████▍| 94/100 [1:16:00<04:49, 48.32s/it] 95%|█████████▌| 95/100 [1:16:49<04:01, 48.31s/it] 96%|█████████▌| 96/100 [1:17:37<03:13, 48.46s/it] 97%|█████████▋| 97/100 [1:18:26<02:25, 48.44s/it] 98%|█████████▊| 98/100 [1:19:14<01:36, 48.41s/it] 99%|█████████▉| 99/100 [1:20:02<00:48, 48.42s/it]100%|██████████| 100/100 [1:20:51<00:00, 48.49s/it]100%|██████████| 100/100 [1:20:51<00:00, 48.52s/it]
+script_v10.1_250313.py:2846: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  plt.figure(figsize=(12, 6))
+Round 62: r_data=0.5571, r_noniid=0.8797, improvement=0.0000, alpha_new=1.0000
+Round 62: Server fixing with alpha_new=1.0000
+Round 63: r_data=0.5572, r_noniid=0.9434, improvement=0.0423, alpha_new=1.0000
+Round 63: Server fixing with alpha_new=1.0000
+Round 64: r_data=0.5575, r_noniid=0.9315, improvement=0.0000, alpha_new=1.0000
+Round 64: Server fixing with alpha_new=1.0000
+Round 65: r_data=0.5574, r_noniid=0.9337, improvement=0.0000, alpha_new=1.0000
+Round 65: Server fixing with alpha_new=1.0000
+Round 66: r_data=0.5569, r_noniid=0.9566, improvement=0.0445, alpha_new=1.0000
+Round 66: Server fixing with alpha_new=1.0000
+Round 67: r_data=0.5570, r_noniid=0.8819, improvement=0.0000, alpha_new=1.0000
+Round 67: Server fixing with alpha_new=1.0000
+Round 68: r_data=0.5569, r_noniid=0.9522, improvement=0.0175, alpha_new=1.0000
+Round 68: Server fixing with alpha_new=1.0000
+Round 69: r_data=0.5570, r_noniid=0.9069, improvement=0.0151, alpha_new=1.0000
+Round 69: Server fixing with alpha_new=1.0000
+Round 70: r_data=0.5582, r_noniid=0.9237, improvement=0.0000, alpha_new=1.0000
+Round 70: Server fixing with alpha_new=1.0000
+Round 70: Acc=60.95%, Loss=0.0022, D_P_t=0.0851, Alpha=1.0000
+Round 71: r_data=0.5585, r_noniid=0.9403, improvement=0.0385, alpha_new=1.0000
+Round 71: Server fixing with alpha_new=1.0000
+Round 72: r_data=0.5572, r_noniid=0.9443, improvement=0.0000, alpha_new=1.0000
+Round 72: Server fixing with alpha_new=1.0000
+Round 73: r_data=0.5617, r_noniid=0.9395, improvement=0.0000, alpha_new=1.0000
+Round 73: Server fixing with alpha_new=1.0000
+Round 74: r_data=0.5569, r_noniid=0.9590, improvement=0.0075, alpha_new=1.0000
+Round 74: Server fixing with alpha_new=1.0000
+Round 75: r_data=0.5569, r_noniid=0.9333, improvement=0.0131, alpha_new=1.0000
+Round 75: Server fixing with alpha_new=1.0000
+Round 76: r_data=0.5575, r_noniid=0.9156, improvement=0.0000, alpha_new=1.0000
+Round 76: Server fixing with alpha_new=1.0000
+Round 77: r_data=0.5580, r_noniid=0.9084, improvement=0.0000, alpha_new=1.0000
+Round 77: Server fixing with alpha_new=1.0000
+Round 78: r_data=0.5578, r_noniid=0.9401, improvement=0.0296, alpha_new=1.0000
+Round 78: Server fixing with alpha_new=1.0000
+Round 79: r_data=0.5574, r_noniid=0.9130, improvement=0.0000, alpha_new=1.0000
+Round 79: Server fixing with alpha_new=1.0000
+Round 80: r_data=0.5570, r_noniid=0.8590, improvement=0.0000, alpha_new=1.0000
+Round 80: Server fixing with alpha_new=1.0000
+Round 80: Acc=60.86%, Loss=0.0025, D_P_t=0.0428, Alpha=1.0000
+Round 81: r_data=0.5575, r_noniid=0.9343, improvement=0.0108, alpha_new=1.0000
+Round 81: Server fixing with alpha_new=1.0000
+Round 82: r_data=0.5570, r_noniid=0.8965, improvement=0.0000, alpha_new=1.0000
+Round 82: Server fixing with alpha_new=1.0000
+Round 83: r_data=0.5578, r_noniid=0.9349, improvement=0.0000, alpha_new=1.0000
+Round 83: Server fixing with alpha_new=1.0000
+Round 84: r_data=0.5572, r_noniid=0.9578, improvement=0.0177, alpha_new=1.0000
+Round 84: Server fixing with alpha_new=1.0000
+Round 85: r_data=0.5570, r_noniid=0.9645, improvement=0.0394, alpha_new=1.0000
+Round 85: Server fixing with alpha_new=1.0000
+Round 86: r_data=0.5572, r_noniid=0.9361, improvement=0.0000, alpha_new=1.0000
+Round 86: Server fixing with alpha_new=1.0000
+Round 87: r_data=0.5576, r_noniid=0.8926, improvement=0.0000, alpha_new=1.0000
+Round 87: Server fixing with alpha_new=1.0000
+Round 88: r_data=0.5573, r_noniid=0.9412, improvement=0.0000, alpha_new=1.0000
+Round 88: Server fixing with alpha_new=1.0000
+Round 89: r_data=0.5570, r_noniid=0.9183, improvement=0.0000, alpha_new=1.0000
+Round 89: Server fixing with alpha_new=1.0000
+Round 90: r_data=0.5579, r_noniid=0.9353, improvement=0.0202, alpha_new=1.0000
+Round 90: Server fixing with alpha_new=1.0000
+Round 90: Acc=60.66%, Loss=0.0022, D_P_t=0.1015, Alpha=1.0000
+Round 91: r_data=0.5580, r_noniid=0.9041, improvement=0.0000, alpha_new=1.0000
+Round 91: Server fixing with alpha_new=1.0000
+Round 92: r_data=0.5572, r_noniid=0.9306, improvement=0.0049, alpha_new=1.0000
+Round 92: Server fixing with alpha_new=1.0000
+Round 93: r_data=0.5570, r_noniid=0.9620, improvement=0.0133, alpha_new=1.0000
+Round 93: Server fixing with alpha_new=1.0000
+Round 94: r_data=0.5574, r_noniid=0.9522, improvement=0.0000, alpha_new=1.0000
+Round 94: Server fixing with alpha_new=1.0000
+Round 95: r_data=0.5583, r_noniid=0.9437, improvement=0.0000, alpha_new=1.0000
+Round 95: Server fixing with alpha_new=1.0000
+Round 96: r_data=0.5570, r_noniid=0.9381, improvement=0.0196, alpha_new=1.0000
+Round 96: Server fixing with alpha_new=1.0000
+Round 97: r_data=0.5574, r_noniid=0.9136, improvement=0.0191, alpha_new=1.0000
+Round 97: Server fixing with alpha_new=1.0000
+Round 98: r_data=0.5567, r_noniid=0.8847, improvement=0.0000, alpha_new=1.0000
+Round 98: Server fixing with alpha_new=1.0000
+Round 99: r_data=0.5572, r_noniid=0.9523, improvement=0.0572, alpha_new=1.0000
+Round 99: Server fixing with alpha_new=1.0000
+
+Results for du_C = 15:
+FedDU_Mut - 第20轮测试精度: 58.40%, 最终测试精度: 60.87%, 最终训练损失: 0.0016
+
+--- 测试 du_C = 20 ---
+FedDU-Mut初始设置:
+  服务器数据量: 5000
+  服务器数据非IID度: 0.007028
+  Mutation幅度(radius): 5.0
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:48<1:20:09, 48.58s/it]  2%|▏         | 2/100 [01:36<1:19:07, 48.45s/it]  3%|▎         | 3/100 [02:25<1:18:44, 48.71s/it]  4%|▍         | 4/100 [03:14<1:17:50, 48.65s/it]  5%|▌         | 5/100 [04:03<1:17:02, 48.65s/it]  6%|▌         | 6/100 [04:51<1:16:12, 48.65s/it]  7%|▋         | 7/100 [05:40<1:15:14, 48.54s/it]  8%|▊         | 8/100 [06:28<1:14:23, 48.51s/it]  9%|▉         | 9/100 [07:17<1:13:35, 48.53s/it] 10%|█         | 10/100 [08:05<1:12:43, 48.48s/it] 11%|█         | 11/100 [08:54<1:11:56, 48.50s/it] 12%|█▏        | 12/100 [09:42<1:11:03, 48.45s/it] 13%|█▎        | 13/100 [10:30<1:10:14, 48.44s/it] 14%|█▍        | 14/100 [11:19<1:09:42, 48.64s/it] 15%|█▌        | 15/100 [12:08<1:08:52, 48.61s/it] 16%|█▌        | 16/100 [12:56<1:08:00, 48.58s/it] 17%|█▋        | 17/100 [13:45<1:07:03, 48.48s/it] 18%|█▊        | 18/100 [14:33<1:06:18, 48.51s/it] 19%|█▉        | 19/100 [15:22<1:05:26, 48.47s/it] 20%|██        | 20/100 [16:10<1:04:34, 48.44s/it] 21%|██        | 21/100 [16:59<1:03:52, 48.51s/it] 22%|██▏       | 22/100 [17:47<1:03:00, 48.47s/it] 23%|██▎       | 23/100 [18:36<1:02:16, 48.52s/it] 24%|██▍       | 24/100 [19:24<1:01:28, 48.53s/it] 25%|██▌       | 25/100 [20:13<1:00:55, 48.73s/it] 26%|██▌       | 26/100 [21:02<1:00:03, 48.70s/it] 27%|██▋       | 27/100 [21:51<59:11, 48.65s/it]   28%|██▊       | 28/100 [22:39<58:19, 48.61s/it] 29%|██▉       | 29/100 [23:28<57:29, 48.58s/it] 30%|███       | 30/100 [24:16<56:40, 48.58s/it] 31%|███       | 31/100 [25:05<55:55, 48.64s/it] 32%|███▏      | 32/100 [25:53<55:03, 48.57s/it] 33%|███▎      | 33/100 [26:42<54:12, 48.55s/it] 34%|███▍      | 34/100 [27:31<53:29, 48.63s/it] 35%|███▌      | 35/100 [28:20<52:44, 48.68s/it] 36%|███▌      | 36/100 [29:09<52:10, 48.91s/it] 37%|███▋      | 37/100 [29:58<51:16, 48.83s/it] 38%|███▊      | 38/100 [30:46<50:16, 48.65s/it] 39%|███▉      | 39/100 [31:35<49:27, 48.64s/it] 40%|████      | 40/100 [32:23<48:33, 48.56s/it] 41%|████      | 41/100 [33:11<47:45, 48.56s/it] 42%|████▏     | 42/100 [34:00<47:00, 48.63s/it] 43%|████▎     | 43/100 [34:49<46:07, 48.56s/it] 44%|████▍     | 44/100 [35:37<45:19, 48.57s/it] 45%|████▌     | 45/100 [36:26<44:31, 48.58s/it] 46%|████▌     | 46/100 [37:14<43:41, 48.54s/it] 47%|████▋     | 47/100 [38:04<43:13, 48.93s/it] 48%|████▊     | 48/100 [38:52<42:13, 48.73s/it] 49%|████▉     | 49/100 [39:41<41:19, 48.62s/it] 50%|█████     | 50/100 [40:29<40:30, 48.62s/it] 51%|█████     | 51/100 [41:18<39:40, 48.59s/it] 52%|█████▏    | 52/100 [42:07<38:53, 48.61s/it] 53%|█████▎    | 53/100 [42:55<38:05, 48.63s/it] 54%|█████▍    | 54/100 [43:44<37:20, 48.71s/it] 55%|█████▌    | 55/100 [44:33<36:32, 48.73s/it] 56%|█████▌    | 56/100 [45:21<35:42, 48.69s/it] 57%|█████▋    | 57/100 [46:10<34:51, 48.64s/it] 58%|█████▊    | 58/100 [46:59<34:13, 48.90s/it] 59%|█████▉    | 59/100 [47:48<33:22, 48.83s/it] 60%|██████    | 60/100 [48:37<32:32, 48.81s/it] 61%|██████    | 61/100 [49:25<31:37, 48.67s/it] 62%|██████▏   | 62/100 [50:14<30:47, 48.61s/it]Round 0: r_data=0.5570, r_noniid=0.9495, improvement=0.0000, alpha_new=1.0000
+Round 0: Server fixing with alpha_new=1.0000
+Round 0: Acc=33.89%, Loss=0.0119, D_P_t=0.1320, Alpha=1.0000
+Round 1: r_data=0.5570, r_noniid=0.9720, improvement=0.0000, alpha_new=1.0000
+Round 1: Server fixing with alpha_new=1.0000
+Round 2: r_data=0.5624, r_noniid=0.9037, improvement=0.0000, alpha_new=1.0000
+Round 2: Server fixing with alpha_new=1.0000
+Round 3: r_data=0.5572, r_noniid=0.9159, improvement=0.1343, alpha_new=1.0000
+Round 3: Server fixing with alpha_new=1.0000
+Round 4: r_data=0.5571, r_noniid=0.9350, improvement=0.0653, alpha_new=1.0000
+Round 4: Server fixing with alpha_new=1.0000
+Round 5: r_data=0.5574, r_noniid=0.9317, improvement=0.0000, alpha_new=1.0000
+Round 5: Server fixing with alpha_new=1.0000
+Round 6: r_data=0.5571, r_noniid=0.9157, improvement=0.0000, alpha_new=1.0000
+Round 6: Server fixing with alpha_new=1.0000
+Round 7: r_data=0.5570, r_noniid=0.9034, improvement=0.1031, alpha_new=1.0000
+Round 7: Server fixing with alpha_new=1.0000
+Round 8: r_data=0.5570, r_noniid=0.9560, improvement=0.2617, alpha_new=1.0000
+Round 8: Server fixing with alpha_new=1.0000
+Round 9: r_data=0.5574, r_noniid=0.8350, improvement=0.0000, alpha_new=1.0000
+Round 9: Server fixing with alpha_new=1.0000
+Round 10: r_data=0.5571, r_noniid=0.9133, improvement=0.0000, alpha_new=1.0000
+Round 10: Server fixing with alpha_new=1.0000
+Round 10: Acc=53.47%, Loss=0.0091, D_P_t=0.0740, Alpha=1.0000
+Round 11: r_data=0.5575, r_noniid=0.8895, improvement=0.1527, alpha_new=1.0000
+Round 11: Server fixing with alpha_new=1.0000
+Round 12: r_data=0.5574, r_noniid=0.9654, improvement=0.0000, alpha_new=1.0000
+Round 12: Server fixing with alpha_new=1.0000
+Round 13: r_data=0.5570, r_noniid=0.9512, improvement=0.0000, alpha_new=1.0000
+Round 13: Server fixing with alpha_new=1.0000
+Round 14: r_data=0.5573, r_noniid=0.9464, improvement=0.0000, alpha_new=1.0000
+Round 14: Server fixing with alpha_new=1.0000
+Round 15: r_data=0.5570, r_noniid=0.9218, improvement=0.0000, alpha_new=1.0000
+Round 15: Server fixing with alpha_new=1.0000
+Round 16: r_data=0.5618, r_noniid=0.9548, improvement=0.0000, alpha_new=1.0000
+Round 16: Server fixing with alpha_new=1.0000
+Round 17: r_data=0.5572, r_noniid=0.9320, improvement=0.0000, alpha_new=1.0000
+Round 17: Server fixing with alpha_new=1.0000
+Round 18: r_data=0.5617, r_noniid=0.9567, improvement=0.0538, alpha_new=1.0000
+Round 18: Server fixing with alpha_new=1.0000
+Round 19: r_data=0.5575, r_noniid=0.9488, improvement=0.0000, alpha_new=1.0000
+Round 19: Server fixing with alpha_new=1.0000
+Round 20: r_data=0.5570, r_noniid=0.8986, improvement=0.0000, alpha_new=1.0000
+Round 20: Server fixing with alpha_new=1.0000
+Round 20: Acc=58.23%, Loss=0.0036, D_P_t=0.0623, Alpha=1.0000
+Round 21: r_data=0.5571, r_noniid=0.9547, improvement=0.0575, alpha_new=1.0000
+Round 21: Server fixing with alpha_new=1.0000
+Round 22: r_data=0.5572, r_noniid=0.8954, improvement=0.0000, alpha_new=1.0000
+Round 22: Server fixing with alpha_new=1.0000
+Round 23: r_data=0.5569, r_noniid=0.8058, improvement=0.0000, alpha_new=1.0000
+Round 23: Server fixing with alpha_new=1.0000
+Round 24: r_data=0.5571, r_noniid=0.9419, improvement=0.0174, alpha_new=1.0000
+Round 24: Server fixing with alpha_new=1.0000
+Round 25: r_data=0.5572, r_noniid=0.8744, improvement=0.0000, alpha_new=1.0000
+Round 25: Server fixing with alpha_new=1.0000
+Round 26: r_data=0.5574, r_noniid=0.8281, improvement=0.0000, alpha_new=1.0000
+Round 26: Server fixing with alpha_new=1.0000
+Round 27: r_data=0.5573, r_noniid=0.9064, improvement=0.0230, alpha_new=1.0000
+Round 27: Server fixing with alpha_new=1.0000
+Round 28: r_data=0.5618, r_noniid=0.8694, improvement=0.0000, alpha_new=1.0000
+Round 28: Server fixing with alpha_new=1.0000
+Round 29: r_data=0.5574, r_noniid=0.9189, improvement=0.0272, alpha_new=1.0000
+Round 29: Server fixing with alpha_new=1.0000
+Round 30: r_data=0.5571, r_noniid=0.9477, improvement=0.0000, alpha_new=1.0000
+Round 30: Server fixing with alpha_new=1.0000
+Round 30: Acc=59.70%, Loss=0.0026, D_P_t=0.1273, Alpha=1.0000
+Round 31: r_data=0.5619, r_noniid=0.9187, improvement=0.0000, alpha_new=1.0000
+Round 31: Server fixing with alpha_new=1.0000
+Round 32: r_data=0.5570, r_noniid=0.9671, improvement=0.0354, alpha_new=1.0000
+Round 32: Server fixing with alpha_new=1.0000
+Round 33: r_data=0.5627, r_noniid=0.9393, improvement=0.0000, alpha_new=1.0000
+Round 33: Server fixing with alpha_new=1.0000
+Round 34: r_data=0.5574, r_noniid=0.9277, improvement=0.0000, alpha_new=1.0000
+Round 34: Server fixing with alpha_new=1.0000
+Round 35: r_data=0.5577, r_noniid=0.9111, improvement=0.0000, alpha_new=1.0000
+Round 35: Server fixing with alpha_new=1.0000
+Round 36: r_data=0.5577, r_noniid=0.9509, improvement=0.0052, alpha_new=1.0000
+Round 36: Server fixing with alpha_new=1.0000
+Round 37: r_data=0.5617, r_noniid=0.9105, improvement=0.0119, alpha_new=1.0000
+Round 37: Server fixing with alpha_new=1.0000
+Round 38: r_data=0.5572, r_noniid=0.9195, improvement=0.0000, alpha_new=1.0000
+Round 38: Server fixing with alpha_new=1.0000
+Round 39: r_data=0.5619, r_noniid=0.9354, improvement=0.0059, alpha_new=1.0000
+Round 39: Server fixing with alpha_new=1.0000
+Round 40: r_data=0.5570, r_noniid=0.9066, improvement=0.0000, alpha_new=1.0000
+Round 40: Server fixing with alpha_new=1.0000
+Round 40: Acc=59.84%, Loss=0.0026, D_P_t=0.0682, Alpha=1.0000
+Round 41: r_data=0.5574, r_noniid=0.9380, improvement=0.0101, alpha_new=1.0000
+Round 41: Server fixing with alpha_new=1.0000
+Round 42: r_data=0.5573, r_noniid=0.9231, improvement=0.0000, alpha_new=1.0000
+Round 42: Server fixing with alpha_new=1.0000
+Round 43: r_data=0.5575, r_noniid=0.8743, improvement=0.0239, alpha_new=1.0000
+Round 43: Server fixing with alpha_new=1.0000
+Round 44: r_data=0.5575, r_noniid=0.9425, improvement=0.0000, alpha_new=1.0000
+Round 44: Server fixing with alpha_new=1.0000
+Round 45: r_data=0.5578, r_noniid=0.9517, improvement=0.0484, alpha_new=1.0000
+Round 45: Server fixing with alpha_new=1.0000
+Round 46: r_data=0.5571, r_noniid=0.9279, improvement=0.0090, alpha_new=1.0000
+Round 46: Server fixing with alpha_new=1.0000
+Round 47: r_data=0.5617, r_noniid=0.9257, improvement=0.0000, alpha_new=1.0000
+Round 47: Server fixing with alpha_new=1.0000
+Round 48: r_data=0.5574, r_noniid=0.9159, improvement=0.0253, alpha_new=1.0000
+Round 48: Server fixing with alpha_new=1.0000
+Round 49: r_data=0.5572, r_noniid=0.9469, improvement=0.0336, alpha_new=1.0000
+Round 49: Server fixing with alpha_new=1.0000
+Round 50: r_data=0.5572, r_noniid=0.8951, improvement=0.0000, alpha_new=1.0000
+Round 50: Server fixing with alpha_new=1.0000
+Round 50: Acc=60.16%, Loss=0.0021, D_P_t=0.0600, Alpha=1.0000
+Round 51: r_data=0.5569, r_noniid=0.9533, improvement=0.0149, alpha_new=1.0000
+Round 51: Server fixing with alpha_new=1.0000
+Round 52: r_data=0.5571, r_noniid=0.9144, improvement=0.0000, alpha_new=1.0000
+Round 52: Server fixing with alpha_new=1.0000
+Round 53: r_data=0.5619, r_noniid=0.9275, improvement=0.0000, alpha_new=1.0000
+Round 53: Server fixing with alpha_new=1.0000
+Round 54: r_data=0.5580, r_noniid=0.9652, improvement=0.0368, alpha_new=1.0000
+Round 54: Server fixing with alpha_new=1.0000
+Round 55: r_data=0.5571, r_noniid=0.9304, improvement=0.0169, alpha_new=1.0000
+Round 55: Server fixing with alpha_new=1.0000
+Round 56: r_data=0.5572, r_noniid=0.9375, improvement=0.0000, alpha_new=1.0000
+Round 56: Server fixing with alpha_new=1.0000
+Round 57: r_data=0.5573, r_noniid=0.8900, improvement=0.0000, alpha_new=1.0000
+Round 57: Server fixing with alpha_new=1.0000
+Round 58: r_data=0.5571, r_noniid=0.7487, improvement=0.0134, alpha_new=1.0000
+Round 58: Server fixing with alpha_new=1.0000
+Round 59: r_data=0.5574, r_noniid=0.8664, improvement=0.0000, alpha_new=1.0000
+Round 59: Server fixing with alpha_new=1.0000
+Round 60: r_data=0.5621, r_noniid=0.9454, improvement=0.0039, alpha_new=1.0000
+Round 60: Server fixing with alpha_new=1.0000
+Round 60: Acc=59.95%, Loss=0.0022, D_P_t=0.1216, Alpha=1.0000
+Round 61: r_data=0.5572, r_noniid=0.9499, improvement=0.0147, alpha_new=1.0000
+Round 61: Server fixing with alpha_new=1.0000
+ 63%|██████▎   | 63/100 [51:02<29:56, 48.57s/it] 64%|██████▍   | 64/100 [51:50<29:05, 48.48s/it] 65%|██████▌   | 65/100 [52:39<28:15, 48.44s/it] 66%|██████▌   | 66/100 [53:27<27:25, 48.38s/it] 67%|██████▋   | 67/100 [54:16<26:37, 48.40s/it] 68%|██████▊   | 68/100 [55:04<25:51, 48.47s/it] 69%|██████▉   | 69/100 [55:53<25:06, 48.59s/it] 70%|███████   | 70/100 [56:42<24:19, 48.65s/it] 71%|███████   | 71/100 [57:30<23:28, 48.57s/it] 72%|███████▏  | 72/100 [58:19<22:38, 48.53s/it] 73%|███████▎  | 73/100 [59:07<21:51, 48.57s/it] 74%|███████▍  | 74/100 [59:56<21:02, 48.56s/it] 75%|███████▌  | 75/100 [1:00:44<20:14, 48.57s/it] 76%|███████▌  | 76/100 [1:01:33<19:24, 48.50s/it] 77%|███████▋  | 77/100 [1:02:21<18:33, 48.43s/it] 78%|███████▊  | 78/100 [1:03:10<17:45, 48.44s/it] 79%|███████▉  | 79/100 [1:03:58<16:56, 48.39s/it] 80%|████████  | 80/100 [1:04:47<16:11, 48.56s/it] 81%|████████  | 81/100 [1:05:35<15:22, 48.56s/it] 82%|████████▏ | 82/100 [1:06:24<14:33, 48.52s/it] 83%|████████▎ | 83/100 [1:07:12<13:44, 48.52s/it] 84%|████████▍ | 84/100 [1:08:01<12:56, 48.54s/it] 85%|████████▌ | 85/100 [1:08:49<12:07, 48.48s/it] 86%|████████▌ | 86/100 [1:09:38<11:18, 48.48s/it] 87%|████████▋ | 87/100 [1:10:26<10:30, 48.50s/it] 88%|████████▊ | 88/100 [1:11:15<09:41, 48.45s/it] 89%|████████▉ | 89/100 [1:12:03<08:53, 48.49s/it] 90%|█████████ | 90/100 [1:12:51<08:04, 48.41s/it] 91%|█████████ | 91/100 [1:13:41<07:18, 48.70s/it] 92%|█████████▏| 92/100 [1:14:30<06:29, 48.75s/it] 93%|█████████▎| 93/100 [1:15:18<05:40, 48.67s/it] 94%|█████████▍| 94/100 [1:16:07<04:51, 48.64s/it] 95%|█████████▌| 95/100 [1:16:55<04:03, 48.66s/it] 96%|█████████▌| 96/100 [1:17:44<03:14, 48.59s/it] 97%|█████████▋| 97/100 [1:18:33<02:25, 48.63s/it] 98%|█████████▊| 98/100 [1:19:21<01:37, 48.64s/it] 99%|█████████▉| 99/100 [1:20:10<00:48, 48.59s/it]100%|██████████| 100/100 [1:20:59<00:00, 48.70s/it]100%|██████████| 100/100 [1:20:59<00:00, 48.59s/it]
+Round 62: r_data=0.5571, r_noniid=0.9407, improvement=0.0000, alpha_new=1.0000
+Round 62: Server fixing with alpha_new=1.0000
+Round 63: r_data=0.5618, r_noniid=0.9080, improvement=0.0000, alpha_new=1.0000
+Round 63: Server fixing with alpha_new=1.0000
+Round 64: r_data=0.5628, r_noniid=0.9477, improvement=0.0223, alpha_new=1.0000
+Round 64: Server fixing with alpha_new=1.0000
+Round 65: r_data=0.5620, r_noniid=0.9275, improvement=0.0000, alpha_new=1.0000
+Round 65: Server fixing with alpha_new=1.0000
+Round 66: r_data=0.5574, r_noniid=0.9367, improvement=0.0269, alpha_new=1.0000
+Round 66: Server fixing with alpha_new=1.0000
+Round 67: r_data=0.5569, r_noniid=0.8956, improvement=0.0000, alpha_new=1.0000
+Round 67: Server fixing with alpha_new=1.0000
+Round 68: r_data=0.5619, r_noniid=0.9189, improvement=0.0160, alpha_new=1.0000
+Round 68: Server fixing with alpha_new=1.0000
+Round 69: r_data=0.5571, r_noniid=0.9413, improvement=0.0150, alpha_new=1.0000
+Round 69: Server fixing with alpha_new=1.0000
+Round 70: r_data=0.5615, r_noniid=0.9296, improvement=0.0000, alpha_new=1.0000
+Round 70: Server fixing with alpha_new=1.0000
+Round 70: Acc=60.29%, Loss=0.0021, D_P_t=0.0929, Alpha=1.0000
+Round 71: r_data=0.5574, r_noniid=0.9082, improvement=0.0000, alpha_new=1.0000
+Round 71: Server fixing with alpha_new=1.0000
+Round 72: r_data=0.5573, r_noniid=0.9250, improvement=0.0160, alpha_new=1.0000
+Round 72: Server fixing with alpha_new=1.0000
+Round 73: r_data=0.5584, r_noniid=0.9352, improvement=0.0017, alpha_new=1.0000
+Round 73: Server fixing with alpha_new=1.0000
+Round 74: r_data=0.5578, r_noniid=0.9480, improvement=0.0137, alpha_new=1.0000
+Round 74: Server fixing with alpha_new=1.0000
+Round 75: r_data=0.5619, r_noniid=0.8707, improvement=0.0000, alpha_new=1.0000
+Round 75: Server fixing with alpha_new=1.0000
+Round 76: r_data=0.5572, r_noniid=0.9522, improvement=0.0334, alpha_new=1.0000
+Round 76: Server fixing with alpha_new=1.0000
+Round 77: r_data=0.5573, r_noniid=0.9274, improvement=0.0000, alpha_new=1.0000
+Round 77: Server fixing with alpha_new=1.0000
+Round 78: r_data=0.5572, r_noniid=0.9277, improvement=0.0258, alpha_new=1.0000
+Round 78: Server fixing with alpha_new=1.0000
+Round 79: r_data=0.5572, r_noniid=0.9436, improvement=0.0017, alpha_new=1.0000
+Round 79: Server fixing with alpha_new=1.0000
+Round 80: r_data=0.5569, r_noniid=0.9480, improvement=0.0102, alpha_new=1.0000
+Round 80: Server fixing with alpha_new=1.0000
+Round 80: Acc=60.50%, Loss=0.0022, D_P_t=0.1282, Alpha=1.0000
+Round 81: r_data=0.5574, r_noniid=0.9255, improvement=0.0000, alpha_new=1.0000
+Round 81: Server fixing with alpha_new=1.0000
+Round 82: r_data=0.5578, r_noniid=0.9103, improvement=0.0145, alpha_new=1.0000
+Round 82: Server fixing with alpha_new=1.0000
+Round 83: r_data=0.5572, r_noniid=0.9308, improvement=0.0086, alpha_new=1.0000
+Round 83: Server fixing with alpha_new=1.0000
+Round 84: r_data=0.5572, r_noniid=0.9233, improvement=0.0000, alpha_new=1.0000
+Round 84: Server fixing with alpha_new=1.0000
+Round 85: r_data=0.5570, r_noniid=0.8912, improvement=0.0156, alpha_new=1.0000
+Round 85: Server fixing with alpha_new=1.0000
+Round 86: r_data=0.5584, r_noniid=0.9604, improvement=0.0412, alpha_new=1.0000
+Round 86: Server fixing with alpha_new=1.0000
+Round 87: r_data=0.5574, r_noniid=0.9439, improvement=0.0000, alpha_new=1.0000
+Round 87: Server fixing with alpha_new=1.0000
+Round 88: r_data=0.5570, r_noniid=0.9245, improvement=0.0171, alpha_new=1.0000
+Round 88: Server fixing with alpha_new=1.0000
+Round 89: r_data=0.5621, r_noniid=0.9324, improvement=0.0000, alpha_new=1.0000
+Round 89: Server fixing with alpha_new=1.0000
+Round 90: r_data=0.5578, r_noniid=0.9526, improvement=0.0353, alpha_new=1.0000
+Round 90: Server fixing with alpha_new=1.0000
+Round 90: Acc=59.97%, Loss=0.0024, D_P_t=0.1414, Alpha=1.0000
+Round 91: r_data=0.5573, r_noniid=0.9391, improvement=0.0000, alpha_new=1.0000
+Round 91: Server fixing with alpha_new=1.0000
+Round 92: r_data=0.5577, r_noniid=0.9634, improvement=0.0318, alpha_new=1.0000
+Round 92: Server fixing with alpha_new=1.0000
+Round 93: r_data=0.5569, r_noniid=0.9176, improvement=0.0000, alpha_new=1.0000
+Round 93: Server fixing with alpha_new=1.0000
+Round 94: r_data=0.5570, r_noniid=0.9135, improvement=0.0002, alpha_new=1.0000
+Round 94: Server fixing with alpha_new=1.0000
+Round 95: r_data=0.5572, r_noniid=0.9396, improvement=0.0130, alpha_new=1.0000
+Round 95: Server fixing with alpha_new=1.0000
+Round 96: r_data=0.5574, r_noniid=0.8962, improvement=0.0000, alpha_new=1.0000
+Round 96: Server fixing with alpha_new=1.0000
+Round 97: r_data=0.5578, r_noniid=0.9325, improvement=0.0043, alpha_new=1.0000
+Round 97: Server fixing with alpha_new=1.0000
+Round 98: r_data=0.5618, r_noniid=0.9367, improvement=0.0000, alpha_new=1.0000
+Round 98: Server fixing with alpha_new=1.0000
+Round 99: r_data=0.5570, r_noniid=0.9414, improvement=0.0305, alpha_new=1.0000
+Round 99: Server fixing with alpha_new=1.0000
+
+Results for du_C = 20:
+FedDU_Mut - 第20轮测试精度: 58.19%, 最终测试精度: 59.99%, 最终训练损失: 0.0020
+
+----- du_C参数结果表 -----
+ du_C  FedDU_Mut_r20_acc  FedDU_Mut_r20_loss  FedDU_Mut_final_acc  FedDU_Mut_final_loss
+    0              34.31            1.90e-02                52.53              5.12e-03
+    1              55.06            6.84e-03                59.14              2.96e-03
+    3              58.10            4.38e-03                60.40              2.61e-03
+    5              58.42            4.14e-03                61.11              2.54e-03
+    7              58.10            4.38e-03                60.30              1.97e-03
+   10              59.58            3.62e-03                61.76              2.05e-03
+   15              58.40            4.76e-03                60.87              1.62e-03
+   20              58.19            3.87e-03                59.99              2.00e-03
