@@ -14,1556 +14,250 @@ Client 6: 395 107 54 71 4 0 9 0 0 38 112
 Client 7: 395 57 56 28 25 36 0 28 115 35 15
 Client 8: 394 46 11 12 0 31 2 138 127 16 11
 Client 9: 396 71 57 121 0 2 43 16 54 32
-Server: 2500 250 250 250 250 250 250 250 250 250 250
+Server: 5000 500 500 500 500 500 500 500 500 500 500
 
---- 测试 lambda_val = 0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:51<1:24:09, 51.00s/it]  2%|▏         | 2/100 [01:07<50:15, 30.77s/it]    3%|▎         | 3/100 [01:43<53:26, 33.06s/it]  4%|▍         | 4/100 [01:57<40:37, 25.39s/it]  5%|▌         | 5/100 [02:03<29:37, 18.71s/it]  6%|▌         | 6/100 [02:10<22:53, 14.61s/it]  7%|▋         | 7/100 [02:17<18:37, 12.02s/it]  8%|▊         | 8/100 [02:23<15:47, 10.30s/it]  9%|▉         | 9/100 [02:30<13:52,  9.15s/it] 10%|█         | 10/100 [02:37<12:33,  8.37s/it] 11%|█         | 11/100 [02:43<11:40,  7.87s/it] 12%|█▏        | 12/100 [02:50<10:57,  7.47s/it] 13%|█▎        | 13/100 [02:56<10:27,  7.21s/it] 14%|█▍        | 14/100 [03:03<10:04,  7.02s/it] 15%|█▌        | 15/100 [03:10<09:45,  6.89s/it] 16%|█▌        | 16/100 [03:16<09:30,  6.79s/it] 17%|█▋        | 17/100 [03:23<09:17,  6.72s/it] 18%|█▊        | 18/100 [03:36<11:48,  8.64s/it] 19%|█▉        | 19/100 [03:43<10:59,  8.14s/it] 20%|██        | 20/100 [03:50<10:16,  7.71s/it] 21%|██        | 21/100 [03:56<09:42,  7.37s/it] 22%|██▏       | 22/100 [04:03<09:18,  7.16s/it] 23%|██▎       | 23/100 [04:09<08:57,  6.99s/it] 24%|██▍       | 24/100 [04:16<08:42,  6.87s/it] 25%|██▌       | 25/100 [04:23<08:33,  6.85s/it] 26%|██▌       | 26/100 [04:29<08:22,  6.79s/it] 27%|██▋       | 27/100 [04:36<08:10,  6.73s/it] 28%|██▊       | 28/100 [04:43<08:01,  6.68s/it] 29%|██▉       | 29/100 [04:49<07:53,  6.66s/it] 30%|███       | 30/100 [04:56<07:44,  6.63s/it] 31%|███       | 31/100 [05:02<07:36,  6.62s/it] 32%|███▏      | 32/100 [05:09<07:32,  6.65s/it] 33%|███▎      | 33/100 [05:16<07:24,  6.63s/it] 34%|███▍      | 34/100 [05:22<07:17,  6.62s/it] 35%|███▌      | 35/100 [05:29<07:09,  6.61s/it] 36%|███▌      | 36/100 [05:42<09:14,  8.67s/it] 37%|███▋      | 37/100 [05:55<10:18,  9.82s/it] 38%|███▊      | 38/100 [06:05<10:22, 10.04s/it] 39%|███▉      | 39/100 [06:12<09:11,  9.04s/it] 40%|████      | 40/100 [06:19<08:17,  8.30s/it] 41%|████      | 41/100 [06:25<07:39,  7.79s/it] 42%|████▏     | 42/100 [06:49<12:07, 12.54s/it] 43%|████▎     | 43/100 [07:36<21:44, 22.89s/it] 44%|████▍     | 44/100 [08:24<28:21, 30.38s/it] 45%|████▌     | 45/100 [09:12<32:50, 35.83s/it] 46%|████▌     | 46/100 [10:00<35:27, 39.40s/it] 47%|████▋     | 47/100 [10:47<36:39, 41.50s/it] 48%|████▊     | 48/100 [11:34<37:27, 43.22s/it] 49%|████▉     | 49/100 [12:21<37:41, 44.34s/it] 50%|█████     | 50/100 [13:08<37:37, 45.14s/it] 51%|█████     | 51/100 [13:55<37:19, 45.70s/it] 52%|█████▏    | 52/100 [14:41<36:45, 45.96s/it] 53%|█████▎    | 53/100 [15:28<36:09, 46.16s/it] 54%|█████▍    | 54/100 [16:15<35:31, 46.34s/it] 55%|█████▌    | 55/100 [17:01<34:43, 46.29s/it] 56%|█████▌    | 56/100 [17:47<33:54, 46.25s/it] 57%|█████▋    | 57/100 [18:33<33:08, 46.24s/it] 58%|█████▊    | 58/100 [19:19<32:22, 46.25s/it] 59%|█████▉    | 59/100 [20:06<31:35, 46.22s/it] 60%|██████    | 60/100 [20:52<30:54, 46.36s/it] 61%|██████    | 61/100 [21:39<30:10, 46.43s/it] 62%|██████▏   | 62/100 [22:25<29:21, 46.35s/it]Round 0: r_data=0.3872, r_noniid=0.7910, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=26.06%, Loss=0.0293, D_P_t=0.0196, Alpha=1.0000
-Round 1: r_data=0.3877, r_noniid=0.7928, improvement=0.1431, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3874, r_noniid=0.8112, improvement=0.0000, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3875, r_noniid=0.9168, improvement=0.3419, alpha_new=1.0000
-Round 3: Server fixing with alpha_new=1.0000
-Round 4: r_data=0.3876, r_noniid=0.7385, improvement=0.0000, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3874, r_noniid=0.6795, improvement=0.0998, alpha_new=0.9645
-Round 5: Server fixing with alpha_new=0.9645
-Round 6: r_data=0.3872, r_noniid=0.7945, improvement=0.1389, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3875, r_noniid=0.7362, improvement=0.0000, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3873, r_noniid=0.8591, improvement=0.0000, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3878, r_noniid=0.8075, improvement=0.0000, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3875, r_noniid=0.7608, improvement=0.1345, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=52.54%, Loss=0.0143, D_P_t=0.0165, Alpha=1.0000
-Round 11: r_data=0.3874, r_noniid=0.7484, improvement=0.0000, alpha_new=0.9091
-Round 11: Server fixing with alpha_new=0.9091
-Round 12: r_data=0.3875, r_noniid=0.4654, improvement=0.0000, alpha_new=0.5483
-Round 12: Server fixing with alpha_new=0.5483
-Round 13: r_data=0.3875, r_noniid=0.8640, improvement=0.0000, alpha_new=0.9968
-Round 13: Server fixing with alpha_new=0.9968
-Round 14: r_data=0.3872, r_noniid=0.7728, improvement=0.0000, alpha_new=0.8134
-Round 14: Server fixing with alpha_new=0.8134
-Round 15: r_data=0.3874, r_noniid=0.8949, improvement=0.0000, alpha_new=0.8392
-Round 15: Server fixing with alpha_new=0.8392
-Round 16: r_data=0.3875, r_noniid=0.8179, improvement=0.0000, alpha_new=0.7349
-Round 16: Server fixing with alpha_new=0.7349
-Round 17: r_data=0.3872, r_noniid=0.9205, improvement=0.0198, alpha_new=0.8455
-Round 17: Server fixing with alpha_new=0.8455
-Round 18: r_data=0.3873, r_noniid=0.7268, improvement=0.0000, alpha_new=0.6042
-Round 18: Server fixing with alpha_new=0.6042
-Round 19: r_data=0.3872, r_noniid=0.8432, improvement=0.0000, alpha_new=0.6874
-Round 19: Server fixing with alpha_new=0.6874
-Round 20: r_data=0.3874, r_noniid=0.8881, improvement=0.0244, alpha_new=0.7486
-Round 20: Server fixing with alpha_new=0.7486
-Round 20: Acc=59.54%, Loss=0.0062, D_P_t=0.0411, Alpha=0.7486
-Round 21: r_data=0.3873, r_noniid=0.8251, improvement=0.0000, alpha_new=0.6656
-Round 21: Server fixing with alpha_new=0.6656
-Round 22: r_data=0.3873, r_noniid=0.6732, improvement=0.0000, alpha_new=0.5178
-Round 22: Server fixing with alpha_new=0.5178
-Round 23: r_data=0.3872, r_noniid=0.5870, improvement=0.0007, alpha_new=0.4519
-Round 23: Server fixing with alpha_new=0.4519
-Round 24: r_data=0.3875, r_noniid=0.8980, improvement=0.0164, alpha_new=0.7089
-Round 24: Server fixing with alpha_new=0.7089
-Round 25: r_data=0.3873, r_noniid=0.8657, improvement=0.0000, alpha_new=0.6795
-Round 25: Server fixing with alpha_new=0.6795
-Round 26: r_data=0.3874, r_noniid=0.8748, improvement=0.0000, alpha_new=0.6771
-Round 26: Server fixing with alpha_new=0.6771
-Round 27: r_data=0.3874, r_noniid=0.8151, improvement=0.0000, alpha_new=0.6225
-Round 27: Server fixing with alpha_new=0.6225
-Round 28: r_data=0.3873, r_noniid=0.7618, improvement=0.0058, alpha_new=0.5868
-Round 28: Server fixing with alpha_new=0.5868
-Round 29: r_data=0.3874, r_noniid=0.8622, improvement=0.0098, alpha_new=0.6743
-Round 29: Server fixing with alpha_new=0.6743
-Round 30: r_data=0.3874, r_noniid=0.8704, improvement=0.0000, alpha_new=0.6551
-Round 30: Server fixing with alpha_new=0.6551
-Round 30: Acc=61.71%, Loss=0.0045, D_P_t=0.0348, Alpha=0.6551
-Round 31: r_data=0.3874, r_noniid=0.8734, improvement=0.0000, alpha_new=0.6530
-Round 31: Server fixing with alpha_new=0.6530
-Round 32: r_data=0.3874, r_noniid=0.8811, improvement=0.0130, alpha_new=0.6724
-Round 32: Server fixing with alpha_new=0.6724
-Round 33: r_data=0.3873, r_noniid=0.8018, improvement=0.0000, alpha_new=0.6068
-Round 33: Server fixing with alpha_new=0.6068
-Round 34: r_data=0.3873, r_noniid=0.8498, improvement=0.0000, alpha_new=0.6385
-Round 34: Server fixing with alpha_new=0.6385
-Round 35: r_data=0.3875, r_noniid=0.8539, improvement=0.0000, alpha_new=0.6418
-Round 35: Server fixing with alpha_new=0.6418
-Round 36: r_data=0.3872, r_noniid=0.6950, improvement=0.0000, alpha_new=0.5167
-Round 36: Server fixing with alpha_new=0.5167
-Round 37: r_data=0.3877, r_noniid=0.8083, improvement=0.0026, alpha_new=0.6041
-Round 37: Server fixing with alpha_new=0.6041
-Round 38: r_data=0.3872, r_noniid=0.8641, improvement=0.0000, alpha_new=0.6426
-Round 38: Server fixing with alpha_new=0.6426
-Round 39: r_data=0.3876, r_noniid=0.8659, improvement=0.0042, alpha_new=0.6489
-Round 39: Server fixing with alpha_new=0.6489
-Round 40: r_data=0.3871, r_noniid=0.7813, improvement=0.0011, alpha_new=0.5859
-Round 40: Server fixing with alpha_new=0.5859
-Round 40: Acc=62.03%, Loss=0.0032, D_P_t=0.0185, Alpha=0.5859
-Round 41: r_data=0.3873, r_noniid=0.8821, improvement=0.0060, alpha_new=0.6681
-Round 41: Server fixing with alpha_new=0.6681
-Round 42: r_data=0.3875, r_noniid=0.8511, improvement=0.0000, alpha_new=0.6211
-Round 42: Server fixing with alpha_new=0.6211
-Round 43: r_data=0.3876, r_noniid=0.9033, improvement=0.0250, alpha_new=0.6867
-Round 43: Server fixing with alpha_new=0.6867
-Round 44: r_data=0.3874, r_noniid=0.8621, improvement=0.0000, alpha_new=0.6296
-Round 44: Server fixing with alpha_new=0.6296
-Round 45: r_data=0.3874, r_noniid=0.8956, improvement=0.0154, alpha_new=0.6708
-Round 45: Server fixing with alpha_new=0.6708
-Round 46: r_data=0.3875, r_noniid=0.7925, improvement=0.0000, alpha_new=0.5910
-Round 46: Server fixing with alpha_new=0.5910
-Round 47: r_data=0.3872, r_noniid=0.8170, improvement=0.0000, alpha_new=0.5993
-Round 47: Server fixing with alpha_new=0.5993
-Round 48: r_data=0.3875, r_noniid=0.8346, improvement=0.0006, alpha_new=0.6133
-Round 48: Server fixing with alpha_new=0.6133
-Round 49: r_data=0.3876, r_noniid=0.8519, improvement=0.0008, alpha_new=0.6270
-Round 49: Server fixing with alpha_new=0.6270
-Round 50: r_data=0.3875, r_noniid=0.6173, improvement=0.0000, alpha_new=0.4508
-Round 50: Server fixing with alpha_new=0.4508
-Round 50: Acc=62.42%, Loss=0.0030, D_P_t=0.0084, Alpha=0.4508
-Round 51: r_data=0.3874, r_noniid=0.8257, improvement=0.0056, alpha_new=0.6084
-Round 51: Server fixing with alpha_new=0.6084
-Round 52: r_data=0.3874, r_noniid=0.8638, improvement=0.0000, alpha_new=0.6347
-Round 52: Server fixing with alpha_new=0.6347
-Round 53: r_data=0.3875, r_noniid=0.7758, improvement=0.0171, alpha_new=0.5862
-Round 53: Server fixing with alpha_new=0.5862
-Round 54: r_data=0.3875, r_noniid=0.8669, improvement=0.0000, alpha_new=0.6393
-Round 54: Server fixing with alpha_new=0.6393
-Round 55: r_data=0.3875, r_noniid=0.7974, improvement=0.0027, alpha_new=0.5906
-Round 55: Server fixing with alpha_new=0.5906
-Round 56: r_data=0.3872, r_noniid=0.8990, improvement=0.0126, alpha_new=0.6790
-Round 56: Server fixing with alpha_new=0.6790
-Round 57: r_data=0.3874, r_noniid=0.7786, improvement=0.0000, alpha_new=0.5679
-Round 57: Server fixing with alpha_new=0.5679
-Round 58: r_data=0.3875, r_noniid=0.7242, improvement=0.0101, alpha_new=0.5371
-Round 58: Server fixing with alpha_new=0.5371
-Round 59: r_data=0.3874, r_noniid=0.7288, improvement=0.0000, alpha_new=0.5248
-Round 59: Server fixing with alpha_new=0.5248
-Round 60: r_data=0.3877, r_noniid=0.8758, improvement=0.0094, alpha_new=0.6413
-Round 60: Server fixing with alpha_new=0.6413
-Round 60: Acc=62.61%, Loss=0.0027, D_P_t=0.0365, Alpha=0.6413
-Round 61: r_data=0.3872, r_noniid=0.8424, improvement=0.0024, alpha_new=0.6184
-Round 61: Server fixing with alpha_new=0.6184
- 63%|██████▎   | 63/100 [23:11<28:33, 46.30s/it] 64%|██████▍   | 64/100 [23:57<27:46, 46.28s/it] 65%|██████▌   | 65/100 [24:44<27:00, 46.30s/it] 66%|██████▌   | 66/100 [25:30<26:13, 46.29s/it] 67%|██████▋   | 67/100 [26:16<25:27, 46.28s/it] 68%|██████▊   | 68/100 [27:02<24:37, 46.17s/it] 69%|██████▉   | 69/100 [27:48<23:48, 46.07s/it] 70%|███████   | 70/100 [28:34<22:59, 45.98s/it] 71%|███████   | 71/100 [29:20<22:12, 45.95s/it] 72%|███████▏  | 72/100 [30:06<21:26, 45.96s/it] 73%|███████▎  | 73/100 [30:52<20:40, 45.93s/it] 74%|███████▍  | 74/100 [31:38<19:56, 46.01s/it] 75%|███████▌  | 75/100 [32:24<19:09, 45.97s/it] 76%|███████▌  | 76/100 [32:44<15:18, 38.26s/it] 77%|███████▋  | 77/100 [32:52<11:12, 29.23s/it] 78%|███████▊  | 78/100 [32:59<08:13, 22.43s/it] 79%|███████▉  | 79/100 [33:05<06:10, 17.66s/it] 80%|████████  | 80/100 [33:12<04:46, 14.34s/it] 81%|████████  | 81/100 [33:18<03:48, 12.04s/it] 82%|████████▏ | 82/100 [33:25<03:07, 10.39s/it] 83%|████████▎ | 83/100 [33:32<02:36,  9.24s/it] 84%|████████▍ | 84/100 [33:38<02:14,  8.43s/it] 85%|████████▌ | 85/100 [33:45<01:57,  7.86s/it] 86%|████████▌ | 86/100 [33:51<01:44,  7.47s/it] 87%|████████▋ | 87/100 [33:58<01:33,  7.19s/it] 88%|████████▊ | 88/100 [34:05<01:24,  7.07s/it] 89%|████████▉ | 89/100 [34:11<01:16,  6.93s/it] 90%|█████████ | 90/100 [34:18<01:08,  6.83s/it] 91%|█████████ | 91/100 [34:24<01:00,  6.74s/it] 92%|█████████▏| 92/100 [34:48<01:35, 11.97s/it] 93%|█████████▎| 93/100 [35:13<01:49, 15.62s/it] 94%|█████████▍| 94/100 [36:00<02:30, 25.12s/it] 95%|█████████▌| 95/100 [36:44<02:33, 30.74s/it] 96%|█████████▌| 96/100 [37:19<02:08, 32.07s/it] 97%|█████████▋| 97/100 [38:06<01:49, 36.46s/it] 98%|█████████▊| 98/100 [38:52<01:18, 39.49s/it] 99%|█████████▉| 99/100 [39:39<00:41, 41.56s/it]100%|██████████| 100/100 [40:24<00:00, 42.61s/it]100%|██████████| 100/100 [40:24<00:00, 24.24s/it]
-Round 62: r_data=0.3873, r_noniid=0.8666, improvement=0.0000, alpha_new=0.6363
-Round 62: Server fixing with alpha_new=0.6363
-Round 63: r_data=0.3873, r_noniid=0.8455, improvement=0.0000, alpha_new=0.6156
-Round 63: Server fixing with alpha_new=0.6156
-Round 64: r_data=0.3875, r_noniid=0.6277, improvement=0.0000, alpha_new=0.4499
-Round 64: Server fixing with alpha_new=0.4499
-Round 65: r_data=0.3875, r_noniid=0.8753, improvement=0.0105, alpha_new=0.6385
-Round 65: Server fixing with alpha_new=0.6385
-Round 66: r_data=0.3875, r_noniid=0.7737, improvement=0.0000, alpha_new=0.5574
-Round 66: Server fixing with alpha_new=0.5574
-Round 67: r_data=0.3876, r_noniid=0.8571, improvement=0.0134, alpha_new=0.6317
-Round 67: Server fixing with alpha_new=0.6317
-Round 68: r_data=0.3875, r_noniid=0.8367, improvement=0.0000, alpha_new=0.6056
-Round 68: Server fixing with alpha_new=0.6056
-Round 69: r_data=0.3874, r_noniid=0.8013, improvement=0.0000, alpha_new=0.5761
-Round 69: Server fixing with alpha_new=0.5761
-Round 70: r_data=0.3874, r_noniid=0.8681, improvement=0.0153, alpha_new=0.6404
-Round 70: Server fixing with alpha_new=0.6404
-Round 70: Acc=62.77%, Loss=0.0017, D_P_t=0.0341, Alpha=0.6404
-Round 71: r_data=0.3871, r_noniid=0.8101, improvement=0.0000, alpha_new=0.5827
-Round 71: Server fixing with alpha_new=0.5827
-Round 72: r_data=0.3877, r_noniid=0.9031, improvement=0.0178, alpha_new=0.6701
-Round 72: Server fixing with alpha_new=0.6701
-Round 73: r_data=0.3871, r_noniid=0.8270, improvement=0.0000, alpha_new=0.5982
-Round 73: Server fixing with alpha_new=0.5982
-Round 74: r_data=0.3877, r_noniid=0.8332, improvement=0.0035, alpha_new=0.6071
-Round 74: Server fixing with alpha_new=0.6071
-Round 75: r_data=0.3874, r_noniid=0.9249, improvement=0.0319, alpha_new=0.7091
-Round 75: Server fixing with alpha_new=0.7091
-Round 76: r_data=0.3873, r_noniid=0.8284, improvement=0.0000, alpha_new=0.6028
-Round 76: Server fixing with alpha_new=0.6028
-Round 77: r_data=0.3876, r_noniid=0.8181, improvement=0.0035, alpha_new=0.5993
-Round 77: Server fixing with alpha_new=0.5993
-Round 78: r_data=0.3873, r_noniid=0.7941, improvement=0.0000, alpha_new=0.5742
-Round 78: Server fixing with alpha_new=0.5742
-Round 79: r_data=0.3874, r_noniid=0.9067, improvement=0.0069, alpha_new=0.6633
-Round 79: Server fixing with alpha_new=0.6633
-Round 80: r_data=0.3877, r_noniid=0.8590, improvement=0.0093, alpha_new=0.6385
-Round 80: Server fixing with alpha_new=0.6385
-Round 80: Acc=62.45%, Loss=0.0026, D_P_t=0.0316, Alpha=0.6385
-Round 81: r_data=0.3875, r_noniid=0.8023, improvement=0.0000, alpha_new=0.5804
-Round 81: Server fixing with alpha_new=0.5804
-Round 82: r_data=0.3875, r_noniid=0.6203, improvement=0.0000, alpha_new=0.4470
-Round 82: Server fixing with alpha_new=0.4470
-Round 83: r_data=0.3873, r_noniid=0.8211, improvement=0.0035, alpha_new=0.5949
-Round 83: Server fixing with alpha_new=0.5949
-Round 84: r_data=0.3877, r_noniid=0.8345, improvement=0.0078, alpha_new=0.6131
-Round 84: Server fixing with alpha_new=0.6131
-Round 85: r_data=0.3873, r_noniid=0.8663, improvement=0.0000, alpha_new=0.6318
-Round 85: Server fixing with alpha_new=0.6318
-Round 86: r_data=0.3872, r_noniid=0.8213, improvement=0.0000, alpha_new=0.5986
-Round 86: Server fixing with alpha_new=0.5986
-Round 87: r_data=0.3872, r_noniid=0.8270, improvement=0.0000, alpha_new=0.6026
-Round 87: Server fixing with alpha_new=0.6026
-Round 88: r_data=0.3876, r_noniid=0.8922, improvement=0.0000, alpha_new=0.6507
-Round 88: Server fixing with alpha_new=0.6507
-Round 89: r_data=0.3873, r_noniid=0.8065, improvement=0.0019, alpha_new=0.5896
-Round 89: Server fixing with alpha_new=0.5896
-Round 90: r_data=0.3875, r_noniid=0.8041, improvement=0.0000, alpha_new=0.5848
-Round 90: Server fixing with alpha_new=0.5848
-Round 90: Acc=63.08%, Loss=0.0026, D_P_t=0.0213, Alpha=0.5848
-Round 91: r_data=0.3872, r_noniid=0.7831, improvement=0.0000, alpha_new=0.5667
-Round 91: Server fixing with alpha_new=0.5667
-Round 92: r_data=0.3872, r_noniid=0.7046, improvement=0.0000, alpha_new=0.5064
-Round 92: Server fixing with alpha_new=0.5064
-Round 93: r_data=0.3873, r_noniid=0.8576, improvement=0.0049, alpha_new=0.6216
-Round 93: Server fixing with alpha_new=0.6216
-Round 94: r_data=0.3875, r_noniid=0.8949, improvement=0.0166, alpha_new=0.6670
-Round 94: Server fixing with alpha_new=0.6670
-Round 95: r_data=0.3874, r_noniid=0.7522, improvement=0.0000, alpha_new=0.5411
-Round 95: Server fixing with alpha_new=0.5411
-Round 96: r_data=0.3874, r_noniid=0.7140, improvement=0.0000, alpha_new=0.5098
-Round 96: Server fixing with alpha_new=0.5098
-Round 97: r_data=0.3875, r_noniid=0.5401, improvement=0.0000, alpha_new=0.3824
-Round 97: Server fixing with alpha_new=0.3824
-Round 98: r_data=0.3873, r_noniid=0.8644, improvement=0.0273, alpha_new=0.6408
-Round 98: Server fixing with alpha_new=0.6408
-Round 99: r_data=0.3875, r_noniid=0.7937, improvement=0.0000, alpha_new=0.5663
-Round 99: Server fixing with alpha_new=0.5663
-
-Results for lambda_val = 0:
-FedDU_Mut - 第20轮测试精度: 59.37%, 最终测试精度: 63.46%, 最终训练损失: 0.0025
-
---- 测试 lambda_val = 0.5 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:46<1:17:19, 46.87s/it]  2%|▏         | 2/100 [01:33<1:16:03, 46.56s/it]  3%|▎         | 3/100 [02:19<1:15:00, 46.40s/it]  4%|▍         | 4/100 [03:05<1:13:55, 46.21s/it]  5%|▌         | 5/100 [03:51<1:13:07, 46.18s/it]  6%|▌         | 6/100 [04:37<1:12:12, 46.09s/it]  7%|▋         | 7/100 [05:23<1:11:15, 45.97s/it]  8%|▊         | 8/100 [06:09<1:10:44, 46.13s/it]  9%|▉         | 9/100 [06:55<1:09:48, 46.03s/it] 10%|█         | 10/100 [07:41<1:09:01, 46.02s/it] 11%|█         | 11/100 [08:27<1:08:19, 46.06s/it] 12%|█▏        | 12/100 [09:13<1:07:34, 46.08s/it] 13%|█▎        | 13/100 [09:59<1:06:46, 46.05s/it] 14%|█▍        | 14/100 [10:45<1:05:57, 46.02s/it] 15%|█▌        | 15/100 [11:32<1:05:29, 46.22s/it] 16%|█▌        | 16/100 [12:18<1:04:38, 46.17s/it] 17%|█▋        | 17/100 [13:04<1:03:52, 46.17s/it] 18%|█▊        | 18/100 [13:50<1:03:02, 46.12s/it] 19%|█▉        | 19/100 [14:36<1:02:13, 46.09s/it] 20%|██        | 20/100 [15:22<1:01:28, 46.11s/it] 21%|██        | 21/100 [16:08<1:00:40, 46.08s/it] 22%|██▏       | 22/100 [16:54<59:51, 46.05s/it]   23%|██▎       | 23/100 [17:40<59:04, 46.03s/it] 24%|██▍       | 24/100 [18:27<58:33, 46.23s/it] 25%|██▌       | 25/100 [19:13<57:43, 46.17s/it] 26%|██▌       | 26/100 [19:59<56:55, 46.16s/it] 27%|██▋       | 27/100 [20:45<56:07, 46.13s/it] 28%|██▊       | 28/100 [21:31<55:21, 46.13s/it] 29%|██▉       | 29/100 [22:17<54:35, 46.14s/it] 30%|███       | 30/100 [23:04<53:50, 46.15s/it] 31%|███       | 31/100 [23:50<53:01, 46.11s/it] 32%|███▏      | 32/100 [24:35<52:09, 46.03s/it] 33%|███▎      | 33/100 [25:22<51:37, 46.23s/it] 34%|███▍      | 34/100 [26:08<50:48, 46.18s/it] 35%|███▌      | 35/100 [26:55<50:05, 46.24s/it] 36%|███▌      | 36/100 [27:41<49:20, 46.27s/it] 37%|███▋      | 37/100 [28:27<48:31, 46.21s/it] 38%|███▊      | 38/100 [29:13<47:42, 46.17s/it] 39%|███▉      | 39/100 [29:59<46:53, 46.12s/it] 40%|████      | 40/100 [30:45<46:07, 46.12s/it] 41%|████      | 41/100 [31:31<45:17, 46.06s/it] 42%|████▏     | 42/100 [32:18<44:41, 46.23s/it] 43%|████▎     | 43/100 [33:04<43:53, 46.20s/it] 44%|████▍     | 44/100 [33:50<43:05, 46.17s/it] 45%|████▌     | 45/100 [34:36<42:17, 46.14s/it] 46%|████▌     | 46/100 [35:22<41:32, 46.15s/it] 47%|████▋     | 47/100 [36:09<40:51, 46.26s/it] 48%|████▊     | 48/100 [36:55<40:06, 46.28s/it] 49%|████▉     | 49/100 [37:42<39:25, 46.37s/it] 50%|█████     | 50/100 [38:28<38:42, 46.46s/it] 51%|█████     | 51/100 [39:15<38:04, 46.61s/it] 52%|█████▏    | 52/100 [40:01<37:08, 46.43s/it] 53%|█████▎    | 53/100 [40:47<36:18, 46.36s/it] 54%|█████▍    | 54/100 [41:34<35:33, 46.39s/it] 55%|█████▌    | 55/100 [42:20<34:45, 46.33s/it] 56%|█████▌    | 56/100 [43:06<33:54, 46.25s/it] 57%|█████▋    | 57/100 [43:52<33:09, 46.27s/it] 58%|█████▊    | 58/100 [44:39<32:21, 46.24s/it] 59%|█████▉    | 59/100 [45:25<31:35, 46.24s/it] 60%|██████    | 60/100 [46:12<30:57, 46.44s/it] 61%|██████    | 61/100 [46:58<30:11, 46.44s/it] 62%|██████▏   | 62/100 [47:45<29:26, 46.47s/it]Round 0: r_data=0.3875, r_noniid=0.7503, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=25.79%, Loss=0.0314, D_P_t=0.0156, Alpha=1.0000
-Round 1: r_data=0.3874, r_noniid=0.7691, improvement=0.0000, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3876, r_noniid=0.9033, improvement=0.0839, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3874, r_noniid=0.7881, improvement=0.0000, alpha_new=1.0000
-Round 3: Server fixing with alpha_new=1.0000
-Round 4: r_data=0.3874, r_noniid=0.7722, improvement=0.0000, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3874, r_noniid=0.6499, improvement=0.0000, alpha_new=0.8879
-Round 5: Server fixing with alpha_new=0.8879
-Round 6: r_data=0.3872, r_noniid=0.8365, improvement=0.1876, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3873, r_noniid=0.8194, improvement=0.0000, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3875, r_noniid=0.8102, improvement=0.0000, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3873, r_noniid=0.8452, improvement=0.1109, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3874, r_noniid=0.8127, improvement=0.0324, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=52.14%, Loss=0.0163, D_P_t=0.0225, Alpha=1.0000
-Round 11: r_data=0.3875, r_noniid=0.7826, improvement=0.0000, alpha_new=1.0000
-Round 11: Server fixing with alpha_new=1.0000
-Round 12: r_data=0.3872, r_noniid=0.9261, improvement=0.0000, alpha_new=1.0000
-Round 12: Server fixing with alpha_new=1.0000
-Round 13: r_data=0.3873, r_noniid=0.8196, improvement=0.0816, alpha_new=1.0000
-Round 13: Server fixing with alpha_new=1.0000
-Round 14: r_data=0.3875, r_noniid=0.6767, improvement=0.0000, alpha_new=0.7197
-Round 14: Server fixing with alpha_new=0.7197
-Round 15: r_data=0.3872, r_noniid=0.7996, improvement=0.0000, alpha_new=0.8116
-Round 15: Server fixing with alpha_new=0.8116
-Round 16: r_data=0.3875, r_noniid=0.6941, improvement=0.0000, alpha_new=0.6523
-Round 16: Server fixing with alpha_new=0.6523
-Round 17: r_data=0.3874, r_noniid=0.8027, improvement=0.0000, alpha_new=0.7140
-Round 17: Server fixing with alpha_new=0.7140
-Round 18: r_data=0.3874, r_noniid=0.8898, improvement=0.0000, alpha_new=0.7799
-Round 18: Server fixing with alpha_new=0.7799
-Round 19: r_data=0.3875, r_noniid=0.8813, improvement=0.0000, alpha_new=0.7481
-Round 19: Server fixing with alpha_new=0.7481
-Round 20: r_data=0.3878, r_noniid=0.8244, improvement=0.0000, alpha_new=0.6860
-Round 20: Server fixing with alpha_new=0.6860
-Round 20: Acc=58.75%, Loss=0.0068, D_P_t=0.0243, Alpha=0.6860
-Round 21: r_data=0.3876, r_noniid=0.8800, improvement=0.0000, alpha_new=0.7252
-Round 21: Server fixing with alpha_new=0.7252
-Round 22: r_data=0.3873, r_noniid=0.8290, improvement=0.0000, alpha_new=0.6595
-Round 22: Server fixing with alpha_new=0.6595
-Round 23: r_data=0.3877, r_noniid=0.8831, improvement=0.0263, alpha_new=0.7429
-Round 23: Server fixing with alpha_new=0.7429
-Round 24: r_data=0.3874, r_noniid=0.8429, improvement=0.0000, alpha_new=0.6795
-Round 24: Server fixing with alpha_new=0.6795
-Round 25: r_data=0.3874, r_noniid=0.8298, improvement=0.0000, alpha_new=0.6495
-Round 25: Server fixing with alpha_new=0.6495
-Round 26: r_data=0.3873, r_noniid=0.7627, improvement=0.0000, alpha_new=0.5908
-Round 26: Server fixing with alpha_new=0.5908
-Round 27: r_data=0.3871, r_noniid=0.7414, improvement=0.0000, alpha_new=0.5671
-Round 27: Server fixing with alpha_new=0.5671
-Round 28: r_data=0.3872, r_noniid=0.8971, improvement=0.0322, alpha_new=0.7364
-Round 28: Server fixing with alpha_new=0.7364
-Round 29: r_data=0.3874, r_noniid=0.8407, improvement=0.0000, alpha_new=0.6543
-Round 29: Server fixing with alpha_new=0.6543
-Round 30: r_data=0.3874, r_noniid=0.8521, improvement=0.0062, alpha_new=0.6724
-Round 30: Server fixing with alpha_new=0.6724
-Round 30: Acc=60.63%, Loss=0.0044, D_P_t=0.0298, Alpha=0.6724
-Round 31: r_data=0.3874, r_noniid=0.8914, improvement=0.0000, alpha_new=0.6752
-Round 31: Server fixing with alpha_new=0.6752
-Round 32: r_data=0.3875, r_noniid=0.6916, improvement=0.0016, alpha_new=0.5262
-Round 32: Server fixing with alpha_new=0.5262
-Round 33: r_data=0.3876, r_noniid=0.7185, improvement=0.0097, alpha_new=0.5590
-Round 33: Server fixing with alpha_new=0.5590
-Round 34: r_data=0.3874, r_noniid=0.8519, improvement=0.0000, alpha_new=0.6559
-Round 34: Server fixing with alpha_new=0.6559
-Round 35: r_data=0.3875, r_noniid=0.8865, improvement=0.0002, alpha_new=0.6830
-Round 35: Server fixing with alpha_new=0.6830
-Round 36: r_data=0.3871, r_noniid=0.9340, improvement=0.0100, alpha_new=0.7346
-Round 36: Server fixing with alpha_new=0.7346
-Round 37: r_data=0.3872, r_noniid=0.8626, improvement=0.0000, alpha_new=0.6574
-Round 37: Server fixing with alpha_new=0.6574
-Round 38: r_data=0.3875, r_noniid=0.8389, improvement=0.0000, alpha_new=0.6330
-Round 38: Server fixing with alpha_new=0.6330
-Round 39: r_data=0.3872, r_noniid=0.8991, improvement=0.0239, alpha_new=0.7154
-Round 39: Server fixing with alpha_new=0.7154
-Round 40: r_data=0.3873, r_noniid=0.7930, improvement=0.0000, alpha_new=0.6098
-Round 40: Server fixing with alpha_new=0.6098
-Round 40: Acc=61.25%, Loss=0.0036, D_P_t=0.0198, Alpha=0.6098
-Round 41: r_data=0.3874, r_noniid=0.6985, improvement=0.0000, alpha_new=0.5184
-Round 41: Server fixing with alpha_new=0.5184
-Round 42: r_data=0.3876, r_noniid=0.7544, improvement=0.0079, alpha_new=0.5713
-Round 42: Server fixing with alpha_new=0.5713
-Round 43: r_data=0.3873, r_noniid=0.9248, improvement=0.0075, alpha_new=0.7070
-Round 43: Server fixing with alpha_new=0.7070
-Round 44: r_data=0.3874, r_noniid=0.7114, improvement=0.0000, alpha_new=0.5370
-Round 44: Server fixing with alpha_new=0.5370
-Round 45: r_data=0.3874, r_noniid=0.7755, improvement=0.0000, alpha_new=0.5834
-Round 45: Server fixing with alpha_new=0.5834
-Round 46: r_data=0.3875, r_noniid=0.6823, improvement=0.0000, alpha_new=0.5046
-Round 46: Server fixing with alpha_new=0.5046
-Round 47: r_data=0.3875, r_noniid=0.7311, improvement=0.0120, alpha_new=0.5571
-Round 47: Server fixing with alpha_new=0.5571
-Round 48: r_data=0.3872, r_noniid=0.8760, improvement=0.0039, alpha_new=0.6659
-Round 48: Server fixing with alpha_new=0.6659
-Round 49: r_data=0.3874, r_noniid=0.8961, improvement=0.0000, alpha_new=0.6765
-Round 49: Server fixing with alpha_new=0.6765
-Round 50: r_data=0.3875, r_noniid=0.8453, improvement=0.0000, alpha_new=0.6287
-Round 50: Server fixing with alpha_new=0.6287
-Round 50: Acc=62.17%, Loss=0.0038, D_P_t=0.0283, Alpha=0.6287
-Round 51: r_data=0.3874, r_noniid=0.8168, improvement=0.0045, alpha_new=0.6139
-Round 51: Server fixing with alpha_new=0.6139
-Round 52: r_data=0.3874, r_noniid=0.9212, improvement=0.0083, alpha_new=0.7030
-Round 52: Server fixing with alpha_new=0.7030
-Round 53: r_data=0.3875, r_noniid=0.8582, improvement=0.0077, alpha_new=0.6631
-Round 53: Server fixing with alpha_new=0.6631
-Round 54: r_data=0.3875, r_noniid=0.7667, improvement=0.0000, alpha_new=0.5747
-Round 54: Server fixing with alpha_new=0.5747
-Round 55: r_data=0.3877, r_noniid=0.8078, improvement=0.0000, alpha_new=0.5970
-Round 55: Server fixing with alpha_new=0.5970
-Round 56: r_data=0.3871, r_noniid=0.8394, improvement=0.0145, alpha_new=0.6413
-Round 56: Server fixing with alpha_new=0.6413
-Round 57: r_data=0.3871, r_noniid=0.8595, improvement=0.0000, alpha_new=0.6420
-Round 57: Server fixing with alpha_new=0.6420
-Round 58: r_data=0.3873, r_noniid=0.7815, improvement=0.0000, alpha_new=0.5687
-Round 58: Server fixing with alpha_new=0.5687
-Round 59: r_data=0.3872, r_noniid=0.8556, improvement=0.0183, alpha_new=0.6506
-Round 59: Server fixing with alpha_new=0.6506
-Round 60: r_data=0.3875, r_noniid=0.7942, improvement=0.0000, alpha_new=0.5819
-Round 60: Server fixing with alpha_new=0.5819
-Round 60: Acc=62.56%, Loss=0.0033, D_P_t=0.0200, Alpha=0.5819
-Round 61: r_data=0.3873, r_noniid=0.7791, improvement=0.0090, alpha_new=0.5836
-Round 61: Server fixing with alpha_new=0.5836
- 63%|██████▎   | 63/100 [48:29<28:11, 45.72s/it] 64%|██████▍   | 64/100 [49:17<27:50, 46.39s/it] 65%|██████▌   | 65/100 [50:03<27:06, 46.48s/it] 66%|██████▌   | 66/100 [50:50<26:18, 46.43s/it] 67%|██████▋   | 67/100 [51:36<25:29, 46.36s/it] 68%|██████▊   | 68/100 [52:22<24:45, 46.41s/it] 69%|██████▉   | 69/100 [53:09<23:58, 46.39s/it] 70%|███████   | 70/100 [53:25<18:44, 37.49s/it] 71%|███████   | 71/100 [53:41<14:55, 30.88s/it] 72%|███████▏  | 72/100 [54:18<15:19, 32.84s/it] 73%|███████▎  | 73/100 [54:32<12:08, 26.99s/it] 74%|███████▍  | 74/100 [55:12<13:28, 31.09s/it] 75%|███████▌  | 75/100 [56:00<14:59, 35.98s/it] 76%|███████▌  | 76/100 [56:46<15:40, 39.18s/it] 77%|███████▋  | 77/100 [57:32<15:46, 41.16s/it] 78%|███████▊  | 78/100 [58:20<15:48, 43.11s/it] 79%|███████▉  | 79/100 [59:06<15:27, 44.17s/it] 80%|████████  | 80/100 [59:53<14:57, 44.87s/it] 81%|████████  | 81/100 [1:00:12<11:44, 37.07s/it] 82%|████████▏ | 82/100 [1:00:30<09:24, 31.35s/it] 83%|████████▎ | 83/100 [1:01:09<09:33, 33.72s/it] 84%|████████▍ | 84/100 [1:01:53<09:47, 36.70s/it] 85%|████████▌ | 85/100 [1:02:39<09:54, 39.63s/it] 86%|████████▌ | 86/100 [1:03:26<09:43, 41.68s/it] 87%|████████▋ | 87/100 [1:04:13<09:23, 43.32s/it] 88%|████████▊ | 88/100 [1:04:59<08:49, 44.16s/it] 89%|████████▉ | 89/100 [1:05:45<08:12, 44.79s/it] 90%|█████████ | 90/100 [1:06:31<07:32, 45.23s/it] 91%|█████████ | 91/100 [1:07:18<06:49, 45.51s/it] 92%|█████████▏| 92/100 [1:08:04<06:05, 45.72s/it] 93%|█████████▎| 93/100 [1:08:50<05:20, 45.83s/it] 94%|█████████▍| 94/100 [1:09:36<04:35, 45.91s/it] 95%|█████████▌| 95/100 [1:10:22<03:49, 45.99s/it] 96%|█████████▌| 96/100 [1:11:09<03:04, 46.18s/it] 97%|█████████▋| 97/100 [1:11:55<02:18, 46.18s/it] 98%|█████████▊| 98/100 [1:12:41<01:32, 46.15s/it] 99%|█████████▉| 99/100 [1:13:27<00:46, 46.08s/it]100%|██████████| 100/100 [1:14:13<00:00, 46.04s/it]100%|██████████| 100/100 [1:14:13<00:00, 44.53s/it]
-Round 62: r_data=0.3875, r_noniid=0.7854, improvement=0.0000, alpha_new=0.5820
-Round 62: Server fixing with alpha_new=0.5820
-Round 63: r_data=0.3873, r_noniid=0.8189, improvement=0.0000, alpha_new=0.6056
-Round 63: Server fixing with alpha_new=0.6056
-Round 64: r_data=0.3875, r_noniid=0.8116, improvement=0.0000, alpha_new=0.5925
-Round 64: Server fixing with alpha_new=0.5925
-Round 65: r_data=0.3872, r_noniid=0.8040, improvement=0.0128, alpha_new=0.6054
-Round 65: Server fixing with alpha_new=0.6054
-Round 66: r_data=0.3874, r_noniid=0.8048, improvement=0.0015, alpha_new=0.6020
-Round 66: Server fixing with alpha_new=0.6020
-Round 67: r_data=0.3872, r_noniid=0.5130, improvement=0.0000, alpha_new=0.3707
-Round 67: Server fixing with alpha_new=0.3707
-Round 68: r_data=0.3874, r_noniid=0.8232, improvement=0.0144, alpha_new=0.6166
-Round 68: Server fixing with alpha_new=0.6166
-Round 69: r_data=0.3873, r_noniid=0.7178, improvement=0.0000, alpha_new=0.5290
-Round 69: Server fixing with alpha_new=0.5290
-Round 70: r_data=0.3876, r_noniid=0.8190, improvement=0.0050, alpha_new=0.6115
-Round 70: Server fixing with alpha_new=0.6115
-Round 70: Acc=62.22%, Loss=0.0028, D_P_t=0.0234, Alpha=0.6115
-Round 71: r_data=0.3874, r_noniid=0.7925, improvement=0.0000, alpha_new=0.5875
-Round 71: Server fixing with alpha_new=0.5875
-Round 72: r_data=0.3874, r_noniid=0.8695, improvement=0.0066, alpha_new=0.6548
-Round 72: Server fixing with alpha_new=0.6548
-Round 73: r_data=0.3874, r_noniid=0.8826, improvement=0.0000, alpha_new=0.6472
-Round 73: Server fixing with alpha_new=0.6472
-Round 74: r_data=0.3877, r_noniid=0.8890, improvement=0.0106, alpha_new=0.6691
-Round 74: Server fixing with alpha_new=0.6691
-Round 75: r_data=0.3875, r_noniid=0.8520, improvement=0.0003, alpha_new=0.6363
-Round 75: Server fixing with alpha_new=0.6363
-Round 76: r_data=0.3875, r_noniid=0.7610, improvement=0.0000, alpha_new=0.5538
-Round 76: Server fixing with alpha_new=0.5538
-Round 77: r_data=0.3872, r_noniid=0.7752, improvement=0.0074, alpha_new=0.5742
-Round 77: Server fixing with alpha_new=0.5742
-Round 78: r_data=0.3872, r_noniid=0.8759, improvement=0.0132, alpha_new=0.6653
-Round 78: Server fixing with alpha_new=0.6653
-Round 79: r_data=0.3875, r_noniid=0.8663, improvement=0.0000, alpha_new=0.6448
-Round 79: Server fixing with alpha_new=0.6448
-Round 80: r_data=0.3875, r_noniid=0.8807, improvement=0.0029, alpha_new=0.6601
-Round 80: Server fixing with alpha_new=0.6601
-Round 80: Acc=62.23%, Loss=0.0024, D_P_t=0.0382, Alpha=0.6601
-Round 81: r_data=0.3874, r_noniid=0.7882, improvement=0.0000, alpha_new=0.5706
-Round 81: Server fixing with alpha_new=0.5706
-Round 82: r_data=0.3876, r_noniid=0.7095, improvement=0.0069, alpha_new=0.5232
-Round 82: Server fixing with alpha_new=0.5232
-Round 83: r_data=0.3879, r_noniid=0.8868, improvement=0.0182, alpha_new=0.6786
-Round 83: Server fixing with alpha_new=0.6786
-Round 84: r_data=0.3874, r_noniid=0.8436, improvement=0.0000, alpha_new=0.6224
-Round 84: Server fixing with alpha_new=0.6224
-Round 85: r_data=0.3874, r_noniid=0.7794, improvement=0.0000, alpha_new=0.5606
-Round 85: Server fixing with alpha_new=0.5606
-Round 86: r_data=0.3873, r_noniid=0.8125, improvement=0.0137, alpha_new=0.6046
-Round 86: Server fixing with alpha_new=0.6046
-Round 87: r_data=0.3876, r_noniid=0.9396, improvement=0.0326, alpha_new=0.7448
-Round 87: Server fixing with alpha_new=0.7448
-Round 88: r_data=0.3874, r_noniid=0.5554, improvement=0.0000, alpha_new=0.4030
-Round 88: Server fixing with alpha_new=0.4030
-Round 89: r_data=0.3875, r_noniid=0.7956, improvement=0.0150, alpha_new=0.5995
-Round 89: Server fixing with alpha_new=0.5995
-Round 90: r_data=0.3874, r_noniid=0.8079, improvement=0.0008, alpha_new=0.6021
-Round 90: Server fixing with alpha_new=0.6021
-Round 90: Acc=62.25%, Loss=0.0023, D_P_t=0.0218, Alpha=0.6021
-Round 91: r_data=0.3875, r_noniid=0.8767, improvement=0.0013, alpha_new=0.6552
-Round 91: Server fixing with alpha_new=0.6552
-Round 92: r_data=0.3873, r_noniid=0.8841, improvement=0.0000, alpha_new=0.6526
-Round 92: Server fixing with alpha_new=0.6526
-Round 93: r_data=0.3873, r_noniid=0.8685, improvement=0.0100, alpha_new=0.6566
-Round 93: Server fixing with alpha_new=0.6566
-Round 94: r_data=0.3872, r_noniid=0.8442, improvement=0.0000, alpha_new=0.6192
-Round 94: Server fixing with alpha_new=0.6192
-Round 95: r_data=0.3873, r_noniid=0.8817, improvement=0.0180, alpha_new=0.6751
-Round 95: Server fixing with alpha_new=0.6751
-Round 96: r_data=0.3874, r_noniid=0.6934, improvement=0.0000, alpha_new=0.5081
-Round 96: Server fixing with alpha_new=0.5081
-Round 97: r_data=0.3874, r_noniid=0.8675, improvement=0.0098, alpha_new=0.6509
-Round 97: Server fixing with alpha_new=0.6509
-Round 98: r_data=0.3872, r_noniid=0.8359, improvement=0.0000, alpha_new=0.6037
-Round 98: Server fixing with alpha_new=0.6037
-Round 99: r_data=0.3875, r_noniid=0.8248, improvement=0.0121, alpha_new=0.6143
-Round 99: Server fixing with alpha_new=0.6143
-
-Results for lambda_val = 0.5:
-FedDU_Mut - 第20轮测试精度: 58.77%, 最终测试精度: 62.16%, 最终训练损失: 0.0024
-
---- 测试 lambda_val = 1.0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:34<56:38, 34.33s/it]  2%|▏         | 2/100 [00:43<31:49, 19.49s/it]  3%|▎         | 3/100 [00:50<22:06, 13.68s/it]  4%|▍         | 4/100 [00:56<17:25, 10.89s/it]  5%|▌         | 5/100 [01:03<14:46,  9.33s/it]  6%|▌         | 6/100 [01:09<13:08,  8.39s/it]  7%|▋         | 7/100 [01:16<12:04,  7.79s/it]  8%|▊         | 8/100 [01:23<11:20,  7.39s/it]  9%|▉         | 9/100 [01:29<10:48,  7.13s/it] 10%|█         | 10/100 [01:36<10:26,  6.96s/it] 11%|█         | 11/100 [01:42<10:14,  6.91s/it] 12%|█▏        | 12/100 [01:49<09:59,  6.81s/it] 13%|█▎        | 13/100 [02:28<23:48, 16.42s/it] 14%|█▍        | 14/100 [03:15<36:44, 25.63s/it] 15%|█▌        | 15/100 [04:01<45:08, 31.87s/it] 16%|█▌        | 16/100 [04:12<35:48, 25.58s/it] 17%|█▋        | 17/100 [04:25<30:19, 21.92s/it] 18%|█▊        | 18/100 [04:38<26:23, 19.31s/it] 19%|█▉        | 19/100 [04:47<21:41, 16.06s/it] 20%|██        | 20/100 [04:54<17:36, 13.21s/it] 21%|██        | 21/100 [05:00<14:45, 11.20s/it] 22%|██▏       | 22/100 [05:07<12:45,  9.81s/it] 23%|██▎       | 23/100 [05:13<11:19,  8.83s/it] 24%|██▍       | 24/100 [05:20<10:19,  8.15s/it] 25%|██▌       | 25/100 [05:26<09:34,  7.66s/it] 26%|██▌       | 26/100 [05:33<09:05,  7.38s/it] 27%|██▋       | 27/100 [05:39<08:40,  7.14s/it] 28%|██▊       | 28/100 [05:46<08:20,  6.96s/it] 29%|██▉       | 29/100 [05:53<08:05,  6.84s/it] 30%|███       | 30/100 [05:59<07:52,  6.75s/it] 31%|███       | 31/100 [06:06<07:42,  6.70s/it] 32%|███▏      | 32/100 [06:12<07:33,  6.66s/it] 33%|███▎      | 33/100 [06:19<07:24,  6.63s/it] 34%|███▍      | 34/100 [06:25<07:16,  6.61s/it] 35%|███▌      | 35/100 [06:32<07:08,  6.59s/it] 36%|███▌      | 36/100 [06:39<07:04,  6.63s/it] 37%|███▋      | 37/100 [06:45<06:56,  6.61s/it] 38%|███▊      | 38/100 [06:52<06:48,  6.58s/it] 39%|███▉      | 39/100 [06:58<06:41,  6.58s/it] 40%|████      | 40/100 [07:05<06:34,  6.58s/it] 41%|████      | 41/100 [07:11<06:27,  6.57s/it] 42%|████▏     | 42/100 [07:18<06:21,  6.57s/it] 43%|████▎     | 43/100 [07:25<06:14,  6.57s/it] 44%|████▍     | 44/100 [07:31<06:08,  6.57s/it] 45%|████▌     | 45/100 [07:38<06:04,  6.63s/it] 46%|████▌     | 46/100 [07:45<05:57,  6.61s/it] 47%|████▋     | 47/100 [07:51<05:50,  6.61s/it] 48%|████▊     | 48/100 [07:58<05:43,  6.61s/it] 49%|████▉     | 49/100 [08:04<05:36,  6.60s/it] 50%|█████     | 50/100 [08:11<05:29,  6.60s/it] 51%|█████     | 51/100 [08:17<05:22,  6.59s/it] 52%|█████▏    | 52/100 [08:24<05:15,  6.58s/it] 53%|█████▎    | 53/100 [08:31<05:09,  6.58s/it] 54%|█████▍    | 54/100 [08:37<05:03,  6.59s/it] 55%|█████▌    | 55/100 [08:44<04:58,  6.63s/it] 56%|█████▌    | 56/100 [08:51<04:51,  6.61s/it] 57%|█████▋    | 57/100 [08:57<04:43,  6.60s/it] 58%|█████▊    | 58/100 [09:04<04:36,  6.59s/it] 59%|█████▉    | 59/100 [09:10<04:30,  6.59s/it] 60%|██████    | 60/100 [09:17<04:23,  6.60s/it] 61%|██████    | 61/100 [09:23<04:17,  6.59s/it] 62%|██████▏   | 62/100 [09:30<04:10,  6.59s/it]Round 0: r_data=0.3877, r_noniid=0.7088, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=28.85%, Loss=0.0286, D_P_t=0.0126, Alpha=1.0000
-Round 1: r_data=0.3875, r_noniid=0.8643, improvement=0.2254, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3873, r_noniid=0.8885, improvement=0.0000, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3873, r_noniid=0.8033, improvement=0.0494, alpha_new=1.0000
-Round 3: Server fixing with alpha_new=1.0000
-Round 4: r_data=0.3875, r_noniid=0.8774, improvement=0.1799, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3876, r_noniid=0.8971, improvement=0.0000, alpha_new=1.0000
-Round 5: Server fixing with alpha_new=1.0000
-Round 6: r_data=0.3878, r_noniid=0.8648, improvement=0.2202, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3877, r_noniid=0.8752, improvement=0.0000, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3872, r_noniid=0.7861, improvement=0.0727, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3875, r_noniid=0.8061, improvement=0.0000, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3875, r_noniid=0.8867, improvement=0.0000, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=52.19%, Loss=0.0176, D_P_t=0.0406, Alpha=1.0000
-Round 11: r_data=0.3873, r_noniid=0.8940, improvement=0.1912, alpha_new=1.0000
-Round 11: Server fixing with alpha_new=1.0000
-Round 12: r_data=0.3874, r_noniid=0.9057, improvement=0.0000, alpha_new=1.0000
-Round 12: Server fixing with alpha_new=1.0000
-Round 13: r_data=0.3872, r_noniid=0.9051, improvement=0.0000, alpha_new=0.9932
-Round 13: Server fixing with alpha_new=0.9932
-Round 14: r_data=0.3875, r_noniid=0.7902, improvement=0.0000, alpha_new=0.8024
-Round 14: Server fixing with alpha_new=0.8024
-Round 15: r_data=0.3873, r_noniid=0.7873, improvement=0.0000, alpha_new=0.7478
-Round 15: Server fixing with alpha_new=0.7478
-Round 16: r_data=0.3877, r_noniid=0.8329, improvement=0.0000, alpha_new=0.7563
-Round 16: Server fixing with alpha_new=0.7563
-Round 17: r_data=0.3874, r_noniid=0.8315, improvement=0.0000, alpha_new=0.7146
-Round 17: Server fixing with alpha_new=0.7146
-Round 18: r_data=0.3872, r_noniid=0.8200, improvement=0.0000, alpha_new=0.6875
-Round 18: Server fixing with alpha_new=0.6875
-Round 19: r_data=0.3876, r_noniid=0.9009, improvement=0.0000, alpha_new=0.7460
-Round 19: Server fixing with alpha_new=0.7460
-Round 20: r_data=0.3874, r_noniid=0.7860, improvement=0.0000, alpha_new=0.6291
-Round 20: Server fixing with alpha_new=0.6291
-Round 20: Acc=59.64%, Loss=0.0068, D_P_t=0.0190, Alpha=0.6291
-Round 21: r_data=0.3874, r_noniid=0.8769, improvement=0.0077, alpha_new=0.7171
-Round 21: Server fixing with alpha_new=0.7171
-Round 22: r_data=0.3872, r_noniid=0.8790, improvement=0.0000, alpha_new=0.7031
-Round 22: Server fixing with alpha_new=0.7031
-Round 23: r_data=0.3872, r_noniid=0.9113, improvement=0.0000, alpha_new=0.7236
-Round 23: Server fixing with alpha_new=0.7236
-Round 24: r_data=0.3871, r_noniid=0.8861, improvement=0.0000, alpha_new=0.6942
-Round 24: Server fixing with alpha_new=0.6942
-Round 25: r_data=0.3872, r_noniid=0.6442, improvement=0.0000, alpha_new=0.4937
-Round 25: Server fixing with alpha_new=0.4937
-Round 26: r_data=0.3877, r_noniid=0.7328, improvement=0.0000, alpha_new=0.5607
-Round 26: Server fixing with alpha_new=0.5607
-Round 27: r_data=0.3875, r_noniid=0.8070, improvement=0.0000, alpha_new=0.6090
-Round 27: Server fixing with alpha_new=0.6090
-Round 28: r_data=0.3873, r_noniid=0.7617, improvement=0.0051, alpha_new=0.5842
-Round 28: Server fixing with alpha_new=0.5842
-Round 29: r_data=0.3877, r_noniid=0.8629, improvement=0.0063, alpha_new=0.6692
-Round 29: Server fixing with alpha_new=0.6692
-Round 30: r_data=0.3873, r_noniid=0.8327, improvement=0.0000, alpha_new=0.6161
-Round 30: Server fixing with alpha_new=0.6161
-Round 30: Acc=62.12%, Loss=0.0044, D_P_t=0.0258, Alpha=0.6161
-Round 31: r_data=0.3875, r_noniid=0.8066, improvement=0.0100, alpha_new=0.6169
-Round 31: Server fixing with alpha_new=0.6169
-Round 32: r_data=0.3874, r_noniid=0.5972, improvement=0.0000, alpha_new=0.4403
-Round 32: Server fixing with alpha_new=0.4403
-Round 33: r_data=0.3874, r_noniid=0.8556, improvement=0.0026, alpha_new=0.6361
-Round 33: Server fixing with alpha_new=0.6361
-Round 34: r_data=0.3874, r_noniid=0.9131, improvement=0.0083, alpha_new=0.6933
-Round 34: Server fixing with alpha_new=0.6933
-Round 35: r_data=0.3873, r_noniid=0.8399, improvement=0.0000, alpha_new=0.6239
-Round 35: Server fixing with alpha_new=0.6239
-Round 36: r_data=0.3877, r_noniid=0.7999, improvement=0.0000, alpha_new=0.5914
-Round 36: Server fixing with alpha_new=0.5914
-Round 37: r_data=0.3873, r_noniid=0.7145, improvement=0.0000, alpha_new=0.5260
-Round 37: Server fixing with alpha_new=0.5260
-Round 38: r_data=0.3874, r_noniid=0.8667, improvement=0.0000, alpha_new=0.6335
-Round 38: Server fixing with alpha_new=0.6335
-Round 39: r_data=0.3873, r_noniid=0.7610, improvement=0.0051, alpha_new=0.5661
-Round 39: Server fixing with alpha_new=0.5661
-Round 40: r_data=0.3874, r_noniid=0.8271, improvement=0.0006, alpha_new=0.6111
-Round 40: Server fixing with alpha_new=0.6111
-Round 40: Acc=62.37%, Loss=0.0029, D_P_t=0.0248, Alpha=0.6111
-Round 41: r_data=0.3875, r_noniid=0.7065, improvement=0.0000, alpha_new=0.5124
-Round 41: Server fixing with alpha_new=0.5124
-Round 42: r_data=0.3874, r_noniid=0.7861, improvement=0.0169, alpha_new=0.6030
-Round 42: Server fixing with alpha_new=0.6030
-Round 43: r_data=0.3877, r_noniid=0.9211, improvement=0.0073, alpha_new=0.7026
-Round 43: Server fixing with alpha_new=0.7026
-Round 44: r_data=0.3875, r_noniid=0.8570, improvement=0.0000, alpha_new=0.6369
-Round 44: Server fixing with alpha_new=0.6369
-Round 45: r_data=0.3874, r_noniid=0.8150, improvement=0.0000, alpha_new=0.5963
-Round 45: Server fixing with alpha_new=0.5963
-Round 46: r_data=0.3874, r_noniid=0.8755, improvement=0.0095, alpha_new=0.6600
-Round 46: Server fixing with alpha_new=0.6600
-Round 47: r_data=0.3875, r_noniid=0.8841, improvement=0.0000, alpha_new=0.6385
-Round 47: Server fixing with alpha_new=0.6385
-Round 48: r_data=0.3873, r_noniid=0.8741, improvement=0.0056, alpha_new=0.6424
-Round 48: Server fixing with alpha_new=0.6424
-Round 49: r_data=0.3873, r_noniid=0.8482, improvement=0.0000, alpha_new=0.6173
-Round 49: Server fixing with alpha_new=0.6173
-Round 50: r_data=0.3875, r_noniid=0.8369, improvement=0.0062, alpha_new=0.6219
-Round 50: Server fixing with alpha_new=0.6219
-Round 50: Acc=62.70%, Loss=0.0029, D_P_t=0.0266, Alpha=0.6219
-Round 51: r_data=0.3877, r_noniid=0.9012, improvement=0.0000, alpha_new=0.6603
-Round 51: Server fixing with alpha_new=0.6603
-Round 52: r_data=0.3874, r_noniid=0.8131, improvement=0.0000, alpha_new=0.5898
-Round 52: Server fixing with alpha_new=0.5898
-Round 53: r_data=0.3871, r_noniid=0.8933, improvement=0.0192, alpha_new=0.6875
-Round 53: Server fixing with alpha_new=0.6875
-Round 54: r_data=0.3872, r_noniid=0.8241, improvement=0.0000, alpha_new=0.5971
-Round 54: Server fixing with alpha_new=0.5971
-Round 55: r_data=0.3873, r_noniid=0.8864, improvement=0.0069, alpha_new=0.6566
-Round 55: Server fixing with alpha_new=0.6566
-Round 56: r_data=0.3873, r_noniid=0.6021, improvement=0.0000, alpha_new=0.4332
-Round 56: Server fixing with alpha_new=0.4332
-Round 57: r_data=0.3874, r_noniid=0.8835, improvement=0.0000, alpha_new=0.6335
-Round 57: Server fixing with alpha_new=0.6335
-Round 58: r_data=0.3875, r_noniid=0.8769, improvement=0.0029, alpha_new=0.6348
-Round 58: Server fixing with alpha_new=0.6348
-Round 59: r_data=0.3871, r_noniid=0.7558, improvement=0.0000, alpha_new=0.5427
-Round 59: Server fixing with alpha_new=0.5427
-Round 60: r_data=0.3874, r_noniid=0.8798, improvement=0.0073, alpha_new=0.6473
-Round 60: Server fixing with alpha_new=0.6473
-Round 60: Acc=63.14%, Loss=0.0038, D_P_t=0.0379, Alpha=0.6473
-Round 61: r_data=0.3875, r_noniid=0.8355, improvement=0.0000, alpha_new=0.6020
-Round 61: Server fixing with alpha_new=0.6020
- 63%|██████▎   | 63/100 [09:37<04:03,  6.59s/it] 64%|██████▍   | 64/100 [09:43<03:59,  6.64s/it] 65%|██████▌   | 65/100 [09:50<03:52,  6.63s/it] 66%|██████▌   | 66/100 [09:57<03:44,  6.62s/it] 67%|██████▋   | 67/100 [10:03<03:38,  6.61s/it] 68%|██████▊   | 68/100 [10:10<03:31,  6.61s/it] 69%|██████▉   | 69/100 [10:16<03:24,  6.60s/it] 70%|███████   | 70/100 [10:23<03:17,  6.59s/it] 71%|███████   | 71/100 [10:29<03:10,  6.58s/it] 72%|███████▏  | 72/100 [10:36<03:04,  6.58s/it] 73%|███████▎  | 73/100 [10:43<02:57,  6.58s/it] 74%|███████▍  | 74/100 [10:49<02:52,  6.63s/it] 75%|███████▌  | 75/100 [10:56<02:45,  6.62s/it] 76%|███████▌  | 76/100 [11:03<02:38,  6.61s/it] 77%|███████▋  | 77/100 [11:09<02:31,  6.60s/it] 78%|███████▊  | 78/100 [11:16<02:24,  6.59s/it] 79%|███████▉  | 79/100 [11:22<02:18,  6.58s/it] 80%|████████  | 80/100 [11:29<02:11,  6.58s/it] 81%|████████  | 81/100 [11:35<02:04,  6.57s/it] 82%|████████▏ | 82/100 [11:42<01:58,  6.57s/it] 83%|████████▎ | 83/100 [11:49<01:52,  6.62s/it] 84%|████████▍ | 84/100 [11:55<01:45,  6.60s/it] 85%|████████▌ | 85/100 [12:02<01:38,  6.59s/it] 86%|████████▌ | 86/100 [12:08<01:32,  6.58s/it] 87%|████████▋ | 87/100 [12:15<01:25,  6.58s/it] 88%|████████▊ | 88/100 [12:22<01:18,  6.58s/it] 89%|████████▉ | 89/100 [12:28<01:12,  6.59s/it] 90%|█████████ | 90/100 [12:35<01:05,  6.59s/it] 91%|█████████ | 91/100 [12:41<00:59,  6.58s/it] 92%|█████████▏| 92/100 [12:48<00:52,  6.58s/it] 93%|█████████▎| 93/100 [12:55<00:46,  6.62s/it] 94%|█████████▍| 94/100 [13:01<00:39,  6.60s/it] 95%|█████████▌| 95/100 [13:08<00:32,  6.60s/it] 96%|█████████▌| 96/100 [13:14<00:26,  6.59s/it] 97%|█████████▋| 97/100 [13:21<00:19,  6.59s/it] 98%|█████████▊| 98/100 [13:27<00:13,  6.58s/it] 99%|█████████▉| 99/100 [13:34<00:06,  6.58s/it]100%|██████████| 100/100 [13:41<00:00,  6.58s/it]100%|██████████| 100/100 [13:41<00:00,  8.21s/it]
-Round 62: r_data=0.3875, r_noniid=0.9014, improvement=0.0080, alpha_new=0.6661
-Round 62: Server fixing with alpha_new=0.6661
-Round 63: r_data=0.3875, r_noniid=0.8391, improvement=0.0000, alpha_new=0.6037
-Round 63: Server fixing with alpha_new=0.6037
-Round 64: r_data=0.3874, r_noniid=0.8296, improvement=0.0000, alpha_new=0.5908
-Round 64: Server fixing with alpha_new=0.5908
-Round 65: r_data=0.3875, r_noniid=0.8583, improvement=0.0096, alpha_new=0.6313
-Round 65: Server fixing with alpha_new=0.6313
-Round 66: r_data=0.3874, r_noniid=0.8728, improvement=0.0000, alpha_new=0.6228
-Round 66: Server fixing with alpha_new=0.6228
-Round 67: r_data=0.3872, r_noniid=0.8797, improvement=0.0022, alpha_new=0.6321
-Round 67: Server fixing with alpha_new=0.6321
-Round 68: r_data=0.3876, r_noniid=0.8566, improvement=0.0038, alpha_new=0.6217
-Round 68: Server fixing with alpha_new=0.6217
-Round 69: r_data=0.3875, r_noniid=0.7719, improvement=0.0000, alpha_new=0.5480
-Round 69: Server fixing with alpha_new=0.5480
-Round 70: r_data=0.3872, r_noniid=0.8025, improvement=0.0159, alpha_new=0.6009
-Round 70: Server fixing with alpha_new=0.6009
-Round 70: Acc=63.10%, Loss=0.0024, D_P_t=0.0211, Alpha=0.6009
-Round 71: r_data=0.3874, r_noniid=0.8318, improvement=0.0000, alpha_new=0.5894
-Round 71: Server fixing with alpha_new=0.5894
-Round 72: r_data=0.3872, r_noniid=0.8669, improvement=0.0175, alpha_new=0.6502
-Round 72: Server fixing with alpha_new=0.6502
-Round 73: r_data=0.3873, r_noniid=0.7190, improvement=0.0000, alpha_new=0.5175
-Round 73: Server fixing with alpha_new=0.5175
-Round 74: r_data=0.3876, r_noniid=0.7781, improvement=0.0000, alpha_new=0.5490
-Round 74: Server fixing with alpha_new=0.5490
-Round 75: r_data=0.3874, r_noniid=0.8890, improvement=0.0193, alpha_new=0.6675
-Round 75: Server fixing with alpha_new=0.6675
-Round 76: r_data=0.3874, r_noniid=0.8998, improvement=0.0000, alpha_new=0.6543
-Round 76: Server fixing with alpha_new=0.6543
-Round 77: r_data=0.3875, r_noniid=0.8438, improvement=0.0000, alpha_new=0.6094
-Round 77: Server fixing with alpha_new=0.6094
-Round 78: r_data=0.3874, r_noniid=0.8799, improvement=0.0000, alpha_new=0.6305
-Round 78: Server fixing with alpha_new=0.6305
-Round 79: r_data=0.3876, r_noniid=0.8760, improvement=0.0041, alpha_new=0.6365
-Round 79: Server fixing with alpha_new=0.6365
-Round 80: r_data=0.3875, r_noniid=0.7984, improvement=0.0000, alpha_new=0.5736
-Round 80: Server fixing with alpha_new=0.5736
-Round 80: Acc=63.16%, Loss=0.0034, D_P_t=0.0205, Alpha=0.5736
-Round 81: r_data=0.3872, r_noniid=0.8738, improvement=0.0000, alpha_new=0.6245
-Round 81: Server fixing with alpha_new=0.6245
-Round 82: r_data=0.3875, r_noniid=0.7275, improvement=0.0000, alpha_new=0.5158
-Round 82: Server fixing with alpha_new=0.5158
-Round 83: r_data=0.3875, r_noniid=0.8587, improvement=0.0104, alpha_new=0.6301
-Round 83: Server fixing with alpha_new=0.6301
-Round 84: r_data=0.3875, r_noniid=0.7205, improvement=0.0000, alpha_new=0.5136
-Round 84: Server fixing with alpha_new=0.5136
-Round 85: r_data=0.3874, r_noniid=0.8358, improvement=0.0013, alpha_new=0.5981
-Round 85: Server fixing with alpha_new=0.5981
-Round 86: r_data=0.3878, r_noniid=0.8757, improvement=0.0166, alpha_new=0.6604
-Round 86: Server fixing with alpha_new=0.6604
-Round 87: r_data=0.3873, r_noniid=0.7772, improvement=0.0000, alpha_new=0.5553
-Round 87: Server fixing with alpha_new=0.5553
-Round 88: r_data=0.3876, r_noniid=0.7027, improvement=0.0000, alpha_new=0.5002
-Round 88: Server fixing with alpha_new=0.5002
-Round 89: r_data=0.3874, r_noniid=0.8536, improvement=0.0043, alpha_new=0.6161
-Round 89: Server fixing with alpha_new=0.6161
-Round 90: r_data=0.3875, r_noniid=0.8947, improvement=0.0114, alpha_new=0.6653
-Round 90: Server fixing with alpha_new=0.6653
-Round 90: Acc=63.20%, Loss=0.0029, D_P_t=0.0440, Alpha=0.6653
-Round 91: r_data=0.3872, r_noniid=0.8187, improvement=0.0000, alpha_new=0.5832
-Round 91: Server fixing with alpha_new=0.5832
-Round 92: r_data=0.3875, r_noniid=0.7834, improvement=0.0000, alpha_new=0.5480
-Round 92: Server fixing with alpha_new=0.5480
-Round 93: r_data=0.3873, r_noniid=0.8622, improvement=0.0086, alpha_new=0.6207
-Round 93: Server fixing with alpha_new=0.6207
-Round 94: r_data=0.3874, r_noniid=0.7347, improvement=0.0000, alpha_new=0.5141
-Round 94: Server fixing with alpha_new=0.5141
-Round 95: r_data=0.3873, r_noniid=0.8006, improvement=0.0045, alpha_new=0.5690
-Round 95: Server fixing with alpha_new=0.5690
-Round 96: r_data=0.3869, r_noniid=0.7865, improvement=0.0030, alpha_new=0.5599
-Round 96: Server fixing with alpha_new=0.5599
-Round 97: r_data=0.3878, r_noniid=0.8300, improvement=0.0000, alpha_new=0.5873
-Round 97: Server fixing with alpha_new=0.5873
-Round 98: r_data=0.3874, r_noniid=0.7022, improvement=0.0000, alpha_new=0.4894
-Round 98: Server fixing with alpha_new=0.4894
-Round 99: r_data=0.3877, r_noniid=0.8632, improvement=0.0036, alpha_new=0.6094
-Round 99: Server fixing with alpha_new=0.6094
-
-Results for lambda_val = 1.0:
-FedDU_Mut - 第20轮测试精度: 59.02%, 最终测试精度: 64.22%, 最终训练损失: 0.0019
-
---- 测试 lambda_val = 1.5 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<10:51,  6.58s/it]  2%|▏         | 2/100 [00:13<10:45,  6.59s/it]  3%|▎         | 3/100 [00:19<10:38,  6.59s/it]  4%|▍         | 4/100 [00:26<10:32,  6.58s/it]  5%|▌         | 5/100 [00:32<10:25,  6.59s/it]  6%|▌         | 6/100 [00:39<10:18,  6.58s/it]  7%|▋         | 7/100 [00:46<10:12,  6.58s/it]  8%|▊         | 8/100 [00:52<10:04,  6.57s/it]  9%|▉         | 9/100 [00:59<10:02,  6.62s/it] 10%|█         | 10/100 [01:05<09:54,  6.60s/it] 11%|█         | 11/100 [01:12<09:46,  6.59s/it] 12%|█▏        | 12/100 [01:19<09:39,  6.58s/it] 13%|█▎        | 13/100 [01:25<09:31,  6.57s/it] 14%|█▍        | 14/100 [01:32<09:24,  6.57s/it] 15%|█▌        | 15/100 [01:38<09:17,  6.55s/it] 16%|█▌        | 16/100 [01:45<09:10,  6.55s/it] 17%|█▋        | 17/100 [01:51<09:08,  6.61s/it] 18%|█▊        | 18/100 [01:58<09:01,  6.60s/it] 19%|█▉        | 19/100 [02:05<08:53,  6.59s/it] 20%|██        | 20/100 [02:11<08:45,  6.57s/it] 21%|██        | 21/100 [02:18<08:38,  6.57s/it] 22%|██▏       | 22/100 [02:24<08:31,  6.56s/it] 23%|██▎       | 23/100 [02:31<08:24,  6.56s/it] 24%|██▍       | 24/100 [02:37<08:18,  6.55s/it] 25%|██▌       | 25/100 [02:44<08:15,  6.61s/it] 26%|██▌       | 26/100 [02:51<08:08,  6.60s/it] 27%|██▋       | 27/100 [02:57<08:01,  6.59s/it] 28%|██▊       | 28/100 [03:04<07:54,  6.59s/it] 29%|██▉       | 29/100 [03:10<07:47,  6.58s/it] 30%|███       | 30/100 [03:17<07:40,  6.58s/it] 31%|███       | 31/100 [03:24<07:33,  6.58s/it] 32%|███▏      | 32/100 [03:30<07:27,  6.58s/it] 33%|███▎      | 33/100 [03:37<07:24,  6.63s/it] 34%|███▍      | 34/100 [03:43<07:15,  6.60s/it] 35%|███▌      | 35/100 [03:50<07:08,  6.59s/it] 36%|███▌      | 36/100 [03:57<07:01,  6.58s/it] 37%|███▋      | 37/100 [04:03<06:53,  6.57s/it] 38%|███▊      | 38/100 [04:10<06:46,  6.56s/it] 39%|███▉      | 39/100 [04:16<06:40,  6.56s/it] 40%|████      | 40/100 [04:23<06:34,  6.57s/it] 41%|████      | 41/100 [04:29<06:30,  6.62s/it] 42%|████▏     | 42/100 [04:36<06:23,  6.61s/it] 43%|████▎     | 43/100 [04:43<06:15,  6.58s/it] 44%|████▍     | 44/100 [04:49<06:08,  6.57s/it] 45%|████▌     | 45/100 [04:56<06:01,  6.58s/it] 46%|████▌     | 46/100 [05:02<05:55,  6.57s/it] 47%|████▋     | 47/100 [05:09<05:47,  6.57s/it] 48%|████▊     | 48/100 [05:15<05:41,  6.56s/it] 49%|████▉     | 49/100 [05:22<05:37,  6.61s/it] 50%|█████     | 50/100 [05:29<05:29,  6.59s/it] 51%|█████     | 51/100 [05:35<05:22,  6.58s/it] 52%|█████▏    | 52/100 [05:42<05:16,  6.58s/it] 53%|█████▎    | 53/100 [05:48<05:09,  6.58s/it] 54%|█████▍    | 54/100 [05:55<05:02,  6.58s/it] 55%|█████▌    | 55/100 [06:02<04:55,  6.57s/it] 56%|█████▌    | 56/100 [06:08<04:49,  6.57s/it] 57%|█████▋    | 57/100 [06:15<04:44,  6.61s/it] 58%|█████▊    | 58/100 [06:21<04:37,  6.60s/it] 59%|█████▉    | 59/100 [06:28<04:30,  6.59s/it] 60%|██████    | 60/100 [06:35<04:23,  6.59s/it] 61%|██████    | 61/100 [06:41<04:16,  6.58s/it] 62%|██████▏   | 62/100 [06:48<04:09,  6.57s/it]Round 0: r_data=0.3873, r_noniid=0.8045, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=31.31%, Loss=0.0299, D_P_t=0.0213, Alpha=1.0000
-Round 1: r_data=0.3872, r_noniid=0.7853, improvement=0.0000, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3877, r_noniid=0.8823, improvement=0.2278, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3875, r_noniid=0.8198, improvement=0.0000, alpha_new=1.0000
-Round 3: Server fixing with alpha_new=1.0000
-Round 4: r_data=0.3875, r_noniid=0.8824, improvement=0.0860, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3875, r_noniid=0.7271, improvement=0.0000, alpha_new=1.0000
-Round 5: Server fixing with alpha_new=1.0000
-Round 6: r_data=0.3874, r_noniid=0.8741, improvement=0.0920, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3873, r_noniid=0.8364, improvement=0.0841, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3876, r_noniid=0.8030, improvement=0.0000, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3875, r_noniid=0.8987, improvement=0.0000, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3872, r_noniid=0.7929, improvement=0.0000, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=52.19%, Loss=0.0138, D_P_t=0.0198, Alpha=1.0000
-Round 11: r_data=0.3877, r_noniid=0.8648, improvement=0.0000, alpha_new=1.0000
-Round 11: Server fixing with alpha_new=1.0000
-Round 12: r_data=0.3872, r_noniid=0.7520, improvement=0.0381, alpha_new=1.0000
-Round 12: Server fixing with alpha_new=1.0000
-Round 13: r_data=0.3874, r_noniid=0.7965, improvement=0.0000, alpha_new=0.9209
-Round 13: Server fixing with alpha_new=0.9209
-Round 14: r_data=0.3875, r_noniid=0.8635, improvement=0.0000, alpha_new=0.9337
-Round 14: Server fixing with alpha_new=0.9337
-Round 15: r_data=0.3871, r_noniid=0.8769, improvement=0.0000, alpha_new=0.8502
-Round 15: Server fixing with alpha_new=0.8502
-Round 16: r_data=0.3872, r_noniid=0.8476, improvement=0.0000, alpha_new=0.8056
-Round 16: Server fixing with alpha_new=0.8056
-Round 17: r_data=0.3875, r_noniid=0.7769, improvement=0.0000, alpha_new=0.6737
-Round 17: Server fixing with alpha_new=0.6737
-Round 18: r_data=0.3873, r_noniid=0.8202, improvement=0.0000, alpha_new=0.6921
-Round 18: Server fixing with alpha_new=0.6921
-Round 19: r_data=0.3874, r_noniid=0.7019, improvement=0.0000, alpha_new=0.5740
-Round 19: Server fixing with alpha_new=0.5740
-Round 20: r_data=0.3872, r_noniid=0.8526, improvement=0.0045, alpha_new=0.7080
-Round 20: Server fixing with alpha_new=0.7080
-Round 20: Acc=59.16%, Loss=0.0064, D_P_t=0.0300, Alpha=0.7080
-Round 21: r_data=0.3875, r_noniid=0.8866, improvement=0.0000, alpha_new=0.7037
-Round 21: Server fixing with alpha_new=0.7037
-Round 22: r_data=0.3874, r_noniid=0.8072, improvement=0.0000, alpha_new=0.6372
-Round 22: Server fixing with alpha_new=0.6372
-Round 23: r_data=0.3872, r_noniid=0.9029, improvement=0.0179, alpha_new=0.7578
-Round 23: Server fixing with alpha_new=0.7578
-Round 24: r_data=0.3875, r_noniid=0.7486, improvement=0.0000, alpha_new=0.5794
-Round 24: Server fixing with alpha_new=0.5794
-Round 25: r_data=0.3874, r_noniid=0.6374, improvement=0.0000, alpha_new=0.4893
-Round 25: Server fixing with alpha_new=0.4893
-Round 26: r_data=0.3875, r_noniid=0.8984, improvement=0.0200, alpha_new=0.7410
-Round 26: Server fixing with alpha_new=0.7410
-Round 27: r_data=0.3871, r_noniid=0.7638, improvement=0.0000, alpha_new=0.5929
-Round 27: Server fixing with alpha_new=0.5929
-Round 28: r_data=0.3872, r_noniid=0.8910, improvement=0.0000, alpha_new=0.6818
-Round 28: Server fixing with alpha_new=0.6818
-Round 29: r_data=0.3872, r_noniid=0.7830, improvement=0.0000, alpha_new=0.5956
-Round 29: Server fixing with alpha_new=0.5956
-Round 30: r_data=0.3874, r_noniid=0.8409, improvement=0.0063, alpha_new=0.6555
-Round 30: Server fixing with alpha_new=0.6555
-Round 30: Acc=61.46%, Loss=0.0035, D_P_t=0.0274, Alpha=0.6555
-Round 31: r_data=0.3876, r_noniid=0.6518, improvement=0.0000, alpha_new=0.4977
-Round 31: Server fixing with alpha_new=0.4977
-Round 32: r_data=0.3874, r_noniid=0.9080, improvement=0.0112, alpha_new=0.7218
-Round 32: Server fixing with alpha_new=0.7218
-Round 33: r_data=0.3871, r_noniid=0.8972, improvement=0.0000, alpha_new=0.6929
-Round 33: Server fixing with alpha_new=0.6929
-Round 34: r_data=0.3877, r_noniid=0.8596, improvement=0.0000, alpha_new=0.6606
-Round 34: Server fixing with alpha_new=0.6606
-Round 35: r_data=0.3872, r_noniid=0.8685, improvement=0.0123, alpha_new=0.6975
-Round 35: Server fixing with alpha_new=0.6975
-Round 36: r_data=0.3875, r_noniid=0.8215, improvement=0.0000, alpha_new=0.6331
-Round 36: Server fixing with alpha_new=0.6331
-Round 37: r_data=0.3875, r_noniid=0.8821, improvement=0.0000, alpha_new=0.6691
-Round 37: Server fixing with alpha_new=0.6691
-Round 38: r_data=0.3874, r_noniid=0.8437, improvement=0.0000, alpha_new=0.6349
-Round 38: Server fixing with alpha_new=0.6349
-Round 39: r_data=0.3871, r_noniid=0.8916, improvement=0.0119, alpha_new=0.7009
-Round 39: Server fixing with alpha_new=0.7009
-Round 40: r_data=0.3873, r_noniid=0.8577, improvement=0.0000, alpha_new=0.6548
-Round 40: Server fixing with alpha_new=0.6548
-Round 40: Acc=61.42%, Loss=0.0030, D_P_t=0.0312, Alpha=0.6548
-Round 41: r_data=0.3872, r_noniid=0.8999, improvement=0.0000, alpha_new=0.6694
-Round 41: Server fixing with alpha_new=0.6694
-Round 42: r_data=0.3872, r_noniid=0.8389, improvement=0.0091, alpha_new=0.6468
-Round 42: Server fixing with alpha_new=0.6468
-Round 43: r_data=0.3875, r_noniid=0.8689, improvement=0.0059, alpha_new=0.6712
-Round 43: Server fixing with alpha_new=0.6712
-Round 44: r_data=0.3874, r_noniid=0.8169, improvement=0.0000, alpha_new=0.6030
-Round 44: Server fixing with alpha_new=0.6030
-Round 45: r_data=0.3874, r_noniid=0.7336, improvement=0.0006, alpha_new=0.5431
-Round 45: Server fixing with alpha_new=0.5431
-Round 46: r_data=0.3874, r_noniid=0.8779, improvement=0.0154, alpha_new=0.6879
-Round 46: Server fixing with alpha_new=0.6879
-Round 47: r_data=0.3874, r_noniid=0.7625, improvement=0.0000, alpha_new=0.5673
-Round 47: Server fixing with alpha_new=0.5673
-Round 48: r_data=0.3876, r_noniid=0.8156, improvement=0.0115, alpha_new=0.6356
-Round 48: Server fixing with alpha_new=0.6356
-Round 49: r_data=0.3875, r_noniid=0.8667, improvement=0.0000, alpha_new=0.6423
-Round 49: Server fixing with alpha_new=0.6423
-Round 50: r_data=0.3875, r_noniid=0.7726, improvement=0.0000, alpha_new=0.5667
-Round 50: Server fixing with alpha_new=0.5667
-Round 50: Acc=62.43%, Loss=0.0029, D_P_t=0.0176, Alpha=0.5667
-Round 51: r_data=0.3872, r_noniid=0.6408, improvement=0.0034, alpha_new=0.4773
-Round 51: Server fixing with alpha_new=0.4773
-Round 52: r_data=0.3873, r_noniid=0.8694, improvement=0.0015, alpha_new=0.6446
-Round 52: Server fixing with alpha_new=0.6446
-Round 53: r_data=0.3874, r_noniid=0.6502, improvement=0.0000, alpha_new=0.4790
-Round 53: Server fixing with alpha_new=0.4790
-Round 54: r_data=0.3871, r_noniid=0.8724, improvement=0.0157, alpha_new=0.6822
-Round 54: Server fixing with alpha_new=0.6822
-Round 55: r_data=0.3874, r_noniid=0.8706, improvement=0.0000, alpha_new=0.6476
-Round 55: Server fixing with alpha_new=0.6476
-Round 56: r_data=0.3877, r_noniid=0.8161, improvement=0.0024, alpha_new=0.6136
-Round 56: Server fixing with alpha_new=0.6136
-Round 57: r_data=0.3872, r_noniid=0.8782, improvement=0.0000, alpha_new=0.6556
-Round 57: Server fixing with alpha_new=0.6556
-Round 58: r_data=0.3874, r_noniid=0.7145, improvement=0.0060, alpha_new=0.5478
-Round 58: Server fixing with alpha_new=0.5478
-Round 59: r_data=0.3878, r_noniid=0.7727, improvement=0.0000, alpha_new=0.5703
-Round 59: Server fixing with alpha_new=0.5703
-Round 60: r_data=0.3874, r_noniid=0.8682, improvement=0.0192, alpha_new=0.6889
-Round 60: Server fixing with alpha_new=0.6889
-Round 60: Acc=61.88%, Loss=0.0025, D_P_t=0.0341, Alpha=0.6889
-Round 61: r_data=0.3872, r_noniid=0.8604, improvement=0.0000, alpha_new=0.6350
-Round 61: Server fixing with alpha_new=0.6350
- 63%|██████▎   | 63/100 [06:54<04:02,  6.57s/it] 64%|██████▍   | 64/100 [07:01<03:56,  6.57s/it] 65%|██████▌   | 65/100 [07:08<03:51,  6.62s/it] 66%|██████▌   | 66/100 [07:14<03:44,  6.60s/it] 67%|██████▋   | 67/100 [07:21<03:37,  6.60s/it] 68%|██████▊   | 68/100 [07:27<03:30,  6.59s/it] 69%|██████▉   | 69/100 [07:34<03:24,  6.59s/it] 70%|███████   | 70/100 [07:40<03:17,  6.57s/it] 71%|███████   | 71/100 [07:47<03:10,  6.56s/it] 72%|███████▏  | 72/100 [07:53<03:03,  6.56s/it] 73%|███████▎  | 73/100 [08:00<02:58,  6.60s/it] 74%|███████▍  | 74/100 [08:07<02:51,  6.59s/it] 75%|███████▌  | 75/100 [08:13<02:44,  6.58s/it] 76%|███████▌  | 76/100 [08:20<02:37,  6.58s/it] 77%|███████▋  | 77/100 [08:26<02:31,  6.57s/it] 78%|███████▊  | 78/100 [08:33<02:24,  6.56s/it] 79%|███████▉  | 79/100 [08:40<02:17,  6.56s/it] 80%|████████  | 80/100 [08:46<02:11,  6.57s/it] 81%|████████  | 81/100 [08:53<02:05,  6.63s/it] 82%|████████▏ | 82/100 [08:59<01:58,  6.61s/it] 83%|████████▎ | 83/100 [09:06<01:52,  6.60s/it] 84%|████████▍ | 84/100 [09:14<01:52,  7.02s/it] 85%|████████▌ | 85/100 [09:28<02:16,  9.09s/it] 86%|████████▌ | 86/100 [09:41<02:25, 10.38s/it] 87%|████████▋ | 87/100 [09:54<02:22, 10.96s/it] 88%|████████▊ | 88/100 [10:04<02:08, 10.72s/it] 89%|████████▉ | 89/100 [10:10<01:44,  9.52s/it] 90%|█████████ | 90/100 [10:17<01:26,  8.61s/it] 91%|█████████ | 91/100 [10:23<01:11,  7.96s/it] 92%|█████████▏| 92/100 [10:30<01:00,  7.51s/it] 93%|█████████▎| 93/100 [10:36<00:50,  7.20s/it] 94%|█████████▍| 94/100 [10:43<00:41,  6.97s/it] 95%|█████████▌| 95/100 [10:49<00:34,  6.84s/it] 96%|█████████▌| 96/100 [10:56<00:26,  6.74s/it] 97%|█████████▋| 97/100 [11:03<00:20,  6.73s/it] 98%|█████████▊| 98/100 [11:09<00:13,  6.67s/it] 99%|█████████▉| 99/100 [11:16<00:06,  6.63s/it]100%|██████████| 100/100 [11:22<00:00,  6.62s/it]100%|██████████| 100/100 [11:22<00:00,  6.83s/it]
-Round 62: r_data=0.3874, r_noniid=0.8281, improvement=0.0000, alpha_new=0.6082
-Round 62: Server fixing with alpha_new=0.6082
-Round 63: r_data=0.3874, r_noniid=0.8827, improvement=0.0066, alpha_new=0.6653
-Round 63: Server fixing with alpha_new=0.6653
-Round 64: r_data=0.3873, r_noniid=0.8465, improvement=0.0078, alpha_new=0.6479
-Round 64: Server fixing with alpha_new=0.6479
-Round 65: r_data=0.3876, r_noniid=0.8160, improvement=0.0000, alpha_new=0.5914
-Round 65: Server fixing with alpha_new=0.5914
-Round 66: r_data=0.3874, r_noniid=0.6610, improvement=0.0091, alpha_new=0.4998
-Round 66: Server fixing with alpha_new=0.4998
-Round 67: r_data=0.3873, r_noniid=0.8760, improvement=0.0000, alpha_new=0.6411
-Round 67: Server fixing with alpha_new=0.6411
-Round 68: r_data=0.3874, r_noniid=0.6810, improvement=0.0048, alpha_new=0.5097
-Round 68: Server fixing with alpha_new=0.5097
-Round 69: r_data=0.3873, r_noniid=0.8308, improvement=0.0039, alpha_new=0.6225
-Round 69: Server fixing with alpha_new=0.6225
-Round 70: r_data=0.3872, r_noniid=0.8900, improvement=0.0000, alpha_new=0.6570
-Round 70: Server fixing with alpha_new=0.6570
-Round 70: Acc=62.41%, Loss=0.0023, D_P_t=0.0419, Alpha=0.6570
-Round 71: r_data=0.3874, r_noniid=0.7845, improvement=0.0000, alpha_new=0.5776
-Round 71: Server fixing with alpha_new=0.5776
-Round 72: r_data=0.3875, r_noniid=0.8621, improvement=0.0042, alpha_new=0.6456
-Round 72: Server fixing with alpha_new=0.6456
-Round 73: r_data=0.3874, r_noniid=0.8565, improvement=0.0000, alpha_new=0.6280
-Round 73: Server fixing with alpha_new=0.6280
-Round 74: r_data=0.3874, r_noniid=0.9155, improvement=0.0262, alpha_new=0.7394
-Round 74: Server fixing with alpha_new=0.7394
-Round 75: r_data=0.3872, r_noniid=0.8356, improvement=0.0000, alpha_new=0.6090
-Round 75: Server fixing with alpha_new=0.6090
-Round 76: r_data=0.3872, r_noniid=0.7998, improvement=0.0079, alpha_new=0.6023
-Round 76: Server fixing with alpha_new=0.6023
-Round 77: r_data=0.3875, r_noniid=0.9089, improvement=0.0252, alpha_new=0.7370
-Round 77: Server fixing with alpha_new=0.7370
-Round 78: r_data=0.3874, r_noniid=0.9124, improvement=0.0000, alpha_new=0.6753
-Round 78: Server fixing with alpha_new=0.6753
-Round 79: r_data=0.3872, r_noniid=0.8696, improvement=0.0000, alpha_new=0.6396
-Round 79: Server fixing with alpha_new=0.6396
-Round 80: r_data=0.3874, r_noniid=0.7472, improvement=0.0000, alpha_new=0.5436
-Round 80: Server fixing with alpha_new=0.5436
-Round 80: Acc=62.75%, Loss=0.0027, D_P_t=0.0153, Alpha=0.5436
-Round 81: r_data=0.3874, r_noniid=0.7512, improvement=0.0016, alpha_new=0.5503
-Round 81: Server fixing with alpha_new=0.5503
-Round 82: r_data=0.3874, r_noniid=0.8082, improvement=0.0002, alpha_new=0.5899
-Round 82: Server fixing with alpha_new=0.5899
-Round 83: r_data=0.3876, r_noniid=0.5631, improvement=0.0000, alpha_new=0.4058
-Round 83: Server fixing with alpha_new=0.4058
-Round 84: r_data=0.3872, r_noniid=0.7690, improvement=0.0062, alpha_new=0.5689
-Round 84: Server fixing with alpha_new=0.5689
-Round 85: r_data=0.3874, r_noniid=0.9024, improvement=0.0103, alpha_new=0.6835
-Round 85: Server fixing with alpha_new=0.6835
-Round 86: r_data=0.3871, r_noniid=0.7579, improvement=0.0000, alpha_new=0.5508
-Round 86: Server fixing with alpha_new=0.5508
-Round 87: r_data=0.3876, r_noniid=0.7681, improvement=0.0029, alpha_new=0.5660
-Round 87: Server fixing with alpha_new=0.5660
-Round 88: r_data=0.3876, r_noniid=0.8283, improvement=0.0000, alpha_new=0.6057
-Round 88: Server fixing with alpha_new=0.6057
-Round 89: r_data=0.3877, r_noniid=0.7361, improvement=0.0000, alpha_new=0.5357
-Round 89: Server fixing with alpha_new=0.5357
-Round 90: r_data=0.3877, r_noniid=0.8366, improvement=0.0066, alpha_new=0.6253
-Round 90: Server fixing with alpha_new=0.6253
-Round 90: Acc=62.40%, Loss=0.0018, D_P_t=0.0265, Alpha=0.6253
-Round 91: r_data=0.3872, r_noniid=0.9071, improvement=0.0161, alpha_new=0.7082
-Round 91: Server fixing with alpha_new=0.7082
-Round 92: r_data=0.3876, r_noniid=0.5278, improvement=0.0000, alpha_new=0.3774
-Round 92: Server fixing with alpha_new=0.3774
-Round 93: r_data=0.3873, r_noniid=0.9178, improvement=0.0220, alpha_new=0.7136
-Round 93: Server fixing with alpha_new=0.7136
-Round 94: r_data=0.3875, r_noniid=0.7699, improvement=0.0000, alpha_new=0.5527
-Round 94: Server fixing with alpha_new=0.5527
-Round 95: r_data=0.3872, r_noniid=0.8846, improvement=0.0059, alpha_new=0.6497
-Round 95: Server fixing with alpha_new=0.6497
-Round 96: r_data=0.3876, r_noniid=0.7959, improvement=0.0000, alpha_new=0.5672
-Round 96: Server fixing with alpha_new=0.5672
-Round 97: r_data=0.3873, r_noniid=0.9115, improvement=0.0294, alpha_new=0.7260
-Round 97: Server fixing with alpha_new=0.7260
-Round 98: r_data=0.3875, r_noniid=0.9041, improvement=0.0000, alpha_new=0.6707
-Round 98: Server fixing with alpha_new=0.6707
-Round 99: r_data=0.3874, r_noniid=0.6685, improvement=0.0000, alpha_new=0.4762
-Round 99: Server fixing with alpha_new=0.4762
-
-Results for lambda_val = 1.5:
-FedDU_Mut - 第20轮测试精度: 58.67%, 最终测试精度: 63.20%, 最终训练损失: 0.0029
-
---- 测试 lambda_val = 2.0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<10:47,  6.54s/it]  2%|▏         | 2/100 [00:36<33:16, 20.37s/it]  3%|▎         | 3/100 [00:44<23:55, 14.80s/it]  4%|▍         | 4/100 [00:51<18:35, 11.62s/it]  5%|▌         | 5/100 [00:58<15:31,  9.80s/it]  6%|▌         | 6/100 [01:04<13:37,  8.70s/it]  7%|▋         | 7/100 [01:11<12:24,  8.01s/it]  8%|▊         | 8/100 [01:17<11:35,  7.56s/it]  9%|▉         | 9/100 [01:24<10:59,  7.24s/it] 10%|█         | 10/100 [01:30<10:33,  7.04s/it] 11%|█         | 11/100 [01:37<10:13,  6.89s/it] 12%|█▏        | 12/100 [01:44<09:57,  6.79s/it] 13%|█▎        | 13/100 [01:50<09:45,  6.72s/it] 14%|█▍        | 14/100 [01:57<09:39,  6.74s/it] 15%|█▌        | 15/100 [02:03<09:28,  6.68s/it] 16%|█▌        | 16/100 [02:10<09:19,  6.66s/it] 17%|█▋        | 17/100 [02:17<09:11,  6.64s/it] 18%|█▊        | 18/100 [02:23<09:03,  6.63s/it] 19%|█▉        | 19/100 [02:32<09:51,  7.30s/it] 20%|██        | 20/100 [02:51<14:33, 10.91s/it] 21%|██        | 21/100 [02:58<12:40,  9.63s/it] 22%|██▏       | 22/100 [03:05<11:20,  8.72s/it] 23%|██▎       | 23/100 [03:11<10:22,  8.09s/it] 24%|██▍       | 24/100 [03:18<09:45,  7.71s/it] 25%|██▌       | 25/100 [03:25<09:12,  7.37s/it] 26%|██▌       | 26/100 [03:31<08:47,  7.13s/it] 27%|██▋       | 27/100 [03:38<08:29,  6.98s/it] 28%|██▊       | 28/100 [03:44<08:13,  6.85s/it] 29%|██▉       | 29/100 [03:51<08:00,  6.77s/it] 30%|███       | 30/100 [03:58<07:49,  6.70s/it] 31%|███       | 31/100 [04:04<07:39,  6.66s/it] 32%|███▏      | 32/100 [04:11<07:30,  6.63s/it] 33%|███▎      | 33/100 [04:17<07:23,  6.61s/it] 34%|███▍      | 34/100 [04:24<07:20,  6.67s/it] 35%|███▌      | 35/100 [04:35<08:27,  7.80s/it] 36%|███▌      | 36/100 [05:21<20:32, 19.25s/it] 37%|███▋      | 37/100 [06:06<28:35, 27.22s/it] 38%|███▊      | 38/100 [06:52<33:53, 32.80s/it] 39%|███▉      | 39/100 [07:38<37:19, 36.71s/it] 40%|████      | 40/100 [08:24<39:26, 39.44s/it] 41%|████      | 41/100 [09:10<40:41, 41.38s/it] 42%|████▏     | 42/100 [09:55<41:15, 42.69s/it] 43%|████▎     | 43/100 [10:42<41:37, 43.82s/it] 44%|████▍     | 44/100 [11:28<41:28, 44.45s/it] 45%|████▌     | 45/100 [12:14<41:07, 44.87s/it] 46%|████▌     | 46/100 [13:00<40:39, 45.18s/it] 47%|████▋     | 47/100 [13:45<40:06, 45.40s/it] 48%|████▊     | 48/100 [14:32<39:31, 45.60s/it] 49%|████▉     | 49/100 [15:17<38:48, 45.66s/it] 50%|█████     | 50/100 [16:03<38:05, 45.71s/it] 51%|█████     | 51/100 [16:50<37:31, 45.95s/it] 52%|█████▏    | 52/100 [17:36<36:47, 45.99s/it] 53%|█████▎    | 53/100 [18:22<36:07, 46.12s/it] 54%|█████▍    | 54/100 [18:41<29:05, 37.96s/it] 55%|█████▌    | 55/100 [18:52<22:22, 29.84s/it] 56%|█████▌    | 56/100 [18:59<16:45, 22.86s/it] 57%|█████▋    | 57/100 [19:05<12:52, 17.97s/it] 58%|█████▊    | 58/100 [19:12<10:10, 14.54s/it] 59%|█████▉    | 59/100 [19:20<08:39, 12.68s/it] 60%|██████    | 60/100 [19:27<07:14, 10.85s/it] 61%|██████    | 61/100 [19:33<06:13,  9.57s/it] 62%|██████▏   | 62/100 [19:40<05:29,  8.68s/it]Round 0: r_data=0.3873, r_noniid=0.7355, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=29.05%, Loss=0.0299, D_P_t=0.0144, Alpha=1.0000
-Round 1: r_data=0.3875, r_noniid=0.7368, improvement=0.2847, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3875, r_noniid=0.8877, improvement=0.0000, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3874, r_noniid=0.8131, improvement=0.0000, alpha_new=1.0000
-Round 3: Server fixing with alpha_new=1.0000
-Round 4: r_data=0.3874, r_noniid=0.8241, improvement=0.0000, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3877, r_noniid=0.7868, improvement=0.2371, alpha_new=1.0000
-Round 5: Server fixing with alpha_new=1.0000
-Round 6: r_data=0.3874, r_noniid=0.8484, improvement=0.0000, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3871, r_noniid=0.8924, improvement=0.0000, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3876, r_noniid=0.8584, improvement=0.0000, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3874, r_noniid=0.7945, improvement=0.0000, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3876, r_noniid=0.8202, improvement=0.0000, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=51.58%, Loss=0.0127, D_P_t=0.0236, Alpha=1.0000
-Round 11: r_data=0.3872, r_noniid=0.8468, improvement=0.0000, alpha_new=1.0000
-Round 11: Server fixing with alpha_new=1.0000
-Round 12: r_data=0.3875, r_noniid=0.7872, improvement=0.0000, alpha_new=0.9342
-Round 12: Server fixing with alpha_new=0.9342
-Round 13: r_data=0.3877, r_noniid=0.8606, improvement=0.0648, alpha_new=1.0000
-Round 13: Server fixing with alpha_new=1.0000
-Round 14: r_data=0.3871, r_noniid=0.7532, improvement=0.0000, alpha_new=0.8386
-Round 14: Server fixing with alpha_new=0.8386
-Round 15: r_data=0.3875, r_noniid=0.6911, improvement=0.0000, alpha_new=0.7281
-Round 15: Server fixing with alpha_new=0.7281
-Round 16: r_data=0.3875, r_noniid=0.7532, improvement=0.0000, alpha_new=0.6991
-Round 16: Server fixing with alpha_new=0.6991
-Round 17: r_data=0.3873, r_noniid=0.8649, improvement=0.0000, alpha_new=0.7858
-Round 17: Server fixing with alpha_new=0.7858
-Round 18: r_data=0.3875, r_noniid=0.7451, improvement=0.0000, alpha_new=0.6539
-Round 18: Server fixing with alpha_new=0.6539
-Round 19: r_data=0.3874, r_noniid=0.8011, improvement=0.0000, alpha_new=0.6947
-Round 19: Server fixing with alpha_new=0.6947
-Round 20: r_data=0.3876, r_noniid=0.7834, improvement=0.0000, alpha_new=0.6501
-Round 20: Server fixing with alpha_new=0.6501
-Round 20: Acc=58.36%, Loss=0.0067, D_P_t=0.0187, Alpha=0.6501
-Round 21: r_data=0.3874, r_noniid=0.8446, improvement=0.0026, alpha_new=0.7083
-Round 21: Server fixing with alpha_new=0.7083
-Round 22: r_data=0.3874, r_noniid=0.8846, improvement=0.0000, alpha_new=0.7229
-Round 22: Server fixing with alpha_new=0.7229
-Round 23: r_data=0.3870, r_noniid=0.7796, improvement=0.0000, alpha_new=0.6143
-Round 23: Server fixing with alpha_new=0.6143
-Round 24: r_data=0.3874, r_noniid=0.6209, improvement=0.0000, alpha_new=0.4875
-Round 24: Server fixing with alpha_new=0.4875
-Round 25: r_data=0.3875, r_noniid=0.8420, improvement=0.0160, alpha_new=0.7088
-Round 25: Server fixing with alpha_new=0.7088
-Round 26: r_data=0.3874, r_noniid=0.8303, improvement=0.0000, alpha_new=0.6520
-Round 26: Server fixing with alpha_new=0.6520
-Round 27: r_data=0.3874, r_noniid=0.8218, improvement=0.0000, alpha_new=0.6344
-Round 27: Server fixing with alpha_new=0.6344
-Round 28: r_data=0.3872, r_noniid=0.8340, improvement=0.0200, alpha_new=0.7026
-Round 28: Server fixing with alpha_new=0.7026
-Round 29: r_data=0.3874, r_noniid=0.8147, improvement=0.0000, alpha_new=0.6321
-Round 29: Server fixing with alpha_new=0.6321
-Round 30: r_data=0.3874, r_noniid=0.7369, improvement=0.0000, alpha_new=0.5583
-Round 30: Server fixing with alpha_new=0.5583
-Round 30: Acc=61.25%, Loss=0.0047, D_P_t=0.0145, Alpha=0.5583
-Round 31: r_data=0.3877, r_noniid=0.8561, improvement=0.0171, alpha_new=0.7006
-Round 31: Server fixing with alpha_new=0.7006
-Round 32: r_data=0.3874, r_noniid=0.8451, improvement=0.0000, alpha_new=0.6518
-Round 32: Server fixing with alpha_new=0.6518
-Round 33: r_data=0.3875, r_noniid=0.8582, improvement=0.0000, alpha_new=0.6512
-Round 33: Server fixing with alpha_new=0.6512
-Round 34: r_data=0.3871, r_noniid=0.7225, improvement=0.0000, alpha_new=0.5474
-Round 34: Server fixing with alpha_new=0.5474
-Round 35: r_data=0.3874, r_noniid=0.8323, improvement=0.0130, alpha_new=0.6699
-Round 35: Server fixing with alpha_new=0.6699
-Round 36: r_data=0.3873, r_noniid=0.8596, improvement=0.0000, alpha_new=0.6607
-Round 36: Server fixing with alpha_new=0.6607
-Round 37: r_data=0.3873, r_noniid=0.7811, improvement=0.0000, alpha_new=0.5873
-Round 37: Server fixing with alpha_new=0.5873
-Round 38: r_data=0.3875, r_noniid=0.8520, improvement=0.0195, alpha_new=0.6996
-Round 38: Server fixing with alpha_new=0.6996
-Round 39: r_data=0.3876, r_noniid=0.8477, improvement=0.0000, alpha_new=0.6430
-Round 39: Server fixing with alpha_new=0.6430
-Round 40: r_data=0.3874, r_noniid=0.8313, improvement=0.0000, alpha_new=0.6243
-Round 40: Server fixing with alpha_new=0.6243
-Round 40: Acc=61.75%, Loss=0.0040, D_P_t=0.0255, Alpha=0.6243
-Round 41: r_data=0.3876, r_noniid=0.8222, improvement=0.0034, alpha_new=0.6280
-Round 41: Server fixing with alpha_new=0.6280
-Round 42: r_data=0.3873, r_noniid=0.7891, improvement=0.0000, alpha_new=0.5839
-Round 42: Server fixing with alpha_new=0.5839
-Round 43: r_data=0.3874, r_noniid=0.8932, improvement=0.0167, alpha_new=0.7123
-Round 43: Server fixing with alpha_new=0.7123
-Round 44: r_data=0.3876, r_noniid=0.8818, improvement=0.0000, alpha_new=0.6685
-Round 44: Server fixing with alpha_new=0.6685
-Round 45: r_data=0.3874, r_noniid=0.8780, improvement=0.0000, alpha_new=0.6615
-Round 45: Server fixing with alpha_new=0.6615
-Round 46: r_data=0.3877, r_noniid=0.8157, improvement=0.0028, alpha_new=0.6234
-Round 46: Server fixing with alpha_new=0.6234
-Round 47: r_data=0.3876, r_noniid=0.8110, improvement=0.0000, alpha_new=0.6135
-Round 47: Server fixing with alpha_new=0.6135
-Round 48: r_data=0.3874, r_noniid=0.8876, improvement=0.0077, alpha_new=0.6945
-Round 48: Server fixing with alpha_new=0.6945
-Round 49: r_data=0.3872, r_noniid=0.8788, improvement=0.0000, alpha_new=0.6699
-Round 49: Server fixing with alpha_new=0.6699
-Round 50: r_data=0.3874, r_noniid=0.8503, improvement=0.0000, alpha_new=0.6271
-Round 50: Server fixing with alpha_new=0.6271
-Round 50: Acc=62.25%, Loss=0.0030, D_P_t=0.0294, Alpha=0.6271
-Round 51: r_data=0.3874, r_noniid=0.9159, improvement=0.0315, alpha_new=0.7732
-Round 51: Server fixing with alpha_new=0.7732
-Round 52: r_data=0.3874, r_noniid=0.8488, improvement=0.0042, alpha_new=0.6705
-Round 52: Server fixing with alpha_new=0.6705
-Round 53: r_data=0.3876, r_noniid=0.8382, improvement=0.0000, alpha_new=0.6308
-Round 53: Server fixing with alpha_new=0.6308
-Round 54: r_data=0.3873, r_noniid=0.7406, improvement=0.0015, alpha_new=0.5611
-Round 54: Server fixing with alpha_new=0.5611
-Round 55: r_data=0.3876, r_noniid=0.8365, improvement=0.0029, alpha_new=0.6397
-Round 55: Server fixing with alpha_new=0.6397
-Round 56: r_data=0.3876, r_noniid=0.8647, improvement=0.0095, alpha_new=0.6840
-Round 56: Server fixing with alpha_new=0.6840
-Round 57: r_data=0.3873, r_noniid=0.8266, improvement=0.0000, alpha_new=0.6152
-Round 57: Server fixing with alpha_new=0.6152
-Round 58: r_data=0.3874, r_noniid=0.8186, improvement=0.0010, alpha_new=0.6122
-Round 58: Server fixing with alpha_new=0.6122
-Round 59: r_data=0.3872, r_noniid=0.8019, improvement=0.0015, alpha_new=0.6019
-Round 59: Server fixing with alpha_new=0.6019
-Round 60: r_data=0.3873, r_noniid=0.6240, improvement=0.0000, alpha_new=0.4570
-Round 60: Server fixing with alpha_new=0.4570
-Round 60: Acc=62.42%, Loss=0.0032, D_P_t=0.0086, Alpha=0.4570
-Round 61: r_data=0.3876, r_noniid=0.7146, improvement=0.0060, alpha_new=0.5408
-Round 61: Server fixing with alpha_new=0.5408
- 63%|██████▎   | 63/100 [19:46<04:57,  8.05s/it] 64%|██████▍   | 64/100 [19:53<04:33,  7.61s/it] 65%|██████▌   | 65/100 [20:00<04:15,  7.30s/it] 66%|██████▌   | 66/100 [20:06<04:00,  7.08s/it] 67%|██████▋   | 67/100 [20:13<03:48,  6.92s/it] 68%|██████▊   | 68/100 [20:25<04:32,  8.51s/it] 69%|██████▉   | 69/100 [20:38<05:08,  9.95s/it] 70%|███████   | 70/100 [20:51<05:28, 10.95s/it] 71%|███████   | 71/100 [21:05<05:37, 11.63s/it] 72%|███████▏  | 72/100 [21:18<05:39, 12.12s/it] 73%|███████▎  | 73/100 [21:31<05:30, 12.26s/it] 74%|███████▍  | 74/100 [21:44<05:24, 12.48s/it] 75%|███████▌  | 75/100 [21:50<04:27, 10.70s/it] 76%|███████▌  | 76/100 [21:57<03:48,  9.52s/it] 77%|███████▋  | 77/100 [22:03<03:18,  8.63s/it] 78%|███████▊  | 78/100 [22:10<02:56,  8.01s/it] 79%|███████▉  | 79/100 [22:16<02:39,  7.58s/it] 80%|████████  | 80/100 [22:49<04:59, 14.95s/it] 81%|████████  | 81/100 [23:35<07:43, 24.42s/it] 82%|████████▏ | 82/100 [24:01<07:28, 24.91s/it] 83%|████████▎ | 83/100 [24:33<07:37, 26.92s/it] 84%|████████▍ | 84/100 [24:46<06:05, 22.81s/it] 85%|████████▌ | 85/100 [24:59<04:59, 19.94s/it] 86%|████████▌ | 86/100 [25:12<04:10, 17.90s/it] 87%|████████▋ | 87/100 [25:26<03:34, 16.50s/it] 88%|████████▊ | 88/100 [25:39<03:06, 15.53s/it] 89%|████████▉ | 89/100 [25:52<02:43, 14.84s/it] 90%|█████████ | 90/100 [26:05<02:23, 14.35s/it] 91%|█████████ | 91/100 [26:15<01:55, 12.85s/it] 92%|█████████▏| 92/100 [26:21<01:28, 11.01s/it] 93%|█████████▎| 93/100 [26:28<01:07,  9.66s/it] 94%|█████████▍| 94/100 [26:35<00:52,  8.73s/it] 95%|█████████▌| 95/100 [26:41<00:40,  8.08s/it] 96%|█████████▌| 96/100 [26:48<00:30,  7.63s/it] 97%|█████████▋| 97/100 [26:54<00:21,  7.31s/it] 98%|█████████▊| 98/100 [27:01<00:14,  7.08s/it] 99%|█████████▉| 99/100 [27:07<00:06,  6.92s/it]100%|██████████| 100/100 [27:14<00:00,  6.82s/it]100%|██████████| 100/100 [27:14<00:00, 16.34s/it]
-Round 62: r_data=0.3877, r_noniid=0.7771, improvement=0.0000, alpha_new=0.5731
-Round 62: Server fixing with alpha_new=0.5731
-Round 63: r_data=0.3873, r_noniid=0.8654, improvement=0.0192, alpha_new=0.6960
-Round 63: Server fixing with alpha_new=0.6960
-Round 64: r_data=0.3874, r_noniid=0.8649, improvement=0.0000, alpha_new=0.6391
-Round 64: Server fixing with alpha_new=0.6391
-Round 65: r_data=0.3873, r_noniid=0.7882, improvement=0.0133, alpha_new=0.6214
-Round 65: Server fixing with alpha_new=0.6214
-Round 66: r_data=0.3874, r_noniid=0.8040, improvement=0.0000, alpha_new=0.5927
-Round 66: Server fixing with alpha_new=0.5927
-Round 67: r_data=0.3871, r_noniid=0.7113, improvement=0.0000, alpha_new=0.5203
-Round 67: Server fixing with alpha_new=0.5203
-Round 68: r_data=0.3874, r_noniid=0.9157, improvement=0.0424, alpha_new=0.8020
-Round 68: Server fixing with alpha_new=0.8020
-Round 69: r_data=0.3874, r_noniid=0.8172, improvement=0.0000, alpha_new=0.6015
-Round 69: Server fixing with alpha_new=0.6015
-Round 70: r_data=0.3874, r_noniid=0.7478, improvement=0.0000, alpha_new=0.5430
-Round 70: Server fixing with alpha_new=0.5430
-Round 70: Acc=62.47%, Loss=0.0025, D_P_t=0.0154, Alpha=0.5430
-Round 71: r_data=0.3877, r_noniid=0.6734, improvement=0.0125, alpha_new=0.5244
-Round 71: Server fixing with alpha_new=0.5244
-Round 72: r_data=0.3874, r_noniid=0.8502, improvement=0.0000, alpha_new=0.6249
-Round 72: Server fixing with alpha_new=0.6249
-Round 73: r_data=0.3872, r_noniid=0.8160, improvement=0.0069, alpha_new=0.6201
-Round 73: Server fixing with alpha_new=0.6201
-Round 74: r_data=0.3877, r_noniid=0.8412, improvement=0.0016, alpha_new=0.6308
-Round 74: Server fixing with alpha_new=0.6308
-Round 75: r_data=0.3878, r_noniid=0.7939, improvement=0.0000, alpha_new=0.5855
-Round 75: Server fixing with alpha_new=0.5855
-Round 76: r_data=0.3871, r_noniid=0.5114, improvement=0.0000, alpha_new=0.3762
-Round 76: Server fixing with alpha_new=0.3762
-Round 77: r_data=0.3874, r_noniid=0.8555, improvement=0.0052, alpha_new=0.6454
-Round 77: Server fixing with alpha_new=0.6454
-Round 78: r_data=0.3874, r_noniid=0.8415, improvement=0.0000, alpha_new=0.6218
-Round 78: Server fixing with alpha_new=0.6218
-Round 79: r_data=0.3876, r_noniid=0.8374, improvement=0.0065, alpha_new=0.6386
-Round 79: Server fixing with alpha_new=0.6386
-Round 80: r_data=0.3870, r_noniid=0.8182, improvement=0.0029, alpha_new=0.6191
-Round 80: Server fixing with alpha_new=0.6191
-Round 80: Acc=62.17%, Loss=0.0027, D_P_t=0.0233, Alpha=0.6191
-Round 81: r_data=0.3872, r_noniid=0.8234, improvement=0.0000, alpha_new=0.6095
-Round 81: Server fixing with alpha_new=0.6095
-Round 82: r_data=0.3877, r_noniid=0.8953, improvement=0.0079, alpha_new=0.6878
-Round 82: Server fixing with alpha_new=0.6878
-Round 83: r_data=0.3874, r_noniid=0.7347, improvement=0.0000, alpha_new=0.5365
-Round 83: Server fixing with alpha_new=0.5365
-Round 84: r_data=0.3876, r_noniid=0.8055, improvement=0.0027, alpha_new=0.5966
-Round 84: Server fixing with alpha_new=0.5966
-Round 85: r_data=0.3874, r_noniid=0.8884, improvement=0.0101, alpha_new=0.6827
-Round 85: Server fixing with alpha_new=0.6827
-Round 86: r_data=0.3873, r_noniid=0.7730, improvement=0.0005, alpha_new=0.5777
-Round 86: Server fixing with alpha_new=0.5777
-Round 87: r_data=0.3878, r_noniid=0.7740, improvement=0.0000, alpha_new=0.5653
-Round 87: Server fixing with alpha_new=0.5653
-Round 88: r_data=0.3875, r_noniid=0.8302, improvement=0.0048, alpha_new=0.6203
-Round 88: Server fixing with alpha_new=0.6203
-Round 89: r_data=0.3873, r_noniid=0.8912, improvement=0.0118, alpha_new=0.6914
-Round 89: Server fixing with alpha_new=0.6914
-Round 90: r_data=0.3876, r_noniid=0.6801, improvement=0.0000, alpha_new=0.4974
-Round 90: Server fixing with alpha_new=0.4974
-Round 90: Acc=62.53%, Loss=0.0023, D_P_t=0.0110, Alpha=0.4974
-Round 91: r_data=0.3877, r_noniid=0.8478, improvement=0.0000, alpha_new=0.6161
-Round 91: Server fixing with alpha_new=0.6161
-Round 92: r_data=0.3872, r_noniid=0.7605, improvement=0.0114, alpha_new=0.5852
-Round 92: Server fixing with alpha_new=0.5852
-Round 93: r_data=0.3875, r_noniid=0.8380, improvement=0.0065, alpha_new=0.6397
-Round 93: Server fixing with alpha_new=0.6397
-Round 94: r_data=0.3877, r_noniid=0.8073, improvement=0.0000, alpha_new=0.5876
-Round 94: Server fixing with alpha_new=0.5876
-Round 95: r_data=0.3874, r_noniid=0.7871, improvement=0.0115, alpha_new=0.6065
-Round 95: Server fixing with alpha_new=0.6065
-Round 96: r_data=0.3874, r_noniid=0.7390, improvement=0.0000, alpha_new=0.5367
-Round 96: Server fixing with alpha_new=0.5367
-Round 97: r_data=0.3874, r_noniid=0.8828, improvement=0.0150, alpha_new=0.6873
-Round 97: Server fixing with alpha_new=0.6873
-Round 98: r_data=0.3878, r_noniid=0.8184, improvement=0.0000, alpha_new=0.5965
-Round 98: Server fixing with alpha_new=0.5965
-Round 99: r_data=0.3874, r_noniid=0.8288, improvement=0.0000, alpha_new=0.5995
-Round 99: Server fixing with alpha_new=0.5995
-
-Results for lambda_val = 2.0:
-FedDU_Mut - 第20轮测试精度: 57.73%, 最终测试精度: 63.23%, 最终训练损失: 0.0022
-
---- 测试 lambda_val = 3.0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<11:05,  6.72s/it]  2%|▏         | 2/100 [00:13<10:50,  6.64s/it]  3%|▎         | 3/100 [00:19<10:40,  6.60s/it]  4%|▍         | 4/100 [00:26<10:33,  6.60s/it]  5%|▌         | 5/100 [00:33<10:25,  6.59s/it]  6%|▌         | 6/100 [00:39<10:18,  6.57s/it]  7%|▋         | 7/100 [00:46<10:10,  6.56s/it]  8%|▊         | 8/100 [00:52<10:03,  6.56s/it]  9%|▉         | 9/100 [00:59<09:56,  6.56s/it] 10%|█         | 10/100 [01:05<09:50,  6.56s/it] 11%|█         | 11/100 [01:12<09:50,  6.63s/it] 12%|█▏        | 12/100 [01:19<09:41,  6.61s/it] 13%|█▎        | 13/100 [01:25<09:34,  6.60s/it] 14%|█▍        | 14/100 [01:32<09:27,  6.60s/it] 15%|█▌        | 15/100 [01:38<09:19,  6.59s/it] 16%|█▌        | 16/100 [01:45<09:12,  6.58s/it] 17%|█▋        | 17/100 [01:52<09:06,  6.58s/it] 18%|█▊        | 18/100 [01:58<08:59,  6.58s/it] 19%|█▉        | 19/100 [02:05<08:52,  6.57s/it] 20%|██        | 20/100 [02:11<08:45,  6.57s/it] 21%|██        | 21/100 [02:18<08:42,  6.62s/it] 22%|██▏       | 22/100 [02:24<08:34,  6.60s/it] 23%|██▎       | 23/100 [02:31<08:26,  6.58s/it] 24%|██▍       | 24/100 [02:38<08:19,  6.57s/it] 25%|██▌       | 25/100 [02:44<08:12,  6.57s/it] 26%|██▌       | 26/100 [02:51<08:05,  6.56s/it] 27%|██▋       | 27/100 [02:57<07:58,  6.56s/it] 28%|██▊       | 28/100 [03:04<07:52,  6.56s/it] 29%|██▉       | 29/100 [03:10<07:45,  6.55s/it] 30%|███       | 30/100 [03:17<07:38,  6.55s/it] 31%|███       | 31/100 [03:23<07:32,  6.55s/it] 32%|███▏      | 32/100 [03:30<07:30,  6.62s/it] 33%|███▎      | 33/100 [03:37<07:22,  6.60s/it] 34%|███▍      | 34/100 [03:43<07:14,  6.59s/it] 35%|███▌      | 35/100 [03:50<07:07,  6.58s/it] 36%|███▌      | 36/100 [03:56<07:00,  6.57s/it] 37%|███▋      | 37/100 [04:03<06:53,  6.56s/it] 38%|███▊      | 38/100 [04:10<06:46,  6.56s/it] 39%|███▉      | 39/100 [04:16<06:40,  6.56s/it] 40%|████      | 40/100 [04:23<06:33,  6.55s/it] 41%|████      | 41/100 [04:29<06:26,  6.56s/it] 42%|████▏     | 42/100 [04:36<06:23,  6.61s/it] 43%|████▎     | 43/100 [04:42<06:15,  6.59s/it] 44%|████▍     | 44/100 [04:49<06:08,  6.58s/it] 45%|████▌     | 45/100 [04:56<06:01,  6.57s/it] 46%|████▌     | 46/100 [05:02<05:54,  6.57s/it] 47%|████▋     | 47/100 [05:09<05:47,  6.56s/it] 48%|████▊     | 48/100 [05:15<05:40,  6.56s/it] 49%|████▉     | 49/100 [05:22<05:34,  6.55s/it] 50%|█████     | 50/100 [05:28<05:27,  6.56s/it] 51%|█████     | 51/100 [05:35<05:21,  6.55s/it] 52%|█████▏    | 52/100 [05:41<05:14,  6.56s/it] 53%|█████▎    | 53/100 [05:48<05:10,  6.61s/it] 54%|█████▍    | 54/100 [05:55<05:03,  6.59s/it] 55%|█████▌    | 55/100 [06:01<04:56,  6.58s/it] 56%|█████▌    | 56/100 [06:08<04:49,  6.57s/it] 57%|█████▋    | 57/100 [06:14<04:42,  6.57s/it] 58%|█████▊    | 58/100 [06:21<04:36,  6.58s/it] 59%|█████▉    | 59/100 [06:28<04:29,  6.58s/it] 60%|██████    | 60/100 [06:34<04:22,  6.57s/it] 61%|██████    | 61/100 [06:41<04:16,  6.57s/it] 62%|██████▏   | 62/100 [06:47<04:09,  6.57s/it]Round 0: r_data=0.3875, r_noniid=0.8156, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=29.01%, Loss=0.0291, D_P_t=0.0229, Alpha=1.0000
-Round 1: r_data=0.3877, r_noniid=0.7879, improvement=0.0000, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3877, r_noniid=0.7822, improvement=0.3272, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3874, r_noniid=0.7983, improvement=0.0000, alpha_new=1.0000
-Round 3: Server fixing with alpha_new=1.0000
-Round 4: r_data=0.3874, r_noniid=0.8323, improvement=0.0466, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3873, r_noniid=0.4644, improvement=0.0373, alpha_new=0.8164
-Round 5: Server fixing with alpha_new=0.8164
-Round 6: r_data=0.3874, r_noniid=0.8946, improvement=0.0281, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3873, r_noniid=0.8003, improvement=0.0000, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3873, r_noniid=0.8628, improvement=0.1526, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3872, r_noniid=0.7934, improvement=0.0000, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3877, r_noniid=0.8609, improvement=0.0000, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=52.26%, Loss=0.0165, D_P_t=0.0321, Alpha=1.0000
-Round 11: r_data=0.3874, r_noniid=0.6084, improvement=0.0003, alpha_new=0.7820
-Round 11: Server fixing with alpha_new=0.7820
-Round 12: r_data=0.3875, r_noniid=0.7364, improvement=0.0000, alpha_new=0.8743
-Round 12: Server fixing with alpha_new=0.8743
-Round 13: r_data=0.3875, r_noniid=0.7877, improvement=0.0000, alpha_new=0.8276
-Round 13: Server fixing with alpha_new=0.8276
-Round 14: r_data=0.3877, r_noniid=0.8206, improvement=0.0668, alpha_new=1.0000
-Round 14: Server fixing with alpha_new=1.0000
-Round 15: r_data=0.3875, r_noniid=0.8410, improvement=0.0000, alpha_new=0.8213
-Round 15: Server fixing with alpha_new=0.8213
-Round 16: r_data=0.3873, r_noniid=0.8292, improvement=0.0000, alpha_new=0.7520
-Round 16: Server fixing with alpha_new=0.7520
-Round 17: r_data=0.3872, r_noniid=0.7985, improvement=0.0000, alpha_new=0.7063
-Round 17: Server fixing with alpha_new=0.7063
-Round 18: r_data=0.3877, r_noniid=0.7928, improvement=0.0000, alpha_new=0.6781
-Round 18: Server fixing with alpha_new=0.6781
-Round 19: r_data=0.3872, r_noniid=0.6806, improvement=0.0000, alpha_new=0.5555
-Round 19: Server fixing with alpha_new=0.5555
-Round 20: r_data=0.3874, r_noniid=0.8456, improvement=0.0178, alpha_new=0.7609
-Round 20: Server fixing with alpha_new=0.7609
-Round 20: Acc=59.27%, Loss=0.0080, D_P_t=0.0284, Alpha=0.7609
-Round 21: r_data=0.3873, r_noniid=0.7902, improvement=0.0000, alpha_new=0.6269
-Round 21: Server fixing with alpha_new=0.6269
-Round 22: r_data=0.3874, r_noniid=0.8750, improvement=0.0012, alpha_new=0.6991
-Round 22: Server fixing with alpha_new=0.6991
-Round 23: r_data=0.3874, r_noniid=0.8748, improvement=0.0000, alpha_new=0.6807
-Round 23: Server fixing with alpha_new=0.6807
-Round 24: r_data=0.3874, r_noniid=0.8354, improvement=0.0129, alpha_new=0.7010
-Round 24: Server fixing with alpha_new=0.7010
-Round 25: r_data=0.3877, r_noniid=0.8630, improvement=0.0000, alpha_new=0.6762
-Round 25: Server fixing with alpha_new=0.6762
-Round 26: r_data=0.3878, r_noniid=0.7421, improvement=0.0000, alpha_new=0.5706
-Round 26: Server fixing with alpha_new=0.5706
-Round 27: r_data=0.3876, r_noniid=0.7471, improvement=0.0000, alpha_new=0.5694
-Round 27: Server fixing with alpha_new=0.5694
-Round 28: r_data=0.3875, r_noniid=0.8773, improvement=0.0038, alpha_new=0.6838
-Round 28: Server fixing with alpha_new=0.6838
-Round 29: r_data=0.3874, r_noniid=0.8998, improvement=0.0000, alpha_new=0.6785
-Round 29: Server fixing with alpha_new=0.6785
-Round 30: r_data=0.3874, r_noniid=0.8653, improvement=0.0129, alpha_new=0.7045
-Round 30: Server fixing with alpha_new=0.7045
-Round 30: Acc=61.94%, Loss=0.0046, D_P_t=0.0333, Alpha=0.7045
-Round 31: r_data=0.3874, r_noniid=0.8070, improvement=0.0000, alpha_new=0.5992
-Round 31: Server fixing with alpha_new=0.5992
-Round 32: r_data=0.3874, r_noniid=0.9024, improvement=0.0135, alpha_new=0.7251
-Round 32: Server fixing with alpha_new=0.7251
-Round 33: r_data=0.3874, r_noniid=0.9124, improvement=0.0000, alpha_new=0.6766
-Round 33: Server fixing with alpha_new=0.6766
-Round 34: r_data=0.3873, r_noniid=0.8329, improvement=0.0194, alpha_new=0.6953
-Round 34: Server fixing with alpha_new=0.6953
-Round 35: r_data=0.3874, r_noniid=0.8333, improvement=0.0000, alpha_new=0.6136
-Round 35: Server fixing with alpha_new=0.6136
-Round 36: r_data=0.3874, r_noniid=0.7362, improvement=0.0048, alpha_new=0.5609
-Round 36: Server fixing with alpha_new=0.5609
-Round 37: r_data=0.3876, r_noniid=0.8289, improvement=0.0037, alpha_new=0.6304
-Round 37: Server fixing with alpha_new=0.6304
-Round 38: r_data=0.3874, r_noniid=0.8624, improvement=0.0000, alpha_new=0.6372
-Round 38: Server fixing with alpha_new=0.6372
-Round 39: r_data=0.3872, r_noniid=0.7011, improvement=0.0000, alpha_new=0.5121
-Round 39: Server fixing with alpha_new=0.5121
-Round 40: r_data=0.3873, r_noniid=0.7997, improvement=0.0000, alpha_new=0.5840
-Round 40: Server fixing with alpha_new=0.5840
-Round 40: Acc=62.94%, Loss=0.0028, D_P_t=0.0207, Alpha=0.5840
-Round 41: r_data=0.3873, r_noniid=0.8616, improvement=0.0188, alpha_new=0.7051
-Round 41: Server fixing with alpha_new=0.7051
-Round 42: r_data=0.3873, r_noniid=0.8128, improvement=0.0000, alpha_new=0.5961
-Round 42: Server fixing with alpha_new=0.5961
-Round 43: r_data=0.3873, r_noniid=0.8474, improvement=0.0085, alpha_new=0.6557
-Round 43: Server fixing with alpha_new=0.6557
-Round 44: r_data=0.3875, r_noniid=0.9102, improvement=0.0112, alpha_new=0.7229
-Round 44: Server fixing with alpha_new=0.7229
-Round 45: r_data=0.3876, r_noniid=0.7826, improvement=0.0000, alpha_new=0.5783
-Round 45: Server fixing with alpha_new=0.5783
-Round 46: r_data=0.3877, r_noniid=0.7415, improvement=0.0000, alpha_new=0.5434
-Round 46: Server fixing with alpha_new=0.5434
-Round 47: r_data=0.3875, r_noniid=0.7209, improvement=0.0014, alpha_new=0.5338
-Round 47: Server fixing with alpha_new=0.5338
-Round 48: r_data=0.3874, r_noniid=0.9356, improvement=0.0253, alpha_new=0.7910
-Round 48: Server fixing with alpha_new=0.7910
-Round 49: r_data=0.3875, r_noniid=0.8435, improvement=0.0000, alpha_new=0.6209
-Round 49: Server fixing with alpha_new=0.6209
-Round 50: r_data=0.3874, r_noniid=0.9204, improvement=0.0237, alpha_new=0.7746
-Round 50: Server fixing with alpha_new=0.7746
-Round 50: Acc=62.61%, Loss=0.0039, D_P_t=0.0599, Alpha=0.7746
-Round 51: r_data=0.3875, r_noniid=0.8753, improvement=0.0000, alpha_new=0.6484
-Round 51: Server fixing with alpha_new=0.6484
-Round 52: r_data=0.3871, r_noniid=0.8566, improvement=0.0023, alpha_new=0.6430
-Round 52: Server fixing with alpha_new=0.6430
-Round 53: r_data=0.3874, r_noniid=0.8633, improvement=0.0000, alpha_new=0.6275
-Round 53: Server fixing with alpha_new=0.6275
-Round 54: r_data=0.3875, r_noniid=0.9074, improvement=0.0114, alpha_new=0.7061
-Round 54: Server fixing with alpha_new=0.7061
-Round 55: r_data=0.3874, r_noniid=0.8703, improvement=0.0000, alpha_new=0.6416
-Round 55: Server fixing with alpha_new=0.6416
-Round 56: r_data=0.3875, r_noniid=0.7933, improvement=0.0132, alpha_new=0.6373
-Round 56: Server fixing with alpha_new=0.6373
-Round 57: r_data=0.3875, r_noniid=0.8888, improvement=0.0000, alpha_new=0.6620
-Round 57: Server fixing with alpha_new=0.6620
-Round 58: r_data=0.3873, r_noniid=0.8295, improvement=0.0000, alpha_new=0.6081
-Round 58: Server fixing with alpha_new=0.6081
-Round 59: r_data=0.3876, r_noniid=0.9227, improvement=0.0183, alpha_new=0.7524
-Round 59: Server fixing with alpha_new=0.7524
-Round 60: r_data=0.3877, r_noniid=0.8244, improvement=0.0000, alpha_new=0.5919
-Round 60: Server fixing with alpha_new=0.5919
-Round 60: Acc=63.03%, Loss=0.0028, D_P_t=0.0243, Alpha=0.5919
-Round 61: r_data=0.3873, r_noniid=0.8128, improvement=0.0038, alpha_new=0.5982
-Round 61: Server fixing with alpha_new=0.5982
- 63%|██████▎   | 63/100 [06:54<04:05,  6.62s/it] 64%|██████▍   | 64/100 [07:01<03:57,  6.60s/it] 65%|██████▌   | 65/100 [07:07<03:50,  6.58s/it] 66%|██████▌   | 66/100 [07:14<03:43,  6.58s/it] 67%|██████▋   | 67/100 [07:20<03:36,  6.57s/it] 68%|██████▊   | 68/100 [07:27<03:30,  6.56s/it] 69%|██████▉   | 69/100 [07:33<03:23,  6.56s/it] 70%|███████   | 70/100 [07:40<03:16,  6.56s/it] 71%|███████   | 71/100 [07:46<03:10,  6.56s/it] 72%|███████▏  | 72/100 [07:53<03:03,  6.56s/it] 73%|███████▎  | 73/100 [08:00<02:57,  6.56s/it] 74%|███████▍  | 74/100 [08:06<02:52,  6.62s/it] 75%|███████▌  | 75/100 [08:13<02:45,  6.60s/it] 76%|███████▌  | 76/100 [08:19<02:38,  6.59s/it] 77%|███████▋  | 77/100 [08:26<02:31,  6.58s/it] 78%|███████▊  | 78/100 [08:33<02:24,  6.57s/it] 79%|███████▉  | 79/100 [08:39<02:17,  6.57s/it] 80%|████████  | 80/100 [08:46<02:11,  6.57s/it] 81%|████████  | 81/100 [08:52<02:04,  6.57s/it] 82%|████████▏ | 82/100 [08:59<01:58,  6.57s/it] 83%|████████▎ | 83/100 [09:05<01:51,  6.57s/it] 84%|████████▍ | 84/100 [09:12<01:45,  6.62s/it] 85%|████████▌ | 85/100 [09:19<01:38,  6.60s/it] 86%|████████▌ | 86/100 [09:25<01:32,  6.58s/it] 87%|████████▋ | 87/100 [09:32<01:25,  6.58s/it] 88%|████████▊ | 88/100 [09:38<01:18,  6.57s/it] 89%|████████▉ | 89/100 [09:45<01:12,  6.57s/it] 90%|█████████ | 90/100 [09:51<01:05,  6.56s/it] 91%|█████████ | 91/100 [09:58<00:59,  6.56s/it] 92%|█████████▏| 92/100 [10:05<00:52,  6.56s/it] 93%|█████████▎| 93/100 [10:11<00:46,  6.61s/it] 94%|█████████▍| 94/100 [10:18<00:39,  6.60s/it] 95%|█████████▌| 95/100 [10:24<00:32,  6.58s/it] 96%|█████████▌| 96/100 [10:31<00:26,  6.58s/it] 97%|█████████▋| 97/100 [10:38<00:19,  6.57s/it] 98%|█████████▊| 98/100 [10:44<00:13,  6.56s/it] 99%|█████████▉| 99/100 [10:51<00:06,  6.56s/it]100%|██████████| 100/100 [10:57<00:00,  6.56s/it]100%|██████████| 100/100 [10:57<00:00,  6.58s/it]
-Round 62: r_data=0.3873, r_noniid=0.8244, improvement=0.0163, alpha_new=0.6602
-Round 62: Server fixing with alpha_new=0.6602
-Round 63: r_data=0.3877, r_noniid=0.7571, improvement=0.0000, alpha_new=0.5446
-Round 63: Server fixing with alpha_new=0.5446
-Round 64: r_data=0.3871, r_noniid=0.8366, improvement=0.0000, alpha_new=0.5957
-Round 64: Server fixing with alpha_new=0.5957
-Round 65: r_data=0.3873, r_noniid=0.8556, improvement=0.0152, alpha_new=0.6711
-Round 65: Server fixing with alpha_new=0.6711
-Round 66: r_data=0.3874, r_noniid=0.8731, improvement=0.0000, alpha_new=0.6281
-Round 66: Server fixing with alpha_new=0.6281
-Round 67: r_data=0.3871, r_noniid=0.8152, improvement=0.0100, alpha_new=0.6260
-Round 67: Server fixing with alpha_new=0.6260
-Round 68: r_data=0.3876, r_noniid=0.7587, improvement=0.0000, alpha_new=0.5423
-Round 68: Server fixing with alpha_new=0.5423
-Round 69: r_data=0.3876, r_noniid=0.8299, improvement=0.0000, alpha_new=0.5922
-Round 69: Server fixing with alpha_new=0.5922
-Round 70: r_data=0.3874, r_noniid=0.8104, improvement=0.0019, alpha_new=0.5855
-Round 70: Server fixing with alpha_new=0.5855
-Round 70: Acc=63.35%, Loss=0.0024, D_P_t=0.0222, Alpha=0.5855
-Round 71: r_data=0.3874, r_noniid=0.7742, improvement=0.0051, alpha_new=0.5740
-Round 71: Server fixing with alpha_new=0.5740
-Round 72: r_data=0.3873, r_noniid=0.8158, improvement=0.0000, alpha_new=0.5818
-Round 72: Server fixing with alpha_new=0.5818
-Round 73: r_data=0.3873, r_noniid=0.8297, improvement=0.0049, alpha_new=0.6115
-Round 73: Server fixing with alpha_new=0.6115
-Round 74: r_data=0.3874, r_noniid=0.8386, improvement=0.0060, alpha_new=0.6276
-Round 74: Server fixing with alpha_new=0.6276
-Round 75: r_data=0.3877, r_noniid=0.7906, improvement=0.0000, alpha_new=0.5726
-Round 75: Server fixing with alpha_new=0.5726
-Round 76: r_data=0.3872, r_noniid=0.7640, improvement=0.0000, alpha_new=0.5478
-Round 76: Server fixing with alpha_new=0.5478
-Round 77: r_data=0.3875, r_noniid=0.8701, improvement=0.0014, alpha_new=0.6301
-Round 77: Server fixing with alpha_new=0.6301
-Round 78: r_data=0.3877, r_noniid=0.7392, improvement=0.0000, alpha_new=0.5266
-Round 78: Server fixing with alpha_new=0.5266
-Round 79: r_data=0.3874, r_noniid=0.7444, improvement=0.0019, alpha_new=0.5374
-Round 79: Server fixing with alpha_new=0.5374
-Round 80: r_data=0.3875, r_noniid=0.7228, improvement=0.0065, alpha_new=0.5415
-Round 80: Server fixing with alpha_new=0.5415
-Round 80: Acc=63.35%, Loss=0.0022, D_P_t=0.0135, Alpha=0.5415
-Round 81: r_data=0.3872, r_noniid=0.7967, improvement=0.0000, alpha_new=0.5722
-Round 81: Server fixing with alpha_new=0.5722
-Round 82: r_data=0.3872, r_noniid=0.8929, improvement=0.0076, alpha_new=0.6723
-Round 82: Server fixing with alpha_new=0.6723
-Round 83: r_data=0.3877, r_noniid=0.6901, improvement=0.0000, alpha_new=0.4949
-Round 83: Server fixing with alpha_new=0.4949
-Round 84: r_data=0.3875, r_noniid=0.9087, improvement=0.0230, alpha_new=0.7459
-Round 84: Server fixing with alpha_new=0.7459
-Round 85: r_data=0.3875, r_noniid=0.8348, improvement=0.0000, alpha_new=0.6027
-Round 85: Server fixing with alpha_new=0.6027
-Round 86: r_data=0.3875, r_noniid=0.9125, improvement=0.0188, alpha_new=0.7362
-Round 86: Server fixing with alpha_new=0.7362
-Round 87: r_data=0.3871, r_noniid=0.6413, improvement=0.0000, alpha_new=0.4507
-Round 87: Server fixing with alpha_new=0.4507
-Round 88: r_data=0.3874, r_noniid=0.8051, improvement=0.0116, alpha_new=0.6126
-Round 88: Server fixing with alpha_new=0.6126
-Round 89: r_data=0.3873, r_noniid=0.6665, improvement=0.0000, alpha_new=0.4668
-Round 89: Server fixing with alpha_new=0.4668
-Round 90: r_data=0.3875, r_noniid=0.7246, improvement=0.0016, alpha_new=0.5140
-Round 90: Server fixing with alpha_new=0.5140
-Round 90: Acc=63.74%, Loss=0.0026, D_P_t=0.0136, Alpha=0.5140
-Round 91: r_data=0.3874, r_noniid=0.8242, improvement=0.0143, alpha_new=0.6363
-Round 91: Server fixing with alpha_new=0.6363
-Round 92: r_data=0.3875, r_noniid=0.7119, improvement=0.0000, alpha_new=0.5060
-Round 92: Server fixing with alpha_new=0.5060
-Round 93: r_data=0.3878, r_noniid=0.6364, improvement=0.0028, alpha_new=0.4634
-Round 93: Server fixing with alpha_new=0.4634
-Round 94: r_data=0.3874, r_noniid=0.7710, improvement=0.0000, alpha_new=0.5483
-Round 94: Server fixing with alpha_new=0.5483
-Round 95: r_data=0.3874, r_noniid=0.8431, improvement=0.0201, alpha_new=0.6804
-Round 95: Server fixing with alpha_new=0.6804
-Round 96: r_data=0.3874, r_noniid=0.8641, improvement=0.0000, alpha_new=0.6195
-Round 96: Server fixing with alpha_new=0.6195
-Round 97: r_data=0.3874, r_noniid=0.6396, improvement=0.0000, alpha_new=0.4550
-Round 97: Server fixing with alpha_new=0.4550
-Round 98: r_data=0.3874, r_noniid=0.8327, improvement=0.0000, alpha_new=0.5912
-Round 98: Server fixing with alpha_new=0.5912
-Round 99: r_data=0.3875, r_noniid=0.7179, improvement=0.0000, alpha_new=0.5059
-Round 99: Server fixing with alpha_new=0.5059
-
-Results for lambda_val = 3.0:
-FedDU_Mut - 第20轮测试精度: 58.39%, 最终测试精度: 63.79%, 最终训练损失: 0.0019
-
---- 测试 lambda_val = 4.0 ---
-FedDU-Mut初始设置:
-  服务器数据量: 2500
-  服务器数据非IID度: 0.005182
-  Mutation幅度(radius): 5.0
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:06<10:54,  6.61s/it]  2%|▏         | 2/100 [00:13<10:45,  6.58s/it]  3%|▎         | 3/100 [00:23<13:16,  8.21s/it]  4%|▍         | 4/100 [00:31<12:54,  8.06s/it]  5%|▌         | 5/100 [01:03<26:24, 16.68s/it]  6%|▌         | 6/100 [01:16<24:20, 15.53s/it]  7%|▋         | 7/100 [01:26<21:06, 13.62s/it]  8%|▊         | 8/100 [01:32<17:34, 11.46s/it]  9%|▉         | 9/100 [01:39<15:03,  9.93s/it] 10%|█         | 10/100 [01:46<13:21,  8.90s/it] 11%|█         | 11/100 [01:52<12:08,  8.19s/it] 12%|█▏        | 12/100 [01:59<11:17,  7.70s/it] 13%|█▎        | 13/100 [02:05<10:40,  7.36s/it] 14%|█▍        | 14/100 [02:28<17:21, 12.12s/it] 15%|█▌        | 15/100 [02:47<19:48, 13.98s/it] 16%|█▌        | 16/100 [03:08<22:36, 16.15s/it] 17%|█▋        | 17/100 [03:19<20:19, 14.70s/it] 18%|█▊        | 18/100 [03:26<16:45, 12.26s/it] 19%|█▉        | 19/100 [04:04<26:58, 19.98s/it] 20%|██        | 20/100 [04:50<37:10, 27.89s/it] 21%|██        | 21/100 [05:36<43:56, 33.38s/it] 22%|██▏       | 22/100 [06:22<48:20, 37.18s/it] 23%|██▎       | 23/100 [07:09<51:20, 40.01s/it] 24%|██▍       | 24/100 [07:56<53:26, 42.19s/it] 25%|██▌       | 25/100 [08:43<54:29, 43.59s/it] 26%|██▌       | 26/100 [09:26<53:24, 43.31s/it] 27%|██▋       | 27/100 [10:13<53:58, 44.37s/it] 28%|██▊       | 28/100 [10:59<54:00, 45.01s/it] 29%|██▉       | 29/100 [11:45<53:45, 45.43s/it] 30%|███       | 30/100 [12:33<53:39, 45.99s/it] 31%|███       | 31/100 [13:19<53:07, 46.19s/it] 32%|███▏      | 32/100 [14:06<52:32, 46.35s/it] 33%|███▎      | 33/100 [14:53<51:51, 46.44s/it] 34%|███▍      | 34/100 [15:39<50:58, 46.34s/it] 35%|███▌      | 35/100 [16:25<50:10, 46.32s/it] 36%|███▌      | 36/100 [17:11<49:20, 46.26s/it] 37%|███▋      | 37/100 [17:57<48:30, 46.20s/it] 38%|███▊      | 38/100 [18:44<47:48, 46.27s/it] 39%|███▉      | 39/100 [19:30<47:00, 46.24s/it] 40%|████      | 40/100 [20:16<46:13, 46.22s/it] 41%|████      | 41/100 [21:03<45:39, 46.42s/it] 42%|████▏     | 42/100 [21:49<44:49, 46.37s/it] 43%|████▎     | 43/100 [22:35<43:59, 46.30s/it] 44%|████▍     | 44/100 [23:22<43:11, 46.28s/it] 45%|████▌     | 45/100 [24:08<42:26, 46.30s/it] 46%|████▌     | 46/100 [24:54<41:40, 46.31s/it] 47%|████▋     | 47/100 [25:40<40:49, 46.22s/it] 48%|████▊     | 48/100 [26:26<39:56, 46.09s/it] 49%|████▉     | 49/100 [27:12<39:10, 46.09s/it] 50%|█████     | 50/100 [27:58<38:27, 46.15s/it] 51%|█████     | 51/100 [28:45<37:39, 46.11s/it] 52%|█████▏    | 52/100 [29:31<37:03, 46.32s/it] 53%|█████▎    | 53/100 [30:18<36:15, 46.28s/it] 54%|█████▍    | 54/100 [31:03<35:23, 46.16s/it] 55%|█████▌    | 55/100 [31:50<34:38, 46.18s/it] 56%|█████▌    | 56/100 [32:36<33:54, 46.25s/it] 57%|█████▋    | 57/100 [33:22<33:03, 46.12s/it] 58%|█████▊    | 58/100 [34:08<32:13, 46.04s/it] 59%|█████▉    | 59/100 [34:54<31:24, 45.97s/it] 60%|██████    | 60/100 [35:40<30:40, 46.01s/it] 61%|██████    | 61/100 [36:26<29:55, 46.04s/it] 62%|██████▏   | 62/100 [37:12<29:08, 46.01s/it]Round 0: r_data=0.3875, r_noniid=0.8672, improvement=0.0000, alpha_new=1.0000
-Round 0: Server fixing with alpha_new=1.0000
-Round 0: Acc=26.40%, Loss=0.0277, D_P_t=0.0338, Alpha=1.0000
-Round 1: r_data=0.3874, r_noniid=0.8634, improvement=0.4016, alpha_new=1.0000
-Round 1: Server fixing with alpha_new=1.0000
-Round 2: r_data=0.3875, r_noniid=0.8691, improvement=0.0000, alpha_new=1.0000
-Round 2: Server fixing with alpha_new=1.0000
-Round 3: r_data=0.3874, r_noniid=0.5708, improvement=0.0000, alpha_new=0.7880
-Round 3: Server fixing with alpha_new=0.7880
-Round 4: r_data=0.3872, r_noniid=0.8563, improvement=0.0835, alpha_new=1.0000
-Round 4: Server fixing with alpha_new=1.0000
-Round 5: r_data=0.3874, r_noniid=0.8952, improvement=0.1060, alpha_new=1.0000
-Round 5: Server fixing with alpha_new=1.0000
-Round 6: r_data=0.3874, r_noniid=0.8019, improvement=0.0000, alpha_new=1.0000
-Round 6: Server fixing with alpha_new=1.0000
-Round 7: r_data=0.3875, r_noniid=0.7256, improvement=0.1532, alpha_new=1.0000
-Round 7: Server fixing with alpha_new=1.0000
-Round 8: r_data=0.3877, r_noniid=0.7518, improvement=0.0170, alpha_new=1.0000
-Round 8: Server fixing with alpha_new=1.0000
-Round 9: r_data=0.3877, r_noniid=0.7779, improvement=0.0000, alpha_new=1.0000
-Round 9: Server fixing with alpha_new=1.0000
-Round 10: r_data=0.3877, r_noniid=0.7713, improvement=0.0000, alpha_new=1.0000
-Round 10: Server fixing with alpha_new=1.0000
-Round 10: Acc=51.45%, Loss=0.0128, D_P_t=0.0175, Alpha=1.0000
-Round 11: r_data=0.3873, r_noniid=0.8553, improvement=0.0213, alpha_new=1.0000
-Round 11: Server fixing with alpha_new=1.0000
-Round 12: r_data=0.3877, r_noniid=0.8715, improvement=0.0000, alpha_new=0.9779
-Round 12: Server fixing with alpha_new=0.9779
-Round 13: r_data=0.3873, r_noniid=0.8960, improvement=0.0698, alpha_new=1.0000
-Round 13: Server fixing with alpha_new=1.0000
-Round 14: r_data=0.3877, r_noniid=0.9031, improvement=0.0000, alpha_new=0.9712
-Round 14: Server fixing with alpha_new=0.9712
-Round 15: r_data=0.3875, r_noniid=0.8292, improvement=0.0000, alpha_new=0.8167
-Round 15: Server fixing with alpha_new=0.8167
-Round 16: r_data=0.3875, r_noniid=0.9004, improvement=0.0000, alpha_new=0.8671
-Round 16: Server fixing with alpha_new=0.8671
-Round 17: r_data=0.3873, r_noniid=0.8245, improvement=0.0000, alpha_new=0.7137
-Round 17: Server fixing with alpha_new=0.7137
-Round 18: r_data=0.3872, r_noniid=0.8905, improvement=0.0052, alpha_new=0.7967
-Round 18: Server fixing with alpha_new=0.7967
-Round 19: r_data=0.3876, r_noniid=0.8511, improvement=0.0000, alpha_new=0.6996
-Round 19: Server fixing with alpha_new=0.6996
-Round 20: r_data=0.3874, r_noniid=0.6825, improvement=0.0000, alpha_new=0.5566
-Round 20: Server fixing with alpha_new=0.5566
-Round 20: Acc=58.73%, Loss=0.0052, D_P_t=0.0111, Alpha=0.5566
-Round 21: r_data=0.3875, r_noniid=0.7017, improvement=0.0107, alpha_new=0.6238
-Round 21: Server fixing with alpha_new=0.6238
-Round 22: r_data=0.3875, r_noniid=0.8328, improvement=0.0012, alpha_new=0.6955
-Round 22: Server fixing with alpha_new=0.6955
-Round 23: r_data=0.3875, r_noniid=0.8774, improvement=0.0000, alpha_new=0.7097
-Round 23: Server fixing with alpha_new=0.7097
-Round 24: r_data=0.3874, r_noniid=0.8825, improvement=0.0000, alpha_new=0.7042
-Round 24: Server fixing with alpha_new=0.7042
-Round 25: r_data=0.3874, r_noniid=0.7964, improvement=0.0000, alpha_new=0.6186
-Round 25: Server fixing with alpha_new=0.6186
-Round 26: r_data=0.3874, r_noniid=0.7833, improvement=0.0000, alpha_new=0.6034
-Round 26: Server fixing with alpha_new=0.6034
-Round 27: r_data=0.3872, r_noniid=0.6647, improvement=0.0000, alpha_new=0.5073
-Round 27: Server fixing with alpha_new=0.5073
-Round 28: r_data=0.3874, r_noniid=0.8455, improvement=0.0000, alpha_new=0.6406
-Round 28: Server fixing with alpha_new=0.6406
-Round 29: r_data=0.3875, r_noniid=0.8513, improvement=0.0011, alpha_new=0.6508
-Round 29: Server fixing with alpha_new=0.6508
-Round 30: r_data=0.3874, r_noniid=0.7833, improvement=0.0061, alpha_new=0.6244
-Round 30: Server fixing with alpha_new=0.6244
-Round 30: Acc=61.03%, Loss=0.0047, D_P_t=0.0187, Alpha=0.6244
-Round 31: r_data=0.3875, r_noniid=0.7576, improvement=0.0000, alpha_new=0.5771
-Round 31: Server fixing with alpha_new=0.5771
-Round 32: r_data=0.3875, r_noniid=0.8604, improvement=0.0157, alpha_new=0.7339
-Round 32: Server fixing with alpha_new=0.7339
-Round 33: r_data=0.3874, r_noniid=0.7958, improvement=0.0000, alpha_new=0.6051
-Round 33: Server fixing with alpha_new=0.6051
-Round 34: r_data=0.3877, r_noniid=0.8090, improvement=0.0000, alpha_new=0.6115
-Round 34: Server fixing with alpha_new=0.6115
-Round 35: r_data=0.3873, r_noniid=0.7855, improvement=0.0000, alpha_new=0.5928
-Round 35: Server fixing with alpha_new=0.5928
-Round 36: r_data=0.3874, r_noniid=0.7342, improvement=0.0129, alpha_new=0.6173
-Round 36: Server fixing with alpha_new=0.6173
-Round 37: r_data=0.3878, r_noniid=0.7879, improvement=0.0000, alpha_new=0.5984
-Round 37: Server fixing with alpha_new=0.5984
-Round 38: r_data=0.3874, r_noniid=0.8818, improvement=0.0039, alpha_new=0.6890
-Round 38: Server fixing with alpha_new=0.6890
-Round 39: r_data=0.3872, r_noniid=0.8156, improvement=0.0000, alpha_new=0.6067
-Round 39: Server fixing with alpha_new=0.6067
-Round 40: r_data=0.3873, r_noniid=0.8504, improvement=0.0190, alpha_new=0.7280
-Round 40: Server fixing with alpha_new=0.7280
-Round 40: Acc=61.37%, Loss=0.0030, D_P_t=0.0295, Alpha=0.7280
-Round 41: r_data=0.3872, r_noniid=0.8244, improvement=0.0000, alpha_new=0.6182
-Round 41: Server fixing with alpha_new=0.6182
-Round 42: r_data=0.3874, r_noniid=0.8176, improvement=0.0000, alpha_new=0.6055
-Round 42: Server fixing with alpha_new=0.6055
-Round 43: r_data=0.3871, r_noniid=0.8519, improvement=0.0220, alpha_new=0.7411
-Round 43: Server fixing with alpha_new=0.7411
-Round 44: r_data=0.3874, r_noniid=0.8392, improvement=0.0000, alpha_new=0.6246
-Round 44: Server fixing with alpha_new=0.6246
-Round 45: r_data=0.3877, r_noniid=0.7497, improvement=0.0101, alpha_new=0.6079
-Round 45: Server fixing with alpha_new=0.6079
-Round 46: r_data=0.3876, r_noniid=0.8503, improvement=0.0000, alpha_new=0.6343
-Round 46: Server fixing with alpha_new=0.6343
-Round 47: r_data=0.3873, r_noniid=0.8622, improvement=0.0000, alpha_new=0.6400
-Round 47: Server fixing with alpha_new=0.6400
-Round 48: r_data=0.3873, r_noniid=0.8659, improvement=0.0018, alpha_new=0.6517
-Round 48: Server fixing with alpha_new=0.6517
-Round 49: r_data=0.3875, r_noniid=0.7396, improvement=0.0000, alpha_new=0.5436
-Round 49: Server fixing with alpha_new=0.5436
-Round 50: r_data=0.3874, r_noniid=0.8156, improvement=0.0074, alpha_new=0.6362
-Round 50: Server fixing with alpha_new=0.6362
-Round 50: Acc=61.92%, Loss=0.0031, D_P_t=0.0229, Alpha=0.6362
-Round 51: r_data=0.3875, r_noniid=0.9081, improvement=0.0000, alpha_new=0.6739
-Round 51: Server fixing with alpha_new=0.6739
-Round 52: r_data=0.3872, r_noniid=0.8688, improvement=0.0099, alpha_new=0.6941
-Round 52: Server fixing with alpha_new=0.6941
-Round 53: r_data=0.3875, r_noniid=0.8578, improvement=0.0000, alpha_new=0.6433
-Round 53: Server fixing with alpha_new=0.6433
-Round 54: r_data=0.3876, r_noniid=0.8732, improvement=0.0000, alpha_new=0.6483
-Round 54: Server fixing with alpha_new=0.6483
-Round 55: r_data=0.3876, r_noniid=0.8837, improvement=0.0000, alpha_new=0.6553
-Round 55: Server fixing with alpha_new=0.6553
-Round 56: r_data=0.3871, r_noniid=0.8893, improvement=0.0000, alpha_new=0.6548
-Round 56: Server fixing with alpha_new=0.6548
-Round 57: r_data=0.3875, r_noniid=0.6370, improvement=0.0000, alpha_new=0.4653
-Round 57: Server fixing with alpha_new=0.4653
-Round 58: r_data=0.3874, r_noniid=0.8783, improvement=0.0058, alpha_new=0.6705
-Round 58: Server fixing with alpha_new=0.6705
-Round 59: r_data=0.3875, r_noniid=0.8193, improvement=0.0107, alpha_new=0.6573
-Round 59: Server fixing with alpha_new=0.6573
-Round 60: r_data=0.3874, r_noniid=0.8930, improvement=0.0000, alpha_new=0.6525
-Round 60: Server fixing with alpha_new=0.6525
-Round 60: Acc=62.71%, Loss=0.0028, D_P_t=0.0432, Alpha=0.6525
-Round 61: r_data=0.3874, r_noniid=0.8507, improvement=0.0027, alpha_new=0.6354
-Round 61: Server fixing with alpha_new=0.6354
- 63%|██████▎   | 63/100 [37:58<28:28, 46.18s/it] 64%|██████▍   | 64/100 [38:44<27:41, 46.16s/it] 65%|██████▌   | 65/100 [39:30<26:53, 46.10s/it] 66%|██████▌   | 66/100 [40:16<26:06, 46.08s/it] 67%|██████▋   | 67/100 [40:50<23:21, 42.46s/it] 68%|██████▊   | 68/100 [41:30<22:07, 41.48s/it] 69%|██████▉   | 69/100 [41:43<17:03, 33.00s/it] 70%|███████   | 70/100 [41:52<12:57, 25.92s/it] 71%|███████   | 71/100 [41:59<09:42, 20.10s/it] 72%|███████▏  | 72/100 [42:05<07:28, 16.04s/it] 73%|███████▎  | 73/100 [42:31<08:33, 19.01s/it] 74%|███████▍  | 74/100 [43:19<11:57, 27.60s/it] 75%|███████▌  | 75/100 [44:02<13:23, 32.14s/it] 76%|███████▌  | 76/100 [44:48<14:33, 36.41s/it] 77%|███████▋  | 77/100 [45:34<15:05, 39.35s/it] 78%|███████▊  | 78/100 [46:21<15:12, 41.48s/it] 79%|███████▉  | 79/100 [46:49<13:07, 37.52s/it] 80%|████████  | 80/100 [47:02<10:04, 30.24s/it] 81%|████████  | 81/100 [47:13<07:41, 24.28s/it] 82%|████████▏ | 82/100 [47:19<05:41, 18.96s/it] 83%|████████▎ | 83/100 [47:26<04:19, 15.24s/it] 84%|████████▍ | 84/100 [47:32<03:22, 12.63s/it] 85%|████████▌ | 85/100 [47:44<03:04, 12.29s/it] 86%|████████▌ | 86/100 [47:50<02:28, 10.60s/it] 87%|████████▋ | 87/100 [47:57<02:02,  9.38s/it] 88%|████████▊ | 88/100 [48:03<01:42,  8.55s/it] 89%|████████▉ | 89/100 [48:10<01:27,  7.96s/it] 90%|█████████ | 90/100 [48:17<01:15,  7.54s/it] 91%|█████████ | 91/100 [48:23<01:05,  7.25s/it] 92%|█████████▏| 92/100 [48:30<00:56,  7.05s/it] 93%|█████████▎| 93/100 [48:36<00:48,  6.90s/it] 94%|█████████▍| 94/100 [48:43<00:40,  6.81s/it] 95%|█████████▌| 95/100 [48:49<00:33,  6.73s/it] 96%|█████████▌| 96/100 [48:56<00:26,  6.75s/it] 97%|█████████▋| 97/100 [49:03<00:20,  6.70s/it] 98%|█████████▊| 98/100 [49:09<00:13,  6.66s/it] 99%|█████████▉| 99/100 [49:16<00:06,  6.63s/it]100%|██████████| 100/100 [49:23<00:00,  6.61s/it]100%|██████████| 100/100 [49:23<00:00, 29.63s/it]
-script_v10.1_250313.py:3168: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  plt.figure(figsize=(12, 6))
-Round 62: r_data=0.3875, r_noniid=0.7006, improvement=0.0000, alpha_new=0.5135
-Round 62: Server fixing with alpha_new=0.5135
-Round 63: r_data=0.3875, r_noniid=0.8230, improvement=0.0000, alpha_new=0.6022
-Round 63: Server fixing with alpha_new=0.6022
-Round 64: r_data=0.3875, r_noniid=0.7067, improvement=0.0116, alpha_new=0.5733
-Round 64: Server fixing with alpha_new=0.5733
-Round 65: r_data=0.3874, r_noniid=0.8418, improvement=0.0000, alpha_new=0.6114
-Round 65: Server fixing with alpha_new=0.6114
-Round 66: r_data=0.3872, r_noniid=0.8483, improvement=0.0000, alpha_new=0.6144
-Round 66: Server fixing with alpha_new=0.6144
-Round 67: r_data=0.3873, r_noniid=0.8084, improvement=0.0125, alpha_new=0.6477
-Round 67: Server fixing with alpha_new=0.6477
-Round 68: r_data=0.3874, r_noniid=0.8312, improvement=0.0000, alpha_new=0.6089
-Round 68: Server fixing with alpha_new=0.6089
-Round 69: r_data=0.3875, r_noniid=0.8573, improvement=0.0071, alpha_new=0.6638
-Round 69: Server fixing with alpha_new=0.6638
-Round 70: r_data=0.3875, r_noniid=0.7544, improvement=0.0000, alpha_new=0.5570
-Round 70: Server fixing with alpha_new=0.5570
-Round 70: Acc=62.31%, Loss=0.0032, D_P_t=0.0159, Alpha=0.5570
-Round 71: r_data=0.3871, r_noniid=0.8548, improvement=0.0000, alpha_new=0.6189
-Round 71: Server fixing with alpha_new=0.6189
-Round 72: r_data=0.3874, r_noniid=0.8807, improvement=0.0091, alpha_new=0.6842
-Round 72: Server fixing with alpha_new=0.6842
-Round 73: r_data=0.3875, r_noniid=0.8371, improvement=0.0000, alpha_new=0.6043
-Round 73: Server fixing with alpha_new=0.6043
-Round 74: r_data=0.3874, r_noniid=0.7965, improvement=0.0000, alpha_new=0.5748
-Round 74: Server fixing with alpha_new=0.5748
-Round 75: r_data=0.3872, r_noniid=0.8638, improvement=0.0046, alpha_new=0.6464
-Round 75: Server fixing with alpha_new=0.6464
-Round 76: r_data=0.3875, r_noniid=0.7028, improvement=0.0000, alpha_new=0.5050
-Round 76: Server fixing with alpha_new=0.5050
-Round 77: r_data=0.3874, r_noniid=0.8811, improvement=0.0153, alpha_new=0.7104
-Round 77: Server fixing with alpha_new=0.7104
-Round 78: r_data=0.3875, r_noniid=0.7079, improvement=0.0000, alpha_new=0.5098
-Round 78: Server fixing with alpha_new=0.5098
-Round 79: r_data=0.3874, r_noniid=0.7917, improvement=0.0003, alpha_new=0.5716
-Round 79: Server fixing with alpha_new=0.5716
-Round 80: r_data=0.3873, r_noniid=0.8523, improvement=0.0000, alpha_new=0.6104
-Round 80: Server fixing with alpha_new=0.6104
-Round 80: Acc=63.13%, Loss=0.0023, D_P_t=0.0299, Alpha=0.6104
-Round 81: r_data=0.3875, r_noniid=0.8875, improvement=0.0144, alpha_new=0.7093
-Round 81: Server fixing with alpha_new=0.7093
-Round 82: r_data=0.3874, r_noniid=0.7045, improvement=0.0000, alpha_new=0.5041
-Round 82: Server fixing with alpha_new=0.5041
-Round 83: r_data=0.3875, r_noniid=0.7063, improvement=0.0076, alpha_new=0.5425
-Round 83: Server fixing with alpha_new=0.5425
-Round 84: r_data=0.3874, r_noniid=0.7927, improvement=0.0000, alpha_new=0.5708
-Round 84: Server fixing with alpha_new=0.5708
-Round 85: r_data=0.3874, r_noniid=0.7735, improvement=0.0035, alpha_new=0.5744
-Round 85: Server fixing with alpha_new=0.5744
-Round 86: r_data=0.3875, r_noniid=0.7502, improvement=0.0048, alpha_new=0.5671
-Round 86: Server fixing with alpha_new=0.5671
-Round 87: r_data=0.3874, r_noniid=0.8669, improvement=0.0000, alpha_new=0.6264
-Round 87: Server fixing with alpha_new=0.6264
-Round 88: r_data=0.3872, r_noniid=0.6530, improvement=0.0000, alpha_new=0.4701
-Round 88: Server fixing with alpha_new=0.4701
-Round 89: r_data=0.3874, r_noniid=0.8797, improvement=0.0076, alpha_new=0.6723
-Round 89: Server fixing with alpha_new=0.6723
-Round 90: r_data=0.3872, r_noniid=0.7869, improvement=0.0000, alpha_new=0.5714
-Round 90: Server fixing with alpha_new=0.5714
-Round 90: Acc=62.44%, Loss=0.0022, D_P_t=0.0191, Alpha=0.5714
-Round 91: r_data=0.3873, r_noniid=0.8942, improvement=0.0051, alpha_new=0.6756
-Round 91: Server fixing with alpha_new=0.6756
-Round 92: r_data=0.3873, r_noniid=0.9090, improvement=0.0076, alpha_new=0.7044
-Round 92: Server fixing with alpha_new=0.7044
-Round 93: r_data=0.3872, r_noniid=0.8504, improvement=0.0000, alpha_new=0.6179
-Round 93: Server fixing with alpha_new=0.6179
-Round 94: r_data=0.3875, r_noniid=0.8478, improvement=0.0075, alpha_new=0.6543
-Round 94: Server fixing with alpha_new=0.6543
-Round 95: r_data=0.3875, r_noniid=0.8025, improvement=0.0000, alpha_new=0.5823
-Round 95: Server fixing with alpha_new=0.5823
-Round 96: r_data=0.3876, r_noniid=0.7876, improvement=0.0029, alpha_new=0.5859
-Round 96: Server fixing with alpha_new=0.5859
-Round 97: r_data=0.3876, r_noniid=0.8966, improvement=0.0000, alpha_new=0.6504
-Round 97: Server fixing with alpha_new=0.6504
-Round 98: r_data=0.3872, r_noniid=0.7155, improvement=0.0000, alpha_new=0.5144
-Round 98: Server fixing with alpha_new=0.5144
-Round 99: r_data=0.3876, r_noniid=0.8992, improvement=0.0210, alpha_new=0.7541
-Round 99: Server fixing with alpha_new=0.7541
-
-Results for lambda_val = 4.0:
-FedDU_Mut - 第20轮测试精度: 58.77%, 最终测试精度: 62.45%, 最终训练损失: 0.0019
-
------ lambda_val参数结果表 -----
- lambda_val  FedDU_Mut_r20_acc  FedDU_Mut_r20_loss  FedDU_Mut_final_acc  FedDU_Mut_final_loss
-        0.0          59.369999            0.006382            63.459999              0.002502
-        0.5          58.770000            0.006677            62.160000              0.002382
-        1.0          59.020000            0.006345            64.220001              0.001898
-        1.5          58.669998            0.006333            63.200001              0.002880
-        2.0          57.730000            0.006586            63.230000              0.002217
-        3.0          58.389999            0.006822            63.790001              0.001870
-        4.0          58.770000            0.006007            62.450001              0.001907
+--- 测试 base_radius = 1.4 ---
+  0%|          | 0/100 [00:00<?, ?it/s]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  1%|          | 1/100 [02:00<3:18:42, 120.43s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  2%|▏         | 2/100 [02:31<1:51:14, 68.11s/it] /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  3%|▎         | 3/100 [03:01<1:21:37, 50.49s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  4%|▍         | 4/100 [03:30<1:07:18, 42.07s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  5%|▌         | 5/100 [03:59<59:01, 37.28s/it]  /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  6%|▌         | 6/100 [04:27<53:35, 34.21s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  7%|▋         | 7/100 [05:35<1:09:54, 45.10s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  8%|▊         | 8/100 [06:28<1:13:01, 47.63s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+  9%|▉         | 9/100 [07:03<1:06:34, 43.89s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 10%|█         | 10/100 [07:38<1:01:32, 41.03s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 11%|█         | 11/100 [08:12<57:38, 38.86s/it]  /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 12%|█▏        | 12/100 [08:43<53:32, 36.51s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 13%|█▎        | 13/100 [09:12<49:47, 34.34s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 14%|█▍        | 14/100 [09:43<47:38, 33.24s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 15%|█▌        | 15/100 [10:18<47:42, 33.68s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 16%|█▌        | 16/100 [10:54<48:09, 34.40s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 17%|█▋        | 17/100 [11:29<47:43, 34.50s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 18%|█▊        | 18/100 [12:04<47:29, 34.75s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 19%|█▉        | 19/100 [12:32<44:19, 32.83s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 20%|██        | 20/100 [13:01<42:09, 31.62s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 21%|██        | 21/100 [13:29<40:20, 30.64s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 22%|██▏       | 22/100 [13:57<38:46, 29.82s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 23%|██▎       | 23/100 [14:26<37:48, 29.46s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 24%|██▍       | 24/100 [14:55<37:03, 29.25s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 25%|██▌       | 25/100 [15:23<36:17, 29.04s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 26%|██▌       | 26/100 [15:51<35:17, 28.62s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 27%|██▋       | 27/100 [16:20<34:50, 28.63s/it]第0轮聚类为: {0: 0.064170934, 1: 0.061732445}; avg_var = 0.0629517014486885
+ 第0轮扰动因子为: [2.8271148498992598, 2.77288462246756, 2.77288462246756, 2.8271148498992598, 2.77288462246756, 2.77288462246756, 2.77288462246756, 2.77288462246756, 2.77288462246756, 2.8271148498992598]
+第1轮聚类为: {0: 0.08581452, 1: 0.8757184}; avg_var = 0.48076648520065307
+ 第1轮扰动因子为: [1.6498933114133196, 3.9501065869539183, 1.6498933114133196, 1.6498933114133196, 3.9501065869539183, 3.9501065869539183, 1.6498933114133196, 3.9501065869539183, 3.9501065869539183, 1.6498933114133196]
+第2轮聚类为: {0: 0.43679714, 1: 7.6976824}; avg_var = 4.067239771352539
+ 第2轮扰动因子为: [4.049648395172686, 1.5503515979430382, 4.049648395172686, 4.049648395172686, 4.049648395172686, 1.5503515979430382, 4.049648395172686, 4.049648395172686, 4.049648395172686, 4.049648395172686]
+第3轮聚类为: {0: 8.591147, 1: 1.4997789}; avg_var = 5.0454630951745605
+ 第3轮扰动因子为: [1.8161541515352997, 3.7838458759929963, 1.8161541515352997, 3.7838458759929963, 1.8161541515352997, 3.7838458759929963, 3.7838458759929963, 3.7838458759929963, 1.8161541515352997, 3.7838458759929963]
+第4轮聚类为: {0: 3.3104663, 1: 10.7595415}; avg_var = 7.035003672109375
+ 第4轮扰动因子为: [3.5412011731947404, 2.058798917718079, 2.058798917718079, 3.5412011731947404, 3.5412011731947404, 2.058798917718079, 3.5412011731947404, 2.058798917718079, 2.058798917718079, 3.5412011731947404]
+第5轮聚类为: {0: 4.0832915, 1: 2.746882}; avg_var = 3.4150867562158203
+ 第5轮扰动因子为: [3.0739276483819773, 3.0739276483819773, 3.0739276483819773, 3.0739276483819773, 3.0739276483819773, 2.5260723434191092, 3.0739276483819773, 2.5260723434191092, 2.5260723434191092, 2.5260723434191092]
+第6轮聚类为: {0: 4.510339, 1: 0.8602508}; avg_var = 2.6852948765618896
+ 第6轮扰动因子为: [1.8484986323013979, 1.8484986323013979, 1.8484986323013979, 3.7515012640453644, 1.8484986323013979, 3.7515012640453644, 3.7515012640453644, 3.7515012640453644, 3.7515012640453644, 1.8484986323013979]
+第7轮聚类为: {0: 49.37683, 1: 5.0797157}; avg_var = 27.228273401723634
+ 第7轮扰动因子为: [3.9388155340098243, 1.6611844649618321, 1.6611844649618321, 1.6611844649618321, 3.9388155340098243, 3.9388155340098243, 1.6611844649618321, 3.9388155340098243, 3.9388155340098243, 1.6611844649618321]
+第8轮聚类为: {0: 0.68305826, 1: 6.068569}; avg_var = 3.3758137326104736
+ 第8轮扰动因子为: [1.6832743872631835, 3.91672560444252, 3.91672560444252, 3.91672560444252, 3.91672560444252, 1.6832743872631835, 3.91672560444252, 1.6832743872631835, 1.6832743872631835, 3.91672560444252]
+第9轮聚类为: {0: 20.837559, 1: 137.7978}; avg_var = 79.31768036888671
+ 第9轮扰动因子为: [3.832205873941062, 3.832205873941062, 3.832205873941062, 3.832205873941062, 1.767794193037399, 1.767794193037399, 3.832205873941062, 1.767794193037399, 3.832205873941062, 1.767794193037399]
+第10轮聚类为: {0: 262.02225, 1: 34.965046}; avg_var = 148.49365235375
+ 第10轮扰动因子为: [3.8703490043220725, 3.8703490043220725, 1.729650887594327, 3.8703490043220725, 3.8703490043220725, 1.729650887594327, 1.729650887594327, 1.729650887594327, 1.729650887594327, 1.729650887594327]
+第11轮聚类为: {0: 7.5663376, 1: 15.844313}; avg_var = 11.70532513664795
+ 第11轮扰动因子为: [3.29503815366359, 3.29503815366359, 3.29503815366359, 2.3049618439443353, 3.29503815366359, 2.3049618439443353, 2.3049618439443353, 3.29503815366359, 3.29503815366359, 3.29503815366359]
+第12轮聚类为: {0: 2.070104, 1: 2.044237}; avg_var = 2.0571704010827636
+ 第12轮扰动因子为: [2.8088018356258675, 2.8088018356258675, 2.791198150763203, 2.8088018356258675, 2.8088018356258675, 2.8088018356258675, 2.8088018356258675, 2.791198150763203, 2.791198150763203, 2.8088018356258675]
+第13轮聚类为: {0: 1.1748282, 1: 1.0515536}; avg_var = 1.1131908993585204
+ 第13轮扰动因子为: [2.7224821103281966, 2.877517864518885, 2.7224821103281966, 2.7224821103281966, 2.877517864518885, 2.877517864518885, 2.7224821103281966, 2.877517864518885, 2.877517864518885, 2.877517864518885]
+第14轮聚类为: {0: 0.81604856, 1: 0.8798752}; avg_var = 0.8479619126184083
+ 第14轮扰动因子为: [2.7473104988991484, 2.7473104988991484, 2.852689369672185, 2.852689369672185, 2.7473104988991484, 2.7473104988991484, 2.852689369672185, 2.852689369672185, 2.852689369672185, 2.852689369672185]
+第15轮聚类为: {0: 2.8585906, 1: 4.998626}; avg_var = 3.9286084275109863
+ 第15轮扰动因子为: [2.4186881482001468, 2.4186881482001468, 3.1813118446726474, 2.4186881482001468, 2.4186881482001468, 3.1813118446726474, 2.4186881482001468, 3.1813118446726474, 3.1813118446726474, 3.1813118446726474]
+第16轮聚类为: {0: 0.27524784, 1: 2.932852}; avg_var = 1.6040499310357665
+ 第16轮扰动因子为: [3.9597662281430726, 3.9597662281430726, 3.9597662281430726, 3.9597662281430726, 1.6402337804123033, 1.6402337804123033, 1.6402337804123033, 1.6402337804123033, 1.6402337804123033, 1.6402337804123033]
+第17轮聚类为: {0: 0.0, 1: 3.0600727}; avg_var = 1.5300363402230834
+ 第17轮扰动因子为: [4.199999981699781, 1.4, 4.199999981699781, 4.199999981699781, 4.199999981699781, 4.199999981699781, 4.199999981699781, 4.199999981699781, 4.199999981699781, 4.199999981699781]
+第18轮聚类为: {0: 0.66893595, 1: 2.762983}; avg_var = 1.7159595589501953
+ 第18轮扰动因子为: [1.9457648063524438, 3.654235128700511, 3.654235128700511, 1.9457648063524438, 1.9457648063524438, 1.9457648063524438, 1.9457648063524438, 1.9457648063524438, 3.654235128700511, 3.654235128700511]
+第19轮聚类为: {0: 0.08646217, 1: 1.565847}; avg_var = 0.8261545996530152
+ 第19轮扰动因子为: [4.053481389358023, 1.5465186272529734, 4.053481389358023, 4.053481389358023, 4.053481389358023, 4.053481389358023, 4.053481389358023, 4.053481389358023, 1.5465186272529734, 1.5465186272529734]
+第20轮聚类为: {0: 1.6144514, 1: 15.532337}; avg_var = 8.573394785390626
+ 第20轮扰动因子为: [3.9363665862283295, 3.9363665862283295, 1.663633254774671, 1.663633254774671, 1.663633254774671, 1.663633254774671, 3.9363665862283295, 3.9363665862283295, 3.9363665862283295, 3.9363665862283295]
+第21轮聚类为: {0: 6.438875, 1: 4.80049}; avg_var = 5.619682322011719
+ 第21轮扰动因子为: [2.5959191780593427, 3.004080935749941, 2.5959191780593427, 2.5959191780593427, 2.5959191780593427, 3.004080935749941, 2.5959191780593427, 3.004080935749941, 2.5959191780593427, 3.004080935749941]
+第22轮聚类为: {0: 0.41148934, 1: 0.28422382}; avg_var = 0.3478565912110901
+ 第22轮扰动因子为: [2.5439005748025987, 2.5439005748025987, 2.5439005748025987, 3.05609934470446, 2.5439005748025987, 3.05609934470446, 2.5439005748025987, 2.5439005748025987, 2.5439005748025987, 3.05609934470446]
+第23轮聚类为: {0: 0.5120403, 1: 0.25821167}; avg_var = 0.385126004682312
+ 第23轮扰动因子为: [3.2613555957440963, 2.3386443315524255, 3.2613555957440963, 3.2613555957440963, 3.2613555957440963, 3.2613555957440963, 3.2613555957440963, 2.3386443315524255, 3.2613555957440963, 3.2613555957440963]
+第24轮聚类为: {0: 0.018547937, 1: 1.546063}; avg_var = 0.7823054294450379
+ 第24轮扰动因子为: [1.4331930614389212, 4.166806982769996, 4.166806982769996, 4.166806982769996, 1.4331930614389212, 1.4331930614389212, 4.166806982769996, 4.166806982769996, 1.4331930614389212, 4.166806982769996]
+第25轮聚类为: {0: 2.0037014, 1: 0.36180553}; avg_var = 1.1827534537179565
+ 第25轮扰动因子为: [3.7717386062148046, 1.8282614759407398, 3.7717386062148046, 1.8282614759407398, 3.7717386062148046, 3.7717386062148046, 3.7717386062148046, 3.7717386062148046, 3.7717386062148046, 1.8282614759407398]
+第26轮聚类为: {0: 3.3869603, 1: 1.2166063}; avg_var = 2.301783333287964
+ 第26轮扰动因子为: [3.4600307190753594, 2.1399691962542016, 2.1399691962542016, 3.4600307190753594, 3.4600307190753594, 3.4600307190753594, 3.4600307190753594, 3.4600307190753594, 3.4600307190753594, 3.4600307190753594]
+第27轮聚类为: {0: 0.036525972, 1: 4.4458585}; avg_var = 2.24119235085083
+/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 28%|██▊       | 28/100 [16:49<34:30, 28.76s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 29%|██▉       | 29/100 [17:17<33:48, 28.57s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 30%|███       | 30/100 [17:45<33:12, 28.47s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 31%|███       | 31/100 [18:14<32:59, 28.69s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 32%|███▏      | 32/100 [18:42<32:22, 28.57s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 33%|███▎      | 33/100 [19:11<31:50, 28.51s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 34%|███▍      | 34/100 [19:38<31:00, 28.19s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 35%|███▌      | 35/100 [20:46<43:14, 39.92s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 36%|███▌      | 36/100 [22:13<57:47, 54.18s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 37%|███▋      | 37/100 [24:04<1:14:51, 71.29s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 38%|███▊      | 38/100 [25:59<1:27:09, 84.34s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 39%|███▉      | 39/100 [27:51<1:34:01, 92.49s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 40%|████      | 40/100 [29:44<1:38:53, 98.89s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 41%|████      | 41/100 [31:39<1:41:59, 103.72s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 42%|████▏     | 42/100 [33:36<1:44:00, 107.60s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 43%|████▎     | 43/100 [35:01<1:35:47, 100.84s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 44%|████▍     | 44/100 [36:41<1:33:59, 100.70s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 45%|████▌     | 45/100 [37:16<1:14:07, 80.87s/it] /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 46%|████▌     | 46/100 [39:00<1:19:05, 87.89s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 47%|████▋     | 47/100 [40:37<1:19:55, 90.48s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 48%|████▊     | 48/100 [42:29<1:24:05, 97.03s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 49%|████▉     | 49/100 [44:17<1:25:19, 100.38s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 50%|█████     | 50/100 [44:50<1:06:48, 80.16s/it] /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 51%|█████     | 51/100 [45:20<53:03, 64.96s/it]  /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 52%|█████▏    | 52/100 [45:49<43:25, 54.27s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 53%|█████▎    | 53/100 [46:18<36:26, 46.52s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 54%|█████▍    | 54/100 [46:47<31:44, 41.40s/it] 第27轮扰动因子为: [4.1771832558689965, 4.1771832558689965, 4.1771832558689965, 1.4228165873594534, 4.1771832558689965, 1.4228165873594534, 1.4228165873594534, 4.1771832558689965, 1.4228165873594534, 1.4228165873594534]
+第28轮聚类为: {0: 14.141322, 1: 11.593699}; avg_var = 12.867510805593263
+ 第28轮扰动因子为: [2.6614078575562834, 2.9385921402676933, 2.6614078575562834, 2.6614078575562834, 2.6614078575562834, 2.9385921402676933, 2.6614078575562834, 2.6614078575562834, 2.9385921402676933, 2.6614078575562834]
+第29轮聚类为: {0: 0.3930422, 1: 0.86387634}; avg_var = 0.6284592847688294
+ 第29轮扰动因子为: [2.275568398472011, 3.324431556974585, 2.275568398472011, 3.324431556974585, 3.324431556974585, 2.275568398472011, 2.275568398472011, 3.324431556974585, 3.324431556974585, 3.324431556974585]
+第30轮聚类为: {0: 2.951562, 1: 0.09373823}; avg_var = 1.522650132642517
+ 第30轮扰动因子为: [4.113812326500953, 1.4861875729048586, 4.113812326500953, 4.113812326500953, 4.113812326500953, 4.113812326500953, 4.113812326500953, 1.4861875729048586, 1.4861875729048586, 1.4861875729048586]
+第31轮聚类为: {0: 5.3989697, 1: 3.594877}; avg_var = 4.496923456655273
+ 第31轮扰动因子为: [3.0808285894191956, 2.5191713301289096, 2.5191713301289096, 2.5191713301289096, 2.5191713301289096, 2.5191713301289096, 2.5191713301289096, 3.0808285894191956, 2.5191713301289096, 2.5191713301289096]
+第32轮聚类为: {0: 0.93402416, 1: 3.1434598}; avg_var = 2.0387420754296874
+ 第32轮扰动因子为: [3.5586073926198822, 3.5586073926198822, 2.0413924708549973, 3.5586073926198822, 2.0413924708549973, 2.0413924708549973, 2.0413924708549973, 2.0413924708549973, 3.5586073926198822, 3.5586073926198822]
+第33轮聚类为: {0: 1.9157209, 1: 1.6289811}; avg_var = 1.7723510365350341
+ 第33轮扰动因子为: [2.913249497534123, 2.913249497534123, 2.6867504866676524, 2.913249497534123, 2.913249497534123, 2.913249497534123, 2.913249497534123, 2.6867504866676524, 2.6867504866676524, 2.6867504866676524]
+第34轮聚类为: {0: 0.43165633, 1: 0.29931524}; avg_var = 0.3654857973916626
+ 第34轮扰动因子为: [3.053467432842147, 3.053467432842147, 2.546532490547488, 3.053467432842147, 3.053467432842147, 3.053467432842147, 2.546532490547488, 3.053467432842147, 2.546532490547488, 2.546532490547488]
+第35轮聚类为: {0: 0.17430967, 1: 0.4424136}; avg_var = 0.3083616595132446
+ 第35轮扰动因子为: [3.4086123501745966, 3.4086123501745966, 2.1913874237167112, 3.4086123501745966, 3.4086123501745966, 2.1913874237167112, 2.1913874237167112, 3.4086123501745966, 2.1913874237167112, 3.4086123501745966]
+第36轮聚类为: {0: 1.323482, 1: 0.27679744}; avg_var = 0.8001397352082825
+ 第36轮扰动因子为: [3.71568908491276, 3.71568908491276, 3.71568908491276, 3.71568908491276, 3.71568908491276, 3.71568908491276, 3.71568908491276, 1.884310932238307, 3.71568908491276, 1.884310932238307]
+第37轮聚类为: {0: 2.983227, 1: 4.75491}; avg_var = 3.8690686325891113
+ 第37轮扰动因子为: [3.120536548003948, 2.479463358488791, 3.120536548003948, 2.479463358488791, 2.479463358488791, 2.479463358488791, 3.120536548003948, 2.479463358488791, 3.120536548003948, 3.120536548003948]
+第38轮聚类为: {0: 1.2649487, 1: 0.8929087}; avg_var = 1.0789287190301513
+ 第38轮扰动因子为: [3.041376473482342, 2.5586235005659903, 2.5586235005659903, 3.041376473482342, 3.041376473482342, 3.041376473482342, 3.041376473482342, 2.5586235005659903, 3.041376473482342, 2.5586235005659903]
+第39轮聚类为: {0: 0.35819292, 1: 0.72156894}; avg_var = 0.5398809413774109
+ 第39轮扰动因子为: [2.3288531054260364, 3.2711468427106762, 3.2711468427106762, 3.2711468427106762, 3.2711468427106762, 2.3288531054260364, 3.2711468427106762, 3.2711468427106762, 3.2711468427106762, 2.3288531054260364]
+第40轮聚类为: {0: 1.1790539, 1: 0.13373107}; avg_var = 0.6563924651010132
+ 第40轮扰动因子为: [3.9147690618636632, 3.9147690618636632, 3.9147690618636632, 3.9147690618636632, 1.685231022607907, 3.9147690618636632, 1.685231022607907, 1.685231022607907, 1.685231022607907, 3.9147690618636632]
+第41轮聚类为: {0: 2.7724292, 1: 3.7818673}; avg_var = 3.2771482567651367
+ 第41轮扰动因子为: [3.0156163094092387, 2.584383682046747, 2.584383682046747, 3.0156163094092387, 2.584383682046747, 2.584383682046747, 3.0156163094092387, 2.584383682046747, 2.584383682046747, 2.584383682046747]
+第42轮聚类为: {0: 4.5326834, 1: 0.3703743}; avg_var = 2.451528797612915
+ 第42轮扰动因子为: [1.6115104703213063, 3.988489569315085, 1.6115104703213063, 1.6115104703213063, 3.988489569315085, 3.988489569315085, 1.6115104703213063, 3.988489569315085, 1.6115104703213063, 1.6115104703213063]
+第43轮聚类为: {0: 0.0, 1: 2.36286}; avg_var = 1.1814299921853637
+ 第43轮扰动因子为: [4.199999976299908, 4.199999976299908, 4.199999976299908, 4.199999976299908, 4.199999976299908, 1.4, 4.199999976299908, 4.199999976299908, 4.199999976299908, 4.199999976299908]
+第44轮聚类为: {0: 2.7533648, 1: 0.09072206}; avg_var = 1.4220434527261352
+ 第44轮扰动因子为: [4.11068420207548, 4.11068420207548, 1.4893157562292831, 1.4893157562292831, 1.4893157562292831, 4.11068420207548, 4.11068420207548, 1.4893157562292831, 4.11068420207548, 4.11068420207548]
+第45轮聚类为: {0: 0.14869097, 1: 20.055561}; avg_var = 10.102126131520997
+ 第45轮扰动因子为: [1.4206062915412567, 1.4206062915412567, 4.17939367677603, 4.17939367677603, 4.17939367677603, 1.4206062915412567, 4.17939367677603, 4.17939367677603, 4.17939367677603, 1.4206062915412567]
+第46轮聚类为: {0: 16.789665, 1: 9.323756}; avg_var = 13.056711206899415
+ 第46轮扰动因子为: [2.3997355764628976, 2.3997355764628976, 2.3997355764628976, 3.2002643191353104, 2.3997355764628976, 3.2002643191353104, 2.3997355764628976, 3.2002643191353104, 2.3997355764628976, 3.2002643191353104]
+第47轮聚类为: {0: 2.884239, 1: 2.4643087}; avg_var = 2.67427397774292
+ 第47轮扰动因子为: [2.909918047032068, 2.6900818176841073, 2.6900818176841073, 2.909918047032068, 2.909918047032068, 2.909918047032068, 2.6900818176841073, 2.909918047032068, 2.909918047032068, 2.6900818176841073]
+第48轮聚类为: {0: 0.4226334, 1: 0.19113266}; avg_var = 0.3068830470903015
+ 第48轮扰动因子为: [3.3280529794989446, 3.3280529794989446, 3.3280529794989446, 2.2719469292610848, 2.2719469292610848, 3.3280529794989446, 2.2719469292610848, 3.3280529794989446, 3.3280529794989446, 2.2719469292610848]
+第49轮聚类为: {0: 1.9451549, 1: 1.0363364}; avg_var = 1.4907456736428832
+ 第49轮扰动因子为: [3.2267481271921246, 2.3732518540253285, 2.3732518540253285, 2.3732518540253285, 2.3732518540253285, 3.2267481271921246, 3.2267481271921246, 2.3732518540253285, 3.2267481271921246, 3.2267481271921246]
+第50轮聚类为: {0: 1.102355, 1: 0.7386818}; avg_var = 0.9205184082849122
+ 第50轮扰动因子为: [2.5234479410627526, 2.5234479410627526, 2.5234479410627526, 3.076552028519605, 2.5234479410627526, 3.076552028519605, 2.5234479410627526, 3.076552028519605, 2.5234479410627526, 3.076552028519605]
+第51轮聚类为: {0: 1.4307393, 1: 0.23057853}; avg_var = 0.8306589226586915
+ 第51轮扰动因子为: [1.7886191176555386, 1.7886191176555386, 3.811380823521731, 1.7886191176555386, 1.7886191176555386, 3.811380823521731, 1.7886191176555386, 1.7886191176555386, 1.7886191176555386, 3.811380823521731]
+第52轮聚类为: {0: 1.8139411, 1: 0.0}; avg_var = 0.9069705705506897
+ 第52轮扰动因子为: [4.199999969127995, 4.199999969127995, 4.199999969127995, 4.199999969127995, 4.199999969127995, 4.199999969127995, 4.199999969127995, 4.199999969127995, 4.199999969127995, 1.4]
+第53轮聚类为: {0: 5.752974, 1: 0.5023282}; avg_var = 3.1276512245996093
+ 第53轮扰动因子为: [1.6248522783838946, 3.975147632622963, 1.6248522783838946, 3.975147632622963, 3.975147632622963, 3.975147632622963, 1.6248522783838946, 1.6248522783838946, 1.6248522783838946, 3.975147632622963]
+第54轮聚类为: {0: 0.8787471, 1: 6.907124}; avg_var = 3.892935524450073
+/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 55%|█████▌    | 55/100 [47:16<28:19, 37.77s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 56%|█████▌    | 56/100 [47:46<25:59, 35.45s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 57%|█████▋    | 57/100 [48:33<27:47, 38.79s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 58%|█████▊    | 58/100 [49:49<34:52, 49.82s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 59%|█████▉    | 59/100 [50:18<29:47, 43.59s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 60%|██████    | 60/100 [50:48<26:20, 39.51s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 61%|██████    | 61/100 [51:17<23:45, 36.56s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 62%|██████▏   | 62/100 [51:45<21:33, 34.04s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 63%|██████▎   | 63/100 [52:15<20:06, 32.61s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 64%|██████▍   | 64/100 [52:44<18:55, 31.53s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 65%|██████▌   | 65/100 [53:59<26:07, 44.78s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 66%|██████▌   | 66/100 [55:54<37:09, 65.58s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+ 67%|██████▋   | 67/100 [57:56<45:25, 82.59s/it]
