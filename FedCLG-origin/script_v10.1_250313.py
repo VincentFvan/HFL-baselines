@@ -1573,7 +1573,6 @@ def mutation_spread(iter, w_glob, m, w_delta, alpha):
     return w_locals_new
 
 
-
 # 加权平均聚合，lens代表了权重，如果没有定义就是普通平均（FedMut就每定义）
 def Aggregation(w, lens):
     w_avg = None

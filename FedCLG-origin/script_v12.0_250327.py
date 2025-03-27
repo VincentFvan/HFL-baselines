@@ -741,7 +741,7 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
 
     first_iter_gradient = None  # 初始化变量来保存第一个iter的梯度
 
-    for iter in range(int(local_epoch)):
+    for iter in range(local_epoch):
         batch_loss = []
         for batch_idx, (images, labels) in enumerate(data_loader):
             model.zero_grad()
@@ -1307,6 +1307,9 @@ def FedMut(net_glob, global_round, eta, K, M):
 
     return test_acc, train_loss   
 
+# %%
+
+
 
 # 将mutation的方向设置为新方向（server更新之后）减去上一轮全局方向（其余不变）
 def CLG_Mut_2(net_glob, global_round, eta, gamma, K, E, M):
@@ -1386,6 +1389,7 @@ def CLG_Mut_2(net_glob, global_round, eta, gamma, K, E, M):
     return test_acc, train_loss
 
 
+
 def mutation_spread(iter, w_glob, m, w_delta, alpha):
 
     w_locals_new = []
@@ -1420,7 +1424,6 @@ def mutation_spread(iter, w_glob, m, w_delta, alpha):
         w_locals_new.append(w_sub)
 
     return w_locals_new
-
 
 
 # 加权平均聚合，lens代表了权重，如果没有定义就是普通平均（FedMut就每定义）
@@ -1475,301 +1478,111 @@ def delta_rank(delta_dict):
     return s
 
 
-import copy
-import numpy as np
-import torch
-from tqdm import tqdm
-from sklearn.cluster import KMeans
 
+# 250327 修改为平滑后的ctrl
+def mutation_spread_new(iter, w_glob, m, w_delta, alpha):
 
-# 辅助函数：将参数字典展平为一个一维 numpy 数组
-def flatten_weights(weight_dict):
-    flat_list = []
-    for key in sorted(weight_dict.keys()):
-        if 'num_batches_tracked' in key:
-            continue
-        flat_list.append(weight_dict[key].cpu().numpy().flatten())
-    return np.concatenate(flat_list)
-
-# # -------------------------------
-# # 根据聚类信息，对每个客户端使用不同的 mutation 扰动幅度
-# def clustered_mutation_spread(round_idx, w_agg, w_delta, alpha_list, M):
-#     """
-#     对于每个客户端，根据自适应因子 alpha_list 中的值对全局模型做扰动，从而得到下轮的初始模型。
-#     参数:
-#       - round_idx: 当前全局轮次（可用于调试输出）
-#       - w_agg: 全局聚合模型权重（字典格式）
-#       - w_delta: 全局更新差分 = w_agg - w_old （字典格式）
-#       - alpha_list: 长度为 M 的列表，每个元素是对应客户端的扰动幅度
-#       - M: 参与客户端数量
-#     返回:
-#       - 新的模型权重列表（每个元素均为一个权重字典）
-#     """
-#     new_w_locals = []
-#     for i in range(M):
-#         new_model = {}
-#         for key in w_agg.keys():
-#             if 'num_batches_tracked' in key:
-#                 new_model[key] = w_agg[key]
-#                 continue
-#             # 生成与参数同形状的随机扰动，均匀分布在 [-1, 1]
-#             r = torch.rand_like(w_delta[key]) * 2 - 1
-#             new_model[key] = w_agg[key] + w_delta[key] * r * alpha_list[i]
-#         new_w_locals.append(new_model)
-#     return new_w_locals
-
-# def clustered_mutation_spread(round_idx, w_agg, w_delta, alpha_list, M):
-#     """
-#     对于每个客户端，根据自适应因子 alpha_list 以及控制因子 ctrl_rate 对全局模型做扰动，
-#     从而得到下轮的初始模型。引入的控制因子 ctrl_rate 的计算方式为：
-#         ctrl_rate = mut_acc_rate * (1.0 - min(round_idx * 1.0 / mut_bound, 1.0))
-#     这样随着全局轮次的增加，扰动幅度会逐步减弱。
-
-#     参数:
-#       - round_idx: 当前全局轮次（迭代号）
-#       - w_agg: 全局聚合模型权重（字典格式）
-#       - w_delta: 全局更新差分 = w_agg - w_old （字典格式）
-#       - alpha_list: 长度为 M 的列表，每个元素是对应客户端的扰动幅度
-#       - M: 参与客户端数量
-      
-#     返回:
-#       - 新的模型权重列表（每个元素均为一个权重字典）
-#     """
-#     new_w_locals = []
-#     # 计算控制因子 ctrl_rate，根据当前轮次逐渐减弱扰动幅度
-#     ctrl_rate = mut_acc_rate * (1.0 - min(round_idx * 1.0 / mut_bound, 1.0))
-    
-#     for i in range(M):
-#         new_model = {}
-#         for key in w_agg.keys():
-#             # 如果是 BatchNorm 中的 num_batches_tracked 直接复制
-#             if 'num_batches_tracked' in key:
-#                 new_model[key] = w_agg[key]
-#                 continue
-#             # 生成与参数同形状的随机张量，每个元素值在 [0,1)
-#             rand_tensor = torch.rand_like(w_delta[key])
-#             # 如果对应元素大于0.5，则取 1.0，否则取 (-1.0 + ctrl_rate)
-#             multiplier = torch.where(
-#                 rand_tensor > 0.5,
-#                 torch.tensor(1.0, device=w_delta[key].device),
-#                 torch.tensor(-1.0 + ctrl_rate, device=w_delta[key].device)
-#             )
-#             new_model[key] = w_agg[key] + w_delta[key] * multiplier * alpha_list[i]
-#         new_w_locals.append(new_model)
-#     return new_w_locals
-
-# def clustered_mutation_spread(round_idx, w_agg, w_delta, alpha_list, M):
-#     """
-#     对于每个客户端，根据自适应因子 alpha_list 以及控制因子 ctrl_rate 对全局模型做扰动，
-#     生成新的局部模型。扰动过程中对每个模型参数（层）生成一个统一的随机控制因子，
-#     与 mutation_spread 中的设计粒度一致。
-
-#     参数:
-#       - round_idx: 当前全局轮次（迭代号）
-#       - w_agg: 全局聚合模型权重（字典格式）
-#       - w_delta: 全局更新差分（字典格式）
-#       - alpha_list: 长度为 M 的列表，每个元素为对应客户端的扰动幅度
-#       - M: 参与客户端数量
-
-#     返回:
-#       - 新的模型权重列表（每个元素均为一个权重字典）
-#     """
-#     new_w_locals = []
-#     # 根据当前轮次计算控制因子 ctrl_rate
-#     ctrl_rate = mut_acc_rate * (1.0 - min(round_idx * 1.0 / mut_bound, 1.0))
-    
-#     for i in range(M):
-#         new_model = {}
-#         for key in w_agg.keys():
-#             # 对于 BatchNorm 中的跟踪计数参数，直接复制
-#             if 'num_batches_tracked' in key:
-#                 new_model[key] = w_agg[key]
-#                 continue
-            
-#             # 这里生成单个随机数，决定整个参数张量（层）的控制因子
-#             r = random.random()  # 生成 [0, 1) 内的随机数
-#             if r > 0.5:
-#                 multiplier = 1.0
-#             else:
-#                 multiplier = -1.0 + ctrl_rate
-            
-#             # 使用统一的 multiplier 对整个参数进行扰动
-#             new_model[key] = w_agg[key] + w_delta[key] * multiplier * alpha_list[i]
-#         new_w_locals.append(new_model)
-    
-#     return new_w_locals
-
-
-# 250326：和mutation spread机制类似
-def clustered_mutation_spread(round_idx, w_agg, w_delta, alpha_list, m):
-    """
-    对于每个客户端（共 m 个），根据全局模型的更新差分 w_delta，
-    使用类似 mutation_spread 的随机“控制因子”进行扰动，不过这里用每个客户端对应的 
-    alpha_list[i] 替换固定的 alpha。
-
-    参数:
-      - round_idx: 当前全局轮次（用于计算控制因子 ctrl_rate）
-      - w_agg: 全局聚合模型权重（字典格式）
-      - m: 客户端（或者说生成局部模型）的数量
-      - w_delta: 全局模型更新差分（字典格式）
-      - alpha_list: 长度为 m 的列表，每个元素是对应客户端的扰动幅度
-
-    返回:
-      - w_locals_new: 经过 mutation 扰动得到新的局部模型列表
-    """
-    import copy, random
     w_locals_new = []
     ctrl_cmd_list = []
-    
-    # 计算控制因子，随着全局轮次逐步衰减
-    ctrl_rate = mut_acc_rate * (1.0 - min(round_idx * 1.0 / mut_bound, 1.0))
-    
-    # 筛选出需要更新的权重键（排除 BatchNorm 中的 tracking 参数）
-    valid_keys = [k for k in w_agg.keys() if 'num_batches_tracked' not in k]
-    
-    # 对每个有效权重键生成一个长度为 m 的随机控制列表
-    for _ in valid_keys:
+    ctrl_rate = mut_acc_rate * (
+        1.0 - min(iter * 1.0 / mut_bound, 1.0)
+    )  # 论文中的βt，随着iter逐渐从β0减小到0
+
+    # k代表模型中的参数数量，对每个参数按照client数量分配v（论文中是按照每一层分配）
+    for k in w_glob.keys():
         ctrl_list = []
-        # 按照 mutation_spread 的逻辑，每次生成两个控制值，共生成 m/2 个（注意 m 可能为奇数）
-        for i in range(int(m / 2)):
-            ctrl = random.random()  # 在 [0,1) 内随机
-            if ctrl > 0.5:
-                ctrl_list.append(1.0)
-                ctrl_list.append(-1.0 + ctrl_rate)
+        for i in range(0, int(m / 2)):
+            ctrl = random.random()  # 随机数，范围：[0,1)
+            if ctrl > ctrl_rate:
+                ctrl_list.append(ctrl)
+                ctrl_list.append(1.0 * (-1.0 + ctrl_rate))
             else:
-                ctrl_list.append(-1.0 + ctrl_rate)
-                ctrl_list.append(1.0)
-        # 如果生成的数量超过 m，则截取前 m 个
-        ctrl_list = ctrl_list[:m]
-        random.shuffle(ctrl_list)
+                ctrl_list.append(-ctrl)
+                ctrl_list.append(ctrl)
+        random.shuffle(ctrl_list)  # 打乱列表
         ctrl_cmd_list.append(ctrl_list)
-    
-    # 针对每个客户端 j，利用对应每层的控制命令和 alpha_list[j] 进行扰动更新
+    cnt = 0
     for j in range(m):
-        w_sub = copy.deepcopy(w_agg)
-        for ind, key in enumerate(valid_keys):
-            w_sub[key] = w_sub[key] + w_delta[key] * ctrl_cmd_list[ind][j] * alpha_list[j]
+        w_sub = copy.deepcopy(w_glob)
+        if not (cnt == m - 1 and m % 2 == 1):
+            ind = 0
+            for k in w_sub.keys():
+                w_sub[k] = w_sub[k] + w_delta[k] * ctrl_cmd_list[ind][j] * alpha
+                ind += 1
+        cnt += 1
         w_locals_new.append(w_sub)
-        
+
     return w_locals_new
 
 
-# -------------------------------
-# 改进后的 FedMut 算法（基于客户端更新聚类自适应扰动）
-def FedMut_new(net_glob, global_round, eta, K, M, n_clusters=2, lambda_c=1.0):
-    """
-    改进后的 FedMut 算法：
-      - 首先进行客户端本地更新，并聚合得到全局模型与全局更新差分
-      - 针对各个客户端的局部更新差分进行聚类，计算每个聚类的更新方差
-      - 根据聚类内方差自适应调整各客户端的 mutation 扰动幅度
-      - 对全局模型进行带有客户端自适应扰动的 mutation，生成下一轮各客户端的初始模型
-    参数:
-      - net_glob: 当前全局模型（一个 nn.Module 对象）
-      - global_round: 全局训练轮次
-      - eta: 客户端学习率
-      - K: 客户端本地训练轮数
-      - M: 每轮随机选择的客户端数量
-      - n_clusters: 聚类数量（默认 2）
-      - base_radius: 基础扰动幅度（默认 4.0）
-      - lambda_c: 聚类方差调整系数（默认 1.0）
-    返回:
-      - test_acc: 测试准确率随全局轮次变化的列表
-      - train_loss: 训练损失随全局轮次变化的列表
-    """
+def FedMut_new(net_glob, global_round, eta, K, M):
+    
     net_glob.train()
-    # 根据模型类型选择测试网络
+    
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
     elif origin_model == "cnn":
         test_model = cnncifar().to(device)
-    
-    # 当前全局模型权重
+        
     train_w = copy.deepcopy(net_glob.state_dict())
     test_acc = []
     train_loss = []
     
-    # 初始化 M 个客户端的初始模型
-    w_locals = [copy.deepcopy(net_glob.state_dict()) for _ in range(M)]
+    w_locals = []
+    for i in range(M):
+        w_locals.append(copy.deepcopy(net_glob.state_dict()))
+        
     max_rank = 0
     
-    for round_idx in tqdm(range(global_round)):
-        # 保存上一轮全局模型，用于计算更新差分
+    for round in tqdm(range(global_round)):
         w_old = copy.deepcopy(net_glob.state_dict())
-        local_weights = []
-        local_loss = []
-        # 随机选取 M 个客户端（从 client_num 个中采样）
+        
+        # 学习率衰减，这里默认注释掉了
+        # if eta > 0.001:
+        #     eta = eta * 0.99
+        # if gamma > 0.001:
+        #     gamma = gamma * 0.99
+        local_weights, local_loss = [], []
+        # Client side local training
+        # 从总共client_num客户端中选择M个训练
         idxs_users = np.random.choice(range(client_num), M, replace=False)
         for i, idx in enumerate(idxs_users):
             net_glob.load_state_dict(w_locals[i])
+            
             update_client_w, client_round_loss, _ = update_weights(copy.deepcopy(net_glob.state_dict()), client_data[idx], eta, K)
             w_locals[i] = copy.deepcopy(update_client_w)
             local_loss.append(client_round_loss)
-            local_weights.append(copy.deepcopy(update_client_w))
-            
-        # 全局聚合
-        w_agg = Aggregation(w_locals, None)
+
+        # Global Model Generation
+        w_agg = Aggregation(w_locals, None)  
+        
+        # copy weight to net_glob
         net_glob.load_state_dict(w_agg)
         
-        # 在测试集上评估全局模型
+        # Test Accuracy
         test_model.load_state_dict(w_agg)
-        loss_avg = sum(local_loss) / len(local_loss)
-        train_loss.append(loss_avg)
+        loss_avg = sum(local_loss)/ len(local_loss)
+        train_loss.append(loss_avg)   # 计算所有客户端的平均损失
+
+        # 新的测试（针对全部测试数据进行）
         test_acc.append(test_inference(test_model, test_dataset))
-        
-        # 计算全局更新差分（FedSub 计算形式: w_agg - w_old）
+
+        # 按照server训练的方向，进行mutation
         w_delta = FedSub(w_agg, w_old, 1.0)
+        # 计算模型更新w_delta的L2范数（平方和），衡量模型更新程度的大小
         rank = delta_rank(w_delta)
+        # print(rank)
         if rank > max_rank:
             max_rank = rank
-        
-        # === 对各客户端更新差分进行聚类 ===
-        client_diffs = []
-        for i in range(M):
-            diff_i = FedSub(w_locals[i], w_old, 1.0)
-            flat_diff = flatten_weights(diff_i)
-            client_diffs.append(flat_diff)
-        client_diffs = np.array(client_diffs)  # shape: (M, d)
-        
-        # 利用 KMeans 将更新向量聚成 n_clusters 类
-        kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(client_diffs)
-        labels = kmeans.labels_
-        
-        # 计算每个聚类内更新向量 L2 范数的方差
-        cluster_vars = {}
-        for cluster in range(n_clusters):
-            cluster_indices = np.where(labels == cluster)[0]
-            if len(cluster_indices) == 0:
-                cluster_vars[cluster] = 0.0
-            else:
-                norms = np.linalg.norm(client_diffs[cluster_indices], axis=1)
-                cluster_vars[cluster] = np.var(norms)
+        alpha = radius  # 论文中的alpha，衡量Mutation的幅度
+        # alpha = min(max(args.radius, max_rank/rank),(10.0-args.radius) * (1 - iter/args.epochs) + args.radius)
+        w_locals = mutation_spread_new(
+            round, w_agg, M, w_delta, alpha
+        )
 
-        # 在生成 cluster_vars 之后直接判断其是否包含 NaN
-        if np.isnan(np.array(list(cluster_vars.values()))).any():
-            # 如果 cluster_vars 中存在 NaN，则将该轮所有客户端的扰动因子统一设置为 base_radius * 2
-            alpha_list = [base_radius * 2] * M
-            print(f"第{round_idx}轮: cluster_vars 包含 NaN，因此将所有扰动因子设为 {base_radius * 2}")
-        else:
-            eps = 1e-8
-            avg_var = np.mean(list(cluster_vars.values())) + eps
-            print(f"第{round_idx}轮聚类为: {cluster_vars}; avg_var = {avg_var}")
-            # 正常计算每个客户端的扰动因子 alpha_i
-            alpha_list = []
-            for i in range(M):
-                cluster = labels[i]
-                alpha_i = base_radius * (1 + lambda_c * (cluster_vars[cluster] / avg_var))
-                alpha_list.append(alpha_i)
-        
-        print(f" 第{round_idx}轮扰动因子为: {alpha_list}")
-        
-        # ================================
-        # 利用自适应 alpha_list 对全局模型做 mutation
-        w_locals = clustered_mutation_spread(round_idx, w_agg, w_delta, alpha_list, M)
-        
-        
-    return test_acc, train_loss
+    return test_acc, train_loss   
 
 
 
@@ -2013,7 +1826,7 @@ is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
 non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = True # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
-server_percentage = 0.1  # 服务器端用于微调的数据比例
+server_percentage = 0.05  # 服务器端用于微调的数据比例
 
 # 模型相关
 origin_model = 'resnet' # 采用模型
@@ -2026,7 +1839,7 @@ test_bc_size = 128
 num_classes = 10  # 分别数量，CIFAR100中是20, CIFAR10是10
 
 # 联邦训练的超参数
-global_round = 100  # 全局训练轮数，可根据需要调整
+global_round = 2  # 全局训练轮数，可根据需要调整
 eta = 0.01  # 客户端端学习率，从{0.01, 0.1, 1}中调优
 gamma = 0.01  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
@@ -2035,7 +1848,6 @@ M = 10  # 每一轮抽取客户端
 
 # FedMut中参数
 radius = 5.0  # alpha，控制mutation的幅度
-base_radius = 3.0
 mut_acc_rate = 0.5  # 论文中的β0
 mut_bound = 50  # Tb
 
@@ -2259,7 +2071,7 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 
 
 
-# # %%
+# %%
 # # 总体对比
 # # 初始化结果存储字典
 # results_test_acc = {}
@@ -2270,10 +2082,10 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # # results_test_acc['CLG_Mut'] = test_acc_CLG_Mut
 # # results_train_loss['CLG_Mut'] = train_loss_CLG_Mut
 
-# # # CLG_Mut_2 训练
-# # test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# # results_test_acc['CLG_Mut_2'] = test_acc_CLG_Mut_2
-# # results_train_loss['CLG_Mut_2'] = train_loss_CLG_Mut_2
+# # CLG_Mut_2 训练
+# test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+# results_test_acc['CLG_Mut_2'] = test_acc_CLG_Mut_2
+# results_train_loss['CLG_Mut_2'] = train_loss_CLG_Mut_2
 
 # # # CLG_Mut_3 训练
 # # test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
@@ -2292,25 +2104,25 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # # results_test_acc['Server_only'] = test_acc_server_only
 # # results_train_loss['Server_only'] = train_loss_server_only
 
-# # # FedAvg 训练
-# # test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
-# # results_test_acc['FedAvg'] = test_acc_fedavg
-# # results_train_loss['FedAvg'] = train_loss_fedavg
+# # FedAvg 训练
+# test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
+# results_test_acc['FedAvg'] = test_acc_fedavg
+# results_train_loss['FedAvg'] = train_loss_fedavg
 
-# # # CLG_SGD 训练
-# # test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
-# # results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
-# # results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
+# # CLG_SGD 训练
+# test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
+# results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
+# results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
 
-# # # FedDU 训练
-# # test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
-# # results_test_acc['FedDU'] = test_acc_CLG_SGD
-# # results_train_loss['FedDU'] = train_loss_CLG_SGD
+# # FedDU 训练
+# test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
+# results_test_acc['FedDU'] = test_acc_CLG_SGD
+# results_train_loss['FedDU'] = train_loss_CLG_SGD
 
-# # # FedDU-Mut 训练
-# # test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# # results_test_acc['FedDU_Mut'] = test_acc_FedDU_Mut
-# # results_train_loss['FedDU_Mut'] = train_loss_FedDU_Mut
+# # FedDU-Mut 训练
+# test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+# results_test_acc['FedDU_Mut'] = test_acc_FedDU_Mut
+# results_train_loss['FedDU_Mut'] = train_loss_FedDU_Mut
 
 # # 如果存在至少20轮训练，则输出第二十轮的测试精度和训练损失
 # for algo in results_test_acc:
@@ -3366,20 +3178,23 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # plt.show()
 
 
-# 消融实验 - FedMut_new参数 (base_radius)
+
+
+
+# 消融实验 - FedMut_new参数 (radius)
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import datetime
 import copy
 
-# 定义要测试的 base_radius 值
-base_radius_values = [1.6, 1.8, 2.0]
-# base_radius_values = [2.2, 2.4]
+# 定义要测试的 radius 值
+radius_values = [4, 5]
+# radius_values = [7, 8]
 
 # 创建结果存储结构
-base_radius_results = {
-    "base_radius": [],
+radius_results = {
+    "radius": [],
     # 第20轮结果
     "FedMut_new_r20_acc": [],
     "FedMut_new_r20_loss": [],
@@ -3388,12 +3203,12 @@ base_radius_results = {
     "FedMut_new_final_loss": [],
 }
 
-# 为每个 base_radius 值运行实验
-for base_radius_tmp in base_radius_values:
-    print(f"\n--- 测试 base_radius = {base_radius_tmp} ---")
+# 为每个 radius 值运行实验
+for radius_tmp in radius_values:
+    print(f"\n--- 测试 radius = {radius_tmp} ---")
     
-    # 更新全局 base_radius 参数（或直接传参）
-    base_radius = base_radius_tmp
+    # 更新全局 radius 参数（或直接传参）
+    radius = radius_tmp
     
     # 初始化结果存储字典
     results_test_acc = {}
@@ -3410,23 +3225,23 @@ for base_radius_tmp in base_radius_values:
     results_test_acc["FedMut_new"] = test_acc_FedMut_new
     results_train_loss["FedMut_new"] = train_loss_FedMut_new
     
-    # 保存当前 base_radius 结果
-    base_radius_results["base_radius"].append(base_radius_tmp)
+    # 保存当前 radius 结果
+    radius_results["radius"].append(radius_tmp)
     
     # 保存第20轮结果
     if len(results_test_acc["FedMut_new"]) >= 20:
-        base_radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][19])
-        base_radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][19])
+        radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][19])
+        radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][19])
     else:
-        base_radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][-1])
-        base_radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][-1])
+        radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][-1])
+        radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][-1])
     
     # 保存最终轮结果
-    base_radius_results["FedMut_new_final_acc"].append(results_test_acc["FedMut_new"][-1])
-    base_radius_results["FedMut_new_final_loss"].append(results_train_loss["FedMut_new"][-1])
+    radius_results["FedMut_new_final_acc"].append(results_test_acc["FedMut_new"][-1])
+    radius_results["FedMut_new_final_loss"].append(results_train_loss["FedMut_new"][-1])
     
-    # 打印当前 base_radius 的结果
-    print(f"\nResults for base_radius = {base_radius}:")
+    # 打印当前 radius 的结果
+    print(f"\nResults for radius = {radius}:")
     for algo in results_test_acc:
         if len(results_test_acc[algo]) >= 20:
             print(
@@ -3450,11 +3265,11 @@ for base_radius_tmp in base_radius_values:
         plt.plot(rounds, acc, label=algo)
     plt.xlabel("Training Rounds", fontsize=14)
     plt.ylabel("Test Accuracy (%)", fontsize=14)
-    plt.title(f"Test Accuracy Comparison (base_radius={base_radius})", fontsize=16)
+    plt.title(f"Test Accuracy Comparison (radius={radius})", fontsize=16)
     plt.legend(fontsize=12)
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(f"output/test_accuracy_base_radius{base_radius}_{origin_model}_{timestamp}.png")
+    plt.savefig(f"output/test_accuracy_radius{radius}_{origin_model}_{timestamp}.png")
     plt.show()
     
     # 绘制训练损失图
@@ -3463,47 +3278,49 @@ for base_radius_tmp in base_radius_values:
         plt.plot(rounds, loss, label=algo)
     plt.xlabel("Training Rounds", fontsize=14)
     plt.ylabel("Train Loss", fontsize=14)
-    plt.title(f"Train Loss Comparison (base_radius={base_radius})", fontsize=16)
+    plt.title(f"Train Loss Comparison (radius={radius})", fontsize=16)
     plt.legend(fontsize=12)
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(f"output/train_loss_base_radius{base_radius}_{origin_model}_{timestamp}.png")
+    plt.savefig(f"output/train_loss_radius{radius}_{origin_model}_{timestamp}.png")
     plt.show()
 
 # 创建DataFrame
-base_radius_df = pd.DataFrame(base_radius_results)
+radius_df = pd.DataFrame(radius_results)
 
 # 打印表格
-print("\n----- base_radius 参数结果表 -----")
-print(base_radius_df.to_string(index=False))
+print("\n----- radius 参数结果表 -----")
+print(radius_df.to_string(index=False))
 
 # 保存到CSV文件
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-base_radius_df.to_csv(f"output/ablation/base_radius_comparison_{origin_model}_{timestamp}.csv", index=False)
+radius_df.to_csv(f"output/ablation/radius_comparison_{origin_model}_{timestamp}.csv", index=False)
 
 # 绘制第20轮精度对比图
 plt.figure(figsize=(14, 8))
-plt.plot(base_radius_df["base_radius"], base_radius_df["FedMut_new_r20_acc"], "s-", label="FedMut_new")
-plt.xlabel("base_radius Value", fontsize=14)
+plt.plot(radius_df["radius"], radius_df["FedMut_new_r20_acc"], "s-", label="FedMut_new")
+plt.xlabel("radius Value", fontsize=14)
 plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
-plt.title(f"Effect of base_radius on Round 20 Accuracy ({origin_model})", fontsize=16)
+plt.title(f"Effect of radius on Round 20 Accuracy ({origin_model})", fontsize=16)
 plt.legend(fontsize=12)
 plt.grid(True)
-plt.xticks(base_radius_df["base_radius"])
+plt.xticks(radius_df["radius"])
 plt.tight_layout()
-plt.savefig(f"output/ablation/base_radius_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
+plt.savefig(f"output/ablation/radius_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
 plt.show()
 
 # 绘制最终精度对比图
 plt.figure(figsize=(14, 8))
-plt.plot(base_radius_df["base_radius"], base_radius_df["FedMut_new_final_acc"], "s-", label="FedMut_new")
-plt.xlabel("base_radius Value", fontsize=14)
+plt.plot(radius_df["radius"], radius_df["FedMut_new_final_acc"], "s-", label="FedMut_new")
+plt.xlabel("radius Value", fontsize=14)
 plt.ylabel("Final Test Accuracy (%)", fontsize=14)
-plt.title(f"Effect of base_radius on Final Accuracy ({origin_model})", fontsize=16)
+plt.title(f"Effect of radius on Final Accuracy ({origin_model})", fontsize=16)
 plt.legend(fontsize=12)
 plt.grid(True)
-plt.xticks(base_radius_df["base_radius"])
+plt.xticks(radius_df["radius"])
 plt.tight_layout()
-plt.savefig(f"output/ablation/base_radius_final_accuracy_comparison_{origin_model}_{timestamp}.png")
+plt.savefig(f"output/ablation/radius_final_accuracy_comparison_{origin_model}_{timestamp}.png")
 plt.show()
+
+
 

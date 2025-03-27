@@ -3,251 +3,33 @@ Torch version: 2.3.1
 CUDA available: True
 Files already downloaded and verified
 Files already downloaded and verified
-Traning Client Total: 39531 4765 3370 4548 3046 4655 3655 3343 4215 4754 3180
-Client 0: 396 34 20 4 10 46 2 3 141 135 1
-Client 1: 395 2 2 12 24 14 49 1 185 88 18
-Client 2: 395 7 11 5 2 289 36 30 3 10 2
-Client 3: 395 89 74 39 20 10 55 3 36 2 67
-Client 4: 395 124 82 4 32 6 16 35 37 32 27
-Client 5: 395 11 2 0 16 1 8 43 228 0 86
-Client 6: 395 107 54 71 4 0 9 0 0 38 112
-Client 7: 395 57 56 28 25 36 0 28 115 35 15
-Client 8: 394 46 11 12 0 31 2 138 127 16 11
-Client 9: 396 71 57 121 0 2 43 16 54 32
-Server: 5000 500 500 500 500 500 500 500 500 500 500
+类别 8 的数据样本不足，采样数从 5125 调整为 5000
+Traning Client Total: 39642 3145 4768 4951 4330 4002 3810 3383 3680 5000 2573
+Client 0: 397 0 4 0 0 0 15 0 0 377 1
+Client 1: 398 0 0 0 0 0 4 0 34 0 360
+Client 2: 398 22 0 0 0 0 0 0 0 369 7
+Client 3: 397 11 0 0 345 0 0 25 0 16
+Client 4: 397 4 0 0 357 0 12 0 3 0 21
+Client 5: 397 258 111 0 5 0 0 7 9 5 2
+Client 6: 399 0 0 0 0 0 0 1 374 0 24
+Client 7: 397 57 0 0 0 0 0 20 303 9 8
+Client 8: 395 0 0 3 0 0 232 2 0 158
+Client 9: 397 0 0 158 4 0 125 110
+Server: 2500 250 250 250 250 250 250 250 250 250 250
 
---- 测试 base_radius = 0.8 ---
-  0%|          | 0/100 [00:00<?, ?it/s]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  1%|          | 1/100 [00:28<47:21, 28.70s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  2%|▏         | 2/100 [01:09<58:03, 35.55s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  3%|▎         | 3/100 [01:57<1:07:01, 41.46s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  4%|▍         | 4/100 [02:34<1:03:18, 39.57s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  5%|▌         | 5/100 [03:44<1:20:06, 50.60s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  6%|▌         | 6/100 [04:37<1:20:31, 51.40s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  7%|▋         | 7/100 [06:00<1:35:59, 61.93s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  8%|▊         | 8/100 [06:37<1:22:21, 53.71s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-  9%|▉         | 9/100 [08:05<1:38:07, 64.70s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 10%|█         | 10/100 [08:38<1:22:02, 54.69s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 11%|█         | 11/100 [10:31<1:47:31, 72.49s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 12%|█▏        | 12/100 [12:26<2:05:36, 85.64s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 13%|█▎        | 13/100 [14:21<2:17:10, 94.61s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 14%|█▍        | 14/100 [16:18<2:25:09, 101.28s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 15%|█▌        | 15/100 [18:16<2:30:26, 106.19s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 16%|█▌        | 16/100 [20:13<2:33:20, 109.53s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 17%|█▋        | 17/100 [22:01<2:30:43, 108.96s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 18%|█▊        | 18/100 [22:52<2:05:05, 91.53s/it] /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 19%|█▉        | 19/100 [24:18<2:01:20, 89.88s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 20%|██        | 20/100 [24:55<1:38:46, 74.08s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 21%|██        | 21/100 [25:29<1:21:32, 61.93s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 22%|██▏       | 22/100 [25:58<1:07:43, 52.10s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 23%|██▎       | 23/100 [26:28<58:25, 45.53s/it]  /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 24%|██▍       | 24/100 [26:57<51:35, 40.72s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 25%|██▌       | 25/100 [27:26<46:22, 37.10s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 26%|██▌       | 26/100 [28:02<45:12, 36.66s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 27%|██▋       | 27/100 [29:11<56:34, 46.50s/it]第0轮聚类为: {0: 0.07553502, 1: 0.010103867}; avg_var = 0.04281945409012795
- 第0轮扰动因子为: [0.9887715311455347, 2.2112281125925217, 0.9887715311455347, 2.2112281125925217, 2.2112281125925217, 2.2112281125925217, 2.2112281125925217, 2.2112281125925217, 2.2112281125925217, 0.9887715311455347]
-第1轮聚类为: {0: 0.062428027, 1: 0.5127244}; avg_var = 0.28757620857788085
- 第1轮扰动因子为: [2.2263332898146766, 2.2263332898146766, 2.2263332898146766, 2.2263332898146766, 0.9736667374541231, 0.9736667374541231, 2.2263332898146766, 0.9736667374541231, 2.2263332898146766, 2.2263332898146766]
-第2轮聚类为: {0: 0.8215955, 1: 0.96237546}; avg_var = 0.8919854860169983
- 第2轮扰动因子为: [1.6631310505757413, 1.5368689314867472, 1.6631310505757413, 1.6631310505757413, 1.5368689314867472, 1.5368689314867472, 1.6631310505757413, 1.6631310505757413, 1.5368689314867472, 1.5368689314867472]
-第3轮聚类为: {0: 0.6416233, 1: 0.43328407}; avg_var = 0.5374537210328675
- 第3轮扰动因子为: [1.4449434540862691, 1.7550564717829618, 1.4449434540862691, 1.7550564717829618, 1.4449434540862691, 1.7550564717829618, 1.4449434540862691, 1.4449434540862691, 1.4449434540862691, 1.7550564717829618]
-第4轮聚类为: {0: 0.3102174, 1: 0.13563694}; avg_var = 0.22292719291282653
- 第4轮扰动因子为: [1.9132510350939969, 1.2867488396591522, 1.2867488396591522, 1.9132510350939969, 1.9132510350939969, 1.9132510350939969, 1.2867488396591522, 1.9132510350939969, 1.2867488396591522, 1.9132510350939969]
-第5轮聚类为: {0: 0.02747854, 1: 0.0839653}; avg_var = 0.055721929983625414
- 第5轮扰动因子为: [2.005490212393521, 1.1945095272083937, 1.1945095272083937, 2.005490212393521, 1.1945095272083937, 2.005490212393521, 1.1945095272083937, 2.005490212393521, 2.005490212393521, 2.005490212393521]
-第6轮聚类为: {0: 0.0, 1: 0.21205378}; avg_var = 0.10602689789367675
- 第6轮扰动因子为: [2.399999849094897, 2.399999849094897, 2.399999849094897, 2.399999849094897, 2.399999849094897, 0.8, 2.399999849094897, 2.399999849094897, 2.399999849094897, 2.399999849094897]
-第7轮聚类为: {0: 0.63849145, 1: 0.3011552}; avg_var = 0.46982334064079284
- 第7轮扰动因子为: [1.887202608315586, 1.3127973576290608, 1.3127973576290608, 1.3127973576290608, 1.887202608315586, 1.887202608315586, 1.3127973576290608, 1.887202608315586, 1.887202608315586, 1.3127973576290608]
-第8轮聚类为: {0: 0.109947026, 1: 0.3186355}; avg_var = 0.2142912696464157
- 第8轮扰动因子为: [1.9895416702422868, 1.2104582550929823, 1.9895416702422868, 1.9895416702422868, 1.2104582550929823, 1.9895416702422868, 1.2104582550929823, 1.2104582550929823, 1.9895416702422868, 1.9895416702422868]
-第9轮聚类为: {0: 0.7547117, 1: 0.0}; avg_var = 0.3773558537824249
- 第9轮扰动因子为: [2.3999999575997037, 2.3999999575997037, 0.8, 2.3999999575997037, 2.3999999575997037, 2.3999999575997037, 2.3999999575997037, 2.3999999575997037, 2.3999999575997037, 2.3999999575997037]
-第10轮聚类为: {0: 0.5271008, 1: 0.21809235}; avg_var = 0.3725965719087219
- 第10轮扰动因子为: [1.2682648603762219, 1.9317351606702893, 1.9317351606702893, 1.9317351606702893, 1.9317351606702893, 1.9317351606702893, 1.9317351606702893, 1.9317351606702893, 1.2682648603762219, 1.9317351606702893]
-第11轮聚类为: {0: 0.08602109, 1: 0.10964913}; avg_var = 0.09783511863780975
- 第11轮扰动因子为: [1.503396402121582, 1.6966034343379612, 1.6966034343379612, 1.503396402121582, 1.503396402121582, 1.503396402121582, 1.6966034343379612, 1.503396402121582, 1.503396402121582, 1.503396402121582]
-第12轮聚类为: {0: 0.25745323, 1: 0.097839095}; avg_var = 0.17764617012573242
- 第12轮扰动因子为: [1.9593978426729899, 1.9593978426729899, 1.240602100812786, 1.9593978426729899, 1.9593978426729899, 1.9593978426729899, 1.9593978426729899, 1.240602100812786, 1.240602100812786, 1.9593978426729899]
-第13轮聚类为: {0: 0.0, 1: 0.14849107}; avg_var = 0.07424554483724594
- 第13轮扰动因子为: [2.399999784498854, 2.399999784498854, 2.399999784498854, 0.8, 2.399999784498854, 2.399999784498854, 2.399999784498854, 2.399999784498854, 2.399999784498854, 2.399999784498854]
-第14轮聚类为: {0: 0.49198896, 1: 0.8242758}; avg_var = 0.6581323842866517
- 第14轮扰动因子为: [1.3980425442355573, 1.3980425442355573, 1.8019574314532247, 1.8019574314532247, 1.3980425442355573, 1.3980425442355573, 1.8019574314532247, 1.8019574314532247, 1.8019574314532247, 1.3980425442355573]
-第15轮聚类为: {0: 0.0, 1: 0.14944594}; avg_var = 0.07472297804189681
- 第15轮扰动因子为: [2.3999997858757722, 0.8, 2.3999997858757722, 2.3999997858757722, 2.3999997858757722, 2.3999997858757722, 2.3999997858757722, 2.3999997858757722, 2.3999997858757722, 2.3999997858757722]
-第16轮聚类为: {0: 0.016222825, 1: 0.2654789}; avg_var = 0.14085088180137634
- 第16轮扰动因子为: [2.3078579877974827, 2.3078579877974827, 2.3078579877974827, 2.3078579877974827, 2.3078579877974827, 0.8921418457102647, 2.3078579877974827, 0.8921418457102647, 2.3078579877974827, 0.8921418457102647]
-第17轮聚类为: {0: 0.28765845, 1: 0.14780305}; avg_var = 0.21773077057434082
- 第17轮扰动因子为: [1.34306721230065, 1.8569326594633233, 1.8569326594633233, 1.8569326594633233, 1.8569326594633233, 1.8569326594633233, 1.8569326594633233, 1.8569326594633233, 1.34306721230065, 1.8569326594633233]
-第18轮聚类为: {0: 0.25993827, 1: 0.2836334}; avg_var = 0.2717858652932739
- 第18轮扰动因子为: [1.565126676688951, 1.6348731767182239, 1.565126676688951, 1.6348731767182239, 1.565126676688951, 1.565126676688951, 1.565126676688951, 1.565126676688951, 1.6348731767182239, 1.6348731767182239]
-第19轮聚类为: {0: 0.23258065, 1: 0.11295474}; avg_var = 0.17276770876480102
- 第19轮扰动因子为: [1.323036366062008, 1.323036366062008, 1.323036366062008, 1.323036366062008, 1.323036366062008, 1.8769635068282178, 1.8769635068282178, 1.8769635068282178, 1.323036366062008, 1.323036366062008]
-第20轮聚类为: {0: 0.15604803, 1: 0.06073604}; avg_var = 0.10839204745126724
- 第20轮扰动因子为: [1.9517304697567401, 1.9517304697567401, 1.9517304697567401, 1.2482693551360204, 1.9517304697567401, 1.9517304697567401, 1.9517304697567401, 1.2482693551360204, 1.9517304697567401, 1.2482693551360204]
-第21轮聚类为: {0: 0.19469717, 1: 0.014312129}; avg_var = 0.10450466232133865
- 第21轮扰动因子为: [2.290438165148973, 2.290438165148973, 2.290438165148973, 2.290438165148973, 2.290438165148973, 0.9095616461006893, 2.290438165148973, 0.9095616461006893, 2.290438165148973, 0.9095616461006893]
-第22轮聚类为: {0: 0.34975109, 1: 0.5341133}; avg_var = 0.44193221138549804
- 第22轮扰动因子为: [1.433130740022687, 1.7668691698235364, 1.7668691698235364, 1.433130740022687, 1.7668691698235364, 1.7668691698235364, 1.433130740022687, 1.433130740022687, 1.433130740022687, 1.7668691698235364]
-第23轮聚类为: {0: 0.1677874, 1: 0.25392193}; avg_var = 0.2108546744449234
- 第23轮扰动因子为: [1.4365992247882484, 1.4365992247882484, 1.7634006993301048, 1.7634006993301048, 1.7634006993301048, 1.7634006993301048, 1.7634006993301048, 1.7634006993301048, 1.7634006993301048, 1.7634006993301048]
-第24轮聚类为: {0: 0.0, 1: 0.057412498}; avg_var = 0.028706258849630358
- 第24轮扰动因子为: [2.399999442630261, 2.399999442630261, 2.399999442630261, 0.8, 2.399999442630261, 2.399999442630261, 2.399999442630261, 2.399999442630261, 2.399999442630261, 2.399999442630261]
-第25轮聚类为: {0: 0.39719623, 1: 0.0}; avg_var = 0.19859812663627624
- 第25轮扰动因子为: [2.3999999194352926, 2.3999999194352926, 2.3999999194352926, 2.3999999194352926, 2.3999999194352926, 2.3999999194352926, 2.3999999194352926, 2.3999999194352926, 0.8, 2.3999999194352926]
-第26轮聚类为: {0: 0.17099762, 1: 0.56782097}; avg_var = 0.36940930293632507
- 第26轮扰动因子为: [1.1703157841877763, 2.029684172499833, 1.1703157841877763, 2.029684172499833, 2.029684172499833, 2.029684172499833, 2.029684172499833, 2.029684172499833, 2.029684172499833, 1.1703157841877763]
-第27轮聚类为: {0: 0.2708763, 1: 0.0}; avg_var = 0.13543815420700073
-/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 28%|██▊       | 28/100 [29:46<51:38, 43.03s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 29%|██▉       | 29/100 [30:21<48:01, 40.58s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 30%|███       | 30/100 [30:53<44:29, 38.13s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 31%|███       | 31/100 [31:21<40:22, 35.11s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 32%|███▏      | 32/100 [31:51<38:03, 33.58s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 33%|███▎      | 33/100 [32:21<36:11, 32.41s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 34%|███▍      | 34/100 [32:51<34:44, 31.59s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 35%|███▌      | 35/100 [33:19<33:12, 30.65s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 36%|███▌      | 36/100 [33:49<32:21, 30.33s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 37%|███▋      | 37/100 [34:19<31:50, 30.33s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 38%|███▊      | 38/100 [35:05<36:08, 34.98s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 39%|███▉      | 39/100 [35:44<36:55, 36.33s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 40%|████      | 40/100 [36:14<34:14, 34.25s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 41%|████      | 41/100 [36:42<31:56, 32.49s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 42%|████▏     | 42/100 [37:13<30:46, 31.83s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 43%|████▎     | 43/100 [37:43<29:56, 31.52s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 44%|████▍     | 44/100 [38:19<30:28, 32.66s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 45%|████▌     | 45/100 [38:54<30:32, 33.32s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 46%|████▌     | 46/100 [39:29<30:37, 34.02s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 47%|████▋     | 47/100 [40:05<30:24, 34.42s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 48%|████▊     | 48/100 [40:55<34:05, 39.34s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 49%|████▉     | 49/100 [42:08<41:51, 49.24s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 50%|█████     | 50/100 [43:46<53:24, 64.10s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 51%|█████     | 51/100 [45:10<57:07, 69.95s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 52%|█████▏    | 52/100 [46:45<1:02:00, 77.52s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 53%|█████▎    | 53/100 [48:39<1:09:18, 88.47s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 54%|█████▍    | 54/100 [50:36<1:14:13, 96.81s/it] 第27轮扰动因子为: [2.399999881864899, 2.399999881864899, 2.399999881864899, 2.399999881864899, 2.399999881864899, 2.399999881864899, 2.399999881864899, 2.399999881864899, 0.8, 2.399999881864899]
-第28轮聚类为: {0: 0.30438823, 1: 0.23224422}; avg_var = 0.26831621931625366
- 第28轮扰动因子为: [1.7075507275832997, 1.7075507275832997, 1.4924493016428797, 1.4924493016428797, 1.7075507275832997, 1.7075507275832997, 1.4924493016428797, 1.4924493016428797, 1.7075507275832997, 1.4924493016428797]
-第29轮聚类为: {0: 0.5166803, 1: 0.36088827}; avg_var = 0.43878431128097534
- 第29轮扰动因子为: [1.4579784431586669, 1.4579784431586669, 1.742021466040781, 1.742021466040781, 1.4579784431586669, 1.4579784431586669, 1.742021466040781, 1.742021466040781, 1.742021466040781, 1.742021466040781]
-第30轮聚类为: {0: 0.25353265, 1: 0.091194496}; avg_var = 0.17236358927322387
- 第30轮扰动因子为: [1.976734131172718, 1.2232657068387263, 1.976734131172718, 1.2232657068387263, 1.976734131172718, 1.976734131172718, 1.976734131172718, 1.2232657068387263, 1.2232657068387263, 1.2232657068387263]
-第31轮聚类为: {0: 0.14897212, 1: 0.3995549}; avg_var = 0.27426351116729736
- 第31轮扰动因子为: [1.234537203224068, 1.9654628253683537, 1.9654628253683537, 1.234537203224068, 1.9654628253683537, 1.234537203224068, 1.9654628253683537, 1.234537203224068, 1.234537203224068, 1.9654628253683537]
-第32轮聚类为: {0: 0.5215739, 1: 0.138575}; avg_var = 0.3300744693143463
- 第32轮扰动因子为: [1.1358636076008821, 1.1358636076008821, 2.0641363078093313, 2.0641363078093313, 2.0641363078093313, 1.1358636076008821, 2.0641363078093313, 2.0641363078093313, 1.1358636076008821, 1.1358636076008821]
-第33轮聚类为: {0: 0.23343273, 1: 0.079437196}; avg_var = 0.15643496321273803
- 第33轮扰动因子为: [1.9937624187220024, 1.9937624187220024, 1.2062375552028097, 1.2062375552028097, 1.9937624187220024, 1.9937624187220024, 1.9937624187220024, 1.9937624187220024, 1.9937624187220024, 1.9937624187220024]
-第34轮聚类为: {0: 0.043987982, 1: 0.17042209}; avg_var = 0.10720504330230712
- 第34轮扰动因子为: [1.1282530792961822, 2.07174682705584, 2.07174682705584, 1.1282530792961822, 1.1282530792961822, 1.1282530792961822, 2.07174682705584, 2.07174682705584, 2.07174682705584, 2.07174682705584]
-第35轮聚类为: {0: 0.46202242, 1: 0.0}; avg_var = 0.23101122187210082
- 第35轮扰动因子为: [2.3999999307392956, 2.3999999307392956, 2.3999999307392956, 2.3999999307392956, 2.3999999307392956, 2.3999999307392956, 0.8, 2.3999999307392956, 2.3999999307392956, 2.3999999307392956]
-第36轮聚类为: {0: 0.013973002, 1: 0.39350176}; avg_var = 0.20373738812042236
- 第36轮扰动因子为: [2.3451332215679677, 2.3451332215679677, 2.3451332215679677, 2.3451332215679677, 2.3451332215679677, 2.3451332215679677, 2.3451332215679677, 0.8548667181843292, 2.3451332215679677, 0.8548667181843292]
-第37轮聚类为: {0: 0.9288007, 1: 0.18208379}; avg_var = 0.555442224012146
- 第37轮扰动因子为: [2.137745906871814, 1.0622541501705112, 2.137745906871814, 1.0622541501705112, 2.137745906871814, 2.137745906871814, 2.137745906871814, 2.137745906871814, 1.0622541501705112, 2.137745906871814]
-第38轮聚类为: {0: 0.31114843, 1: 0.21217114}; avg_var = 0.26165981100631713
- 第38轮扰动因子为: [1.7513067633298374, 1.7513067633298374, 1.448693084404296, 1.7513067633298374, 1.7513067633298374, 1.7513067633298374, 1.7513067633298374, 1.448693084404296, 1.7513067633298374, 1.448693084404296]
-第39轮聚类为: {0: 0.2184532, 1: 0.0}; avg_var = 0.10922660933567047
- 第39轮扰动因子为: [2.3999998535155487, 2.3999998535155487, 2.3999998535155487, 2.3999998535155487, 2.3999998535155487, 2.3999998535155487, 2.3999998535155487, 2.3999998535155487, 0.8, 2.3999998535155487]
-第40轮聚类为: {0: 0.16728699, 1: 0.42248753}; avg_var = 0.2948872547013855
- 第40轮扰动因子为: [1.946166937760296, 1.2538330888324367, 1.2538330888324367, 1.946166937760296, 1.946166937760296, 1.2538330888324367, 1.946166937760296, 1.946166937760296, 1.946166937760296, 1.2538330888324367]
-第41轮聚类为: {0: 0.10344647, 1: 0.3873593}; avg_var = 0.24540288256240844
- 第41轮扰动因子为: [2.0627701427804355, 1.1372298405976282, 2.0627701427804355, 2.0627701427804355, 1.1372298405976282, 2.0627701427804355, 2.0627701427804355, 2.0627701427804355, 2.0627701427804355, 2.0627701427804355]
-第42轮聚类为: {0: 0.6893708, 1: 0.19732882}; avg_var = 0.44334981845451354
- 第42轮扰动因子为: [1.156068842454922, 2.0439311483445084, 2.0439311483445084, 2.0439311483445084, 2.0439311483445084, 2.0439311483445084, 1.156068842454922, 2.0439311483445084, 1.156068842454922, 1.156068842454922]
-第43轮聚类为: {0: 0.16980554, 1: 0.2047234}; avg_var = 0.18726448224617004
- 第43轮扰动因子为: [1.6745850805329319, 1.5254148340264138, 1.5254148340264138, 1.6745850805329319, 1.5254148340264138, 1.6745850805329319, 1.6745850805329319, 1.5254148340264138, 1.6745850805329319, 1.6745850805329319]
-第44轮聚类为: {0: 0.08102309, 1: 0.06532596}; avg_var = 0.07317453132701873
- 第44轮扰动因子为: [1.514193414919039, 1.6858064478811003, 1.6858064478811003, 1.6858064478811003, 1.6858064478811003, 1.514193414919039, 1.6858064478811003, 1.514193414919039, 1.514193414919039, 1.6858064478811003]
-第45轮聚类为: {0: 0.08262843, 1: 0.12873913}; avg_var = 0.10568379120660781
- 第45轮扰动因子为: [1.7745232036616163, 1.7745232036616163, 1.7745232036616163, 1.7745232036616163, 1.7745232036616163, 1.7745232036616163, 1.7745232036616163, 1.4254766449433607, 1.4254766449433607, 1.4254766449433607]
-第46轮聚类为: {0: 0.37317443, 1: 0.26101902}; avg_var = 0.3170967202050781
- 第46轮扰动因子为: [1.458522159683894, 1.741477865046283, 1.458522159683894, 1.741477865046283, 1.741477865046283, 1.458522159683894, 1.741477865046283, 1.458522159683894, 1.458522159683894, 1.458522159683894]
-第47轮聚类为: {0: 0.20410405, 1: 0.13475011}; avg_var = 0.16942709194255828
- 第47轮扰动因子为: [1.7637374927647003, 1.7637374927647003, 1.7637374927647003, 1.4362624127993993, 1.7637374927647003, 1.4362624127993993, 1.7637374927647003, 1.4362624127993993, 1.4362624127993993, 1.7637374927647003]
-第48轮聚类为: {0: 0.15797344, 1: 0.43975446}; avg_var = 0.29886395739151
- 第48轮扰动因子为: [1.222863807011466, 1.222863807011466, 1.222863807011466, 1.222863807011466, 1.222863807011466, 1.222863807011466, 1.97713613945247, 1.97713613945247, 1.222863807011466, 1.97713613945247]
-第49轮聚类为: {0: 0.20023286, 1: 0.351045}; avg_var = 0.27563894795013427
- 第49轮扰动因子为: [1.3811453422393196, 1.3811453422393196, 1.818854599713731, 1.818854599713731, 1.818854599713731, 1.3811453422393196, 1.818854599713731, 1.818854599713731, 1.818854599713731, 1.3811453422393196]
-第50轮聚类为: {0: 0.2917928, 1: 0.18586963}; avg_var = 0.23883123205734252
- 第50轮扰动因子为: [1.77740251959398, 1.77740251959398, 1.77740251959398, 1.77740251959398, 1.77740251959398, 1.77740251959398, 1.77740251959398, 1.4225974134131072, 1.4225974134131072, 1.4225974134131072]
-第51轮聚类为: {0: 0.29123178, 1: 0.05915239}; avg_var = 0.17519209788871765
- 第51轮扰动因子为: [2.1298854674565013, 2.1298854674565013, 2.1298854674565013, 1.0701144242039538, 1.0701144242039538, 2.1298854674565013, 2.1298854674565013, 2.1298854674565013, 1.0701144242039538, 2.1298854674565013]
-第52轮聚类为: {0: 0.2237459, 1: 0.33438382}; avg_var = 0.2790648739202118
- 第52轮扰动因子为: [1.4414161532239902, 1.75858374672426, 1.75858374672426, 1.4414161532239902, 1.75858374672426, 1.4414161532239902, 1.75858374672426, 1.75858374672426, 1.75858374672426, 1.4414161532239902]
-第53轮聚类为: {0: 0.27722362, 1: 0.5021656}; avg_var = 0.3896946410997009
- 第53轮扰动因子为: [1.8308904718659413, 1.8308904718659413, 1.8308904718659413, 1.8308904718659413, 1.3691094258953986, 1.8308904718659413, 1.3691094258953986, 1.3691094258953986, 1.8308904718659413, 1.8308904718659413]
-第54轮聚类为: {0: 0.39957273, 1: 0.09244003}; avg_var = 0.24600639449192047
-/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 55%|█████▌    | 55/100 [52:32<1:17:05, 102.79s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 56%|█████▌    | 56/100 [54:28<1:18:08, 106.57s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 57%|█████▋    | 57/100 [55:45<1:10:10, 97.91s/it] /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 58%|█████▊    | 58/100 [57:32<1:10:16, 100.40s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 59%|█████▉    | 59/100 [58:45<1:03:03, 92.28s/it] /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 60%|██████    | 60/100 [59:16<49:14, 73.87s/it]  /home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 61%|██████    | 61/100 [59:44<39:05, 60.15s/it]/home/anaconda/envs/env8/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
- 62%|██████▏   | 62/100 [1:00:13<32:12, 50.85s/it]
+--- 测试 radius = 4 ---
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:39<00:39, 39.06s/it]100%|██████████| 2/2 [01:14<00:00, 36.90s/it]100%|██████████| 2/2 [01:14<00:00, 37.23s/it]
+
+Results for radius = 4:
+FedMut_new - 最终测试精度: 14.21%, 最终训练损失: 0.0127
+
+--- 测试 radius = 5 ---
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:35<00:35, 35.27s/it]100%|██████████| 2/2 [01:10<00:00, 35.10s/it]100%|██████████| 2/2 [01:10<00:00, 35.12s/it]
+
+Results for radius = 5:
+FedMut_new - 最终测试精度: 16.03%, 最终训练损失: 0.0104
+
+----- radius 参数结果表 -----
+ radius  FedMut_new_r20_acc  FedMut_new_r20_loss  FedMut_new_final_acc  FedMut_new_final_loss
+      4           14.210000             0.012732             14.210000               0.012732
+      5           16.030001             0.010355             16.030001               0.010355
