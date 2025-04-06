@@ -1257,7 +1257,7 @@ def FedMut(net_glob, global_round, eta, K, M):
         w_locals.append(copy.deepcopy(net_glob.state_dict()))
         
     max_rank = 0
-    radius = 4  # 这里修改为推荐的4
+    radius = 4  # 这里修改为默认推荐的4
     
     for round in tqdm(range(global_round)):
         w_old = copy.deepcopy(net_glob.state_dict())
@@ -1493,7 +1493,7 @@ def mutation_spread_new(iter, w_glob, m, w_delta, alpha):
         ctrl_list = []
         for i in range(0, int(m / 2)):
             ctrl = random.random()  # 随机数，范围：[0,1)
-            if ctrl > ctrl_rate:
+            if ctrl > 1 - ctrl_rate:
                 ctrl_list.append(ctrl)
                 ctrl_list.append(1.0 * (-1.0 + ctrl_rate))
             else:
@@ -1589,7 +1589,7 @@ def FedMut_new(net_glob, global_round, eta, K, M):
 
 
 # %%
-def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M):
+def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1):
     """
     FedDU-Mut算法：融合CLG_Mut_2与FedDU，使用动态服务器参与度和mutation策略
     
@@ -1783,8 +1783,12 @@ def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M):
         if rank > max_rank:
             max_rank = rank
             
+        # 250327：加上根据alpha_new的动态调节radius
+        tmp_radius = radius*(1 + ratio * alpha_new)
+        print(f"Round {round}: tmp_radius: {tmp_radius}")
+            
         # Mutation扩散，为下一轮准备初始模型
-        w_locals = mutation_spread(round, final_model, M, w_delta, radius)
+        w_locals = mutation_spread(round, final_model, M, w_delta, tmp_radius)
         
         # 定期打印信息
         if round % 10 == 0:
@@ -1825,8 +1829,8 @@ size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
 non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
-server_iid = True # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
-server_percentage = 0.05  # 服务器端用于微调的数据比例
+server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
+server_percentage = 0.1  # 服务器端用于微调的数据比例
 
 # 模型相关
 origin_model = 'resnet' # 采用模型
@@ -1839,7 +1843,7 @@ test_bc_size = 128
 num_classes = 10  # 分别数量，CIFAR100中是20, CIFAR10是10
 
 # 联邦训练的超参数
-global_round = 2  # 全局训练轮数，可根据需要调整
+global_round = 100  # 全局训练轮数，可根据需要调整
 eta = 0.01  # 客户端端学习率，从{0.01, 0.1, 1}中调优
 gamma = 0.01  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
@@ -1847,7 +1851,7 @@ E = 1  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
 
 # FedMut中参数
-radius = 5.0  # alpha，控制mutation的幅度
+radius = 4.0  # alpha，控制mutation的幅度
 mut_acc_rate = 0.5  # 论文中的β0
 mut_bound = 50  # Tb
 
@@ -1856,7 +1860,6 @@ decay_rate = 0.99  # 稍微提高衰减率以降低波动
 
 # DUMut中参数
 du_C = 5
-lambda_val = 1  
 
 
 # %%
@@ -2082,10 +2085,10 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # # results_test_acc['CLG_Mut'] = test_acc_CLG_Mut
 # # results_train_loss['CLG_Mut'] = train_loss_CLG_Mut
 
-# # CLG_Mut_2 训练
-# test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# results_test_acc['CLG_Mut_2'] = test_acc_CLG_Mut_2
-# results_train_loss['CLG_Mut_2'] = train_loss_CLG_Mut_2
+# # # CLG_Mut_2 训练
+# # test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+# # results_test_acc['CLG_Mut_2'] = test_acc_CLG_Mut_2
+# # results_train_loss['CLG_Mut_2'] = train_loss_CLG_Mut_2
 
 # # # CLG_Mut_3 训练
 # # test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
@@ -2104,25 +2107,25 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # # results_test_acc['Server_only'] = test_acc_server_only
 # # results_train_loss['Server_only'] = train_loss_server_only
 
-# # FedAvg 训练
-# test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
-# results_test_acc['FedAvg'] = test_acc_fedavg
-# results_train_loss['FedAvg'] = train_loss_fedavg
+# # # FedAvg 训练
+# # test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
+# # results_test_acc['FedAvg'] = test_acc_fedavg
+# # results_train_loss['FedAvg'] = train_loss_fedavg
 
-# # CLG_SGD 训练
-# test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
-# results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
-# results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
+# # # CLG_SGD 训练
+# # test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
+# # results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
+# # results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
 
-# # FedDU 训练
-# test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
-# results_test_acc['FedDU'] = test_acc_CLG_SGD
-# results_train_loss['FedDU'] = train_loss_CLG_SGD
+# # # FedDU 训练
+# # test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
+# # results_test_acc['FedDU'] = test_acc_CLG_SGD
+# # results_train_loss['FedDU'] = train_loss_CLG_SGD
 
-# # FedDU-Mut 训练
-# test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-# results_test_acc['FedDU_Mut'] = test_acc_FedDU_Mut
-# results_train_loss['FedDU_Mut'] = train_loss_FedDU_Mut
+# # # FedDU-Mut 训练
+# # test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+# # results_test_acc['FedDU_Mut'] = test_acc_FedDU_Mut
+# # results_train_loss['FedDU_Mut'] = train_loss_FedDU_Mut
 
 # # 如果存在至少20轮训练，则输出第二十轮的测试精度和训练损失
 # for algo in results_test_acc:
@@ -2185,246 +2188,248 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 # plt.show()
 
 # %%
-# # ablation study for raidus
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import matplotlib
-# import platform
-# import datetime
-# import pandas as pd
-# import os
-# import numpy as np
+# ablation study for raidus
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib
+import platform
+import datetime
+import pandas as pd
+import os
+import numpy as np
 
-# # 确保output目录存在
-# os.makedirs("output", exist_ok=True)
+# 确保output目录存在
+os.makedirs("output", exist_ok=True)
 
-# # 定义要测试的radius值
-# radius_values = [3, 4, 5, 6, 7]
+# 定义要测试的radius值
+radius_values = [3, 4, 5]
+# radius_values = [6]
+# radius_values = [8, 10, 12]
 
-# # 创建结果存储结构 - 增加第20轮的结果
-# all_results = {
-#     "radius": [],
-#     # 第20轮结果
-#     # "CLG_Mut_r20_acc": [],
-#     # "CLG_Mut_r20_loss": [],
-#     "CLG_Mut_2_r20_acc": [],
-#     "CLG_Mut_2_r20_loss": [],
-#     "CLG_Mut_3_r20_acc": [],
-#     "CLG_Mut_3_r20_loss": [],
-#     # "FedMut_r20_acc": [],
-#     # "FedMut_r20_loss": [],
-#     "FedDU_Mut_r20_acc": [],
-#     "FedDU_Mut_r20_loss": [],
-#     # 最终轮结果
-#     # "CLG_Mut_final_acc": [],
-#     # "CLG_Mut_final_loss": [],
-#     "CLG_Mut_2_final_acc": [],
-#     "CLG_Mut_2_final_loss": [],
-#     "CLG_Mut_3_final_acc": [],
-#     "CLG_Mut_3_final_loss": [],
-#     # "FedMut_final_acc": [],
-#     # "FedMut_final_loss": [],
-#     "FedDU_Mut_final_acc": [],
-#     "FedDU_Mut_final_loss": [],
-# }
+# 创建结果存储结构 - 增加第20轮的结果
+all_results = {
+    "radius": [],
+    # 第20轮结果
+    # "CLG_Mut_r20_acc": [],
+    # "CLG_Mut_r20_loss": [],
+    # "CLG_Mut_2_r20_acc": [],
+    # "CLG_Mut_2_r20_loss": [],
+    # "CLG_Mut_3_r20_acc": [],
+    # "CLG_Mut_3_r20_loss": [],
+    # "FedMut_r20_acc": [],
+    # "FedMut_r20_loss": [],
+    "FedDU_Mut_r20_acc": [],
+    "FedDU_Mut_r20_loss": [],
+    # 最终轮结果
+    # "CLG_Mut_final_acc": [],
+    # "CLG_Mut_final_loss": [],
+    # "CLG_Mut_2_final_acc": [],
+    # "CLG_Mut_2_final_loss": [],
+    # "CLG_Mut_3_final_acc": [],
+    # "CLG_Mut_3_final_loss": [],
+    # "FedMut_final_acc": [],
+    # "FedMut_final_loss": [],
+    "FedDU_Mut_final_acc": [],
+    "FedDU_Mut_final_loss": [],
+}
 
-# # 为每个radius值运行实验
-# for radius_val in radius_values:
-#     print(f"\n--- Running experiments with radius = {radius_val} ---")
+# 为每个radius值运行实验
+for radius_val in radius_values:
+    print(f"\n--- Running experiments with radius = {radius_val} ---")
 
-#     # 更新全局radius参数
-#     radius = radius_val
+    # 更新全局radius参数
+    radius = radius_val
 
-#     # 初始化结果存储字典
-#     results_test_acc = {}
-#     results_train_loss = {}
+    # 初始化结果存储字典
+    results_test_acc = {}
+    results_train_loss = {}
 
-#     # # CLG_Mut 训练
-#     # test_acc_CLG_Mut, train_loss_CLG_Mut = CLG_Mut(
-#     #     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-#     # )
-#     # results_test_acc["CLG_Mut"] = test_acc_CLG_Mut
-#     # results_train_loss["CLG_Mut"] = train_loss_CLG_Mut
+    # # CLG_Mut 训练
+    # test_acc_CLG_Mut, train_loss_CLG_Mut = CLG_Mut(
+    #     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+    # )
+    # results_test_acc["CLG_Mut"] = test_acc_CLG_Mut
+    # results_train_loss["CLG_Mut"] = train_loss_CLG_Mut
 
-#     # CLG_Mut_2 训练
-#     test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(
-#         copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-#     )
-#     results_test_acc["CLG_Mut_2"] = test_acc_CLG_Mut_2
-#     results_train_loss["CLG_Mut_2"] = train_loss_CLG_Mut_2
+    # # CLG_Mut_2 训练
+    # test_acc_CLG_Mut_2, train_loss_CLG_Mut_2 = CLG_Mut_2(
+    #     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+    # )
+    # results_test_acc["CLG_Mut_2"] = test_acc_CLG_Mut_2
+    # results_train_loss["CLG_Mut_2"] = train_loss_CLG_Mut_2
 
-#     # CLG_Mut_3 训练
-#     test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
-#         copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
-#     )
-#     results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
-#     results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
+    # # CLG_Mut_3 训练
+    # test_acc_CLG_Mut_3, train_loss_CLG_Mut_3 = CLG_Mut_3(
+    #     copy.deepcopy(init_model), global_round, eta, gamma, K, E, M
+    # )
+    # results_test_acc["CLG_Mut_3"] = test_acc_CLG_Mut_3
+    # results_train_loss["CLG_Mut_3"] = train_loss_CLG_Mut_3
 
-#     # # FedMut 训练
-#     # test_acc_FedMut, train_loss_FedMut = FedMut(
-#     #     copy.deepcopy(init_model), global_round, eta, K, M
-#     # )
-#     # results_test_acc["FedMut"] = test_acc_FedMut
-#     # results_train_loss["FedMut"] = train_loss_FedMut
+    # # FedMut 训练
+    # test_acc_FedMut, train_loss_FedMut = FedMut(
+    #     copy.deepcopy(init_model), global_round, eta, K, M
+    # )
+    # results_test_acc["FedMut"] = test_acc_FedMut
+    # results_train_loss["FedMut"] = train_loss_FedMut
     
-#     # 添加FedDU_Mut训练
-#     test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
-#     results_test_acc["FedDU_Mut"] = test_acc_FedDU_Mut
-#     results_train_loss["FedDU_Mut"] = train_loss_FedDU_Mut
+    # 添加FedDU_Mut训练
+    test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+    results_test_acc["FedDU_Mut"] = test_acc_FedDU_Mut
+    results_train_loss["FedDU_Mut"] = train_loss_FedDU_Mut
 
-#     # 保存当前radius结果
-#     all_results["radius"].append(radius_val)
+    # 保存当前radius结果
+    all_results["radius"].append(radius_val)
 
-#     # 保存第20轮结果 (第19个索引，因为索引从0开始)
-#     if len(results_test_acc["CLG_Mut_2"]) >= 20:
-#         # all_results["CLG_Mut_r20_acc"].append(results_test_acc["CLG_Mut"][19])
-#         # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][19])
-#         all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][19])
-#         all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][19])
-#         all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][19])
-#         all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][19])
-#         # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][19])
-#         # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][19])
-#         all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][19])
-#         all_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][19])
-#     else:
-#         # 如果训练轮次不足20轮，使用最后一轮的结果代替空值
-#         # all_results["CLG_Mut_r20_acc"].append(results_test_acc["CLG_Mut"][-1])
-#         # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][-1])
-#         all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][-1])
-#         all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][-1])
-#         all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][-1])
-#         all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][-1])
-#         # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][-1])
-#         # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][-1])
-#         all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][-1])
-#         all_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][-1])
+    # 保存第20轮结果 (第19个索引，因为索引从0开始)
+    if len(results_test_acc["FedDU_Mut"]) >= 20:
+        # all_results["CLG_Mut_r20_acc"].append(results_test_acc["CLG_Mut"][19])
+        # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][19])
+        # all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][19])
+        # all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][19])
+        # all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][19])
+        # all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][19])
+        # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][19])
+        # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][19])
+        all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][19])
+        all_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][19])
+    else:
+        # 如果训练轮次不足20轮，使用最后一轮的结果代替空值
+        # all_results["CLG_Mut_r20_acc"].append(results_test_acc["CLG_Mut"][-1])
+        # all_results["CLG_Mut_r20_loss"].append(results_train_loss["CLG_Mut"][-1])
+        # all_results["CLG_Mut_2_r20_acc"].append(results_test_acc["CLG_Mut_2"][-1])
+        # all_results["CLG_Mut_2_r20_loss"].append(results_train_loss["CLG_Mut_2"][-1])
+        # all_results["CLG_Mut_3_r20_acc"].append(results_test_acc["CLG_Mut_3"][-1])
+        # all_results["CLG_Mut_3_r20_loss"].append(results_train_loss["CLG_Mut_3"][-1])
+        # all_results["FedMut_r20_acc"].append(results_test_acc["FedMut"][-1])
+        # all_results["FedMut_r20_loss"].append(results_train_loss["FedMut"][-1])
+        all_results["FedDU_Mut_r20_acc"].append(results_test_acc["FedDU_Mut"][-1])
+        all_results["FedDU_Mut_r20_loss"].append(results_train_loss["FedDU_Mut"][-1])
 
-#     # 保存最终轮结果
-#     # all_results["CLG_Mut_final_acc"].append(results_test_acc["CLG_Mut"][-1])
-#     # all_results["CLG_Mut_final_loss"].append(results_train_loss["CLG_Mut"][-1])
-#     all_results["CLG_Mut_2_final_acc"].append(results_test_acc["CLG_Mut_2"][-1])
-#     all_results["CLG_Mut_2_final_loss"].append(results_train_loss["CLG_Mut_2"][-1])
-#     all_results["CLG_Mut_3_final_acc"].append(results_test_acc["CLG_Mut_3"][-1])
-#     all_results["CLG_Mut_3_final_loss"].append(results_train_loss["CLG_Mut_3"][-1])
-#     # all_results["FedMut_final_acc"].append(results_test_acc["FedMut"][-1])
-#     # all_results["FedMut_final_loss"].append(results_train_loss["FedMut"][-1])
-#     all_results["FedDU_Mut_final_acc"].append(results_test_acc["FedDU_Mut"][-1])
-#     all_results["FedDU_Mut_final_loss"].append(results_train_loss["FedDU_Mut"][-1])
+    # 保存最终轮结果
+    # all_results["CLG_Mut_final_acc"].append(results_test_acc["CLG_Mut"][-1])
+    # all_results["CLG_Mut_final_loss"].append(results_train_loss["CLG_Mut"][-1])
+    # all_results["CLG_Mut_2_final_acc"].append(results_test_acc["CLG_Mut_2"][-1])
+    # all_results["CLG_Mut_2_final_loss"].append(results_train_loss["CLG_Mut_2"][-1])
+    # all_results["CLG_Mut_3_final_acc"].append(results_test_acc["CLG_Mut_3"][-1])
+    # all_results["CLG_Mut_3_final_loss"].append(results_train_loss["CLG_Mut_3"][-1])
+    # all_results["FedMut_final_acc"].append(results_test_acc["FedMut"][-1])
+    # all_results["FedMut_final_loss"].append(results_train_loss["FedMut"][-1])
+    all_results["FedDU_Mut_final_acc"].append(results_test_acc["FedDU_Mut"][-1])
+    all_results["FedDU_Mut_final_loss"].append(results_train_loss["FedDU_Mut"][-1])
 
-#     # 打印当前radius的结果
-#     print(f"\nResults for radius = {radius_val}:")
-#     for algo in results_test_acc:
-#         if len(results_test_acc[algo]) >= 20:
-#             print(
-#                 f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
-#                 f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
-#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
-#             )
-#         else:
-#             print(
-#                 f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
-#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
-#             )
+    # 打印当前radius的结果
+    print(f"\nResults for radius = {radius_val}:")
+    for algo in results_test_acc:
+        if len(results_test_acc[algo]) >= 20:
+            print(
+                f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
+                f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+                f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+            )
+        else:
+            print(
+                f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+                f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+            )
 
-#     # ===== 为当前radius值绘制训练过程图 =====
-#     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-#     rounds = range(1, global_round + 1)
+    # ===== 为当前radius值绘制训练过程图 =====
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    rounds = range(1, global_round + 1)
 
-#     # 绘制测试精度图
-#     plt.figure(figsize=(12, 6))
-#     for algo, acc in results_test_acc.items():
-#         plt.plot(rounds, acc, label=algo)
-#     plt.xlabel("Training Rounds", fontsize=14)
-#     plt.ylabel("Test Accuracy (%)", fontsize=14)
-#     plt.title(f"Test Accuracy Comparison (radius={radius_val})", fontsize=16)
-#     plt.legend(fontsize=12)
-#     plt.xticks(fontsize=12)
-#     plt.yticks(fontsize=12)
-#     plt.grid(True)
-#     plt.tight_layout()
-#     plt.savefig(
-#         f"output/test_accuracy_radius{radius_val}_{origin_model}_{timestamp}.png"
-#     )
-#     plt.show()
+    # 绘制测试精度图
+    plt.figure(figsize=(12, 6))
+    for algo, acc in results_test_acc.items():
+        plt.plot(rounds, acc, label=algo)
+    plt.xlabel("Training Rounds", fontsize=14)
+    plt.ylabel("Test Accuracy (%)", fontsize=14)
+    plt.title(f"Test Accuracy Comparison (radius={radius_val})", fontsize=16)
+    plt.legend(fontsize=12)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(
+        f"output/test_accuracy_radius{radius_val}_{origin_model}_{timestamp}.png"
+    )
+    plt.show()
 
-#     # 绘制训练损失图
-#     plt.figure(figsize=(12, 6))
-#     for algo, loss in results_train_loss.items():
-#         plt.plot(rounds, loss, label=algo)
-#     plt.xlabel("Training Rounds", fontsize=14)
-#     plt.ylabel("Train Loss", fontsize=14)
-#     plt.title(f"Train Loss Comparison (radius={radius_val})", fontsize=16)
-#     plt.legend(fontsize=12)
-#     plt.xticks(fontsize=12)
-#     plt.yticks(fontsize=12)
-#     plt.grid(True)
-#     plt.tight_layout()
-#     plt.savefig(f"output/train_loss_radius{radius_val}_{origin_model}_{timestamp}.png")
-#     plt.show()
+    # 绘制训练损失图
+    plt.figure(figsize=(12, 6))
+    for algo, loss in results_train_loss.items():
+        plt.plot(rounds, loss, label=algo)
+    plt.xlabel("Training Rounds", fontsize=14)
+    plt.ylabel("Train Loss", fontsize=14)
+    plt.title(f"Train Loss Comparison (radius={radius_val})", fontsize=16)
+    plt.legend(fontsize=12)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f"output/train_loss_radius{radius_val}_{origin_model}_{timestamp}.png")
+    plt.show()
 
-# # 创建DataFrame
-# results_df = pd.DataFrame(all_results)
+# 创建DataFrame
+results_df = pd.DataFrame(all_results)
 
-# # 设置精度显示格式
-# pd.set_option("display.precision", 2)
+# 设置精度显示格式
+pd.set_option("display.precision", 2)
 
-# # 打印表格
-# print("\n----- Final Results Table -----")
-# print(results_df.to_string(index=False))
+# 打印表格
+print("\n----- Final Results Table -----")
+print(results_df.to_string(index=False))
 
-# # 保存到CSV文件
-# timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-# results_df.to_csv(
-#     f"output/ablation/radius_comparison_{origin_model}_{timestamp}.csv", index=False
-# )
+# 保存到CSV文件
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+results_df.to_csv(
+    f"output/ablation/radius_comparison_{origin_model}_{timestamp}.csv", index=False
+)
 
-# # 确保所有结果数据都是数值型，不包含None
-# for col in results_df.columns:
-#     if col != "radius":
-#         results_df[col] = results_df[col].fillna(0)  # 将None替换为0
+# 确保所有结果数据都是数值型，不包含None
+for col in results_df.columns:
+    if col != "radius":
+        results_df[col] = results_df[col].fillna(0)  # 将None替换为0
 
-# # 创建第20轮精度对比图
-# plt.figure(figsize=(14, 8))
-# # plt.plot(results_df["radius"], results_df["CLG_Mut_r20_acc"], "o-", label="CLG_Mut")
+# 创建第20轮精度对比图
+plt.figure(figsize=(14, 8))
+# plt.plot(results_df["radius"], results_df["CLG_Mut_r20_acc"], "o-", label="CLG_Mut")
 # plt.plot(results_df["radius"], results_df["CLG_Mut_2_r20_acc"], "s-", label="CLG_Mut_2")
 # plt.plot(results_df["radius"], results_df["CLG_Mut_3_r20_acc"], "^-", label="CLG_Mut_3")
-# # plt.plot(results_df["radius"], results_df["FedMut_r20_acc"], "d-", label="FedMut")
-# plt.plot(results_df["radius"], results_df["FedDU_Mut_r20_acc"], "*-", label="FedDU_Mut")
-# plt.xlabel("Radius Value", fontsize=14)
-# plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
-# plt.title(f"Effect of Radius on Round 20 Accuracy ({origin_model})", fontsize=16)
-# plt.legend(fontsize=12)
-# plt.grid(True)
-# plt.xticks(results_df["radius"])
-# plt.tight_layout()
-# plt.savefig(
-#     f"output/ablation/radius_r20_accuracy_comparison_{origin_model}_{timestamp}.png"
-# )
-# plt.show()
+# plt.plot(results_df["radius"], results_df["FedMut_r20_acc"], "d-", label="FedMut")
+plt.plot(results_df["radius"], results_df["FedDU_Mut_r20_acc"], "*-", label="FedDU_Mut")
+plt.xlabel("Radius Value", fontsize=14)
+plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
+plt.title(f"Effect of Radius on Round 20 Accuracy ({origin_model})", fontsize=16)
+plt.legend(fontsize=12)
+plt.grid(True)
+plt.xticks(results_df["radius"])
+plt.tight_layout()
+plt.savefig(
+    f"output/ablation/radius_r20_accuracy_comparison_{origin_model}_{timestamp}.png"
+)
+plt.show()
 
-# # 创建最终精度对比图
-# plt.figure(figsize=(14, 8))
-# # plt.plot(results_df["radius"], results_df["CLG_Mut_final_acc"], "o-", label="CLG_Mut")
+# 创建最终精度对比图
+plt.figure(figsize=(14, 8))
+# plt.plot(results_df["radius"], results_df["CLG_Mut_final_acc"], "o-", label="CLG_Mut")
 # plt.plot(
 #     results_df["radius"], results_df["CLG_Mut_2_final_acc"], "s-", label="CLG_Mut_2"
 # )
 # plt.plot(
 #     results_df["radius"], results_df["CLG_Mut_3_final_acc"], "^-", label="CLG_Mut_3"
 # )
-# # plt.plot(results_df["radius"], results_df["FedMut_final_acc"], "d-", label="FedMut")
-# plt.plot(results_df["radius"], results_df["FedDU_Mut_final_acc"], "*-", label="FedDU_Mut")
-# plt.xlabel("Radius Value", fontsize=14)
-# plt.ylabel("Final Test Accuracy (%)", fontsize=14)
-# plt.title(f"Effect of Radius on Final Accuracy ({origin_model})", fontsize=16)
-# plt.legend(fontsize=12)
-# plt.grid(True)
-# plt.xticks(results_df["radius"])
-# plt.tight_layout()
-# plt.savefig(
-#     f"output/ablation/radius_final_accuracy_comparison_{origin_model}_{timestamp}.png"
-# )
-# plt.show()
+# plt.plot(results_df["radius"], results_df["FedMut_final_acc"], "d-", label="FedMut")
+plt.plot(results_df["radius"], results_df["FedDU_Mut_final_acc"], "*-", label="FedDU_Mut")
+plt.xlabel("Radius Value", fontsize=14)
+plt.ylabel("Final Test Accuracy (%)", fontsize=14)
+plt.title(f"Effect of Radius on Final Accuracy ({origin_model})", fontsize=16)
+plt.legend(fontsize=12)
+plt.grid(True)
+plt.xticks(results_df["radius"])
+plt.tight_layout()
+plt.savefig(
+    f"output/ablation/radius_final_accuracy_comparison_{origin_model}_{timestamp}.png"
+)
+plt.show()
 
 # %%
 # # ablation study for acc_rate
@@ -3181,146 +3186,290 @@ print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_c
 
 
 
-# 消融实验 - FedMut_new参数 (radius)
-import matplotlib.pyplot as plt
-import pandas as pd
-import os
-import datetime
-import copy
+# # 消融实验 - FedMut_new参数 (radius)
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# import os
+# import datetime
+# import copy
 
-# 定义要测试的 radius 值
-radius_values = [4, 5]
-# radius_values = [7, 8]
+# # 定义要测试的 radius 值
+# # radius_values = [4, 5, 6]
+# radius_values = [8, 10]
 
-# 创建结果存储结构
-radius_results = {
-    "radius": [],
-    # 第20轮结果
-    "FedMut_new_r20_acc": [],
-    "FedMut_new_r20_loss": [],
-    # 最终轮结果
-    "FedMut_new_final_acc": [],
-    "FedMut_new_final_loss": [],
-}
+# # 创建结果存储结构
+# radius_results = {
+#     "radius": [],
+#     # 第20轮结果
+#     "FedMut_new_r20_acc": [],
+#     "FedMut_new_r20_loss": [],
+#     # 最终轮结果
+#     "FedMut_new_final_acc": [],
+#     "FedMut_new_final_loss": [],
+# }
 
-# 为每个 radius 值运行实验
-for radius_tmp in radius_values:
-    print(f"\n--- 测试 radius = {radius_tmp} ---")
+# # 为每个 radius 值运行实验
+# for radius_tmp in radius_values:
+#     print(f"\n--- 测试 radius = {radius_tmp} ---")
     
-    # 更新全局 radius 参数（或直接传参）
-    radius = radius_tmp
+#     # 更新全局 radius 参数（或直接传参）
+#     radius = radius_tmp
     
-    # 初始化结果存储字典
-    results_test_acc = {}
-    results_train_loss = {}
+#     # 初始化结果存储字典
+#     results_test_acc = {}
+#     results_train_loss = {}
     
-    # FedMut_new 训练（请确保FedMut_new函数已经定义且参数顺序正确）
-    test_acc_FedMut_new, train_loss_FedMut_new = FedMut_new(
-        copy.deepcopy(init_model), 
-        global_round, 
-        eta, 
-        K, 
-        M
-    )
-    results_test_acc["FedMut_new"] = test_acc_FedMut_new
-    results_train_loss["FedMut_new"] = train_loss_FedMut_new
+#     # FedMut_new 训练（请确保FedMut_new函数已经定义且参数顺序正确）
+#     test_acc_FedMut_new, train_loss_FedMut_new = FedMut_new(
+#         copy.deepcopy(init_model), 
+#         global_round, 
+#         eta, 
+#         K, 
+#         M
+#     )
+#     results_test_acc["FedMut_new"] = test_acc_FedMut_new
+#     results_train_loss["FedMut_new"] = train_loss_FedMut_new
     
-    # 保存当前 radius 结果
-    radius_results["radius"].append(radius_tmp)
+#     # 保存当前 radius 结果
+#     radius_results["radius"].append(radius_tmp)
     
-    # 保存第20轮结果
-    if len(results_test_acc["FedMut_new"]) >= 20:
-        radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][19])
-        radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][19])
-    else:
-        radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][-1])
-        radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][-1])
+#     # 保存第20轮结果
+#     if len(results_test_acc["FedMut_new"]) >= 20:
+#         radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][19])
+#         radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][19])
+#     else:
+#         radius_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][-1])
+#         radius_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][-1])
     
-    # 保存最终轮结果
-    radius_results["FedMut_new_final_acc"].append(results_test_acc["FedMut_new"][-1])
-    radius_results["FedMut_new_final_loss"].append(results_train_loss["FedMut_new"][-1])
+#     # 保存最终轮结果
+#     radius_results["FedMut_new_final_acc"].append(results_test_acc["FedMut_new"][-1])
+#     radius_results["FedMut_new_final_loss"].append(results_train_loss["FedMut_new"][-1])
     
-    # 打印当前 radius 的结果
-    print(f"\nResults for radius = {radius}:")
-    for algo in results_test_acc:
-        if len(results_test_acc[algo]) >= 20:
-            print(
-                f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
-                f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
-                f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
-            )
-        else:
-            print(
-                f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
-                f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
-            )
+#     # 打印当前 radius 的结果
+#     print(f"\nResults for radius = {radius}:")
+#     for algo in results_test_acc:
+#         if len(results_test_acc[algo]) >= 20:
+#             print(
+#                 f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
+#                 f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+#             )
+#         else:
+#             print(
+#                 f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+#             )
     
-    # 绘制训练过程图
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    rounds = range(1, global_round + 1)
+#     # 绘制训练过程图
+#     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+#     rounds = range(1, global_round + 1)
     
-    # 绘制测试精度图
-    plt.figure(figsize=(12, 6))
-    for algo, acc in results_test_acc.items():
-        plt.plot(rounds, acc, label=algo)
-    plt.xlabel("Training Rounds", fontsize=14)
-    plt.ylabel("Test Accuracy (%)", fontsize=14)
-    plt.title(f"Test Accuracy Comparison (radius={radius})", fontsize=16)
-    plt.legend(fontsize=12)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig(f"output/test_accuracy_radius{radius}_{origin_model}_{timestamp}.png")
-    plt.show()
+#     # 绘制测试精度图
+#     plt.figure(figsize=(12, 6))
+#     for algo, acc in results_test_acc.items():
+#         plt.plot(rounds, acc, label=algo)
+#     plt.xlabel("Training Rounds", fontsize=14)
+#     plt.ylabel("Test Accuracy (%)", fontsize=14)
+#     plt.title(f"Test Accuracy Comparison (radius={radius})", fontsize=16)
+#     plt.legend(fontsize=12)
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.savefig(f"output/test_accuracy_radius{radius}_{origin_model}_{timestamp}.png")
+#     plt.show()
     
-    # 绘制训练损失图
-    plt.figure(figsize=(12, 6))
-    for algo, loss in results_train_loss.items():
-        plt.plot(rounds, loss, label=algo)
-    plt.xlabel("Training Rounds", fontsize=14)
-    plt.ylabel("Train Loss", fontsize=14)
-    plt.title(f"Train Loss Comparison (radius={radius})", fontsize=16)
-    plt.legend(fontsize=12)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig(f"output/train_loss_radius{radius}_{origin_model}_{timestamp}.png")
-    plt.show()
+#     # 绘制训练损失图
+#     plt.figure(figsize=(12, 6))
+#     for algo, loss in results_train_loss.items():
+#         plt.plot(rounds, loss, label=algo)
+#     plt.xlabel("Training Rounds", fontsize=14)
+#     plt.ylabel("Train Loss", fontsize=14)
+#     plt.title(f"Train Loss Comparison (radius={radius})", fontsize=16)
+#     plt.legend(fontsize=12)
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.savefig(f"output/train_loss_radius{radius}_{origin_model}_{timestamp}.png")
+#     plt.show()
 
-# 创建DataFrame
-radius_df = pd.DataFrame(radius_results)
+# # 创建DataFrame
+# radius_df = pd.DataFrame(radius_results)
 
-# 打印表格
-print("\n----- radius 参数结果表 -----")
-print(radius_df.to_string(index=False))
+# # 打印表格
+# print("\n----- radius 参数结果表 -----")
+# print(radius_df.to_string(index=False))
 
-# 保存到CSV文件
-timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-radius_df.to_csv(f"output/ablation/radius_comparison_{origin_model}_{timestamp}.csv", index=False)
+# # 保存到CSV文件
+# timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+# radius_df.to_csv(f"output/ablation/radius_comparison_{origin_model}_{timestamp}.csv", index=False)
 
-# 绘制第20轮精度对比图
-plt.figure(figsize=(14, 8))
-plt.plot(radius_df["radius"], radius_df["FedMut_new_r20_acc"], "s-", label="FedMut_new")
-plt.xlabel("radius Value", fontsize=14)
-plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
-plt.title(f"Effect of radius on Round 20 Accuracy ({origin_model})", fontsize=16)
-plt.legend(fontsize=12)
-plt.grid(True)
-plt.xticks(radius_df["radius"])
-plt.tight_layout()
-plt.savefig(f"output/ablation/radius_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
-plt.show()
+# # 绘制第20轮精度对比图
+# plt.figure(figsize=(14, 8))
+# plt.plot(radius_df["radius"], radius_df["FedMut_new_r20_acc"], "s-", label="FedMut_new")
+# plt.xlabel("radius Value", fontsize=14)
+# plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
+# plt.title(f"Effect of radius on Round 20 Accuracy ({origin_model})", fontsize=16)
+# plt.legend(fontsize=12)
+# plt.grid(True)
+# plt.xticks(radius_df["radius"])
+# plt.tight_layout()
+# plt.savefig(f"output/ablation/radius_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
+# plt.show()
 
-# 绘制最终精度对比图
-plt.figure(figsize=(14, 8))
-plt.plot(radius_df["radius"], radius_df["FedMut_new_final_acc"], "s-", label="FedMut_new")
-plt.xlabel("radius Value", fontsize=14)
-plt.ylabel("Final Test Accuracy (%)", fontsize=14)
-plt.title(f"Effect of radius on Final Accuracy ({origin_model})", fontsize=16)
-plt.legend(fontsize=12)
-plt.grid(True)
-plt.xticks(radius_df["radius"])
-plt.tight_layout()
-plt.savefig(f"output/ablation/radius_final_accuracy_comparison_{origin_model}_{timestamp}.png")
-plt.show()
+# # 绘制最终精度对比图
+# plt.figure(figsize=(14, 8))
+# plt.plot(radius_df["radius"], radius_df["FedMut_new_final_acc"], "s-", label="FedMut_new")
+# plt.xlabel("radius Value", fontsize=14)
+# plt.ylabel("Final Test Accuracy (%)", fontsize=14)
+# plt.title(f"Effect of radius on Final Accuracy ({origin_model})", fontsize=16)
+# plt.legend(fontsize=12)
+# plt.grid(True)
+# plt.xticks(radius_df["radius"])
+# plt.tight_layout()
+# plt.savefig(f"output/ablation/radius_final_accuracy_comparison_{origin_model}_{timestamp}.png")
+# plt.show()
 
+
+
+
+
+# # 消融实验 - FedMut_new参数 (mut_acc_rate)
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# import os
+# import datetime
+# import copy
+
+# # 定义要测试的 mut_acc_rate 值
+# # mut_acc_rate_values = [0.1, 0.3]
+# mut_acc_rate_values = [0.7, 0.9]
+
+# # 创建结果存储结构
+# mut_acc_rate_results = {
+#     "mut_acc_rate": [],
+#     # 第20轮结果
+#     "FedMut_new_r20_acc": [],
+#     "FedMut_new_r20_loss": [],
+#     # 最终轮结果
+#     "FedMut_new_final_acc": [],
+#     "FedMut_new_final_loss": [],
+# }
+
+# # 为每个 mut_acc_rate 值运行实验
+# for mut_acc_rate_tmp in mut_acc_rate_values:
+#     print(f"\n--- 测试 mut_acc_rate = {mut_acc_rate_tmp} ---")
+    
+#     # 更新全局 mut_acc_rate 参数（或直接传参）
+#     mut_acc_rate = mut_acc_rate_tmp
+    
+#     # 初始化结果存储字典
+#     results_test_acc = {}
+#     results_train_loss = {}
+    
+#     # FedMut_new 训练（请确保FedMut_new函数已经定义且参数顺序正确）
+#     test_acc_FedMut_new, train_loss_FedMut_new = FedMut_new(
+#         copy.deepcopy(init_model), 
+#         global_round, 
+#         eta, 
+#         K, 
+#         M
+#     )
+#     results_test_acc["FedMut_new"] = test_acc_FedMut_new
+#     results_train_loss["FedMut_new"] = train_loss_FedMut_new
+    
+#     # 保存当前 mut_acc_rate 结果
+#     mut_acc_rate_results["mut_acc_rate"].append(mut_acc_rate_tmp)
+    
+#     # 保存第20轮结果
+#     if len(results_test_acc["FedMut_new"]) >= 20:
+#         mut_acc_rate_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][19])
+#         mut_acc_rate_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][19])
+#     else:
+#         mut_acc_rate_results["FedMut_new_r20_acc"].append(results_test_acc["FedMut_new"][-1])
+#         mut_acc_rate_results["FedMut_new_r20_loss"].append(results_train_loss["FedMut_new"][-1])
+    
+#     # 保存最终轮结果
+#     mut_acc_rate_results["FedMut_new_final_acc"].append(results_test_acc["FedMut_new"][-1])
+#     mut_acc_rate_results["FedMut_new_final_loss"].append(results_train_loss["FedMut_new"][-1])
+    
+#     # 打印当前 mut_acc_rate 的结果
+#     print(f"\nResults for mut_acc_rate = {mut_acc_rate}:")
+#     for algo in results_test_acc:
+#         if len(results_test_acc[algo]) >= 20:
+#             print(
+#                 f"{algo} - 第20轮测试精度: {results_test_acc[algo][19]:.2f}%, "
+#                 f"最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+#             )
+#         else:
+#             print(
+#                 f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, "
+#                 f"最终训练损失: {results_train_loss[algo][-1]:.4f}"
+#             )
+    
+#     # 绘制训练过程图
+#     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+#     rounds = range(1, global_round + 1)
+    
+#     # 绘制测试精度图
+#     plt.figure(figsize=(12, 6))
+#     for algo, acc in results_test_acc.items():
+#         plt.plot(rounds, acc, label=algo)
+#     plt.xlabel("Training Rounds", fontsize=14)
+#     plt.ylabel("Test Accuracy (%)", fontsize=14)
+#     plt.title(f"Test Accuracy Comparison (mut_acc_rate={mut_acc_rate})", fontsize=16)
+#     plt.legend(fontsize=12)
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.savefig(f"output/test_accuracy_mut_acc_rate{mut_acc_rate}_{origin_model}_{timestamp}.png")
+#     plt.show()
+    
+#     # 绘制训练损失图
+#     plt.figure(figsize=(12, 6))
+#     for algo, loss in results_train_loss.items():
+#         plt.plot(rounds, loss, label=algo)
+#     plt.xlabel("Training Rounds", fontsize=14)
+#     plt.ylabel("Train Loss", fontsize=14)
+#     plt.title(f"Train Loss Comparison (mut_acc_rate={mut_acc_rate})", fontsize=16)
+#     plt.legend(fontsize=12)
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.savefig(f"output/train_loss_mut_acc_rate{mut_acc_rate}_{origin_model}_{timestamp}.png")
+#     plt.show()
+
+# # 创建DataFrame
+# mut_acc_rate_df = pd.DataFrame(mut_acc_rate_results)
+
+# # 打印表格
+# print("\n----- mut_acc_rate 参数结果表 -----")
+# print(mut_acc_rate_df.to_string(index=False))
+
+# # 保存到CSV文件
+# timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+# mut_acc_rate_df.to_csv(f"output/ablation/mut_acc_rate_comparison_{origin_model}_{timestamp}.csv", index=False)
+
+# # 绘制第20轮精度对比图
+# plt.figure(figsize=(14, 8))
+# plt.plot(mut_acc_rate_df["mut_acc_rate"], mut_acc_rate_df["FedMut_new_r20_acc"], "s-", label="FedMut_new")
+# plt.xlabel("mut_acc_rate Value", fontsize=14)
+# plt.ylabel("Round 20 Test Accuracy (%)", fontsize=14)
+# plt.title(f"Effect of mut_acc_rate on Round 20 Accuracy ({origin_model})", fontsize=16)
+# plt.legend(fontsize=12)
+# plt.grid(True)
+# plt.xticks(mut_acc_rate_df["mut_acc_rate"])
+# plt.tight_layout()
+# plt.savefig(f"output/ablation/mut_acc_rate_r20_accuracy_comparison_{origin_model}_{timestamp}.png")
+# plt.show()
+
+# # 绘制最终精度对比图
+# plt.figure(figsize=(14, 8))
+# plt.plot(mut_acc_rate_df["mut_acc_rate"], mut_acc_rate_df["FedMut_new_final_acc"], "s-", label="FedMut_new")
+# plt.xlabel("mut_acc_rate Value", fontsize=14)
+# plt.ylabel("Final Test Accuracy (%)", fontsize=14)
+# plt.title(f"Effect of mut_acc_rate on Final Accuracy ({origin_model})", fontsize=16)
+# plt.legend(fontsize=12)
+# plt.grid(True)
+# plt.xticks(mut_acc_rate_df["mut_acc_rate"])
+# plt.tight_layout()
+# plt.savefig(f"output/ablation/mut_acc_rate_final_accuracy_comparison_{origin_model}_{timestamp}.png")
+# plt.show()
 
 
