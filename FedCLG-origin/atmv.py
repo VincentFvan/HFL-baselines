@@ -53,7 +53,6 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
     test_acc = []
     train_loss = []
     
-    # 初始化本地模型列表，用于mutation
     w_locals = []
     for i in range(M):
         w_locals.append(copy.deepcopy(net_glob.state_dict()))
@@ -93,10 +92,9 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
     D_P_0 = calculate_js_divergence(P_0, P)
     
     # 输出初始设置
-    print("FedDU-Mut初始设置:")
     print(f"  服务器数据量: {n_0}")
     print(f"  服务器数据非IID度: {D_P_0:.6f}")
-    print(f"  Mutation幅度(radius): {radius}")
+    print(f"  magnitude幅度(magnitude): {magnitude}")
     
     # 记录 alpha_new 和 improvement 的历史（用于后续绘图）
     alpha_history = []
@@ -117,7 +115,7 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
         num_current = 0
         
         for i, idx in enumerate(idxs_users):
-            # 加载mutation后的初始模型
+            # 加载variation后的初始模型
             net_glob.load_state_dict(w_locals[i])
             
             # 客户端本地训练
@@ -212,7 +210,7 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
         current_acc = test_inference(test_model, test_dataset)
         test_acc.append(current_acc)
         
-        # 略进行mutation（使用全局更新方向作为mutation方向）
+        # 略进行variation（使用全局更新方向作为variation方向）
         w_delta = FedSub(final_model, w_old, 1.0)
         
         # 计算模型更新w_delta的L2范数，衡量模型更新程度
@@ -220,12 +218,12 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
         if rank > max_rank:
             max_rank = rank
             
-        # 250327：加上根据alpha_new的动态调节radius
-        tmp_radius = radius*(1 + ratio * alpha_new)
-        print(f"Round {round}: tmp_radius: {tmp_radius}")
+        # 250327：加上根据alpha_new的动态调节magnitude
+        tmp_magnitude = magnitude*(1 + ratio * alpha_new)
+        print(f"Round {round}: tmp_magnitude: {tmp_magnitude}")
             
-        # Mutation扩散，为下一轮准备初始模型
-        w_locals = mutation_spread(round, final_model, M, w_delta, tmp_radius)
+        # Variation扩散，为下一轮准备初始模型
+        w_locals = model_variation(round, final_model, M, w_delta, tmp_magnitude)
         
         # 定期打印信息
         if round % 10 == 0:
@@ -308,7 +306,7 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
     return model.state_dict(), sum(epoch_loss) / len(epoch_loss), first_iter_gradient
 
 
-# 加权平均聚合，lens代表了权重，如果没有定义就是普通平均（FedMut就每定义）
+# 加权平均聚合，lens代表了权重，如果没有定义就是普通平均
 def Aggregation(w, lens):
     w_avg = None
     if lens == None:
@@ -373,12 +371,12 @@ def delta_rank(delta_dict):
     return s
 
 
-def mutation_spread(iter, w_glob, m, w_delta, alpha):
+def model_variation(iter, w_glob, m, w_delta, alpha):
 
     w_locals_new = []
     ctrl_cmd_list = []
-    ctrl_rate = mut_acc_rate * (
-        1.0 - min(iter * 1.0 / mut_bound, 1.0)
+    ctrl_rate = var_acc_rate * (
+        1.0 - min(iter * 1.0 / var_bound, 1.0)
     )  # 论文中的βt，随着iter逐渐从β0减小到0
 
     # k代表模型中的参数数量，对每个参数按照client数量分配v（论文中是按照每一层分配）
