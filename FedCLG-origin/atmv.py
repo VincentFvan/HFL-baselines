@@ -377,9 +377,9 @@ def model_variation(iter, w_glob, m, w_delta, alpha):
     ctrl_cmd_list = []
     ctrl_rate = var_acc_rate * (
         1.0 - min(iter * 1.0 / var_bound, 1.0)
-    )  # 论文中的βt，随着iter逐渐从β0减小到0
+    )  
 
-    # k代表模型中的参数数量，对每个参数按照client数量分配v（论文中是按照每一层分配）
+    # k代表模型中的参数数量，对每个参数按照client数量分配v
     for k in w_glob.keys():
         ctrl_list = []
         for i in range(0, int(m / 2)):
