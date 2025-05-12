@@ -24,9 +24,9 @@ from models.lstm import *
 from models.vgg import *
 
 # %% [markdown]
-# v 10.3
-# 
-# 尝试改进FedDU
+# v 13.0
+# 最终实验版本，加上所有方法
+
 
 # %%
 import os
@@ -990,6 +990,86 @@ def hybridFL(initial_w, global_round, eta, K, M):
     
     return test_acc, train_loss
 
+def FedMix(initial_w,
+                global_round,
+                eta,           # 客户端学习率
+                K,             # 本地 epoch
+                M,             # 每轮选客户端数
+                share_ratio=1  # 方便调用者记录参数
+                ):
+    """
+    FedMix: 服务器把数据一次性广播到所有客户端；
+                 之后流程与 FedAvg 一致，不再进行服务器端训练。
+    """
+    # 根据所选模型实例化一个空壳用于测试
+    if origin_model == 'resnet':
+        test_model = ResNet18_cifar10().to(device)
+    elif origin_model == 'cnn':
+        test_model = cnncifar().to(device)
+    elif origin_model == 'vgg':
+        test_model = VGG16(num_classes, 3).to(device)
+    elif origin_model == 'lstm':
+        test_model = CharLSTM().to(device)
+    else:
+        raise ValueError("Unknown origin_model")
+
+    # 使用混合后的客户端数据
+    local_datasets = client_data_mixed
+
+    w_global = copy.deepcopy(initial_w)
+    all_test_acc, all_train_loss = [], []
+
+    for r in tqdm(range(global_round)):
+        selected = np.random.choice(range(client_num), M, replace=False)
+        local_ws, local_ls = [], []
+
+        for cid in selected:
+            w_updated, loss, _ = update_weights(w_global,
+                                                local_datasets[cid],
+                                                eta,
+                                                K)
+            local_ws.append(w_updated)
+            local_ls.append(loss)
+
+        # FedAvg 聚合
+        w_global = average_weights(local_ws)
+
+        # 记录
+        test_model.load_state_dict(w_global)
+        all_train_loss.append(sum(local_ls) / len(local_ls))
+        all_test_acc.append(test_inference(test_model, test_dataset))
+
+    return all_test_acc, all_train_loss
+
+def build_mixed_client_data(client_data, server_data, share_ratio=1.0, seed=None):
+    """
+    将 server_data 以 share_ratio 的比例复制到每个客户端数据中。
+    share_ratio = 1.0 表示全部共享；0.5 表示随机抽取 50% 共享。
+    返回新的 client_data_mixed，格式与 client_data 相同：
+        [(images_i, labels_i), ...]
+    """
+    if seed is not None:
+        np.random.seed(seed)
+
+    s_imgs, s_lbls = server_data
+    s_imgs = np.array(s_imgs)
+    s_lbls = np.array(s_lbls)
+
+    if share_ratio < 1.0:
+        sel_idx = np.random.choice(len(s_imgs),
+                                   size=int(len(s_imgs) * share_ratio),
+                                   replace=False).astype(int)
+        s_imgs = s_imgs[sel_idx]
+        s_lbls = s_lbls[sel_idx]
+
+    mixed_clients = []
+    for imgs, lbls in client_data:
+        new_imgs = np.concatenate([imgs, s_imgs], axis=0)
+        new_lbls = np.concatenate([lbls, s_lbls], axis=0)
+        mixed_clients.append((new_imgs, new_lbls))
+    return mixed_clients
+
+
 
 # %%
 def CLG_SGD(initial_w, global_round, eta, gamma, K, E, M):
@@ -1274,7 +1354,7 @@ def FedMut(net_glob, global_round, eta, K, M):
         w_locals.append(copy.deepcopy(net_glob.state_dict()))
         
     max_rank = 0
-    radius = 4  # 这里修改为默认推荐的4
+    radius = 4  # 这里统一为默认推荐的4
     
     for round in tqdm(range(global_round)):
         w_old = copy.deepcopy(net_glob.state_dict())
@@ -1851,14 +1931,14 @@ verbose = False  # 调试模式，输出一些中间信息
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
 server_percentage = 0.1  # 服务器端用于微调的数据比例
 
 # 模型相关
-origin_model = 'vgg' # 采用模型
-dataset = 'cifar100'
+origin_model = 'resnet' # 采用模型
+dataset = 'cifar10'
 
 momentum = 0.5
 weight_decay = 0  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样（设为0表示不引入）
@@ -1871,7 +1951,7 @@ global_round = 100  # 全局训练轮数，可根据需要调整
 eta = 0.01  # 客户端端学习率，从{0.01, 0.1, 1}中调优
 gamma = 0.01  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
-E = 3  # 服务器本地训练轮数，从1，3，5中选
+E = 1  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
 
 # FedMut中参数
@@ -1900,7 +1980,6 @@ def set_random_seed(seed):
 
 
 device = torch.device("cuda:" + str(GPU) if torch.cuda.is_available else 'cpu')
-print(torch.version.cuda) 
 
 # 固定随机数
 if random_fix:
@@ -2077,6 +2156,12 @@ for i, (imgs, lbls) in enumerate(client_data[:10]):
 # 为了与后续代码兼容，这里将 server_data 定义为一个列表：[images, labels]
 server_data = [server_images, server_labels]
 
+# FedMix (Data-Sharing使用)
+client_data_mixed = build_mixed_client_data(client_data,
+                                            server_data,
+                                            share_ratio=1.0,   # 按需调整
+                                            seed=None)
+
 # # 输出测试集数据
 # total_count = len(test_dataset)
 # labels = np.array(test_dataset.label)
@@ -2140,6 +2225,16 @@ results_train_loss['Server_only'] = train_loss_server_only
 test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
 results_test_acc['FedAvg'] = test_acc_fedavg
 results_train_loss['FedAvg'] = train_loss_fedavg
+
+# FedMix训练
+test_acc_FedMix, train_loss_FedMix = FedMix(initial_w,
+                                                           global_round,
+                                                           eta,
+                                                           K,
+                                                           M,
+                                                           share_ratio=1.0)
+results_test_acc['FedMix']  = test_acc_FedMix
+results_train_loss['FedMix'] = train_loss_FedMix
 
 # CLG_SGD 训练
 test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
