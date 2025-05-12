@@ -815,6 +815,8 @@ def update_weights_correction(model_weight, dataset, learning_rate, local_epoch,
             loss.backward()
             optimizer.step()
             batch_loss.append(loss.sum().item()/images.shape[0])
+            
+            
         epoch_loss.append(sum(batch_loss)/len(batch_loss))
         corrected_graident = weight_differences(c_i, c_s, learning_rate)
         orginal_model_weight = model.state_dict()
@@ -892,6 +894,7 @@ def fedavg(initial_w, global_round, eta, K, M):
     train_w = copy.deepcopy(initial_w)
     test_acc = []
     train_loss = []
+    
     for round in tqdm(range(global_round)):
         local_weights, local_loss = [], []
         # Client side local training
@@ -1125,6 +1128,121 @@ def CLG_SGD(initial_w, global_round, eta, gamma, K, E, M):
         # test_acc.append(test_a)
 #         print(test_a)
     return test_acc, train_loss
+
+
+
+def Fed_C(initial_w, global_round, eta, gamma, K, E, M):
+    
+    if origin_model == 'resnet':
+        test_model = ResNet18_cifar10().to(device)
+    elif origin_model == "lstm":
+        test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
+    elif origin_model == 'vgg':
+        test_model = VGG16(num_classes, 3).to(device)
+
+
+    train_w = copy.deepcopy(initial_w)
+    test_acc = []
+    train_loss = []
+    for round in tqdm(range(global_round)):
+        # if eta > 0.001:
+        #     eta = eta * 0.99
+        # if gamma > 0.001:
+        #     gamma = gamma * 0.99
+        local_weights, local_loss = [], []
+        g_i_list = []
+        # server_data = select_subset(comb_client_data, server_percentage)
+        # Server gradient
+        _, _, g_s = update_weights(train_w, server_data, gamma, 1)
+
+        # Client gradient
+        sampled_client = random.sample(range(client_num), M)
+        for i in sampled_client:
+            _, _, g_i = update_weights(train_w, client_data[i], eta, 1)
+            g_i_list.append(g_i)
+
+
+        # Client side local training
+        for i in range(len(sampled_client)):
+            update_client_w, client_round_loss = update_weights_correction(train_w, client_data[sampled_client[i]], eta, K, g_i_list[i], g_s)
+            local_weights.append(update_client_w)
+            local_loss.append(client_round_loss)
+        train_w = average_weights(local_weights)
+        # Server side local training
+        update_server_w, round_loss, _ = update_weights(train_w, server_data, gamma, E)
+        train_w = update_server_w
+        local_loss.append(round_loss)
+
+        # Test Accuracy
+        test_model.load_state_dict(train_w)
+        loss_avg = sum(local_loss)/ len(local_loss)
+        train_loss.append(loss_avg)
+
+        # 新的测试（针对全部测试数据进行）
+        test_acc.append(test_inference(test_model, test_dataset))
+
+    return test_acc, train_loss
+
+
+def Fed_S(initial_w, global_round, eta, gamma, K, E, M):
+    
+    if origin_model == 'resnet':
+        test_model = ResNet18_cifar10().to(device)
+    elif origin_model == "lstm":
+        test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
+    elif origin_model == 'vgg':
+        test_model = VGG16(num_classes, 3).to(device)
+    
+    train_w = copy.deepcopy(initial_w)
+    test_acc = []
+    train_loss = []
+    for round in tqdm(range(global_round)):
+
+        local_weights, local_loss = [], []
+        g_i_list = []
+        # Server gradient
+        # server_data = select_subset(comb_client_data, server_percentage)
+        _, _, g_s = update_weights(train_w, server_data, gamma, 1)
+
+        # Client gradient
+        sampled_client = random.sample(range(client_num), M)
+        for i in sampled_client:
+            _, _, g_i = update_weights(train_w, client_data[i], eta, 1)
+            g_i_list.append(g_i)
+
+
+        # Client side local training
+        for i in range(len(sampled_client)):
+            update_client_w, client_round_loss, _ = update_weights(train_w, client_data[sampled_client[i]], eta, K)
+            local_weights.append(update_client_w)
+            local_loss.append(client_round_loss)
+        train_w = average_weights(local_weights)
+
+        # Server aggregation correction
+        g_i_average = average_weights(g_i_list)
+        correction_g = weight_differences(g_i_average, g_s, K*eta)
+        train_w = weight_differences(correction_g, copy.deepcopy(train_w), 1)
+
+
+        # Server side local training
+        update_server_w, round_loss, _ = update_weights(train_w, server_data, gamma, E)
+        train_w = update_server_w
+        local_loss.append(round_loss)
+
+        # Test Accuracy
+        test_model.load_state_dict(train_w)
+        loss_avg = sum(local_loss)/ len(local_loss)
+        train_loss.append(loss_avg)
+
+        # 新的测试（针对全部测试数据进行）
+        test_acc.append(test_inference(test_model, test_dataset))
+        
+    return test_acc, train_loss
+
 
 # %%
 # 与FedDUAP复现代码对应
@@ -2226,13 +2344,13 @@ test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
 results_test_acc['FedAvg'] = test_acc_fedavg
 results_train_loss['FedAvg'] = train_loss_fedavg
 
+# HybridFl训练
+test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, M)
+results_test_acc['HybridFL'] = test_acc_hybridFL
+results_train_loss['HybridFL'] = train_loss_hybridFL
+
 # FedMix训练
-test_acc_FedMix, train_loss_FedMix = FedMix(initial_w,
-                                                           global_round,
-                                                           eta,
-                                                           K,
-                                                           M,
-                                                           share_ratio=1.0)
+test_acc_FedMix, train_loss_FedMix = FedMix(initial_w, global_round, eta, K, M, share_ratio=1.0)
 results_test_acc['FedMix']  = test_acc_FedMix
 results_train_loss['FedMix'] = train_loss_FedMix
 
@@ -2240,6 +2358,16 @@ results_train_loss['FedMix'] = train_loss_FedMix
 test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
 results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
 results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
+
+# Fed_C 训练
+test_acc_Fed_C, train_loss_Fed_C = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
+results_test_acc['Fed_C'] = test_acc_Fed_C
+results_train_loss['Fed_C'] = train_loss_Fed_C
+
+# Fed_S 训练
+test_acc_Fed_S, train_loss_Fed_S = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
+results_test_acc['Fed_S'] = test_acc_Fed_S
+results_train_loss['Fed_S'] = train_loss_Fed_S
 
 # FedDU 训练
 test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
