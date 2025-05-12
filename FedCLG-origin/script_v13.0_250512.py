@@ -2391,56 +2391,58 @@ def run_once():
     # 打印最终训练结果
     for algo in results_test_acc:
         print(f"{algo} - 最终测试精度: {results_test_acc[algo][-1]:.2f}%, 最终训练损失: {results_train_loss[algo][-1]:.4f}")
+        
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import matplotlib
+    import platform
+    import datetime
+
+    # 定义训练轮数
+    rounds = range(1, global_round + 1)
+
+    # 设置绘图风格（可选）
+    plt.style.use('seaborn-v0_8-darkgrid')
+
+    # 获取当前时间戳，格式为 YYYYmmdd_HHMMSS
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    # Plot Test Accuracy Comparison
+    plt.figure(figsize=(12, 6))
+    for algo, acc in results_test_acc.items():
+        plt.plot(rounds, acc, label=algo)
+    plt.xlabel('Training Rounds', fontsize=14)
+    plt.ylabel('Test Accuracy (%)', fontsize=14)
+    plt.title('Test Accuracy Comparison of Different Algorithms', fontsize=16)
+    plt.legend(fontsize=12)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f'output/test_accuracy_{origin_model}_{timestamp}.png')  # 保存图像
+    plt.show()
+
+
+    # Plot Train Loss Comparison
+    plt.figure(figsize=(12, 6))
+    for algo, loss in results_train_loss.items():
+        plt.plot(rounds, loss, label=algo)
+    plt.xlabel('Training Rounds', fontsize=14)
+    plt.ylabel('Train Loss', fontsize=14)
+    plt.title('Train Loss Comparison of Different Algorithms', fontsize=16)
+    plt.legend(fontsize=12)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f'output/train_loss_{origin_model}_{timestamp}.png')  # 保存图像
+    plt.show()
 
     return results_test_acc, results_train_loss
 
 
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-import matplotlib
-import platform
-import datetime
 
-# 定义训练轮数
-rounds = range(1, global_round + 1)
-
-# 设置绘图风格（可选）
-plt.style.use('seaborn-v0_8-darkgrid')
-
-# 获取当前时间戳，格式为 YYYYmmdd_HHMMSS
-timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-
-# Plot Test Accuracy Comparison
-plt.figure(figsize=(12, 6))
-for algo, acc in results_test_acc.items():
-    plt.plot(rounds, acc, label=algo)
-plt.xlabel('Training Rounds', fontsize=14)
-plt.ylabel('Test Accuracy (%)', fontsize=14)
-plt.title('Test Accuracy Comparison of Different Algorithms', fontsize=16)
-plt.legend(fontsize=12)
-plt.xticks(fontsize=12)
-plt.yticks(fontsize=12)
-plt.grid(True)
-plt.tight_layout()
-plt.savefig(f'output/test_accuracy_{origin_model}_{timestamp}.png')  # 保存图像
-plt.show()
-
-
-# Plot Train Loss Comparison
-plt.figure(figsize=(12, 6))
-for algo, loss in results_train_loss.items():
-    plt.plot(rounds, loss, label=algo)
-plt.xlabel('Training Rounds', fontsize=14)
-plt.ylabel('Train Loss', fontsize=14)
-plt.title('Train Loss Comparison of Different Algorithms', fontsize=16)
-plt.legend(fontsize=12)
-plt.xticks(fontsize=12)
-plt.yticks(fontsize=12)
-plt.grid(True)
-plt.tight_layout()
-plt.savefig(f'output/train_loss_{origin_model}_{timestamp}.png')  # 保存图像
-plt.show()
 
 
 
