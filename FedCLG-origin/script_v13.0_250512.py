@@ -1416,7 +1416,7 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
             # 权重更新，使用ratio_combine函数
             train_w = ratio_combine(w_t_half, update_server_w, alpha)
             
-            print(f"Round {round} server fixing with iters/actual_iters/alpha {server_iter}/{actual_iter}/{alpha:.4f}")
+            # print(f"Round {round} server fixing with iters/actual_iters/alpha {server_iter}/{actual_iter}/{alpha:.4f}")
         else:
             # 如果alpha不够大，直接使用客户端聚合模型
             train_w = copy.deepcopy(w_t_half)
@@ -1424,16 +1424,16 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
             _, round_loss, _ = update_weights(copy.deepcopy(w_t_half), server_data, gamma, E)
             local_losses.append(round_loss)
         
-        # 定期打印调试信息
-        if round % 5 == 0 or round == global_round - 1:
-            print(f"\nRound {round} 详情:")
-            print(f"  准确率: {acc_t*100:.2f}%")
-            print(f"  客户端数据量: {num_current}")
-            print(f"  D(P'_t): {D_P_t_prime:.6f}")
-            print(f"  D(P_0): {D_P_0:.6f}")
-            print(f"  alpha: {alpha:.4f}")
-            print(f"  平均迭代次数: {avg_iter:.2f}")
-            print(f"  服务器迭代次数: {server_iter}")
+        # # 定期打印调试信息
+        # if round % 5 == 0 or round == global_round - 1:
+        #     print(f"\nRound {round} 详情:")
+        #     print(f"  准确率: {acc_t*100:.2f}%")
+        #     print(f"  客户端数据量: {num_current}")
+        #     print(f"  D(P'_t): {D_P_t_prime:.6f}")
+        #     print(f"  D(P_0): {D_P_0:.6f}")
+        #     print(f"  alpha: {alpha:.4f}")
+        #     print(f"  平均迭代次数: {avg_iter:.2f}")
+        #     print(f"  服务器迭代次数: {server_iter}")
         
         # 评估模型
         test_model.load_state_dict(train_w)
@@ -1444,8 +1444,8 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
         current_acc = test_inference(test_model, test_dataset)
         test_acc.append(current_acc)
         
-        if round % 10 == 0:
-            print(f"Round {round}, Test Accuracy: {current_acc:.2f}%, Train Loss: {loss_avg:.4f}")
+        # if round % 10 == 0:
+        #     print(f"Round {round}, Test Accuracy: {current_acc:.2f}%, Train Loss: {loss_avg:.4f}")
     
     return test_acc, train_loss
 
@@ -1970,8 +1970,8 @@ def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val
         # 保存当前准确率，用于下一轮比较
         acc_prev = acc_t
 
-        # 打印调试信息（可选）
-        print(f"Round {round}: r_data={r_data:.4f}, r_noniid={r_noniid:.4f}, improvement={improvement:.4f}, alpha_new={alpha_new:.4f}")
+        # # 打印调试信息（可选）
+        # print(f"Round {round}: r_data={r_data:.4f}, r_noniid={r_noniid:.4f}, improvement={improvement:.4f}, alpha_new={alpha_new:.4f}")
         
         if alpha_new > 0.001:
             # 服务器本地训练部分
@@ -1980,7 +1980,7 @@ def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val
             # 使用 ratio_combine 函数将客户端聚合模型与服务器更新进行融合
             final_model = ratio_combine(w_agg, update_server_w, alpha_new)
             net_glob.load_state_dict(final_model)
-            print(f"Round {round}: Server fixing with alpha_new={alpha_new:.4f}")
+            # print(f"Round {round}: Server fixing with alpha_new={alpha_new:.4f}")
         else:
             final_model = copy.deepcopy(w_agg)
             net_glob.load_state_dict(final_model)
@@ -2007,14 +2007,14 @@ def FedDU_Mut(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val
             
         # 250327：加上根据alpha_new的动态调节radius
         tmp_radius = radius*(1 + ratio * alpha_new)
-        print(f"Round {round}: tmp_radius: {tmp_radius}")
+        # print(f"Round {round}: tmp_radius: {tmp_radius}")
             
         # Mutation扩散，为下一轮准备初始模型
         w_locals = mutation_spread(round, final_model, M, w_delta, tmp_radius)
         
-        # 定期打印信息
-        if round % 10 == 0:
-            print(f"Round {round}: Acc={current_acc:.2f}%, Loss={loss_avg:.4f}, D_P_t={D_P_t_prime:.4f}, Alpha={alpha_new:.4f}")
+        # # 定期打印信息
+        # if round % 10 == 0:
+        #     print(f"Round {round}: Acc={current_acc:.2f}%, Loss={loss_avg:.4f}, D_P_t={D_P_t_prime:.4f}, Alpha={alpha_new:.4f}")
           
     import datetime  
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -2049,7 +2049,7 @@ verbose = False  # 调试模式，输出一些中间信息
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
 server_percentage = 0.1  # 服务器端用于微调的数据比例
@@ -2062,7 +2062,7 @@ momentum = 0.5
 weight_decay = 0  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样（设为0表示不引入）
 bc_size = 50
 test_bc_size = 128
-num_classes = 20  # 分别数量，CIFAR100中是20, CIFAR10是10
+num_classes = 10  # 分别数量，CIFAR100中是20, CIFAR10是10
 
 # 联邦训练的超参数
 global_round = 100  # 全局训练轮数，可根据需要调整
@@ -2351,10 +2351,10 @@ def run_once():
     results_test_acc['HybridFL'] = test_acc_hybridFL
     results_train_loss['HybridFL'] = train_loss_hybridFL
 
-    # FedMix训练
-    test_acc_FedMix, train_loss_FedMix = FedMix(initial_w, global_round, eta, K, M, share_ratio=1.0)
-    results_test_acc['FedMix']  = test_acc_FedMix
-    results_train_loss['FedMix'] = train_loss_FedMix
+    # # FedMix训练
+    # test_acc_FedMix, train_loss_FedMix = FedMix(initial_w, global_round, eta, K, M, share_ratio=1.0)
+    # results_test_acc['FedMix']  = test_acc_FedMix
+    # results_train_loss['FedMix'] = train_loss_FedMix
 
     # CLG_SGD 训练
     test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
@@ -2443,11 +2443,11 @@ def run_once():
 
 
 
+results_test_acc, results_train_loss = run_once()
 
 
-
-if __name__ == "__main__":
-    run_once()
+# if __name__ == "__main__":
+#     run_once()
 
 
 # # %%

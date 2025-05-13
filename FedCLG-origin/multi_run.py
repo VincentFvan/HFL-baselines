@@ -46,6 +46,20 @@ def mean_std(x):            # 无偏标准差
     arr = np.asarray(x, dtype=float)
     return arr.mean(), arr.std(ddof=1)
 
+def safe_pick(seq, idx, fallback="last"):
+    """
+    当 seq 长度 <= idx 时的安全取值：
+      fallback = "last"  →  使用最后一个元素
+      fallback = None    →  返回 np.nan
+    """
+    if len(seq) > idx:
+        return seq[idx]
+    if fallback == "last":
+        return seq[-1]
+    return np.nan
+
+ROUND_K = 19          # round-20 的索引（0-based）
+
 summary_csv = exp_dir / "summary.csv"
 with summary_csv.open("w", newline="") as f:
     writer = csv.writer(f)
@@ -56,16 +70,16 @@ with summary_csv.open("w", newline="") as f:
     algos = all_runs_test[0].keys()
     for algo in algos:
         # round-20
-        acc20   = [run[algo][19] for run in all_runs_test]
-        loss20  = [run[algo][19] for run in all_runs_loss]
+        acc20  = [safe_pick(run[algo], ROUND_K)  for run in all_runs_test]
+        loss20 = [safe_pick(run[algo], ROUND_K)  for run in all_runs_loss]
         # final
-        accF    = [run[algo][-1] for run in all_runs_test]
-        lossF   = [run[algo][-1] for run in all_runs_loss]
+        accF   = [run[algo][-1] for run in all_runs_test]
+        lossF  = [run[algo][-1] for run in all_runs_loss]
 
-        for tag, vals in (("acc_round20", acc20),
-                          ("acc_final",   accF),
-                          ("loss_round20",loss20),
-                          ("loss_final",  lossF)):
+        for tag, vals in (("acc_round20",  acc20),
+                          ("acc_final",    accF),
+                          ("loss_round20", loss20),
+                          ("loss_final",   lossF)):
             m, s = mean_std(vals)
             writer.writerow([algo, tag, *vals, m, s])
 
