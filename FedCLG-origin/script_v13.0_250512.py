@@ -993,7 +993,7 @@ def hybridFL(initial_w, global_round, eta, K, M):
     
     return test_acc, train_loss
 
-def FedMix(initial_w,
+def Data_Sharing(initial_w,
                 global_round,
                 eta,           # 客户端学习率
                 K,             # 本地 epoch
@@ -1001,7 +1001,7 @@ def FedMix(initial_w,
                 share_ratio=1  # 方便调用者记录参数
                 ):
     """
-    FedMix: 服务器把数据一次性广播到所有客户端；
+    Data_Sharing: 服务器把数据一次性广播到所有客户端；
                  之后流程与 FedAvg 一致，不再进行服务器端训练。
     """
     # 根据所选模型实例化一个空壳用于测试
@@ -2274,7 +2274,7 @@ for i, (imgs, lbls) in enumerate(client_data[:10]):
 # 为了与后续代码兼容，这里将 server_data 定义为一个列表：[images, labels]
 server_data = [server_images, server_labels]
 
-# FedMix (Data-Sharing使用)
+# Data_Sharing (Data-Sharing使用)
 client_data_mixed = build_mixed_client_data(client_data,
                                             server_data,
                                             share_ratio=1.0,   # 按需调整
@@ -2351,10 +2351,10 @@ def run_once():
     results_test_acc['HybridFL'] = test_acc_hybridFL
     results_train_loss['HybridFL'] = train_loss_hybridFL
 
-    # # FedMix训练
-    # test_acc_FedMix, train_loss_FedMix = FedMix(initial_w, global_round, eta, K, M, share_ratio=1.0)
-    # results_test_acc['FedMix']  = test_acc_FedMix
-    # results_train_loss['FedMix'] = train_loss_FedMix
+    # # Data_Sharing训练
+    # test_acc_Data_Sharing, train_loss_Data_Sharing = Data_Sharing(initial_w, global_round, eta, K, M, share_ratio=1.0)
+    # results_test_acc['Data_Sharing']  = test_acc_Data_Sharing
+    # results_train_loss['Data_Sharing'] = train_loss_Data_Sharing
 
     # CLG_SGD 训练
     test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
