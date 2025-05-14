@@ -2049,7 +2049,7 @@ verbose = False  # 调试模式，输出一些中间信息
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
 server_percentage = 0.1  # 服务器端用于微调的数据比例
