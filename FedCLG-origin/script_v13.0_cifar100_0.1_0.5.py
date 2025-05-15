@@ -2049,20 +2049,20 @@ verbose = False  # 调试模式，输出一些中间信息
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 1.0  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
-server_percentage = 0.05  # 服务器端用于微调的数据比例
+server_percentage = 0.1  # 服务器端用于微调的数据比例
 
 # 模型相关
-origin_model = 'resnet' # 采用模型
-dataset = 'cifar10'
+origin_model = 'vgg' # 采用模型
+dataset = 'cifar100'
 
 momentum = 0.5
 weight_decay = 0  # 模型权重衰减参数，强制参数向0靠拢（和学习率衰减不一样！）这个是给我的原始代码中就是这样（设为0表示不引入）
 bc_size = 50
 test_bc_size = 128
-num_classes = 10  # 分别数量，CIFAR100中是20, CIFAR10是10
+num_classes = 20  # 分别数量，CIFAR100中是20, CIFAR10是10
 
 # 联邦训练的超参数
 global_round = 100  # 全局训练轮数，可根据需要调整
