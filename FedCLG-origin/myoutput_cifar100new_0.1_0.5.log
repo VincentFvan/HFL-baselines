@@ -23,4 +23,22 @@ FedDU-Mut初始设置:
   服务器数据量: 5000
   服务器数据非IID度: 0.313633
   Mutation幅度(radius): 2.0
-  0%|          | 0/100 [00:00<?, ?it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  0%|          | 0/100 [00:07<?, ?it/s]
+Traceback (most recent call last):
+  File "multi_run.py", line 27, in <module>
+    globs = runpy.run_path(src_script)
+  File "/home/anaconda/envs/env8/lib/python3.8/runpy.py", line 265, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/home/anaconda/envs/env8/lib/python3.8/runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/home/anaconda/envs/env8/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "script_v14.0_cifar100_0.1_0.5.py", line 2447, in <module>
+    results_test_acc, results_train_loss = run_once()
+  File "script_v14.0_cifar100_0.1_0.5.py", line 2381, in run_once
+    test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
+  File "script_v14.0_cifar100_0.1_0.5.py", line 1979, in FedDU_Mut
+    update_server_w, round_loss, _ = update_weights(copy.deepcopy(w_agg), server_data, gamma, E)
+  File "script_v14.0_cifar100_0.1_0.5.py", line 761, in update_weights
+    first_iter_gradient[name] = param.grad.clone()
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 
