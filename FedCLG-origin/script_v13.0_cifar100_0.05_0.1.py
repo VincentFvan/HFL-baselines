@@ -2043,16 +2043,16 @@ seed_num = 42
 random_fix = True
 seed = 2
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
-server_percentage = 0.1  # 服务器端用于微调的数据比例
+server_percentage = 0.05  # 服务器端用于微调的数据比例
 
 # 模型相关
 origin_model = 'vgg' # 采用模型
@@ -2329,22 +2329,22 @@ def run_once():
     # results_test_acc['CLG_Mut_3'] = test_acc_CLG_Mut_3
     # results_train_loss['CLG_Mut_3'] = train_loss_CLG_Mut_3
 
-    # # FedMut 训练
-    # test_acc_FedMut, train_loss_FedMut = FedMut(copy.deepcopy(init_model), global_round, eta, K, M)
-    # results_test_acc['FedMut'] = test_acc_FedMut
-    # results_train_loss['FedMut'] = train_loss_FedMut
+    # FedMut 训练
+    test_acc_FedMut, train_loss_FedMut = FedMut(copy.deepcopy(init_model), global_round, eta, K, M)
+    results_test_acc['FedMut'] = test_acc_FedMut
+    results_train_loss['FedMut'] = train_loss_FedMut
 
-    # print("测试radius为：", radius)
+    print("测试radius为：", radius)
 
-    # # Server-only 训练
-    # test_acc_server_only, train_loss_server_only = server_only(initial_w, global_round, gamma, E)
-    # results_test_acc['Server_only'] = test_acc_server_only
-    # results_train_loss['Server_only'] = train_loss_server_only
+    # Server-only 训练
+    test_acc_server_only, train_loss_server_only = server_only(initial_w, global_round, gamma, E)
+    results_test_acc['Server_only'] = test_acc_server_only
+    results_train_loss['Server_only'] = train_loss_server_only
 
-    # # FedAvg 训练
-    # test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
-    # results_test_acc['FedAvg'] = test_acc_fedavg
-    # results_train_loss['FedAvg'] = train_loss_fedavg
+    # FedAvg 训练
+    test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
+    results_test_acc['FedAvg'] = test_acc_fedavg
+    results_train_loss['FedAvg'] = train_loss_fedavg
 
     # HybridFl训练
     test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, M)
