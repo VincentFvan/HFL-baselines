@@ -965,8 +965,8 @@ def hybridFL(initial_w, global_round, eta, K, E, M):
             local_loss.append(client_round_loss)
 
         # 服务器参与训练
-        update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, K)
-        # update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, E)
+        # update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, K)
+        update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, E)
         local_weights.append(update_server_w)   # 将服务器权重加入列表
         local_loss.append(server_round_loss)    # 将服务器损失加入列表
 

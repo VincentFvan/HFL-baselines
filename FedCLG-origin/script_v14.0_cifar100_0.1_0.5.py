@@ -965,8 +965,8 @@ def hybridFL(initial_w, global_round, eta, K, E, M):
             local_loss.append(client_round_loss)
 
         # 服务器参与训练
-        update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, K)
-        # update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, E)
+        # update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, K)
+        update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, E)
         local_weights.append(update_server_w)   # 将服务器权重加入列表
         local_loss.append(server_round_loss)    # 将服务器损失加入列表
 
@@ -2044,13 +2044,13 @@ seed_num = 42
 random_fix = True
 seed = 2
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
 server_percentage = 0.1  # 服务器端用于微调的数据比例
@@ -2075,7 +2075,7 @@ M = 10  # 每一轮抽取客户端
 
 # FedMut中参数
 radius = 2.0  # alpha，控制mutation的幅度
-mut_acc_rate = 0.3  # 论文中的β0
+mut_acc_rate = 0.5  # 论文中的β0
 mut_bound = 50  # Tb
 
 # FedDU_modify中参数
