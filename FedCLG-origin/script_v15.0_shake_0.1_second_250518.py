@@ -2369,6 +2369,8 @@ def run_once():
     # results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
     # results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
 
+    print("测试FedC")
+
     # Fed_C 训练
     test_acc_Fed_C, train_loss_Fed_C = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
     results_test_acc['Fed_C'] = test_acc_Fed_C
