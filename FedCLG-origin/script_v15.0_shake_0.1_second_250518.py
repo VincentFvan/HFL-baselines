@@ -2083,8 +2083,8 @@ E = 3  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
 
 # DUMut中参数
-du_C = 7
-radius = 2.0  # alpha，控制mutation的幅度
+du_C = 5
+radius = 4.0  # alpha，控制mutation的幅度
 mut_acc_rate = 0.5  # 论文中的β0
 mut_bound = 50  # Tb
 
@@ -2342,7 +2342,7 @@ def run_once():
     # results_test_acc['FedMut'] = test_acc_FedMut
     # results_train_loss['FedMut'] = train_loss_FedMut
 
-    # # # print("测试radius为：", radius)
+    # # # # print("测试radius为：", radius)
 
     # # Server-only 训练
     # test_acc_server_only, train_loss_server_only = server_only(initial_w, global_round, gamma, E)
@@ -2359,30 +2359,30 @@ def run_once():
     # results_test_acc['HybridFL'] = test_acc_hybridFL
     # results_train_loss['HybridFL'] = train_loss_hybridFL
 
-    # # Data_Sharing训练
-    # test_acc_Data_Sharing, train_loss_Data_Sharing = Data_Sharing(initial_w, global_round, eta, K, M, share_ratio=1.0)
-    # results_test_acc['Data_Sharing']  = test_acc_Data_Sharing
-    # results_train_loss['Data_Sharing'] = train_loss_Data_Sharing
+    # # # Data_Sharing训练
+    # # test_acc_Data_Sharing, train_loss_Data_Sharing = Data_Sharing(initial_w, global_round, eta, K, M, share_ratio=1.0)
+    # # results_test_acc['Data_Sharing']  = test_acc_Data_Sharing
+    # # results_train_loss['Data_Sharing'] = train_loss_Data_Sharing
 
     # # CLG_SGD 训练
     # test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
     # results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
     # results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
 
-    # # Fed_C 训练
-    # test_acc_Fed_C, train_loss_Fed_C = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
-    # results_test_acc['Fed_C'] = test_acc_Fed_C
-    # results_train_loss['Fed_C'] = train_loss_Fed_C
+    # Fed_C 训练
+    test_acc_Fed_C, train_loss_Fed_C = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
+    results_test_acc['Fed_C'] = test_acc_Fed_C
+    results_train_loss['Fed_C'] = train_loss_Fed_C
 
-    # # Fed_S 训练
-    # test_acc_Fed_S, train_loss_Fed_S = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
-    # results_test_acc['Fed_S'] = test_acc_Fed_S
-    # results_train_loss['Fed_S'] = train_loss_Fed_S
+    # Fed_S 训练
+    test_acc_Fed_S, train_loss_Fed_S = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
+    results_test_acc['Fed_S'] = test_acc_Fed_S
+    results_train_loss['Fed_S'] = train_loss_Fed_S
 
-    # # FedDU 训练
-    # test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
-    # results_test_acc['FedDU'] = test_acc_CLG_SGD
-    # results_train_loss['FedDU'] = train_loss_CLG_SGD
+    # FedDU 训练
+    test_acc_FedDU, train_loss_FedDU = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
+    results_test_acc['FedDU'] = test_acc_FedDU
+    results_train_loss['FedDU'] = train_loss_FedDU
 
     # FedDU-Mut 训练
     test_acc_FedDU_Mut, train_loss_FedDU_Mut = FedDU_Mut(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
