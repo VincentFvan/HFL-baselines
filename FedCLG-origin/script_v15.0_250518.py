@@ -2052,7 +2052,7 @@ seed_num = 42
 random_fix = True
 seed = 2
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
@@ -2079,7 +2079,7 @@ global_round = 100  # 全局训练轮数，可根据需要调整
 eta = 0.01  # 客户端端学习率，从{0.01, 0.1, 1}中调优
 gamma = 0.01  # 服务器端学习率 从{0.005， 0.05， 0.5中调有}
 K = 5  # 客户端本地训练轮数，从1，3，5中选
-E = 3  # 服务器本地训练轮数，从1，3，5中选
+E = 1  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
 
 # DUMut中参数
@@ -2354,10 +2354,10 @@ def run_once():
     # results_test_acc['FedAvg'] = test_acc_fedavg
     # results_train_loss['FedAvg'] = train_loss_fedavg
 
-    # HybridFl训练
-    test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, E, M)
-    results_test_acc['HybridFL'] = test_acc_hybridFL
-    results_train_loss['HybridFL'] = train_loss_hybridFL
+    # # HybridFl训练
+    # test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, E, M)
+    # results_test_acc['HybridFL'] = test_acc_hybridFL
+    # results_train_loss['HybridFL'] = train_loss_hybridFL
 
     # # Data_Sharing训练
     # test_acc_Data_Sharing, train_loss_Data_Sharing = Data_Sharing(initial_w, global_round, eta, K, M, share_ratio=1.0)

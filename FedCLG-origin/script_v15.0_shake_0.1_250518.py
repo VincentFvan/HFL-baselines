@@ -2354,10 +2354,10 @@ def run_once():
     # results_test_acc['FedAvg'] = test_acc_fedavg
     # results_train_loss['FedAvg'] = train_loss_fedavg
 
-    # HybridFl训练
-    test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, E, M)
-    results_test_acc['HybridFL'] = test_acc_hybridFL
-    results_train_loss['HybridFL'] = train_loss_hybridFL
+    # # HybridFl训练
+    # test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, E, M)
+    # results_test_acc['HybridFL'] = test_acc_hybridFL
+    # results_train_loss['HybridFL'] = train_loss_hybridFL
 
     # # Data_Sharing训练
     # test_acc_Data_Sharing, train_loss_Data_Sharing = Data_Sharing(initial_w, global_round, eta, K, M, share_ratio=1.0)
