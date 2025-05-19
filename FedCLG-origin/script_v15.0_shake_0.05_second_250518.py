@@ -2374,6 +2374,7 @@ def run_once():
     # results_test_acc['Fed_C'] = test_acc_Fed_C
     # results_train_loss['Fed_C'] = train_loss_Fed_C
 
+    print("FedS训练", radius)
     # Fed_S 训练
     test_acc_Fed_S, train_loss_Fed_S = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
     results_test_acc['Fed_S'] = test_acc_Fed_S
