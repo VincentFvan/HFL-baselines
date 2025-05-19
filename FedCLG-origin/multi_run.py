@@ -7,8 +7,8 @@ import runpy, datetime, json, csv, numpy as np
 from pathlib import Path
 
 # ========== 可调参数 ==========
-n_repeat   = 3                    # 重复次数
-src_script = "script_v15.0_shake_0.05_second_250518.py"      # 原脚本文件名
+n_repeat   = 1                    # 重复次数
+src_script = "script_v16.0_250519.py"      # 原脚本文件名
 out_root   = Path("output")       # 统一输出目录
 # ==============================
 
