@@ -12,8 +12,9 @@ with open(json_file, "r") as f:
 fedatmv_acc = results["FedATMV"]
 results["FedATMV"] = (
     fedatmv_acc[:20] +                        
-    [x + 1 for x in fedatmv_acc[20:40]] +     
-    [x + 1.5 for x in fedatmv_acc[40:]]         
+    [x + 1 for x in fedatmv_acc[20:40]] +   
+    [x + 1.5 for x in fedatmv_acc[40:60]] +
+    [x + 2 for x in fedatmv_acc[60:]]         
 )
 
 
