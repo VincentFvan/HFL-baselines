@@ -62,7 +62,7 @@ for idx, (json_key, show_name) in enumerate(plot_methods):
 plt.xlabel('Training Rounds', fontsize=20)
 plt.ylabel('Test Accuracy (%)', fontsize=20)
 # plt.title('Test Accuracy vs. Training Rounds', fontsize=16)
-plt.legend(fontsize=15, loc="center right", ncol=2)
+plt.legend(fontsize=16, loc="lower right", ncol=2)
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=17)
 plt.yticks(fontsize=17)
