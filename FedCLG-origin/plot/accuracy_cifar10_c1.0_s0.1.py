@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 
 # 你的 JSON 文件名
-json_file = "/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_160803/srvDir0p1/run01_results_test_acc.json"
+json_file = "/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_161037/srvDir0p1/run01_results_test_acc.json"
 
 # 加载数据
 with open(json_file, "r") as f:
