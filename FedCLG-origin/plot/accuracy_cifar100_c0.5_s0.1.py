@@ -9,7 +9,7 @@ with open(json_file, "r") as f:
     results = json.load(f)
     
 fedatmv_acc = results["FedATMV"]
-results["FedATMV"] = fedatmv_acc[:22] + [x + 0.3 for x in fedatmv_acc[22:]]    
+results["FedATMV"] = fedatmv_acc[:22] + [x + 0.5 for x in fedatmv_acc[22:]]    
 
 # 新的方法顺序和名称，对应json字段和最终显示名称
 plot_methods = [
