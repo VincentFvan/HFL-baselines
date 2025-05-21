@@ -4,7 +4,7 @@ from pathlib import Path
 
 # 可调参数 ---------------------------------------------------------------------
 n_repeat   = 1                                   # 每个配置重复次数
-src_script = "script_v16.0_cifar10_250519.py"            # 实际实验脚本
+src_script = "script_v16.0_shake_250519.py"            # 实际实验脚本
 out_root   = Path("output")         # 统一输出目录
 # ------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ exp_dir.mkdir(parents=True, exist_ok=True)
 # 三种服务器数据配置
 cfgs = [
     # dict(name="srvDir0p1", server_iid=False, server_dir=0.1),
-    dict(name="srvDir1p0", server_iid=False, server_dir=1.0),
+    # dict(name="srvDir1p0", server_iid=False, server_dir=1.0),
     dict(name="srvIID"   , server_iid=True , server_dir=0.1),   # dir 数值随意
 ]
 

@@ -2050,7 +2050,7 @@ data_random_fix = False  # 是否固定数据采样的随机性
 seed_num = 42
 # 新采用的全局随机性机制
 random_fix = True
-seed = 2
+seed = 3
 
 GPU = 1  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息

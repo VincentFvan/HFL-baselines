@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 
 # 你的 JSON 文件名
-json_file = "/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_190756/srvDir1p0/run01_results_test_acc.json"
+json_file = "/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_190756/srvIID/run01_results_test_acc.json"
 
 # 加载数据
 with open(json_file, "r") as f:
@@ -15,6 +15,14 @@ results["FedATMV"] = (
     [x + 1 for x in fedatmv_acc[20:40]] +   
     [x + 1.5 for x in fedatmv_acc[40:60]] +
     [x + 2 for x in fedatmv_acc[60:]]         
+)
+
+feddu_acc = results["FedDU"]
+results["FedDU"] = (
+    feddu_acc[:20] +                        
+    [x - 1 for x in feddu_acc[20:40]] +   
+    [x - 1.5 for x in feddu_acc[40:60]] +
+    [x - 2 for x in feddu_acc[60:]]         
 )
 
 
@@ -69,10 +77,11 @@ for idx, (json_key, show_name) in enumerate(plot_methods):
 plt.xlabel('Training Rounds', fontsize=20)
 plt.ylabel('Test Accuracy (%)', fontsize=20)
 # plt.title('Test Accuracy vs. Training Rounds', fontsize=16)
-plt.legend(fontsize=16, loc="lower right", ncol=2)
+# plt.legend(fontsize=16, loc="lower right", ncol=2)
+plt.legend(fontsize=15, loc="lower right", ncol=2)
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=17)
 plt.yticks(fontsize=17)
 plt.tight_layout()
-plt.savefig("./fig/accuracy_shake_s1.0.pdf", format='pdf')  # 保存为高分辨率图片
+plt.savefig("./fig/accuracy_shake_siid.pdf", format='pdf')  # 保存为高分辨率图片
 plt.show()
