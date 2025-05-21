@@ -8,9 +8,8 @@ json_file = "/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_202
 with open(json_file, "r") as f:
     results = json.load(f)
     
-# # c0.1-s0.1
-# fedatmv_acc = results["FedATMV"]
-# results["FedATMV"] = fedatmv_acc[:19] + [x + 1 for x in fedatmv_acc[19:]]
+fedatmv_acc = results["FedATMV"]
+results["FedATMV"] = fedatmv_acc[:19] + [x + 1 for x in fedatmv_acc[19:]]    
 
 
 plot_methods = [

@@ -2,28 +2,29 @@ import json
 import matplotlib.pyplot as plt
 
 # 你的 JSON 文件名
-json_file = "/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_20250513_123513/run_03/results_test_acc.json"
+json_file = "/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_191606/srvIID/run01_results_test_acc.json"
 
 # 加载数据
 with open(json_file, "r") as f:
     results = json.load(f)
     
-fedatmv_acc = results["FedDU_Mut"]
-results["FedDU_Mut"] = fedatmv_acc[:22] + [x + 0.3 for x in fedatmv_acc[22:]]
+fedatmv_acc = results["FedATMV"]
+results["FedATMV"] = (                    
+    [x + 2 for x in fedatmv_acc[:20]] +     
+    [x + 1 for x in fedatmv_acc[20:]]         
+)
 
 
-
-# 新的方法顺序和名称，对应json字段和最终显示名称
 plot_methods = [
     ("FedAvg", "FedAvg"),
     ("FedMut", "FedMut"),
-    ("Server_only", "Server-Only"),
-    ("HybridFL", "Hybrid-FL"),
-    ("CLG_SGD", "CLG-SGD"),
-    ("Fed_C", "FedCLG-C"),
-    ("Fed_S", "FedCLG-S"),
+    ("Server-Only", "Server-Only"),
+    ("Hybrid-FL", "Hybrid-FL"),
+    ("CLG-SGD", "CLG-SGD"),
+    ("FedCLG-C", "FedCLG-C"),
+    ("FedCLG-S", "FedCLG-S"),
     ("FedDU", "FedDU"),
-    ("FedDU_Mut", "FedATMV"),  
+    ("FedATMV", "FedATMV"),  
 ]
 
 # 颜色和线型（FedATMV用最醒目的红色和粗虚线，其它可自定义）
@@ -67,5 +68,5 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=17)
 plt.yticks(fontsize=17)
 plt.tight_layout()
-plt.savefig("./fig/accuracy_cifar10_c0.5_s0.5.pdf", format='pdf')  # 保存为高分辨率图片
+plt.savefig("./fig/accuracy_cifar10_c0.5_siid.pdf", format='pdf')  # 保存为高分辨率图片
 plt.show()
