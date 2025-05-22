@@ -9,6 +9,8 @@ with open(json_file, "r") as f:
     results = json.load(f)
     
     
+print("FedATMV最后一轮的准确率为：", results["FedDU_Mut"][-1])    
+    
 fedatmv_acc = results["FedDU_Mut"]
 results["FedDU_Mut"] = fedatmv_acc[:22] + [x + 0.5 for x in fedatmv_acc[22:]]
 
@@ -43,7 +45,7 @@ colors = [
 linestyles = [
     '-', '--', '-.', ':', '-', '--', '-.', ':', '-',  # FedATMV用实线
 ]
-linewidths = [2]*8 + [3.5]  # FedATMV更粗
+linewidths = [3]*8 + [5]  # FedATMV更粗
 
 # plt.figure(figsize=(7, 8))
 # plt.figure(figsize=(10, 6))
@@ -61,13 +63,13 @@ for idx, (json_key, show_name) in enumerate(plot_methods):
         alpha=1.0 if show_name != 'FedATMV' else 1.0  # FedATMV最突出
     )
 
-plt.xlabel('Training Rounds', fontsize=20)
-plt.ylabel('Test Accuracy (%)', fontsize=20)
+plt.xlabel('Training Rounds', fontsize=24)
+plt.ylabel('Test Accuracy (%)', fontsize=24)
 # plt.title('Test Accuracy vs. Training Rounds', fontsize=16)
-plt.legend(fontsize=16, loc="lower right", ncol=2)
+plt.legend(fontsize=20, loc="lower right", ncol=2, columnspacing=0.3, labelspacing=0.2)
 plt.grid(True, linestyle='--', alpha=0.6)
-plt.xticks(fontsize=17)
-plt.yticks(fontsize=17)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
 plt.tight_layout()
-plt.savefig("./fig/accuracy_cifar100_c0.5_s0.5.pdf", format='pdf')  # 保存为高分辨率图片
+plt.savefig("./fig/accuracy_cifar100_c0.5_s0.5.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
 plt.show()
