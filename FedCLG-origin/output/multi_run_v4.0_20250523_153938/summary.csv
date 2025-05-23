@@ -1,0 +1,13 @@
+cfg,algo,metric,value
+rho0,FedATMV,acc_final,47.63999938964844
+rho0,FedATMV,loss_final,0.001872400752647977
+rho2,FedATMV,acc_final,48.75
+rho2,FedATMV,loss_final,0.002191925752343952
+rho4,FedATMV,acc_final,56.36000061035156
+rho4,FedATMV,loss_final,0.0020561817461014556
+rho6,FedATMV,acc_final,12.729999542236328
+rho6,FedATMV,loss_final,7.222934480677235
+rho8,FedATMV,acc_final,10.0
+rho8,FedATMV,loss_final,nan
+rho10,FedATMV,acc_final,10.0
+rho10,FedATMV,loss_final,nan

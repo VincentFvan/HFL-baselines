@@ -1,0 +1,13 @@
+cfg,algo,metric,value
+theta0,FedATMV,acc_final,51.459999084472656
+theta0,FedATMV,loss_final,0.005991881277718576
+theta1,FedATMV,acc_final,52.189998626708984
+theta1,FedATMV,loss_final,0.00591101298929019
+theta3,FedATMV,acc_final,56.599998474121094
+theta3,FedATMV,loss_final,0.002013376588859685
+theta5,FedATMV,acc_final,50.040000915527344
+theta5,FedATMV,loss_final,0.007282628465890047
+theta7,FedATMV,acc_final,33.150001525878906
+theta7,FedATMV,loss_final,0.02275214883512169
+theta9,FedATMV,acc_final,13.1899995803833
+theta9,FedATMV,loss_final,1.497331121487048
