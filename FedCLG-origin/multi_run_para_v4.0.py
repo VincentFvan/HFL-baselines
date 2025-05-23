@@ -6,7 +6,11 @@ from pathlib import Path
 n_repeat   = 1                                   # 每个配置重复次数
 # src_script = "script_v18.0_cifar10_mu_250523.py"            # 实际实验脚本
 # src_script = "script_v18.0_cifar10_rho_250523.py"
-src_script = "script_v18.0_cifar10_theta_250523.py"  
+# src_script = "script_v18.0_cifar10_theta_250523.py"  
+
+# src_script = "script_v18.0_shake_mu_250523.py"            # 实际实验脚本
+# src_script = "script_v18.0_shake_rho_250523.py"
+src_script = "script_v18.0_shake_theta_250523.py"  
 out_root   = Path("output")         # 统一输出目录
 # ------------------------------------------------------------------------------
 
@@ -14,7 +18,7 @@ timestamp  = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 exp_dir    = out_root / f"multi_run_v4.0_{timestamp}"
 exp_dir.mkdir(parents=True, exist_ok=True)
 
-# 三种服务器数据配置
+# # 三种服务器数据配置
 # cfgs = [
 #     dict(name="mu0", du_C=0),
 #     dict(name="mu1", du_C=1),
@@ -27,17 +31,17 @@ exp_dir.mkdir(parents=True, exist_ok=True)
 # cfgs = [
 #     dict(name="rho0", radius=0),
 #     dict(name="rho2", radius=2),
-#     dict(name="rho4", radius=4),
-#     dict(name="rho6", radius=6),
-#     dict(name="rho8", radius=8),
-#     dict(name="rho10", radius=10),
+#     # dict(name="rho4", radius=4),
+#     # dict(name="rho6", radius=6),
+#     # dict(name="rho8", radius=8),
+#     # dict(name="rho10", radius=10),
 # ]
 
 cfgs = [
-    dict(name="theta0", scal_ratio=0),
-    dict(name="theta1", scal_ratio=0.1),
-    dict(name="theta3", scal_ratio=0.3),
-    dict(name="theta5", scal_ratio=0.5),
+    # dict(name="theta0", scal_ratio=0),
+    # dict(name="theta1", scal_ratio=0.1),
+    # dict(name="theta3", scal_ratio=0.3),
+    # dict(name="theta5", scal_ratio=0.5),
     dict(name="theta7", scal_ratio=0.7),
     dict(name="theta9", scal_ratio=0.9),
 ]

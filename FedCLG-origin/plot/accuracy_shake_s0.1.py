@@ -2,7 +2,8 @@ import json
 import matplotlib.pyplot as plt
 
 # 你的 JSON 文件名
-json_file = "/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_155545/srvDir0p1/run01_results_test_acc.json"
+# json_file = "/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250519_155545/srvDir0p1/run01_results_test_acc.json"
+json_file = "/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v2.0_20250522_111855/srvDir0p1/run01_results_test_acc.json"
 
 # 加载数据
 with open(json_file, "r") as f:
@@ -76,5 +77,5 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
 plt.tight_layout()
-plt.savefig("./fig/accuracy_shake_s0.1.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
+plt.savefig("./fig/accuracy_shake_s0.1_new.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
 plt.show()
