@@ -2052,7 +2052,7 @@ seed_num = 42
 random_fix = True
 seed = 3
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100

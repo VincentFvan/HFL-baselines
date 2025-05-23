@@ -14,9 +14,10 @@ exp_dir.mkdir(parents=True, exist_ok=True)
 
 # 三种服务器数据配置
 cfgs = [
-    # dict(name="srvDir0p1", server_iid=False, server_dir=0.1),
-    # dict(name="srvDir1p0", server_iid=False, server_dir=1.0),
-    dict(name="srvIID"   , server_iid=True , server_dir=0.1),   # dir 数值随意
+    dict(name="srvDir0p1", server_iid=False, server_dir=0.1),
+    dict(name="srvDir0p5", server_iid=False, server_dir=0.5),
+    dict(name="srvDir1p0", server_iid=False, server_dir=1.0),
+    # dict(name="srvIID"   , server_iid=True , server_dir=0.1),   # dir 数值随意
 ]
 
 # ---------- CSV：仅记录 final ----------
