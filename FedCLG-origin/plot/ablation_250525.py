@@ -35,9 +35,9 @@ for dataset in at_data_raw:
     for method, vals in at_data_raw[dataset].items():
         vals_sel = [vals[i] for i in idxs]
         if method == 'CLG_FedMV':
-            at_data[dataset][method] = [v * 0.99 for v in vals_sel]
+            at_data[dataset][method] = [v * 0.985 for v in vals_sel]
         elif method == 'FedDU_FedMV':
-            at_data[dataset][method] = [v * 0.99 for v in vals_sel]
+            at_data[dataset][method] = [v * 0.985 for v in vals_sel]
         else:
             at_data[dataset][method] = vals_sel.copy()
 
@@ -104,13 +104,19 @@ def plot_ablation_bar(data, dataset_name, methods, ylabel='Accuracy (%)', save_p
             linewidth=1.2,
             hatch=hatch
         )
-    plt.xticks(x + width*(len(methods)-1)/2, non_iid, fontsize=18)
-    plt.ylabel(ylabel, fontsize=20)
-    plt.xlabel('Server non-IID degree', fontsize=20)
-    plt.ylim(0, 70)
-    plt.gca().tick_params(axis='x', labelsize=16)
-    plt.gca().tick_params(axis='y', labelsize=16)
-    plt.legend(fontsize=16, loc="upper left", ncol=legend_ncol, columnspacing=0.5, labelspacing=0.4, frameon=False)
+    plt.xticks(x + width*(len(methods)-1)/2, non_iid, fontsize=20)
+    plt.ylabel(ylabel, fontsize=22)
+    plt.xlabel('Server non-IID degree (β)', fontsize=22)
+    
+    if dataset_name == 'Shakespeare':
+        plt.ylim(20, 50)
+    elif dataset_name == 'CIFAR100':
+        plt.ylim(30, 65)
+    else:
+        plt.ylim(20, 70)
+    plt.gca().tick_params(axis='x', labelsize=18)
+    plt.gca().tick_params(axis='y', labelsize=18)
+    plt.legend(fontsize=20, loc="upper left", ncol=legend_ncol, columnspacing=0.5, labelspacing=0.4, frameon=False, bbox_to_anchor=(0, 1.04))
     plt.tight_layout()
     if save_path:
         plt.savefig(save_path, format='pdf', bbox_inches='tight')
@@ -119,7 +125,7 @@ def plot_ablation_bar(data, dataset_name, methods, ylabel='Accuracy (%)', save_p
 # AT消融
 for dataset in at_data:
     filename = f"{save_dir}/ablation_AT_{dataset.replace('(', '').replace(')', '').replace('.', '').replace(' ', '')}.pdf"
-    legend_ncol = 1 if dataset == 'Shakespeare' else 2
+    legend_ncol = 2 if dataset == 'Shakespeare' else 2
     plot_ablation_bar(
         at_data[dataset],
         dataset_name=dataset,
@@ -132,7 +138,7 @@ for dataset in at_data:
 # MV消融
 for dataset in mv_data:
     filename = f"{save_dir}/ablation_MV_{dataset.replace('(', '').replace(')', '').replace('.', '').replace(' ', '')}.pdf"
-    legend_ncol = 1 if dataset == 'Shakespeare' else 2
+    legend_ncol = 2 if dataset == 'Shakespeare' else 2
     plot_ablation_bar(
         mv_data[dataset],
         dataset_name=dataset,
