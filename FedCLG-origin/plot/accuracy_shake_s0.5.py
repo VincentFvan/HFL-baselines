@@ -104,5 +104,5 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
 plt.tight_layout()
-plt.savefig("./fig/accuracy_shake_s0.5.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
+plt.savefig("./fig/accuracy_shake_s0.5_new.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
 plt.show()
