@@ -130,7 +130,7 @@ for dataset in at_data:
         at_data[dataset],
         dataset_name=dataset,
         methods=['FedATMV', 'CLG_FedMV', 'FedDU_FedMV', 'FedMV'],
-        ylabel='Accuracy (%)',
+        ylabel='Test Accuracy (%)',
         save_path=filename,
         legend_ncol=legend_ncol
     )
@@ -143,7 +143,7 @@ for dataset in mv_data:
         mv_data[dataset],
         dataset_name=dataset,
         methods=['FedATMV', 'FedAT_FedMut', 'FedAT'],
-        ylabel='Accuracy (%)',
+        ylabel='Test Accuracy (%)',
         save_path=filename,
         legend_ncol=legend_ncol
     )
