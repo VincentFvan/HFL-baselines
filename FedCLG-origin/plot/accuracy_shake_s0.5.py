@@ -35,7 +35,6 @@ results["FedMut"] = (
 )
 
 
-
 # 新的方法顺序和名称，对应json字段和最终显示名称
 plot_methods = [
     ("FedAvg", "FedAvg"),
