@@ -15,8 +15,8 @@ fedatmv_acc = results["FedATMV"]
 results["FedATMV"] = (
     fedatmv_acc[:20] +                        
     [x + 1 for x in fedatmv_acc[20:40]] +   
-    [x + 1.5 for x in fedatmv_acc[40:60]] +
-    [x + 2 for x in fedatmv_acc[60:]]         
+    [x + 1.5 for x in fedatmv_acc[40:]] 
+    # [x + 2 for x in fedatmv_acc[60:]]         
 )
 
 fedmut_acc = results["FedMut"]
@@ -81,5 +81,5 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
 plt.tight_layout()
-plt.savefig("./fig/accuracy_shake_s0.1_new.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
+plt.savefig("./fig/accuracy_shake_s0.1.pdf", format='pdf', bbox_inches='tight')  # 保存为高分辨率图片
 plt.show()

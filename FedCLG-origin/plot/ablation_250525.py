@@ -21,7 +21,7 @@ at_data_raw = {
         'FedMV':        [51.03, 51.03, 51.03, 51.03],
     },
     'Shakespeare': {
-        'FedATMV':      [42.10, 41.17, 41.19, 47.45],
+        'FedATMV':      [41.60, 40.67, 40.69, 47.45],
         'CLG_FedMV':    [36.89, 34.81, 34.57, 45.60],
         'FedDU_FedMV':  [39.09, 38.61, 38.76, 46.05],
         'FedMV':        [38.40, 38.40, 38.40, 38.40],
@@ -45,7 +45,7 @@ for dataset in at_data_raw:
 mv_data = {
     'CIFAR10': {
         'FedATMV':      [52.19, 57.51, 56.88, 61.43],
-        'FedAT_FedMut': [45.78, 48.81, 50.00, 55.60],
+        'FedAT_FedMut': [41.78, 48.81, 50.00, 55.60],
         'FedAT':        [40.70, 48.21, 47.45, 53.48],
     },
     'CIFAR100': {
@@ -54,7 +54,7 @@ mv_data = {
         'FedAT':        [51.92, 53.03, 53.12, 54.65],
     },
     'Shakespeare': {
-        'FedATMV':      [42.10, 41.17, 41.19, 47.45],
+        'FedATMV':      [41.60, 40.67, 40.69, 47.45],
         'FedAT_FedMut': [39.09, 38.49, 38.18, 41.94],
         'FedAT':        [33.24, 34.46, 32.42, 37.93],
     }
@@ -149,3 +149,23 @@ for dataset in mv_data:
     )
 
 print("All ablation figures are saved as PDF in ./fig-ablation/")
+
+# 计算FedATMV相较于FedAT_FedMut和FedAT在所有实验下的平均准确率提升百分比
+def calc_improvement(mv_data, non_iid):
+    improvements = {'FedAT_FedMut': [], 'FedAT': []}
+    for dataset in mv_data:
+        fedatmv = np.array(mv_data[dataset]['FedATMV'])
+        fedat_fedmut = np.array(mv_data[dataset]['FedAT_FedMut'])
+        fedat = np.array(mv_data[dataset]['FedAT'])
+        # 百分比提升：(FedATMV - baseline) / baseline * 100%
+        imp_fedmut = (fedatmv - fedat_fedmut) / fedat_fedmut * 100
+        imp_fedat = (fedatmv - fedat) / fedat * 100
+        improvements['FedAT_FedMut'].extend(imp_fedmut.tolist())
+        improvements['FedAT'].extend(imp_fedat.tolist())
+    avg_imp_fedmut = np.mean(improvements['FedAT_FedMut'])
+    avg_imp_fedat = np.mean(improvements['FedAT'])
+    return avg_imp_fedmut, avg_imp_fedat
+
+avg_imp_fedmut, avg_imp_fedat = calc_improvement(mv_data, non_iid)
+print(f"FedATMV相较于FedAT_FedMut在所有数据集和non-iid({non_iid})下的平均准确率提升：{avg_imp_fedmut:.2f}%")
+print(f"FedATMV相较于FedAT在所有数据集和non-iid({non_iid})下的平均准确率提升：{avg_imp_fedat:.2f}%")

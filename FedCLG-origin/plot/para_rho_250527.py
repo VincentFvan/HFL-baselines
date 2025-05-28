@@ -49,8 +49,8 @@ for idx, (filename, mu_label) in enumerate(file_mu_map):
 
  
         
-plt.xlabel('Training Rounds', fontsize=22)
-plt.ylabel('Test Accuracy (%)', fontsize=22)
+plt.xlabel('Training Rounds', fontsize=24)
+plt.ylabel('Test Accuracy (%)', fontsize=24)
 
 # plt.ylim(25, 61)
 plt.legend(fontsize=20, ncol=2, columnspacing=0.8)
