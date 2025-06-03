@@ -1644,14 +1644,14 @@ data_random_fix = False
 seed_num = 42
 random_fix = True
 seed = 2
-GPU = 0
+GPU = 1
 verbose = False
 client_num = 100
 size_per_client = 400
 is_iid = False
 non_iid = 0.1
-server_iid = False
-server_dir = 0.5
+server_iid = True
+server_dir = 1.0
 server_percentage = 0.1
 server_fill = True
 origin_model = 'resnet' # 'resnet', 'cnn', 'vgg', 'lstm'
@@ -1811,11 +1811,11 @@ def run_once():
     if init_model is None or initial_w is None:
         raise ValueError("init_model or initial_w is not initialized. Check dataset loading.")
 
-    # Server-Only
-    test_acc_so, train_loss_so, comm_so = server_only(initial_w, global_round, gamma, E)
-    results_test_acc['Server-Only'] = test_acc_so
-    results_train_loss['Server-Only'] = train_loss_so
-    results_comm_vs_acc['Server-Only'] = comm_so
+    # # Server-Only
+    # test_acc_so, train_loss_so, comm_so = server_only(initial_w, global_round, gamma, E)
+    # results_test_acc['Server-Only'] = test_acc_so
+    # results_train_loss['Server-Only'] = train_loss_so
+    # results_comm_vs_acc['Server-Only'] = comm_so
 
     # FedAvg
     test_acc_fa, train_loss_fa, comm_fa = fedavg(initial_w, global_round, eta, K, M)
