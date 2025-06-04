@@ -1,0 +1,8 @@
+nohup: 忽略输入
+Torch version: 2.7.0+cu118
+CUDA available: True
+Dataset: cifar10, Model: resnet, Num clients: 100, Num classes: 10
+Server data size: 5000
+Client data sizes (first 5): [397, 398, 398, 397, 397], Total client samples: 39642
+Starting run_once with dataset: cifar10, model: resnet, global_rounds: 100
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:25<42:12, 25.58s/it]  2%|▏         | 2/100 [00:53<43:55, 26.90s/it]

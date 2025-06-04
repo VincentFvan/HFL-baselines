@@ -1,0 +1,3218 @@
+{
+  "FedAvg": [
+    {
+      "overhead": 20,
+      "accuracy": 11.449999809265137
+    },
+    {
+      "overhead": 40,
+      "accuracy": 21.549999237060547
+    },
+    {
+      "overhead": 60,
+      "accuracy": 10.470000267028809
+    },
+    {
+      "overhead": 80,
+      "accuracy": 22.920000076293945
+    },
+    {
+      "overhead": 100,
+      "accuracy": 20.329999923706055
+    },
+    {
+      "overhead": 120,
+      "accuracy": 21.709999084472656
+    },
+    {
+      "overhead": 140,
+      "accuracy": 14.520000457763672
+    },
+    {
+      "overhead": 160,
+      "accuracy": 24.670000076293945
+    },
+    {
+      "overhead": 180,
+      "accuracy": 23.639999389648438
+    },
+    {
+      "overhead": 200,
+      "accuracy": 25.399999618530273
+    },
+    {
+      "overhead": 220,
+      "accuracy": 24.860000610351562
+    },
+    {
+      "overhead": 240,
+      "accuracy": 18.260000228881836
+    },
+    {
+      "overhead": 260,
+      "accuracy": 29.709999084472656
+    },
+    {
+      "overhead": 280,
+      "accuracy": 30.350000381469727
+    },
+    {
+      "overhead": 300,
+      "accuracy": 24.020000457763672
+    },
+    {
+      "overhead": 320,
+      "accuracy": 25.280000686645508
+    },
+    {
+      "overhead": 340,
+      "accuracy": 28.6299991607666
+    },
+    {
+      "overhead": 360,
+      "accuracy": 29.770000457763672
+    },
+    {
+      "overhead": 380,
+      "accuracy": 37.459999084472656
+    },
+    {
+      "overhead": 400,
+      "accuracy": 28.440000534057617
+    },
+    {
+      "overhead": 420,
+      "accuracy": 27.959999084472656
+    },
+    {
+      "overhead": 440,
+      "accuracy": 31.6299991607666
+    },
+    {
+      "overhead": 460,
+      "accuracy": 33.130001068115234
+    },
+    {
+      "overhead": 480,
+      "accuracy": 32.58000183105469
+    },
+    {
+      "overhead": 500,
+      "accuracy": 29.520000457763672
+    },
+    {
+      "overhead": 520,
+      "accuracy": 37.90999984741211
+    },
+    {
+      "overhead": 540,
+      "accuracy": 31.520000457763672
+    },
+    {
+      "overhead": 560,
+      "accuracy": 33.16999816894531
+    },
+    {
+      "overhead": 580,
+      "accuracy": 39.709999084472656
+    },
+    {
+      "overhead": 600,
+      "accuracy": 36.2599983215332
+    },
+    {
+      "overhead": 620,
+      "accuracy": 26.889999389648438
+    },
+    {
+      "overhead": 640,
+      "accuracy": 36.45000076293945
+    },
+    {
+      "overhead": 660,
+      "accuracy": 35.869998931884766
+    },
+    {
+      "overhead": 680,
+      "accuracy": 33.02000045776367
+    },
+    {
+      "overhead": 700,
+      "accuracy": 41.29999923706055
+    },
+    {
+      "overhead": 720,
+      "accuracy": 35.689998626708984
+    },
+    {
+      "overhead": 740,
+      "accuracy": 38.25
+    },
+    {
+      "overhead": 760,
+      "accuracy": 34.150001525878906
+    },
+    {
+      "overhead": 780,
+      "accuracy": 33.650001525878906
+    },
+    {
+      "overhead": 800,
+      "accuracy": 26.84000015258789
+    },
+    {
+      "overhead": 820,
+      "accuracy": 35.4900016784668
+    },
+    {
+      "overhead": 840,
+      "accuracy": 35.869998931884766
+    },
+    {
+      "overhead": 860,
+      "accuracy": 33.84000015258789
+    },
+    {
+      "overhead": 880,
+      "accuracy": 32.68000030517578
+    },
+    {
+      "overhead": 900,
+      "accuracy": 30.59000015258789
+    },
+    {
+      "overhead": 920,
+      "accuracy": 36.47999954223633
+    },
+    {
+      "overhead": 940,
+      "accuracy": 35.150001525878906
+    },
+    {
+      "overhead": 960,
+      "accuracy": 34.65999984741211
+    },
+    {
+      "overhead": 980,
+      "accuracy": 27.969999313354492
+    },
+    {
+      "overhead": 1000,
+      "accuracy": 36.38999938964844
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 37.93000030517578
+    },
+    {
+      "overhead": 1040,
+      "accuracy": 36.099998474121094
+    },
+    {
+      "overhead": 1060,
+      "accuracy": 39.380001068115234
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 39.619998931884766
+    },
+    {
+      "overhead": 1100,
+      "accuracy": 36.459999084472656
+    },
+    {
+      "overhead": 1120,
+      "accuracy": 37.810001373291016
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 37.61000061035156
+    },
+    {
+      "overhead": 1160,
+      "accuracy": 35.95000076293945
+    },
+    {
+      "overhead": 1180,
+      "accuracy": 39.70000076293945
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 43.56999969482422
+    },
+    {
+      "overhead": 1220,
+      "accuracy": 42.209999084472656
+    },
+    {
+      "overhead": 1240,
+      "accuracy": 32.400001525878906
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 38.810001373291016
+    },
+    {
+      "overhead": 1280,
+      "accuracy": 38.33000183105469
+    },
+    {
+      "overhead": 1300,
+      "accuracy": 39.2400016784668
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 35.88999938964844
+    },
+    {
+      "overhead": 1340,
+      "accuracy": 39.20000076293945
+    },
+    {
+      "overhead": 1360,
+      "accuracy": 33.13999938964844
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 41.5
+    },
+    {
+      "overhead": 1400,
+      "accuracy": 44.31999969482422
+    },
+    {
+      "overhead": 1420,
+      "accuracy": 36.40999984741211
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 41.97999954223633
+    },
+    {
+      "overhead": 1460,
+      "accuracy": 35.90999984741211
+    },
+    {
+      "overhead": 1480,
+      "accuracy": 41.849998474121094
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 42.209999084472656
+    },
+    {
+      "overhead": 1520,
+      "accuracy": 38.189998626708984
+    },
+    {
+      "overhead": 1540,
+      "accuracy": 41.38999938964844
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 43.40999984741211
+    },
+    {
+      "overhead": 1580,
+      "accuracy": 31.809999465942383
+    },
+    {
+      "overhead": 1600,
+      "accuracy": 41.09000015258789
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 40.66999816894531
+    },
+    {
+      "overhead": 1640,
+      "accuracy": 36.630001068115234
+    },
+    {
+      "overhead": 1660,
+      "accuracy": 39.22999954223633
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 40.400001525878906
+    },
+    {
+      "overhead": 1700,
+      "accuracy": 31.020000457763672
+    },
+    {
+      "overhead": 1720,
+      "accuracy": 38.56999969482422
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 41.11000061035156
+    },
+    {
+      "overhead": 1760,
+      "accuracy": 40.7400016784668
+    },
+    {
+      "overhead": 1780,
+      "accuracy": 37.459999084472656
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 40.400001525878906
+    },
+    {
+      "overhead": 1820,
+      "accuracy": 37.22999954223633
+    },
+    {
+      "overhead": 1840,
+      "accuracy": 35.40999984741211
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 43.36000061035156
+    },
+    {
+      "overhead": 1880,
+      "accuracy": 41.130001068115234
+    },
+    {
+      "overhead": 1900,
+      "accuracy": 43.040000915527344
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 44.02000045776367
+    },
+    {
+      "overhead": 1940,
+      "accuracy": 40.79999923706055
+    },
+    {
+      "overhead": 1960,
+      "accuracy": 42.38999938964844
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 40.86000061035156
+    },
+    {
+      "overhead": 2000,
+      "accuracy": 41.09000015258789
+    }
+  ],
+  "HybridFL": [
+    {
+      "overhead": 20,
+      "accuracy": 10.699999809265137
+    },
+    {
+      "overhead": 40,
+      "accuracy": 20.93000030517578
+    },
+    {
+      "overhead": 60,
+      "accuracy": 21.549999237060547
+    },
+    {
+      "overhead": 80,
+      "accuracy": 15.470000267028809
+    },
+    {
+      "overhead": 100,
+      "accuracy": 26.600000381469727
+    },
+    {
+      "overhead": 120,
+      "accuracy": 23.850000381469727
+    },
+    {
+      "overhead": 140,
+      "accuracy": 34.93000030517578
+    },
+    {
+      "overhead": 160,
+      "accuracy": 26.0
+    },
+    {
+      "overhead": 180,
+      "accuracy": 30.559999465942383
+    },
+    {
+      "overhead": 200,
+      "accuracy": 38.63999938964844
+    },
+    {
+      "overhead": 220,
+      "accuracy": 32.09000015258789
+    },
+    {
+      "overhead": 240,
+      "accuracy": 37.529998779296875
+    },
+    {
+      "overhead": 260,
+      "accuracy": 32.97999954223633
+    },
+    {
+      "overhead": 280,
+      "accuracy": 41.099998474121094
+    },
+    {
+      "overhead": 300,
+      "accuracy": 39.880001068115234
+    },
+    {
+      "overhead": 320,
+      "accuracy": 41.81999969482422
+    },
+    {
+      "overhead": 340,
+      "accuracy": 39.27000045776367
+    },
+    {
+      "overhead": 360,
+      "accuracy": 42.310001373291016
+    },
+    {
+      "overhead": 380,
+      "accuracy": 46.2400016784668
+    },
+    {
+      "overhead": 400,
+      "accuracy": 41.540000915527344
+    },
+    {
+      "overhead": 420,
+      "accuracy": 41.56999969482422
+    },
+    {
+      "overhead": 440,
+      "accuracy": 41.83000183105469
+    },
+    {
+      "overhead": 460,
+      "accuracy": 41.11000061035156
+    },
+    {
+      "overhead": 480,
+      "accuracy": 42.06999969482422
+    },
+    {
+      "overhead": 500,
+      "accuracy": 38.130001068115234
+    },
+    {
+      "overhead": 520,
+      "accuracy": 39.02000045776367
+    },
+    {
+      "overhead": 540,
+      "accuracy": 41.72999954223633
+    },
+    {
+      "overhead": 560,
+      "accuracy": 44.810001373291016
+    },
+    {
+      "overhead": 580,
+      "accuracy": 44.88999938964844
+    },
+    {
+      "overhead": 600,
+      "accuracy": 34.25
+    },
+    {
+      "overhead": 620,
+      "accuracy": 43.880001068115234
+    },
+    {
+      "overhead": 640,
+      "accuracy": 44.18000030517578
+    },
+    {
+      "overhead": 660,
+      "accuracy": 43.41999816894531
+    },
+    {
+      "overhead": 680,
+      "accuracy": 46.720001220703125
+    },
+    {
+      "overhead": 700,
+      "accuracy": 40.77000045776367
+    },
+    {
+      "overhead": 720,
+      "accuracy": 47.119998931884766
+    },
+    {
+      "overhead": 740,
+      "accuracy": 45.83000183105469
+    },
+    {
+      "overhead": 760,
+      "accuracy": 45.459999084472656
+    },
+    {
+      "overhead": 780,
+      "accuracy": 49.130001068115234
+    },
+    {
+      "overhead": 800,
+      "accuracy": 46.77000045776367
+    },
+    {
+      "overhead": 820,
+      "accuracy": 45.459999084472656
+    },
+    {
+      "overhead": 840,
+      "accuracy": 44.720001220703125
+    },
+    {
+      "overhead": 860,
+      "accuracy": 48.369998931884766
+    },
+    {
+      "overhead": 880,
+      "accuracy": 50.630001068115234
+    },
+    {
+      "overhead": 900,
+      "accuracy": 48.099998474121094
+    },
+    {
+      "overhead": 920,
+      "accuracy": 41.290000915527344
+    },
+    {
+      "overhead": 940,
+      "accuracy": 48.68000030517578
+    },
+    {
+      "overhead": 960,
+      "accuracy": 51.650001525878906
+    },
+    {
+      "overhead": 980,
+      "accuracy": 49.380001068115234
+    },
+    {
+      "overhead": 1000,
+      "accuracy": 47.54999923706055
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 41.970001220703125
+    },
+    {
+      "overhead": 1040,
+      "accuracy": 49.7599983215332
+    },
+    {
+      "overhead": 1060,
+      "accuracy": 48.959999084472656
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 43.939998626708984
+    },
+    {
+      "overhead": 1100,
+      "accuracy": 45.220001220703125
+    },
+    {
+      "overhead": 1120,
+      "accuracy": 49.630001068115234
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 42.75
+    },
+    {
+      "overhead": 1160,
+      "accuracy": 47.4900016784668
+    },
+    {
+      "overhead": 1180,
+      "accuracy": 47.65999984741211
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 48.79999923706055
+    },
+    {
+      "overhead": 1220,
+      "accuracy": 48.91999816894531
+    },
+    {
+      "overhead": 1240,
+      "accuracy": 46.439998626708984
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 48.349998474121094
+    },
+    {
+      "overhead": 1280,
+      "accuracy": 47.31999969482422
+    },
+    {
+      "overhead": 1300,
+      "accuracy": 50.09000015258789
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 46.7400016784668
+    },
+    {
+      "overhead": 1340,
+      "accuracy": 46.84000015258789
+    },
+    {
+      "overhead": 1360,
+      "accuracy": 50.0
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 48.7599983215332
+    },
+    {
+      "overhead": 1400,
+      "accuracy": 47.439998626708984
+    },
+    {
+      "overhead": 1420,
+      "accuracy": 46.70000076293945
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 47.72999954223633
+    },
+    {
+      "overhead": 1460,
+      "accuracy": 49.79999923706055
+    },
+    {
+      "overhead": 1480,
+      "accuracy": 51.83000183105469
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 48.70000076293945
+    },
+    {
+      "overhead": 1520,
+      "accuracy": 45.400001525878906
+    },
+    {
+      "overhead": 1540,
+      "accuracy": 48.36000061035156
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 44.47999954223633
+    },
+    {
+      "overhead": 1580,
+      "accuracy": 49.619998931884766
+    },
+    {
+      "overhead": 1600,
+      "accuracy": 45.72999954223633
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 49.65999984741211
+    },
+    {
+      "overhead": 1640,
+      "accuracy": 49.0
+    },
+    {
+      "overhead": 1660,
+      "accuracy": 49.34000015258789
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 46.84000015258789
+    },
+    {
+      "overhead": 1700,
+      "accuracy": 49.939998626708984
+    },
+    {
+      "overhead": 1720,
+      "accuracy": 44.029998779296875
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 48.880001068115234
+    },
+    {
+      "overhead": 1760,
+      "accuracy": 47.91999816894531
+    },
+    {
+      "overhead": 1780,
+      "accuracy": 48.9900016784668
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 46.09000015258789
+    },
+    {
+      "overhead": 1820,
+      "accuracy": 49.25
+    },
+    {
+      "overhead": 1840,
+      "accuracy": 49.599998474121094
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 44.400001525878906
+    },
+    {
+      "overhead": 1880,
+      "accuracy": 45.459999084472656
+    },
+    {
+      "overhead": 1900,
+      "accuracy": 49.369998931884766
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 47.470001220703125
+    },
+    {
+      "overhead": 1940,
+      "accuracy": 48.900001525878906
+    },
+    {
+      "overhead": 1960,
+      "accuracy": 47.68000030517578
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 46.79999923706055
+    },
+    {
+      "overhead": 2000,
+      "accuracy": 48.209999084472656
+    }
+  ],
+  "CLG-SGD": [
+    {
+      "overhead": 20,
+      "accuracy": 28.799999237060547
+    },
+    {
+      "overhead": 40,
+      "accuracy": 38.41999816894531
+    },
+    {
+      "overhead": 60,
+      "accuracy": 40.209999084472656
+    },
+    {
+      "overhead": 80,
+      "accuracy": 42.56999969482422
+    },
+    {
+      "overhead": 100,
+      "accuracy": 45.349998474121094
+    },
+    {
+      "overhead": 120,
+      "accuracy": 44.349998474121094
+    },
+    {
+      "overhead": 140,
+      "accuracy": 47.939998626708984
+    },
+    {
+      "overhead": 160,
+      "accuracy": 47.119998931884766
+    },
+    {
+      "overhead": 180,
+      "accuracy": 51.189998626708984
+    },
+    {
+      "overhead": 200,
+      "accuracy": 51.099998474121094
+    },
+    {
+      "overhead": 220,
+      "accuracy": 52.470001220703125
+    },
+    {
+      "overhead": 240,
+      "accuracy": 53.02000045776367
+    },
+    {
+      "overhead": 260,
+      "accuracy": 53.15999984741211
+    },
+    {
+      "overhead": 280,
+      "accuracy": 53.15999984741211
+    },
+    {
+      "overhead": 300,
+      "accuracy": 53.34000015258789
+    },
+    {
+      "overhead": 320,
+      "accuracy": 53.11000061035156
+    },
+    {
+      "overhead": 340,
+      "accuracy": 53.560001373291016
+    },
+    {
+      "overhead": 360,
+      "accuracy": 53.849998474121094
+    },
+    {
+      "overhead": 380,
+      "accuracy": 53.04999923706055
+    },
+    {
+      "overhead": 400,
+      "accuracy": 53.540000915527344
+    },
+    {
+      "overhead": 420,
+      "accuracy": 53.54999923706055
+    },
+    {
+      "overhead": 440,
+      "accuracy": 53.45000076293945
+    },
+    {
+      "overhead": 460,
+      "accuracy": 53.540000915527344
+    },
+    {
+      "overhead": 480,
+      "accuracy": 53.880001068115234
+    },
+    {
+      "overhead": 500,
+      "accuracy": 53.84000015258789
+    },
+    {
+      "overhead": 520,
+      "accuracy": 53.65999984741211
+    },
+    {
+      "overhead": 540,
+      "accuracy": 53.68000030517578
+    },
+    {
+      "overhead": 560,
+      "accuracy": 53.790000915527344
+    },
+    {
+      "overhead": 580,
+      "accuracy": 53.79999923706055
+    },
+    {
+      "overhead": 600,
+      "accuracy": 53.65999984741211
+    },
+    {
+      "overhead": 620,
+      "accuracy": 53.599998474121094
+    },
+    {
+      "overhead": 640,
+      "accuracy": 53.560001373291016
+    },
+    {
+      "overhead": 660,
+      "accuracy": 53.65999984741211
+    },
+    {
+      "overhead": 680,
+      "accuracy": 53.27000045776367
+    },
+    {
+      "overhead": 700,
+      "accuracy": 53.810001373291016
+    },
+    {
+      "overhead": 720,
+      "accuracy": 53.619998931884766
+    },
+    {
+      "overhead": 740,
+      "accuracy": 53.61000061035156
+    },
+    {
+      "overhead": 760,
+      "accuracy": 52.900001525878906
+    },
+    {
+      "overhead": 780,
+      "accuracy": 53.529998779296875
+    },
+    {
+      "overhead": 800,
+      "accuracy": 53.290000915527344
+    },
+    {
+      "overhead": 820,
+      "accuracy": 53.7400016784668
+    },
+    {
+      "overhead": 840,
+      "accuracy": 53.7599983215332
+    },
+    {
+      "overhead": 860,
+      "accuracy": 53.40999984741211
+    },
+    {
+      "overhead": 880,
+      "accuracy": 53.40999984741211
+    },
+    {
+      "overhead": 900,
+      "accuracy": 53.59000015258789
+    },
+    {
+      "overhead": 920,
+      "accuracy": 53.4900016784668
+    },
+    {
+      "overhead": 940,
+      "accuracy": 53.810001373291016
+    },
+    {
+      "overhead": 960,
+      "accuracy": 54.119998931884766
+    },
+    {
+      "overhead": 980,
+      "accuracy": 53.470001220703125
+    },
+    {
+      "overhead": 1000,
+      "accuracy": 53.560001373291016
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 53.02000045776367
+    },
+    {
+      "overhead": 1040,
+      "accuracy": 53.29999923706055
+    },
+    {
+      "overhead": 1060,
+      "accuracy": 53.220001220703125
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 53.380001068115234
+    },
+    {
+      "overhead": 1100,
+      "accuracy": 53.33000183105469
+    },
+    {
+      "overhead": 1120,
+      "accuracy": 53.41999816894531
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 53.650001525878906
+    },
+    {
+      "overhead": 1160,
+      "accuracy": 53.20000076293945
+    },
+    {
+      "overhead": 1180,
+      "accuracy": 52.630001068115234
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 52.88999938964844
+    },
+    {
+      "overhead": 1220,
+      "accuracy": 53.0099983215332
+    },
+    {
+      "overhead": 1240,
+      "accuracy": 53.310001373291016
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 52.95000076293945
+    },
+    {
+      "overhead": 1280,
+      "accuracy": 53.380001068115234
+    },
+    {
+      "overhead": 1300,
+      "accuracy": 53.18000030517578
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 52.36000061035156
+    },
+    {
+      "overhead": 1340,
+      "accuracy": 52.060001373291016
+    },
+    {
+      "overhead": 1360,
+      "accuracy": 52.790000915527344
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 52.79999923706055
+    },
+    {
+      "overhead": 1400,
+      "accuracy": 53.349998474121094
+    },
+    {
+      "overhead": 1420,
+      "accuracy": 53.060001373291016
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 52.88999938964844
+    },
+    {
+      "overhead": 1460,
+      "accuracy": 53.36000061035156
+    },
+    {
+      "overhead": 1480,
+      "accuracy": 53.150001525878906
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 53.349998474121094
+    },
+    {
+      "overhead": 1520,
+      "accuracy": 53.22999954223633
+    },
+    {
+      "overhead": 1540,
+      "accuracy": 52.27000045776367
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 52.88999938964844
+    },
+    {
+      "overhead": 1580,
+      "accuracy": 53.22999954223633
+    },
+    {
+      "overhead": 1600,
+      "accuracy": 52.88999938964844
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 53.0
+    },
+    {
+      "overhead": 1640,
+      "accuracy": 53.16999816894531
+    },
+    {
+      "overhead": 1660,
+      "accuracy": 52.810001373291016
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 52.7400016784668
+    },
+    {
+      "overhead": 1700,
+      "accuracy": 52.58000183105469
+    },
+    {
+      "overhead": 1720,
+      "accuracy": 53.209999084472656
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 51.13999938964844
+    },
+    {
+      "overhead": 1760,
+      "accuracy": 51.79999923706055
+    },
+    {
+      "overhead": 1780,
+      "accuracy": 52.52000045776367
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 52.459999084472656
+    },
+    {
+      "overhead": 1820,
+      "accuracy": 51.7599983215332
+    },
+    {
+      "overhead": 1840,
+      "accuracy": 51.38999938964844
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 52.040000915527344
+    },
+    {
+      "overhead": 1880,
+      "accuracy": 52.970001220703125
+    },
+    {
+      "overhead": 1900,
+      "accuracy": 52.689998626708984
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 51.970001220703125
+    },
+    {
+      "overhead": 1940,
+      "accuracy": 52.119998931884766
+    },
+    {
+      "overhead": 1960,
+      "accuracy": 51.79999923706055
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 52.36000061035156
+    },
+    {
+      "overhead": 2000,
+      "accuracy": 52.220001220703125
+    }
+  ],
+  "Fed-C": [
+    {
+      "overhead": 30,
+      "accuracy": 31.020000457763672
+    },
+    {
+      "overhead": 60,
+      "accuracy": 34.63999938964844
+    },
+    {
+      "overhead": 90,
+      "accuracy": 40.25
+    },
+    {
+      "overhead": 120,
+      "accuracy": 43.52000045776367
+    },
+    {
+      "overhead": 150,
+      "accuracy": 47.65999984741211
+    },
+    {
+      "overhead": 180,
+      "accuracy": 41.939998626708984
+    },
+    {
+      "overhead": 210,
+      "accuracy": 48.65999984741211
+    },
+    {
+      "overhead": 240,
+      "accuracy": 47.880001068115234
+    },
+    {
+      "overhead": 270,
+      "accuracy": 49.470001220703125
+    },
+    {
+      "overhead": 300,
+      "accuracy": 50.54999923706055
+    },
+    {
+      "overhead": 330,
+      "accuracy": 52.4900016784668
+    },
+    {
+      "overhead": 360,
+      "accuracy": 52.63999938964844
+    },
+    {
+      "overhead": 390,
+      "accuracy": 52.52000045776367
+    },
+    {
+      "overhead": 420,
+      "accuracy": 52.369998931884766
+    },
+    {
+      "overhead": 450,
+      "accuracy": 52.220001220703125
+    },
+    {
+      "overhead": 480,
+      "accuracy": 52.619998931884766
+    },
+    {
+      "overhead": 510,
+      "accuracy": 52.43000030517578
+    },
+    {
+      "overhead": 540,
+      "accuracy": 52.560001373291016
+    },
+    {
+      "overhead": 570,
+      "accuracy": 52.880001068115234
+    },
+    {
+      "overhead": 600,
+      "accuracy": 52.959999084472656
+    },
+    {
+      "overhead": 630,
+      "accuracy": 52.75
+    },
+    {
+      "overhead": 660,
+      "accuracy": 53.029998779296875
+    },
+    {
+      "overhead": 690,
+      "accuracy": 53.29999923706055
+    },
+    {
+      "overhead": 720,
+      "accuracy": 53.279998779296875
+    },
+    {
+      "overhead": 750,
+      "accuracy": 53.43000030517578
+    },
+    {
+      "overhead": 780,
+      "accuracy": 53.65999984741211
+    },
+    {
+      "overhead": 810,
+      "accuracy": 53.349998474121094
+    },
+    {
+      "overhead": 840,
+      "accuracy": 53.779998779296875
+    },
+    {
+      "overhead": 870,
+      "accuracy": 53.5099983215332
+    },
+    {
+      "overhead": 900,
+      "accuracy": 53.529998779296875
+    },
+    {
+      "overhead": 930,
+      "accuracy": 53.43000030517578
+    },
+    {
+      "overhead": 960,
+      "accuracy": 53.91999816894531
+    },
+    {
+      "overhead": 990,
+      "accuracy": 54.45000076293945
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 54.11000061035156
+    },
+    {
+      "overhead": 1050,
+      "accuracy": 54.43000030517578
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 54.36000061035156
+    },
+    {
+      "overhead": 1110,
+      "accuracy": 54.93000030517578
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 55.029998779296875
+    },
+    {
+      "overhead": 1170,
+      "accuracy": 54.77000045776367
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 54.31999969482422
+    },
+    {
+      "overhead": 1230,
+      "accuracy": 53.91999816894531
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 55.029998779296875
+    },
+    {
+      "overhead": 1290,
+      "accuracy": 54.90999984741211
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 54.75
+    },
+    {
+      "overhead": 1350,
+      "accuracy": 54.66999816894531
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 54.43000030517578
+    },
+    {
+      "overhead": 1410,
+      "accuracy": 54.20000076293945
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 54.369998931884766
+    },
+    {
+      "overhead": 1470,
+      "accuracy": 54.58000183105469
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 55.09000015258789
+    },
+    {
+      "overhead": 1530,
+      "accuracy": 55.18000030517578
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 54.7599983215332
+    },
+    {
+      "overhead": 1590,
+      "accuracy": 54.9900016784668
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 54.849998474121094
+    },
+    {
+      "overhead": 1650,
+      "accuracy": 55.209999084472656
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 54.689998626708984
+    },
+    {
+      "overhead": 1710,
+      "accuracy": 54.65999984741211
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 55.2599983215332
+    },
+    {
+      "overhead": 1770,
+      "accuracy": 55.189998626708984
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 54.709999084472656
+    },
+    {
+      "overhead": 1830,
+      "accuracy": 55.11000061035156
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 53.810001373291016
+    },
+    {
+      "overhead": 1890,
+      "accuracy": 55.38999938964844
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 54.810001373291016
+    },
+    {
+      "overhead": 1950,
+      "accuracy": 55.09000015258789
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 54.95000076293945
+    },
+    {
+      "overhead": 2010,
+      "accuracy": 54.93000030517578
+    },
+    {
+      "overhead": 2040,
+      "accuracy": 55.470001220703125
+    },
+    {
+      "overhead": 2070,
+      "accuracy": 55.630001068115234
+    },
+    {
+      "overhead": 2100,
+      "accuracy": 55.349998474121094
+    },
+    {
+      "overhead": 2130,
+      "accuracy": 55.380001068115234
+    },
+    {
+      "overhead": 2160,
+      "accuracy": 55.29999923706055
+    },
+    {
+      "overhead": 2190,
+      "accuracy": 55.0099983215332
+    },
+    {
+      "overhead": 2220,
+      "accuracy": 55.58000183105469
+    },
+    {
+      "overhead": 2250,
+      "accuracy": 55.689998626708984
+    },
+    {
+      "overhead": 2280,
+      "accuracy": 55.29999923706055
+    },
+    {
+      "overhead": 2310,
+      "accuracy": 55.310001373291016
+    },
+    {
+      "overhead": 2340,
+      "accuracy": 55.16999816894531
+    },
+    {
+      "overhead": 2370,
+      "accuracy": 55.209999084472656
+    },
+    {
+      "overhead": 2400,
+      "accuracy": 54.869998931884766
+    },
+    {
+      "overhead": 2430,
+      "accuracy": 55.29999923706055
+    },
+    {
+      "overhead": 2460,
+      "accuracy": 55.56999969482422
+    },
+    {
+      "overhead": 2490,
+      "accuracy": 55.52000045776367
+    },
+    {
+      "overhead": 2520,
+      "accuracy": 55.029998779296875
+    },
+    {
+      "overhead": 2550,
+      "accuracy": 55.13999938964844
+    },
+    {
+      "overhead": 2580,
+      "accuracy": 54.63999938964844
+    },
+    {
+      "overhead": 2610,
+      "accuracy": 55.369998931884766
+    },
+    {
+      "overhead": 2640,
+      "accuracy": 55.38999938964844
+    },
+    {
+      "overhead": 2670,
+      "accuracy": 55.43000030517578
+    },
+    {
+      "overhead": 2700,
+      "accuracy": 55.209999084472656
+    },
+    {
+      "overhead": 2730,
+      "accuracy": 55.31999969482422
+    },
+    {
+      "overhead": 2760,
+      "accuracy": 55.59000015258789
+    },
+    {
+      "overhead": 2790,
+      "accuracy": 55.290000915527344
+    },
+    {
+      "overhead": 2820,
+      "accuracy": 55.689998626708984
+    },
+    {
+      "overhead": 2850,
+      "accuracy": 55.7400016784668
+    },
+    {
+      "overhead": 2880,
+      "accuracy": 55.27000045776367
+    },
+    {
+      "overhead": 2910,
+      "accuracy": 55.63999938964844
+    },
+    {
+      "overhead": 2940,
+      "accuracy": 55.70000076293945
+    },
+    {
+      "overhead": 2970,
+      "accuracy": 55.939998626708984
+    },
+    {
+      "overhead": 3000,
+      "accuracy": 55.70000076293945
+    }
+  ],
+  "Fed-S": [
+    {
+      "overhead": 30,
+      "accuracy": 33.25
+    },
+    {
+      "overhead": 60,
+      "accuracy": 39.43000030517578
+    },
+    {
+      "overhead": 90,
+      "accuracy": 44.29999923706055
+    },
+    {
+      "overhead": 120,
+      "accuracy": 41.2599983215332
+    },
+    {
+      "overhead": 150,
+      "accuracy": 40.779998779296875
+    },
+    {
+      "overhead": 180,
+      "accuracy": 40.939998626708984
+    },
+    {
+      "overhead": 210,
+      "accuracy": 46.63999938964844
+    },
+    {
+      "overhead": 240,
+      "accuracy": 46.0099983215332
+    },
+    {
+      "overhead": 270,
+      "accuracy": 47.75
+    },
+    {
+      "overhead": 300,
+      "accuracy": 51.150001525878906
+    },
+    {
+      "overhead": 330,
+      "accuracy": 50.779998779296875
+    },
+    {
+      "overhead": 360,
+      "accuracy": 51.650001525878906
+    },
+    {
+      "overhead": 390,
+      "accuracy": 51.4900016784668
+    },
+    {
+      "overhead": 420,
+      "accuracy": 51.459999084472656
+    },
+    {
+      "overhead": 450,
+      "accuracy": 51.95000076293945
+    },
+    {
+      "overhead": 480,
+      "accuracy": 51.38999938964844
+    },
+    {
+      "overhead": 510,
+      "accuracy": 52.22999954223633
+    },
+    {
+      "overhead": 540,
+      "accuracy": 51.58000183105469
+    },
+    {
+      "overhead": 570,
+      "accuracy": 51.97999954223633
+    },
+    {
+      "overhead": 600,
+      "accuracy": 51.709999084472656
+    },
+    {
+      "overhead": 630,
+      "accuracy": 51.5099983215332
+    },
+    {
+      "overhead": 660,
+      "accuracy": 51.689998626708984
+    },
+    {
+      "overhead": 690,
+      "accuracy": 51.689998626708984
+    },
+    {
+      "overhead": 720,
+      "accuracy": 52.0099983215332
+    },
+    {
+      "overhead": 750,
+      "accuracy": 51.720001220703125
+    },
+    {
+      "overhead": 780,
+      "accuracy": 51.689998626708984
+    },
+    {
+      "overhead": 810,
+      "accuracy": 52.279998779296875
+    },
+    {
+      "overhead": 840,
+      "accuracy": 51.75
+    },
+    {
+      "overhead": 870,
+      "accuracy": 51.91999816894531
+    },
+    {
+      "overhead": 900,
+      "accuracy": 51.81999969482422
+    },
+    {
+      "overhead": 930,
+      "accuracy": 52.540000915527344
+    },
+    {
+      "overhead": 960,
+      "accuracy": 52.349998474121094
+    },
+    {
+      "overhead": 990,
+      "accuracy": 52.959999084472656
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 52.31999969482422
+    },
+    {
+      "overhead": 1050,
+      "accuracy": 51.97999954223633
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 52.45000076293945
+    },
+    {
+      "overhead": 1110,
+      "accuracy": 52.709999084472656
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 52.41999816894531
+    },
+    {
+      "overhead": 1170,
+      "accuracy": 52.16999816894531
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 52.189998626708984
+    },
+    {
+      "overhead": 1230,
+      "accuracy": 52.27000045776367
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 53.2400016784668
+    },
+    {
+      "overhead": 1290,
+      "accuracy": 52.459999084472656
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 52.310001373291016
+    },
+    {
+      "overhead": 1350,
+      "accuracy": 52.04999923706055
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 52.5099983215332
+    },
+    {
+      "overhead": 1410,
+      "accuracy": 52.689998626708984
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 52.209999084472656
+    },
+    {
+      "overhead": 1470,
+      "accuracy": 52.5
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 52.959999084472656
+    },
+    {
+      "overhead": 1530,
+      "accuracy": 53.310001373291016
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 52.88999938964844
+    },
+    {
+      "overhead": 1590,
+      "accuracy": 52.59000015258789
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 53.0099983215332
+    },
+    {
+      "overhead": 1650,
+      "accuracy": 52.95000076293945
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 53.29999923706055
+    },
+    {
+      "overhead": 1710,
+      "accuracy": 52.779998779296875
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 51.380001068115234
+    },
+    {
+      "overhead": 1770,
+      "accuracy": 52.689998626708984
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 52.220001220703125
+    },
+    {
+      "overhead": 1830,
+      "accuracy": 52.65999984741211
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 52.810001373291016
+    },
+    {
+      "overhead": 1890,
+      "accuracy": 52.88999938964844
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 52.380001068115234
+    },
+    {
+      "overhead": 1950,
+      "accuracy": 53.470001220703125
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 53.43000030517578
+    },
+    {
+      "overhead": 2010,
+      "accuracy": 52.97999954223633
+    },
+    {
+      "overhead": 2040,
+      "accuracy": 52.63999938964844
+    },
+    {
+      "overhead": 2070,
+      "accuracy": 52.97999954223633
+    },
+    {
+      "overhead": 2100,
+      "accuracy": 52.959999084472656
+    },
+    {
+      "overhead": 2130,
+      "accuracy": 53.349998474121094
+    },
+    {
+      "overhead": 2160,
+      "accuracy": 53.11000061035156
+    },
+    {
+      "overhead": 2190,
+      "accuracy": 53.040000915527344
+    },
+    {
+      "overhead": 2220,
+      "accuracy": 53.2400016784668
+    },
+    {
+      "overhead": 2250,
+      "accuracy": 52.709999084472656
+    },
+    {
+      "overhead": 2280,
+      "accuracy": 53.310001373291016
+    },
+    {
+      "overhead": 2310,
+      "accuracy": 53.5099983215332
+    },
+    {
+      "overhead": 2340,
+      "accuracy": 52.84000015258789
+    },
+    {
+      "overhead": 2370,
+      "accuracy": 53.27000045776367
+    },
+    {
+      "overhead": 2400,
+      "accuracy": 53.4900016784668
+    },
+    {
+      "overhead": 2430,
+      "accuracy": 52.97999954223633
+    },
+    {
+      "overhead": 2460,
+      "accuracy": 52.16999816894531
+    },
+    {
+      "overhead": 2490,
+      "accuracy": 52.79999923706055
+    },
+    {
+      "overhead": 2520,
+      "accuracy": 53.13999938964844
+    },
+    {
+      "overhead": 2550,
+      "accuracy": 53.16999816894531
+    },
+    {
+      "overhead": 2580,
+      "accuracy": 52.869998931884766
+    },
+    {
+      "overhead": 2610,
+      "accuracy": 53.27000045776367
+    },
+    {
+      "overhead": 2640,
+      "accuracy": 53.369998931884766
+    },
+    {
+      "overhead": 2670,
+      "accuracy": 53.16999816894531
+    },
+    {
+      "overhead": 2700,
+      "accuracy": 52.97999954223633
+    },
+    {
+      "overhead": 2730,
+      "accuracy": 52.630001068115234
+    },
+    {
+      "overhead": 2760,
+      "accuracy": 52.939998626708984
+    },
+    {
+      "overhead": 2790,
+      "accuracy": 53.2400016784668
+    },
+    {
+      "overhead": 2820,
+      "accuracy": 53.630001068115234
+    },
+    {
+      "overhead": 2850,
+      "accuracy": 53.47999954223633
+    },
+    {
+      "overhead": 2880,
+      "accuracy": 53.11000061035156
+    },
+    {
+      "overhead": 2910,
+      "accuracy": 53.189998626708984
+    },
+    {
+      "overhead": 2940,
+      "accuracy": 53.349998474121094
+    },
+    {
+      "overhead": 2970,
+      "accuracy": 52.93000030517578
+    },
+    {
+      "overhead": 3000,
+      "accuracy": 53.369998931884766
+    }
+  ],
+  "FedDU": [
+    {
+      "overhead": 20,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 40,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 60,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 80,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 100,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 120,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 140,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 160,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 180,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 200,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 220,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 240,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 260,
+      "accuracy": 38.93000030517578
+    },
+    {
+      "overhead": 280,
+      "accuracy": 51.08000183105469
+    },
+    {
+      "overhead": 300,
+      "accuracy": 56.130001068115234
+    },
+    {
+      "overhead": 320,
+      "accuracy": 56.0
+    },
+    {
+      "overhead": 340,
+      "accuracy": 57.68000030517578
+    },
+    {
+      "overhead": 360,
+      "accuracy": 56.75
+    },
+    {
+      "overhead": 380,
+      "accuracy": 57.4900016784668
+    },
+    {
+      "overhead": 400,
+      "accuracy": 56.84000015258789
+    },
+    {
+      "overhead": 420,
+      "accuracy": 57.40999984741211
+    },
+    {
+      "overhead": 440,
+      "accuracy": 58.040000915527344
+    },
+    {
+      "overhead": 460,
+      "accuracy": 57.86000061035156
+    },
+    {
+      "overhead": 480,
+      "accuracy": 58.099998474121094
+    },
+    {
+      "overhead": 500,
+      "accuracy": 57.77000045776367
+    },
+    {
+      "overhead": 520,
+      "accuracy": 58.4900016784668
+    },
+    {
+      "overhead": 540,
+      "accuracy": 58.439998626708984
+    },
+    {
+      "overhead": 560,
+      "accuracy": 57.36000061035156
+    },
+    {
+      "overhead": 580,
+      "accuracy": 58.59000015258789
+    },
+    {
+      "overhead": 600,
+      "accuracy": 58.279998779296875
+    },
+    {
+      "overhead": 620,
+      "accuracy": 58.0
+    },
+    {
+      "overhead": 640,
+      "accuracy": 58.41999816894531
+    },
+    {
+      "overhead": 660,
+      "accuracy": 58.869998931884766
+    },
+    {
+      "overhead": 680,
+      "accuracy": 58.689998626708984
+    },
+    {
+      "overhead": 700,
+      "accuracy": 58.93000030517578
+    },
+    {
+      "overhead": 720,
+      "accuracy": 58.4900016784668
+    },
+    {
+      "overhead": 740,
+      "accuracy": 58.7400016784668
+    },
+    {
+      "overhead": 760,
+      "accuracy": 59.0099983215332
+    },
+    {
+      "overhead": 780,
+      "accuracy": 59.06999969482422
+    },
+    {
+      "overhead": 800,
+      "accuracy": 59.02000045776367
+    },
+    {
+      "overhead": 820,
+      "accuracy": 58.619998931884766
+    },
+    {
+      "overhead": 840,
+      "accuracy": 59.02000045776367
+    },
+    {
+      "overhead": 860,
+      "accuracy": 59.189998626708984
+    },
+    {
+      "overhead": 880,
+      "accuracy": 59.90999984741211
+    },
+    {
+      "overhead": 900,
+      "accuracy": 59.2400016784668
+    },
+    {
+      "overhead": 920,
+      "accuracy": 59.34000015258789
+    },
+    {
+      "overhead": 940,
+      "accuracy": 59.20000076293945
+    },
+    {
+      "overhead": 960,
+      "accuracy": 58.83000183105469
+    },
+    {
+      "overhead": 980,
+      "accuracy": 58.88999938964844
+    },
+    {
+      "overhead": 1000,
+      "accuracy": 58.7599983215332
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 59.349998474121094
+    },
+    {
+      "overhead": 1040,
+      "accuracy": 59.150001525878906
+    },
+    {
+      "overhead": 1060,
+      "accuracy": 59.400001525878906
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 59.66999816894531
+    },
+    {
+      "overhead": 1100,
+      "accuracy": 59.06999969482422
+    },
+    {
+      "overhead": 1120,
+      "accuracy": 59.38999938964844
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 59.13999938964844
+    },
+    {
+      "overhead": 1160,
+      "accuracy": 59.439998626708984
+    },
+    {
+      "overhead": 1180,
+      "accuracy": 59.650001525878906
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 59.40999984741211
+    },
+    {
+      "overhead": 1220,
+      "accuracy": 59.08000183105469
+    },
+    {
+      "overhead": 1240,
+      "accuracy": 58.65999984741211
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 58.91999816894531
+    },
+    {
+      "overhead": 1280,
+      "accuracy": 58.81999969482422
+    },
+    {
+      "overhead": 1300,
+      "accuracy": 58.84000015258789
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 58.619998931884766
+    },
+    {
+      "overhead": 1340,
+      "accuracy": 59.4900016784668
+    },
+    {
+      "overhead": 1360,
+      "accuracy": 58.880001068115234
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 59.099998474121094
+    },
+    {
+      "overhead": 1400,
+      "accuracy": 58.650001525878906
+    },
+    {
+      "overhead": 1420,
+      "accuracy": 58.2599983215332
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 58.529998779296875
+    },
+    {
+      "overhead": 1460,
+      "accuracy": 58.849998474121094
+    },
+    {
+      "overhead": 1480,
+      "accuracy": 58.43000030517578
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 58.54999923706055
+    },
+    {
+      "overhead": 1520,
+      "accuracy": 58.779998779296875
+    },
+    {
+      "overhead": 1540,
+      "accuracy": 58.81999969482422
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 59.189998626708984
+    },
+    {
+      "overhead": 1580,
+      "accuracy": 59.630001068115234
+    },
+    {
+      "overhead": 1600,
+      "accuracy": 59.189998626708984
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 58.7400016784668
+    },
+    {
+      "overhead": 1640,
+      "accuracy": 58.56999969482422
+    },
+    {
+      "overhead": 1660,
+      "accuracy": 58.93000030517578
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 58.68000030517578
+    },
+    {
+      "overhead": 1700,
+      "accuracy": 59.27000045776367
+    },
+    {
+      "overhead": 1720,
+      "accuracy": 58.88999938964844
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 58.790000915527344
+    },
+    {
+      "overhead": 1760,
+      "accuracy": 59.0099983215332
+    },
+    {
+      "overhead": 1780,
+      "accuracy": 58.459999084472656
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 58.189998626708984
+    },
+    {
+      "overhead": 1820,
+      "accuracy": 58.380001068115234
+    },
+    {
+      "overhead": 1840,
+      "accuracy": 59.15999984741211
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 59.599998474121094
+    },
+    {
+      "overhead": 1880,
+      "accuracy": 58.72999954223633
+    },
+    {
+      "overhead": 1900,
+      "accuracy": 58.400001525878906
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 57.209999084472656
+    },
+    {
+      "overhead": 1940,
+      "accuracy": 58.130001068115234
+    },
+    {
+      "overhead": 1960,
+      "accuracy": 58.63999938964844
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 59.20000076293945
+    },
+    {
+      "overhead": 2000,
+      "accuracy": 58.41999816894531
+    }
+  ],
+  "FedMut": [
+    {
+      "overhead": 20,
+      "accuracy": 10.319999694824219
+    },
+    {
+      "overhead": 40,
+      "accuracy": 10.0
+    },
+    {
+      "overhead": 60,
+      "accuracy": 19.5
+    },
+    {
+      "overhead": 80,
+      "accuracy": 23.8799991607666
+    },
+    {
+      "overhead": 100,
+      "accuracy": 26.34000015258789
+    },
+    {
+      "overhead": 120,
+      "accuracy": 28.65999984741211
+    },
+    {
+      "overhead": 140,
+      "accuracy": 24.020000457763672
+    },
+    {
+      "overhead": 160,
+      "accuracy": 28.5
+    },
+    {
+      "overhead": 180,
+      "accuracy": 29.639999389648438
+    },
+    {
+      "overhead": 200,
+      "accuracy": 29.020000457763672
+    },
+    {
+      "overhead": 220,
+      "accuracy": 26.81999969482422
+    },
+    {
+      "overhead": 240,
+      "accuracy": 30.25
+    },
+    {
+      "overhead": 260,
+      "accuracy": 33.849998474121094
+    },
+    {
+      "overhead": 280,
+      "accuracy": 22.709999084472656
+    },
+    {
+      "overhead": 300,
+      "accuracy": 33.959999084472656
+    },
+    {
+      "overhead": 320,
+      "accuracy": 34.79999923706055
+    },
+    {
+      "overhead": 340,
+      "accuracy": 32.52000045776367
+    },
+    {
+      "overhead": 360,
+      "accuracy": 35.400001525878906
+    },
+    {
+      "overhead": 380,
+      "accuracy": 33.779998779296875
+    },
+    {
+      "overhead": 400,
+      "accuracy": 21.770000457763672
+    },
+    {
+      "overhead": 420,
+      "accuracy": 13.100000381469727
+    },
+    {
+      "overhead": 440,
+      "accuracy": 16.829999923706055
+    },
+    {
+      "overhead": 460,
+      "accuracy": 19.299999237060547
+    },
+    {
+      "overhead": 480,
+      "accuracy": 23.110000610351562
+    },
+    {
+      "overhead": 500,
+      "accuracy": 20.479999542236328
+    },
+    {
+      "overhead": 520,
+      "accuracy": 24.020000457763672
+    },
+    {
+      "overhead": 540,
+      "accuracy": 29.540000915527344
+    },
+    {
+      "overhead": 560,
+      "accuracy": 22.540000915527344
+    },
+    {
+      "overhead": 580,
+      "accuracy": 27.81999969482422
+    },
+    {
+      "overhead": 600,
+      "accuracy": 29.90999984741211
+    },
+    {
+      "overhead": 620,
+      "accuracy": 26.049999237060547
+    },
+    {
+      "overhead": 640,
+      "accuracy": 37.689998626708984
+    },
+    {
+      "overhead": 660,
+      "accuracy": 36.5
+    },
+    {
+      "overhead": 680,
+      "accuracy": 33.150001525878906
+    },
+    {
+      "overhead": 700,
+      "accuracy": 39.75
+    },
+    {
+      "overhead": 720,
+      "accuracy": 35.529998779296875
+    },
+    {
+      "overhead": 740,
+      "accuracy": 31.389999389648438
+    },
+    {
+      "overhead": 760,
+      "accuracy": 35.9900016784668
+    },
+    {
+      "overhead": 780,
+      "accuracy": 33.060001373291016
+    },
+    {
+      "overhead": 800,
+      "accuracy": 41.310001373291016
+    },
+    {
+      "overhead": 820,
+      "accuracy": 39.97999954223633
+    },
+    {
+      "overhead": 840,
+      "accuracy": 36.869998931884766
+    },
+    {
+      "overhead": 860,
+      "accuracy": 26.31999969482422
+    },
+    {
+      "overhead": 880,
+      "accuracy": 31.100000381469727
+    },
+    {
+      "overhead": 900,
+      "accuracy": 32.43000030517578
+    },
+    {
+      "overhead": 920,
+      "accuracy": 37.68000030517578
+    },
+    {
+      "overhead": 940,
+      "accuracy": 33.18000030517578
+    },
+    {
+      "overhead": 960,
+      "accuracy": 26.8799991607666
+    },
+    {
+      "overhead": 980,
+      "accuracy": 36.54999923706055
+    },
+    {
+      "overhead": 1000,
+      "accuracy": 45.79999923706055
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 41.400001525878906
+    },
+    {
+      "overhead": 1040,
+      "accuracy": 39.79999923706055
+    },
+    {
+      "overhead": 1060,
+      "accuracy": 42.0
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 35.72999954223633
+    },
+    {
+      "overhead": 1100,
+      "accuracy": 33.459999084472656
+    },
+    {
+      "overhead": 1120,
+      "accuracy": 37.380001068115234
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 34.09000015258789
+    },
+    {
+      "overhead": 1160,
+      "accuracy": 33.0
+    },
+    {
+      "overhead": 1180,
+      "accuracy": 30.899999618530273
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 38.209999084472656
+    },
+    {
+      "overhead": 1220,
+      "accuracy": 36.779998779296875
+    },
+    {
+      "overhead": 1240,
+      "accuracy": 40.08000183105469
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 41.599998474121094
+    },
+    {
+      "overhead": 1280,
+      "accuracy": 43.34000015258789
+    },
+    {
+      "overhead": 1300,
+      "accuracy": 37.040000915527344
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 44.63999938964844
+    },
+    {
+      "overhead": 1340,
+      "accuracy": 39.25
+    },
+    {
+      "overhead": 1360,
+      "accuracy": 39.91999816894531
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 37.959999084472656
+    },
+    {
+      "overhead": 1400,
+      "accuracy": 40.58000183105469
+    },
+    {
+      "overhead": 1420,
+      "accuracy": 42.09000015258789
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 41.04999923706055
+    },
+    {
+      "overhead": 1460,
+      "accuracy": 40.84000015258789
+    },
+    {
+      "overhead": 1480,
+      "accuracy": 42.650001525878906
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 38.95000076293945
+    },
+    {
+      "overhead": 1520,
+      "accuracy": 36.77000045776367
+    },
+    {
+      "overhead": 1540,
+      "accuracy": 36.2400016784668
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 41.93000030517578
+    },
+    {
+      "overhead": 1580,
+      "accuracy": 40.849998474121094
+    },
+    {
+      "overhead": 1600,
+      "accuracy": 44.400001525878906
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 39.380001068115234
+    },
+    {
+      "overhead": 1640,
+      "accuracy": 34.83000183105469
+    },
+    {
+      "overhead": 1660,
+      "accuracy": 38.529998779296875
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 42.439998626708984
+    },
+    {
+      "overhead": 1700,
+      "accuracy": 42.33000183105469
+    },
+    {
+      "overhead": 1720,
+      "accuracy": 41.52000045776367
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 35.29999923706055
+    },
+    {
+      "overhead": 1760,
+      "accuracy": 35.040000915527344
+    },
+    {
+      "overhead": 1780,
+      "accuracy": 43.150001525878906
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 44.38999938964844
+    },
+    {
+      "overhead": 1820,
+      "accuracy": 40.20000076293945
+    },
+    {
+      "overhead": 1840,
+      "accuracy": 41.61000061035156
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 43.880001068115234
+    },
+    {
+      "overhead": 1880,
+      "accuracy": 39.9900016784668
+    },
+    {
+      "overhead": 1900,
+      "accuracy": 42.970001220703125
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 42.619998931884766
+    },
+    {
+      "overhead": 1940,
+      "accuracy": 44.439998626708984
+    },
+    {
+      "overhead": 1960,
+      "accuracy": 42.279998779296875
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 43.189998626708984
+    },
+    {
+      "overhead": 2000,
+      "accuracy": 45.650001525878906
+    }
+  ],
+  "FedATMV": [
+    {
+      "overhead": 20,
+      "accuracy": 29.489999771118164
+    },
+    {
+      "overhead": 40,
+      "accuracy": 41.630001068115234
+    },
+    {
+      "overhead": 60,
+      "accuracy": 47.20000076293945
+    },
+    {
+      "overhead": 80,
+      "accuracy": 49.2599983215332
+    },
+    {
+      "overhead": 100,
+      "accuracy": 52.5099983215332
+    },
+    {
+      "overhead": 120,
+      "accuracy": 49.25
+    },
+    {
+      "overhead": 140,
+      "accuracy": 49.470001220703125
+    },
+    {
+      "overhead": 160,
+      "accuracy": 53.68000030517578
+    },
+    {
+      "overhead": 180,
+      "accuracy": 53.380001068115234
+    },
+    {
+      "overhead": 200,
+      "accuracy": 53.689998626708984
+    },
+    {
+      "overhead": 220,
+      "accuracy": 55.290000915527344
+    },
+    {
+      "overhead": 240,
+      "accuracy": 55.279998779296875
+    },
+    {
+      "overhead": 260,
+      "accuracy": 55.459999084472656
+    },
+    {
+      "overhead": 280,
+      "accuracy": 55.7400016784668
+    },
+    {
+      "overhead": 300,
+      "accuracy": 55.540000915527344
+    },
+    {
+      "overhead": 320,
+      "accuracy": 55.959999084472656
+    },
+    {
+      "overhead": 340,
+      "accuracy": 56.470001220703125
+    },
+    {
+      "overhead": 360,
+      "accuracy": 56.93000030517578
+    },
+    {
+      "overhead": 380,
+      "accuracy": 57.45000076293945
+    },
+    {
+      "overhead": 400,
+      "accuracy": 57.90999984741211
+    },
+    {
+      "overhead": 420,
+      "accuracy": 58.08000183105469
+    },
+    {
+      "overhead": 440,
+      "accuracy": 57.9900016784668
+    },
+    {
+      "overhead": 460,
+      "accuracy": 58.189998626708984
+    },
+    {
+      "overhead": 480,
+      "accuracy": 58.2400016784668
+    },
+    {
+      "overhead": 500,
+      "accuracy": 58.56999969482422
+    },
+    {
+      "overhead": 520,
+      "accuracy": 58.65999984741211
+    },
+    {
+      "overhead": 540,
+      "accuracy": 59.09000015258789
+    },
+    {
+      "overhead": 560,
+      "accuracy": 59.18000030517578
+    },
+    {
+      "overhead": 580,
+      "accuracy": 59.189998626708984
+    },
+    {
+      "overhead": 600,
+      "accuracy": 59.310001373291016
+    },
+    {
+      "overhead": 620,
+      "accuracy": 59.4900016784668
+    },
+    {
+      "overhead": 640,
+      "accuracy": 59.45000076293945
+    },
+    {
+      "overhead": 660,
+      "accuracy": 59.779998779296875
+    },
+    {
+      "overhead": 680,
+      "accuracy": 59.540000915527344
+    },
+    {
+      "overhead": 700,
+      "accuracy": 59.349998474121094
+    },
+    {
+      "overhead": 720,
+      "accuracy": 59.5
+    },
+    {
+      "overhead": 740,
+      "accuracy": 59.72999954223633
+    },
+    {
+      "overhead": 760,
+      "accuracy": 59.72999954223633
+    },
+    {
+      "overhead": 780,
+      "accuracy": 59.529998779296875
+    },
+    {
+      "overhead": 800,
+      "accuracy": 59.5
+    },
+    {
+      "overhead": 820,
+      "accuracy": 59.650001525878906
+    },
+    {
+      "overhead": 840,
+      "accuracy": 59.689998626708984
+    },
+    {
+      "overhead": 860,
+      "accuracy": 59.66999816894531
+    },
+    {
+      "overhead": 880,
+      "accuracy": 59.380001068115234
+    },
+    {
+      "overhead": 900,
+      "accuracy": 59.529998779296875
+    },
+    {
+      "overhead": 920,
+      "accuracy": 59.470001220703125
+    },
+    {
+      "overhead": 940,
+      "accuracy": 59.689998626708984
+    },
+    {
+      "overhead": 960,
+      "accuracy": 59.869998931884766
+    },
+    {
+      "overhead": 980,
+      "accuracy": 60.040000915527344
+    },
+    {
+      "overhead": 1000,
+      "accuracy": 59.93000030517578
+    },
+    {
+      "overhead": 1020,
+      "accuracy": 59.709999084472656
+    },
+    {
+      "overhead": 1040,
+      "accuracy": 60.04999923706055
+    },
+    {
+      "overhead": 1060,
+      "accuracy": 60.04999923706055
+    },
+    {
+      "overhead": 1080,
+      "accuracy": 60.0
+    },
+    {
+      "overhead": 1100,
+      "accuracy": 60.099998474121094
+    },
+    {
+      "overhead": 1120,
+      "accuracy": 60.209999084472656
+    },
+    {
+      "overhead": 1140,
+      "accuracy": 59.959999084472656
+    },
+    {
+      "overhead": 1160,
+      "accuracy": 60.06999969482422
+    },
+    {
+      "overhead": 1180,
+      "accuracy": 60.380001068115234
+    },
+    {
+      "overhead": 1200,
+      "accuracy": 60.31999969482422
+    },
+    {
+      "overhead": 1220,
+      "accuracy": 60.220001220703125
+    },
+    {
+      "overhead": 1240,
+      "accuracy": 59.939998626708984
+    },
+    {
+      "overhead": 1260,
+      "accuracy": 60.04999923706055
+    },
+    {
+      "overhead": 1280,
+      "accuracy": 60.31999969482422
+    },
+    {
+      "overhead": 1300,
+      "accuracy": 60.119998931884766
+    },
+    {
+      "overhead": 1320,
+      "accuracy": 60.209999084472656
+    },
+    {
+      "overhead": 1340,
+      "accuracy": 60.380001068115234
+    },
+    {
+      "overhead": 1360,
+      "accuracy": 60.189998626708984
+    },
+    {
+      "overhead": 1380,
+      "accuracy": 60.060001373291016
+    },
+    {
+      "overhead": 1400,
+      "accuracy": 60.34000015258789
+    },
+    {
+      "overhead": 1420,
+      "accuracy": 60.150001525878906
+    },
+    {
+      "overhead": 1440,
+      "accuracy": 60.150001525878906
+    },
+    {
+      "overhead": 1460,
+      "accuracy": 60.290000915527344
+    },
+    {
+      "overhead": 1480,
+      "accuracy": 60.18000030517578
+    },
+    {
+      "overhead": 1500,
+      "accuracy": 60.189998626708984
+    },
+    {
+      "overhead": 1520,
+      "accuracy": 60.279998779296875
+    },
+    {
+      "overhead": 1540,
+      "accuracy": 60.15999984741211
+    },
+    {
+      "overhead": 1560,
+      "accuracy": 60.459999084472656
+    },
+    {
+      "overhead": 1580,
+      "accuracy": 60.06999969482422
+    },
+    {
+      "overhead": 1600,
+      "accuracy": 60.060001373291016
+    },
+    {
+      "overhead": 1620,
+      "accuracy": 60.130001068115234
+    },
+    {
+      "overhead": 1640,
+      "accuracy": 59.88999938964844
+    },
+    {
+      "overhead": 1660,
+      "accuracy": 60.13999938964844
+    },
+    {
+      "overhead": 1680,
+      "accuracy": 60.45000076293945
+    },
+    {
+      "overhead": 1700,
+      "accuracy": 60.31999969482422
+    },
+    {
+      "overhead": 1720,
+      "accuracy": 60.13999938964844
+    },
+    {
+      "overhead": 1740,
+      "accuracy": 60.11000061035156
+    },
+    {
+      "overhead": 1760,
+      "accuracy": 60.5
+    },
+    {
+      "overhead": 1780,
+      "accuracy": 60.189998626708984
+    },
+    {
+      "overhead": 1800,
+      "accuracy": 60.119998931884766
+    },
+    {
+      "overhead": 1820,
+      "accuracy": 60.189998626708984
+    },
+    {
+      "overhead": 1840,
+      "accuracy": 60.130001068115234
+    },
+    {
+      "overhead": 1860,
+      "accuracy": 60.09000015258789
+    },
+    {
+      "overhead": 1880,
+      "accuracy": 60.540000915527344
+    },
+    {
+      "overhead": 1900,
+      "accuracy": 60.31999969482422
+    },
+    {
+      "overhead": 1920,
+      "accuracy": 60.43000030517578
+    },
+    {
+      "overhead": 1940,
+      "accuracy": 60.619998931884766
+    },
+    {
+      "overhead": 1960,
+      "accuracy": 60.52000045776367
+    },
+    {
+      "overhead": 1980,
+      "accuracy": 60.27000045776367
+    },
+    {
+      "overhead": 2000,
+      "accuracy": 60.77000045776367
+    }
+  ]
+}
