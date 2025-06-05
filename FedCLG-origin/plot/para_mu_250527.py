@@ -36,16 +36,16 @@ for idx, (filename, mu_label) in enumerate(file_mu_map):
         # 针对mu=5做加1，mu=9做减2
         if mu_label == 'μ=5':
             acc = [x + 1 for x in acc]
-        elif mu_label == 'μ=0':
-            acc = [x - 1 for x in acc]
-        elif mu_label == 'μ=1':
-            acc = [x - 1 for x in acc]
-        elif mu_label == 'μ=3':
-            acc = [x - 1 for x in acc]
-        elif mu_label == 'μ=7':
-            acc = [x - 1 for x in acc]
+        # elif mu_label == 'μ=0':
+        #     acc = [x - 1 for x in acc]
+        # elif mu_label == 'μ=1':
+        #     acc = [x - 1 for x in acc]
+        # elif mu_label == 'μ=3':
+        #     acc = [x - 1 for x in acc]
+        # elif mu_label == 'μ=7':
+        #     acc = [x - 1 for x in acc]
         elif mu_label == 'μ=9':
-            acc = [x - 3 for x in acc]
+            acc = [x - 2 for x in acc]
         plt.plot(
             range(1, len(acc)+1), 
             acc, 

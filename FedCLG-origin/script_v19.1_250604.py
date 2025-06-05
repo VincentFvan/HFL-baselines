@@ -1661,8 +1661,6 @@ def FedATMV(net_glob_model, global_round_val, eta_val, gamma_val, K_val, E_val, 
         tmp_radius_fedatmv = radius * (1 + scal_ratio * alpha_new_fedatmv) 
         w_locals_list = mutation_spread(round_idx, final_model_state, M_val, w_delta_mutation, tmp_radius_fedatmv)
           
-    # ... (Plotting for FedATMV internals can be added here if desired) ...
-
     return test_acc_list, train_loss_list, comm_vs_acc_list
 
 # %%
