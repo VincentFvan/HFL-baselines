@@ -1,0 +1,12 @@
+nohup: 忽略输入
+Torch version: 2.7.0+cu118
+CUDA available: True
+Device: cuda:1
+Dataset: cifar10, Model: resnet, Num clients: 100, Num classes: 10
+Server data size: 5000
+Client data sizes (first 5): [397, 398, 398, 397, 397], Total client samples: 39642
+Starting run_once: dataset=cifar10, model=resnet, rounds=2, M=10, K=5, E=1, lr_client=0.01, lr_server=0.01
+HybridFL:   0%|          | 0/2 [00:00<?, ?it/s]HybridFL:  50%|█████     | 1/2 [00:22<00:22, 22.56s/it]HybridFL: 100%|██████████| 2/2 [00:42<00:00, 20.75s/it]HybridFL: 100%|██████████| 2/2 [00:42<00:00, 21.02s/it]
+CLG-SGD:   0%|          | 0/2 [00:00<?, ?it/s]CLG-SGD:  50%|█████     | 1/2 [00:19<00:19, 19.24s/it]CLG-SGD: 100%|██████████| 2/2 [00:38<00:00, 19.44s/it]CLG-SGD: 100%|██████████| 2/2 [00:38<00:00, 19.41s/it]
+Fed-C:   0%|          | 0/2 [00:00<?, ?it/s]Fed-C:  50%|█████     | 1/2 [00:34<00:34, 34.04s/it]Fed-C: 100%|██████████| 2/2 [01:10<00:00, 35.31s/it]Fed-C: 100%|██████████| 2/2 [01:10<00:00, 35.12s/it]
+Fed-S:   0%|          | 0/2 [00:00<?, ?it/s]Fed-S:  50%|█████     | 1/2 [00:30<00:30, 30.50s/it]
