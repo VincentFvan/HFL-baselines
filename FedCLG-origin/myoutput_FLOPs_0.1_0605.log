@@ -1,0 +1,9 @@
+nohup: 忽略输入
+Torch version: 2.7.0+cu118
+CUDA available: True
+Device: cuda:0
+Dataset: cifar10, Model: resnet, Num clients: 100, Num classes: 10
+Server data size: 5000
+Client data sizes (first 5): [397, 398, 398, 397, 397], Total client samples: 39642
+Starting run_once: dataset=cifar10, model=resnet, rounds=100, M=10, K=5, E=1, lr_client=0.01, lr_server=0.01
+HybridFL:   0%|          | 0/100 [00:00<?, ?it/s]
