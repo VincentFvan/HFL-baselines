@@ -8,9 +8,12 @@ n_repeat   = 1                                   # 每个配置重复次数
 # src_script = "script_v18.0_cifar10_rho_250523.py"
 # src_script = "script_v18.0_cifar10_theta_250523.py"  
 
-src_script = "script_v18.0_shake_mu_250523.py"            # 实际实验脚本
+# src_script = "script_v18.0_shake_mu_250523.py"            # 实际实验脚本
 # src_script = "script_v18.0_shake_rho_250523.py"
 # src_script = "script_v18.0_shake_theta_250523.py"  
+
+# src_script = "script_v18.0_cifar10_M_1_250605.py"      #  针对参与clients的实验  
+src_script = "script_v18.0_cifar10_M_2_250605.py"      #  针对参与clients的实验  
 out_root   = Path("output")         # 统一输出目录
 # ------------------------------------------------------------------------------
 
@@ -19,13 +22,19 @@ exp_dir    = out_root / f"multi_run_v4.0_{timestamp}"
 exp_dir.mkdir(parents=True, exist_ok=True)
 
 # # 三种服务器数据配置
+# cfgs = [
+#     dict(name="mu0", du_C=0),
+#     dict(name="mu1", du_C=1),
+#     dict(name="mu3", du_C=3),
+#     dict(name="mu5", du_C=5),
+#     dict(name="mu7", du_C=7),
+#     dict(name="mu9", du_C=9),
+# ]
+
 cfgs = [
-    dict(name="mu0", du_C=0),
-    dict(name="mu1", du_C=1),
-    dict(name="mu3", du_C=3),
-    dict(name="mu5", du_C=5),
-    dict(name="mu7", du_C=7),
-    dict(name="mu9", du_C=9),
+    # dict(name="M5", M=5),
+    # dict(name="M20", M=20),
+    dict(name="M50", M=50),
 ]
 
 # cfgs = [
@@ -65,9 +74,10 @@ with summary_csv.open("w", newline="") as f_csv:
             globs = runpy.run_path(
                 src_script,
                 init_globals=dict(
-                    du_C = cfg["du_C"],
+                    # du_C = cfg["du_C"],
                     # radius = cfg["radius"],
                     # scal_ratio = cfg["scal_ratio"],
+                    M = cfg["M"],
                 )
             )
 

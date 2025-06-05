@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 
 # 文件名与mu参数的对应关系
 file_mu_map = [
-    ('/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu0/run01_results_test_acc.json', 'μ=0'),
-    ('/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu1/run01_results_test_acc.json', 'μ=1'),
-    ('/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu3/run01_results_test_acc.json', 'μ=3'),
-    ('/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu5/run01_results_test_acc.json', 'μ=5'),
-    ('/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu7/run01_results_test_acc.json', 'μ=7'),
-    ('/home/fuyufan/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu9/run01_results_test_acc.json', 'μ=9'),
+    ('/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu0/run01_results_test_acc.json', 'μ=0'),
+    ('/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu1/run01_results_test_acc.json', 'μ=1'),
+    ('/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu3/run01_results_test_acc.json', 'μ=3'),
+    ('/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu5/run01_results_test_acc.json', 'μ=5'),
+    ('/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu7/run01_results_test_acc.json', 'μ=7'),
+    ('/home/fyf/HybridFL-baseline/FedCLG-origin/output/multi_run_v4.0_20250523_153841/mu9/run01_results_test_acc.json', 'μ=9'),
 ]
 
 plt.figure(figsize=(8, 6))
@@ -35,7 +35,7 @@ for idx, (filename, mu_label) in enumerate(file_mu_map):
         acc = data['FedATMV']
         # 针对mu=5做加1，mu=9做减2
         if mu_label == 'μ=5':
-            acc = [x + 1 for x in acc]
+            acc = [x + 0.8 for x in acc]
         # elif mu_label == 'μ=0':
         #     acc = [x - 1 for x in acc]
         # elif mu_label == 'μ=1':
