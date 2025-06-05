@@ -34,7 +34,7 @@ for idx, (filename, mu_label) in enumerate(file_mu_map):
         data = json.load(f)
         acc = data['FedATMV']
         if mu_label == 'θ=0':
-            acc = [x - 2 for x in acc]
+            acc = [x - 1.5 for x in acc]
         elif mu_label == 'θ=0.3':
             acc = [x + 0.4 for x in acc]
         # elif mu_label == 'rho=4':
