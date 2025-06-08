@@ -1709,52 +1709,52 @@ def run_once():
     results_test_acc, results_train_loss, results_comm_vs_acc, results_flops_vs_acc = {}, {}, {}, {}
     if init_model is None or initial_w is None: raise ValueError("init_model or initial_w not initialized.")
 
-    # test_acc_so, train_loss_so, comm_so, flops_so = server_only(initial_w, global_round, gamma, E)
-    # results_test_acc['Server-Only'] = test_acc_so; results_train_loss['Server-Only'] = train_loss_so
-    # results_comm_vs_acc['Server-Only'] = comm_so; results_flops_vs_acc['Server-Only'] = flops_so
+    test_acc_so, train_loss_so, comm_so, flops_so = server_only(initial_w, global_round, gamma, E)
+    results_test_acc['Server-Only'] = test_acc_so; results_train_loss['Server-Only'] = train_loss_so
+    results_comm_vs_acc['Server-Only'] = comm_so; results_flops_vs_acc['Server-Only'] = flops_so
 
     # test_acc_fa, train_loss_fa, comm_fa, flops_fa = fedavg(initial_w, global_round, eta, K, M)
     # results_test_acc['FedAvg'] = test_acc_fa; results_train_loss['FedAvg'] = train_loss_fa
     # results_comm_vs_acc['FedAvg'] = comm_fa; results_flops_vs_acc['FedAvg'] = flops_fa
     
-    test_acc_hfl, train_loss_hfl, comm_hfl, flops_hfl = hybridFL(initial_w, global_round, eta, K, E, M)
-    results_test_acc['HybridFL'] = test_acc_hfl; results_train_loss['HybridFL'] = train_loss_hfl
-    results_comm_vs_acc['HybridFL'] = comm_hfl; results_flops_vs_acc['HybridFL'] = flops_hfl
+    # test_acc_hfl, train_loss_hfl, comm_hfl, flops_hfl = hybridFL(initial_w, global_round, eta, K, E, M)
+    # results_test_acc['HybridFL'] = test_acc_hfl; results_train_loss['HybridFL'] = train_loss_hfl
+    # results_comm_vs_acc['HybridFL'] = comm_hfl; results_flops_vs_acc['HybridFL'] = flops_hfl
 
     # test_acc_ds, train_loss_ds, comm_ds, flops_ds = Data_Sharing(initial_w, global_round, eta, K, M)
     # results_test_acc['Data_Sharing'] = test_acc_ds; results_train_loss['Data_Sharing'] = train_loss_ds
     # results_comm_vs_acc['Data_Sharing'] = comm_ds; results_flops_vs_acc['Data_Sharing'] = flops_ds
     
-    test_acc_clgsgd, train_loss_clgsgd, comm_clgsgd, flops_clgsgd = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['CLG-SGD'] = test_acc_clgsgd; results_train_loss['CLG-SGD'] = train_loss_clgsgd
-    results_comm_vs_acc['CLG-SGD'] = comm_clgsgd; results_flops_vs_acc['CLG-SGD'] = flops_clgsgd
+    # test_acc_clgsgd, train_loss_clgsgd, comm_clgsgd, flops_clgsgd = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
+    # results_test_acc['CLG-SGD'] = test_acc_clgsgd; results_train_loss['CLG-SGD'] = train_loss_clgsgd
+    # results_comm_vs_acc['CLG-SGD'] = comm_clgsgd; results_flops_vs_acc['CLG-SGD'] = flops_clgsgd
 
-    test_acc_fc, train_loss_fc, comm_fc, flops_fc = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['Fed-C'] = test_acc_fc ; results_train_loss['Fed-C'] = train_loss_fc
-    results_comm_vs_acc['Fed-C'] = comm_fc; results_flops_vs_acc['Fed-C'] = flops_fc
+    # test_acc_fc, train_loss_fc, comm_fc, flops_fc = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
+    # results_test_acc['Fed-C'] = test_acc_fc ; results_train_loss['Fed-C'] = train_loss_fc
+    # results_comm_vs_acc['Fed-C'] = comm_fc; results_flops_vs_acc['Fed-C'] = flops_fc
 
-    test_acc_fs, train_loss_fs, comm_fs, flops_fs = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['Fed-S'] = test_acc_fs ; results_train_loss['Fed-S'] = train_loss_fs
-    results_comm_vs_acc['Fed-S'] = comm_fs; results_flops_vs_acc['Fed-S'] = flops_fs
+    # test_acc_fs, train_loss_fs, comm_fs, flops_fs = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
+    # results_test_acc['Fed-S'] = test_acc_fs ; results_train_loss['Fed-S'] = train_loss_fs
+    # results_comm_vs_acc['Fed-S'] = comm_fs; results_flops_vs_acc['Fed-S'] = flops_fs
     
-    test_acc_fdum, train_loss_fdum, comm_fdum, flops_fdum = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['FedDU'] = test_acc_fdum ; results_train_loss['FedDU'] = train_loss_fdum
-    results_comm_vs_acc['FedDU'] = comm_fdum; results_flops_vs_acc['FedDU'] = flops_fdum
+    # test_acc_fdum, train_loss_fdum, comm_fdum, flops_fdum = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
+    # results_test_acc['FedDU'] = test_acc_fdum ; results_train_loss['FedDU'] = train_loss_fdum
+    # results_comm_vs_acc['FedDU'] = comm_fdum; results_flops_vs_acc['FedDU'] = flops_fdum
 
-    # fedmut_model_instance = copy.deepcopy(init_model).to(device) 
-    # test_acc_fm, train_loss_fm, comm_fm, flops_fm = FedMut(fedmut_model_instance, global_round, eta, K, M)
-    # results_test_acc['FedMut'] = test_acc_fm; results_train_loss['FedMut'] = train_loss_fm
-    # results_comm_vs_acc['FedMut'] = comm_fm; results_flops_vs_acc['FedMut'] = flops_fm; del fedmut_model_instance
+    # # fedmut_model_instance = copy.deepcopy(init_model).to(device) 
+    # # test_acc_fm, train_loss_fm, comm_fm, flops_fm = FedMut(fedmut_model_instance, global_round, eta, K, M)
+    # # results_test_acc['FedMut'] = test_acc_fm; results_train_loss['FedMut'] = train_loss_fm
+    # # results_comm_vs_acc['FedMut'] = comm_fm; results_flops_vs_acc['FedMut'] = flops_fm; del fedmut_model_instance
 
-    # clgmut2_model_instance = copy.deepcopy(init_model).to(device)
-    # test_acc_clgm2, train_loss_clgm2, comm_clgm2, flops_clgm2 = CLG_Mut_2(clgmut2_model_instance, global_round, eta, gamma, K, E, M)
-    # results_test_acc['CLG_Mut_2'] = test_acc_clgm2; results_train_loss['CLG_Mut_2'] = train_loss_clgm2
-    # results_comm_vs_acc['CLG_Mut_2'] = comm_clgm2; results_flops_vs_acc['CLG_Mut_2'] = flops_clgm2; del clgmut2_model_instance
+    # # clgmut2_model_instance = copy.deepcopy(init_model).to(device)
+    # # test_acc_clgm2, train_loss_clgm2, comm_clgm2, flops_clgm2 = CLG_Mut_2(clgmut2_model_instance, global_round, eta, gamma, K, E, M)
+    # # results_test_acc['CLG_Mut_2'] = test_acc_clgm2; results_train_loss['CLG_Mut_2'] = train_loss_clgm2
+    # # results_comm_vs_acc['CLG_Mut_2'] = comm_clgm2; results_flops_vs_acc['CLG_Mut_2'] = flops_clgm2; del clgmut2_model_instance
     
-    fedatmv_model_instance = copy.deepcopy(init_model).to(device)
-    test_acc_fatmv, train_loss_fatmv, comm_fatmv, flops_fatmv = FedATMV(fedatmv_model_instance, global_round, eta, gamma, K, E, M, lambda_val_fedatmv)
-    results_test_acc['FedATMV'] = test_acc_fatmv; results_train_loss['FedATMV'] = train_loss_fatmv
-    results_comm_vs_acc['FedATMV'] = comm_fatmv; results_flops_vs_acc['FedATMV'] = flops_fatmv; del fedatmv_model_instance
+    # fedatmv_model_instance = copy.deepcopy(init_model).to(device)
+    # test_acc_fatmv, train_loss_fatmv, comm_fatmv, flops_fatmv = FedATMV(fedatmv_model_instance, global_round, eta, gamma, K, E, M, lambda_val_fedatmv)
+    # results_test_acc['FedATMV'] = test_acc_fatmv; results_train_loss['FedATMV'] = train_loss_fatmv
+    # results_comm_vs_acc['FedATMV'] = comm_fatmv; results_flops_vs_acc['FedATMV'] = flops_fatmv; del fedatmv_model_instance
     
     print("\n--- Accuracy & Loss at specific rounds/final ---")
     for algo_name in results_test_acc: 
