@@ -2063,7 +2063,7 @@ is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
 non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
 server_iid = False
-server_dir = 0.1
+server_dir = 0.5
 server_percentage = 0.1  # 服务器端用于微调的数据比例
 server_fill = True #是否补充server缺少的数据
 
