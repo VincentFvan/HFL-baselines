@@ -44,7 +44,7 @@ linestyles = [
     '-', '--', ':', '-', '--', '-.', ':', '-',  # FedATMV用实线
 ]
 
-linewidths = [3]*7 + [4]  # FedATMV更粗
+linewidths = [4]*7 + [5]  # FedATMV更粗
 
 
 for beta, filename in beta_files:
