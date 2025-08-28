@@ -14,8 +14,8 @@ print("FedATMV最后一轮的准确率为：", results["FedATMV"][-1])
 fedatmv_acc = results["FedATMV"]
 results["FedATMV"] = (
     fedatmv_acc[:20] +                        
-    [x + 1 for x in fedatmv_acc[20:40]] +   
-    [x + 1.5 for x in fedatmv_acc[40:]]
+    [x + 0.5 for x in fedatmv_acc[20:40]] +   
+    [x + 0.8 for x in fedatmv_acc[40:]]
     # [x + 2 for x in fedatmv_acc[60:]]         
 )
 

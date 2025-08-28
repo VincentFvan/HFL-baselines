@@ -1,3 +1,4 @@
+# %%
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -31,30 +32,63 @@ from models.vgg import *
 import os
 os.environ['KMP_DUPLICATE_LIB_OK']='True' # 解决由于多次加载 OpenMP 相关动态库而引起的冲突
 
-# %%
-# import sys
-# print(sys.executable)
 
-# print(torch.cuda.is_available())
-# print(torch.cuda.get_device_capability())
-
-# gpu_info = !nvidia-smi
-# env = !env
-# print(env)
-
-# gpu_info = '\n'.join(gpu_info)
-# if gpu_info.find('failed') >= 0:
-#   print('Not connected to a GPU')
-# else:
-#   print(gpu_info)
 
 import torch
 print("Torch version:", torch.__version__)
 print("CUDA available:", torch.cuda.is_available())
 
-# %%
 
 
+# FedMut中采用的cnn模型
+class CNNCifar(nn.Module):
+    def __init__(self):
+        super(CNNCifar, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, num_classes)
+
+    def forward(self, x, start_layer_idx=0, logit=False):
+        if start_layer_idx < 0:  #
+            return self.mapping(x, start_layer_idx=start_layer_idx, logit=logit)
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        result = {'activation' : x}
+        x = x.view(-1, 16 * 5 * 5)
+        result['hint'] = x
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        result['representation'] = x
+        x = self.fc3(x)
+        result['output'] = x
+        return result
+
+    def mapping(self, z_input, start_layer_idx=-1, logit=True):
+        z = z_input
+        z = self.fc3(z)
+
+        result = {'output': z}
+        if logit:
+            result['logit'] = z
+        return result
+    
+def cnncifar():
+    return CNNCifar()
+
+
+
+def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
+    """3x3 convolution with padding"""
+    return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
+                     padding=dilation, groups=groups, bias=False, dilation=dilation)
+
+
+def conv1x1(in_planes, out_planes, stride=1):
+    """1x1 convolution"""
+    return nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride, bias=False)
 
 
 
@@ -277,8 +311,6 @@ def ResNet50_cifar10(**kwargs):
     """
     return ResNetCifar10(Bottleneck, [3, 4, 6, 3], **kwargs)
 
-# %%
-# 新的测试：针对整个测试数据集的测试
 def test_inference(net_glob, dataset_test):
     # testing
     acc_test, loss_test = test_img(net_glob, dataset_test)
@@ -289,8 +321,6 @@ def test_inference(net_glob, dataset_test):
 
 def test_img(net_g, datatest):
     net_g.eval()
-    # testing
-    # test loss代表在测试集上的平均损失（对测试数据的预测输出与真实标签的差距）
     test_loss = 0
     correct = 0
     data_loader = DataLoader(datatest, batch_size=test_bc_size)
@@ -312,8 +342,8 @@ def test_img(net_g, datatest):
             test_loss, correct, len(data_loader.dataset), accuracy))
     return accuracy, test_loss
 
-# %%
-# 将CIFAR-100的100个类别转为20个类别（粒度更粗，降低任务复杂度）
+
+
 def sparse2coarse(targets):
     """Convert Pytorch CIFAR100 sparse targets to coarse targets.
 
@@ -333,9 +363,7 @@ def sparse2coarse(targets):
                               18,  1,  2, 15,  6,  0, 17,  8, 14, 13])
     return coarse_labels[targets]
 
-# %%
 
-# 共有6w个图像，其中5w训练，1w测试
 def CIFAR100():
     '''Return Cifar100
     '''
@@ -371,7 +399,7 @@ def CIFAR100():
     
     return cifar, test_dataset
 
-# %%
+
 def get_prob(non_iid, client_num, class_num=20, iid_mode=False):
     """
     生成客户端数据分布概率矩阵
@@ -393,8 +421,7 @@ def get_prob(non_iid, client_num, class_num=20, iid_mode=False):
         # 非IID分布 - 使用Dirichlet分布
         return np.random.dirichlet(np.repeat(non_iid, class_num), client_num)
 
-# %%
-# 全部用于构建训练集
+
 def create_data_all_train(prob, size_per_client, dataset, N=20):
     total_each_class = size_per_client * np.sum(prob, 0)
     data, label = dataset
@@ -441,7 +468,6 @@ def create_data_all_train(prob, size_per_client, dataset, N=20):
 
     return clients
 
-# 80%构建训练集，20%构建测试集
 def create_data(prob, size_per_client, dataset, N=20):
     total_each_class = size_per_client * np.sum(prob, 0)
     data, label = dataset
@@ -470,15 +496,13 @@ def create_data(prob, size_per_client, dataset, N=20):
         tlabels, timages = [], [] # 测试数据
 
         for n in range(N):
-            # 80%用于训练，20%用于测试
-            # 这里的int向下取整，会导致实际的数据量比计算略小
+
             start, end = index[n], index[n] + int(prob[m][n] * size_per_client * 0.8)
             test_start, test_end = end, index[n] + int(prob[m][n] * size_per_client)
 
             image, label = all_class_set[n][0][start:end], all_class_set[n][1][start:end]
             test_image, test_label = all_class_set[n][0][test_start:test_end], all_class_set[n][1][test_start:test_end]
 
-            # 记录当前类别的数据分配进度
             index[n] += int(prob[m][n] * size_per_client)
 
             labels.extend(label)
@@ -492,10 +516,7 @@ def create_data(prob, size_per_client, dataset, N=20):
 
     return clients, test
 
-# %%
 
-# 合并所有客户端的测试数据 （上面讲测试数据分成了不同的客户端）
-# 但并没有使用，用途不明
 def comb_client_test_func(client_test_data):
     comb_client_test_image = []
     comb_client_test_label = []
@@ -514,21 +535,9 @@ def comb_client_test_func(client_test_data):
     
     return [comb_client_test_image, comb_client_test_label]
 
-# %%
-# 样服务器子集的函数
+
 def select_server_subset(cifar, percentage=0.1, mode='iid', dirichlet_alpha=1.0):
-    """
-    从 cifar 数据集中挑选服务器数据子集（cifar 已经是 [N, C, H, W] 格式）。
-    
-    参数：
-      - cifar: 一个列表，格式为 [images, labels]，images 形状为 [N, C, H, W]
-      - percentage: 挑选比例，例如 0.1 表示取 10% 的数据
-      - mode: 'iid' 表示各类别均匀采样；'non-iid' 表示使用 Dirichlet 分布采样
-      - dirichlet_alpha: 当 mode 为 'non-iid' 时的 Dirichlet 分布参数
-    返回：
-      - subset_images: 选出的图片数组（numpy.array）
-      - subset_labels: 选出的标签数组（numpy.array）
-    """
+
     images, labels = cifar
     unique_classes = np.unique(labels)
     total_num = len(labels)
@@ -568,6 +577,13 @@ def select_server_subset(cifar, percentage=0.1, mode='iid', dirichlet_alpha=1.0)
     else:
         raise ValueError("mode 参数必须为 'iid' 或 'non-iid'")
     
+    
+    if server_fill:
+        shortfall = server_total - len(selected_indices)
+        remaining_pool = np.setdiff1d(np.arange(total_num), selected_indices, assume_unique=True)
+        extra = np.random.choice(remaining_pool, shortfall, replace=False)
+        selected_indices = np.concatenate([selected_indices, extra])
+    
     selected_indices = np.array(selected_indices)
     np.random.shuffle(selected_indices)
     
@@ -577,13 +593,13 @@ def select_server_subset(cifar, percentage=0.1, mode='iid', dirichlet_alpha=1.0)
     return subset_images, subset_labels
 
 
-# %%
-# 本地训练并更新权重，返回更新后的模型权重、平均训练损失以及第一个迭代的梯度信息
 def update_weights(model_weight, dataset, learning_rate, local_epoch):
     if origin_model == 'resnet':
         model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        model = cnncifar().to(device)
     elif origin_model == 'vgg':
         model = VGG16(num_classes, 3).to(device)
     
@@ -594,7 +610,7 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
     optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
     criterion = nn.CrossEntropyLoss()
 
-    if origin_model == 'resnet' or  origin_model == 'vgg':
+    if origin_model == 'resnet' or origin_model == 'cnn' or origin_model == 'vgg':
         Tensor_set = TensorDataset(torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device))
     elif origin_model == 'lstm':
         Tensor_set = TensorDataset(torch.LongTensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device))
@@ -629,8 +645,7 @@ def update_weights(model_weight, dataset, learning_rate, local_epoch):
     return model.state_dict(), sum(epoch_loss) / len(epoch_loss), first_iter_gradient
 
 
-# %%
-# 计算模型权重的差异，并根据学习率 lr 对权重差异进行缩放
+
 def weight_differences(n_w, p_w, lr):
     w_diff = copy.deepcopy(n_w)
     for key in w_diff.keys():
@@ -639,13 +654,14 @@ def weight_differences(n_w, p_w, lr):
         w_diff[key] = (p_w[key] - n_w[key]) * lr
     return w_diff
 
-# %%
-# 也是本地训练，不过引入了Fed-C的权重修正机制
+
 def update_weights_correction(model_weight, dataset, learning_rate, local_epoch, c_i, c_s):
     if origin_model == 'resnet':
         model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        model = cnncifar().to(device)
     elif origin_model == 'vgg':
         model = VGG16(num_classes, 3).to(device)
         
@@ -656,7 +672,7 @@ def update_weights_correction(model_weight, dataset, learning_rate, local_epoch,
     optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
     criterion = nn.CrossEntropyLoss()
     
-    if origin_model == 'resnet'  or origin_model == 'vgg':
+    if origin_model == 'resnet' or origin_model == 'cnn' or origin_model == 'vgg':
         Tensor_set = TensorDataset(torch.Tensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device))
     elif origin_model == 'lstm':
         Tensor_set = TensorDataset(torch.LongTensor(dataset[0]).to(device), torch.Tensor(dataset[1]).to(device))
@@ -682,7 +698,7 @@ def update_weights_correction(model_weight, dataset, learning_rate, local_epoch,
 
     return model.state_dict(),  sum(epoch_loss) / len(epoch_loss)
 
-# %%
+
 def average_weights(w):
     """
     Returns the average of the weights.
@@ -696,13 +712,14 @@ def average_weights(w):
         w_avg[key] = torch.div(w_avg[key], len(w))
     return w_avg
 
-# %%
-# baseline: server-only
+
 def server_only(initial_w, global_round, gamma, E):
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
         
@@ -712,35 +729,26 @@ def server_only(initial_w, global_round, gamma, E):
     
     
     for round in tqdm(range(global_round)):
-        # if gamma > 0.001:
-        #     gamma = gamma * 0.99
-        # Server side local training
 
-                
         update_server_w, round_loss, _ = update_weights(train_w, server_data, gamma, E)
         train_w = update_server_w
         test_model.load_state_dict(train_w)
         train_loss.append(round_loss)
         
-        # 新的测试（针对全部测试数据进行）
+
         test_acc.append(test_inference(test_model, test_dataset))
     
-        # Test Accuracy
-        # test_a = 0
-        # for i in client_test_data:
-        #     ac = test_inference(test_model,i)[0]
-        #     test_a = test_a + ac
-        # test_a = test_a/len(client_test_data)
-        # test_acc.append(test_a)
-        # print(test_a)
     return test_acc, train_loss
 
-# %%
+
+
 def fedavg(initial_w, global_round, eta, K, M):
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
         
@@ -765,37 +773,22 @@ def fedavg(initial_w, global_round, eta, K, M):
         test_model.load_state_dict(train_w)
         loss_avg = sum(local_loss)/ len(local_loss)
         train_loss.append(loss_avg)
-        
-        # 新的测试（针对全部测试数据进行）
+
         test_acc.append(test_inference(test_model, test_dataset))
             
-        # test_a = 0
-        # for i in client_test_data:
-        #     ac = test_inference(test_model,i)[0]
-        #     test_a = test_a + ac
-        # test_a = test_a/len(client_test_data)
-        # test_acc.append(test_a)
-#         print(test_a)
     return test_acc, train_loss
 
 
-# %%
-def hybridFL(initial_w, global_round, eta, K, M):
-    """
-    HybridFL算法：FedAvg改进，服务器也作为一个普通客户端参与训练。
-    
-    参数:
-    - initial_w: 初始模型权重
-    - global_round: 全局训练轮数
-    - eta: 学习率
-    - K: 本地训练轮数
-    - M: 每轮采样的客户端数量
-    """
+
+
+def hybridFL(initial_w, global_round, eta, K, E, M):
     
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
         
@@ -816,7 +809,8 @@ def hybridFL(initial_w, global_round, eta, K, M):
             local_loss.append(client_round_loss)
 
         # 服务器参与训练
-        update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, K)
+        # update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, K)
+        update_server_w, server_round_loss, _ = update_weights(train_w, server_data, eta, E)
         local_weights.append(update_server_w)   # 将服务器权重加入列表
         local_loss.append(server_round_loss)    # 将服务器损失加入列表
 
@@ -831,104 +825,20 @@ def hybridFL(initial_w, global_round, eta, K, M):
         # 新的测试（针对全部测试数据进行）
         test_acc.append(test_inference(test_model, test_dataset))
     
-        
-        # test_a = 0
-        # for i in client_test_data:  # 遍历所有客户端测试数据
-        #     ac = test_inference(test_model, i)[0]
-        #     test_a += ac
-        # test_a = test_a / len(client_test_data)
-        # test_acc.append(test_a)
-        
-        # # 打印每轮的结果
-        # print(f"Round {round + 1}: Test Accuracy = {test_a:.4f}, Train Loss = {loss_avg:.4f}")
+
     
     return test_acc, train_loss
 
-def Data_Sharing(initial_w,
-                global_round,
-                eta,           # 客户端学习率
-                K,             # 本地 epoch
-                M,             # 每轮选客户端数
-                share_ratio=1  # 方便调用者记录参数
-                ):
-    """
-    Data_Sharing: 服务器把数据一次性广播到所有客户端；
-                 之后流程与 FedAvg 一致，不再进行服务器端训练。
-    """
-    # 根据所选模型实例化一个空壳用于测试
-    if origin_model == 'resnet':
-        test_model = ResNet18_cifar10().to(device)
-    elif origin_model == 'vgg':
-        test_model = VGG16(num_classes, 3).to(device)
-    elif origin_model == 'lstm':
-        test_model = CharLSTM().to(device)
-    else:
-        raise ValueError("Unknown origin_model")
-
-    # 使用混合后的客户端数据
-    local_datasets = client_data_mixed
-
-    w_global = copy.deepcopy(initial_w)
-    all_test_acc, all_train_loss = [], []
-
-    for r in tqdm(range(global_round)):
-        selected = np.random.choice(range(client_num), M, replace=False)
-        local_ws, local_ls = [], []
-
-        for cid in selected:
-            w_updated, loss, _ = update_weights(w_global,
-                                                local_datasets[cid],
-                                                eta,
-                                                K)
-            local_ws.append(w_updated)
-            local_ls.append(loss)
-
-        # FedAvg 聚合
-        w_global = average_weights(local_ws)
-
-        # 记录
-        test_model.load_state_dict(w_global)
-        all_train_loss.append(sum(local_ls) / len(local_ls))
-        all_test_acc.append(test_inference(test_model, test_dataset))
-
-    return all_test_acc, all_train_loss
-
-def build_mixed_client_data(client_data, server_data, share_ratio=1.0, seed=None):
-    """
-    将 server_data 以 share_ratio 的比例复制到每个客户端数据中。
-    share_ratio = 1.0 表示全部共享；0.5 表示随机抽取 50% 共享。
-    返回新的 client_data_mixed，格式与 client_data 相同：
-        [(images_i, labels_i), ...]
-    """
-    if seed is not None:
-        np.random.seed(seed)
-
-    s_imgs, s_lbls = server_data
-    s_imgs = np.array(s_imgs)
-    s_lbls = np.array(s_lbls)
-
-    if share_ratio < 1.0:
-        sel_idx = np.random.choice(len(s_imgs),
-                                   size=int(len(s_imgs) * share_ratio),
-                                   replace=False).astype(int)
-        s_imgs = s_imgs[sel_idx]
-        s_lbls = s_lbls[sel_idx]
-
-    mixed_clients = []
-    for imgs, lbls in client_data:
-        new_imgs = np.concatenate([imgs, s_imgs], axis=0)
-        new_lbls = np.concatenate([lbls, s_lbls], axis=0)
-        mixed_clients.append((new_imgs, new_lbls))
-    return mixed_clients
 
 
 
-# %%
 def CLG_SGD(initial_w, global_round, eta, gamma, K, E, M):
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
         
@@ -966,24 +876,19 @@ def CLG_SGD(initial_w, global_round, eta, gamma, K, E, M):
         # 新的测试（针对全部测试数据进行）
         test_acc.append(test_inference(test_model, test_dataset))
     
-        # test_a = 0
-        # # 遍历客户端测试数据，计算平均准确率
-        # for i in client_test_data:
-        #     ac = test_inference(test_model,i)[0]
-        #     test_a = test_a + ac
-        # test_a = test_a/len(client_test_data)
-        # test_acc.append(test_a)
-#         print(test_a)
+    
     return test_acc, train_loss
 
 
 
-def FedCLG_C(initial_w, global_round, eta, gamma, K, E, M):
+def Fed_C(initial_w, global_round, eta, gamma, K, E, M):
     
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
 
@@ -1031,12 +936,14 @@ def FedCLG_C(initial_w, global_round, eta, gamma, K, E, M):
     return test_acc, train_loss
 
 
-def FedCLG_S(initial_w, global_round, eta, gamma, K, E, M):
+def Fed_S(initial_w, global_round, eta, gamma, K, E, M):
     
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
     
@@ -1087,8 +994,7 @@ def FedCLG_S(initial_w, global_round, eta, gamma, K, E, M):
     return test_acc, train_loss
 
 
-# %%
-# 与FedDUAP复现代码对应
+
 
 def KL_divergence(p1, p2):
     """
@@ -1146,6 +1052,8 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
 
@@ -1265,16 +1173,6 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
             _, round_loss, _ = update_weights(copy.deepcopy(w_t_half), server_data, gamma, E)
             local_losses.append(round_loss)
         
-        # # 定期打印调试信息
-        # if round % 5 == 0 or round == global_round - 1:
-        #     print(f"\nRound {round} 详情:")
-        #     print(f"  准确率: {acc_t*100:.2f}%")
-        #     print(f"  客户端数据量: {num_current}")
-        #     print(f"  D(P'_t): {D_P_t_prime:.6f}")
-        #     print(f"  D(P_0): {D_P_0:.6f}")
-        #     print(f"  alpha: {alpha:.4f}")
-        #     print(f"  平均迭代次数: {avg_iter:.2f}")
-        #     print(f"  服务器迭代次数: {server_iter}")
         
         # 评估模型
         test_model.load_state_dict(train_w)
@@ -1290,7 +1188,8 @@ def FedDU_modify(initial_w, global_round, eta, gamma, K, E, M):
     
     return test_acc, train_loss
 
-# %%
+
+
 def FedMut(net_glob, global_round, eta, K, M):
     
     net_glob.train()
@@ -1299,6 +1198,8 @@ def FedMut(net_glob, global_round, eta, K, M):
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
         
@@ -1354,94 +1255,11 @@ def FedMut(net_glob, global_round, eta, K, M):
         if rank > max_rank:
             max_rank = rank
         alpha = radius  # 论文中的alpha，衡量Mutation的幅度
-        # alpha = min(max(args.radius, max_rank/rank),(10.0-args.radius) * (1 - iter/args.epochs) + args.radius)
         w_locals = mutation_spread(
             round, w_agg, M, w_delta, alpha
         )
 
     return test_acc, train_loss   
-
-# %%
-
-
-
-# 将mutation的方向设置为新方向（server更新之后）减去上一轮全局方向（其余不变）
-def CLG_Mut_2(net_glob, global_round, eta, gamma, K, E, M):
-    
-    net_glob.train()
-    
-    if origin_model == 'resnet':
-        test_model = ResNet18_cifar10().to(device)
-    elif origin_model == "lstm":
-        test_model = CharLSTM().to(device)
-    elif origin_model == 'vgg':
-        test_model = VGG16(num_classes, 3).to(device)
-        
-        
-    train_w = copy.deepcopy(net_glob.state_dict())
-    test_acc = []
-    train_loss = []
-    
-    w_locals = []
-    for i in range(M):
-        w_locals.append(copy.deepcopy(net_glob.state_dict()))
-    
-    max_rank = 0
-    w_old = copy.deepcopy(net_glob.state_dict())
-    
-    for round in tqdm(range(global_round)):
-        w_old = copy.deepcopy(net_glob.state_dict())
-        
-        # 学习率衰减，这里默认注释掉了
-        # if eta > 0.001:
-        #     eta = eta * 0.99
-        # if gamma > 0.001:
-        #     gamma = gamma * 0.99
-        local_weights, local_loss = [], []
-        # Client side local training
-        # 从总共client_num客户端中选择M个训练
-        idxs_users = np.random.choice(range(client_num), M, replace=False)
-        for i, idx in enumerate(idxs_users):
-            net_glob.load_state_dict(w_locals[i])
-            
-            update_client_w, client_round_loss, _ = update_weights(copy.deepcopy(net_glob.state_dict()), client_data[idx], eta, K)
-            w_locals[i] = copy.deepcopy(update_client_w)
-            local_loss.append(client_round_loss)
-
-        # Global Model Generation
-        w_agg = Aggregation(w_locals, None)  
-        
-        # Server side local training
-        update_server_w, round_loss, _ = update_weights(w_agg, server_data, gamma, E)
-        local_loss.append(round_loss)
-        
-        
-        # copy weight to net_glob
-        net_glob.load_state_dict(update_server_w)
-
-        # Test Accuracy
-        test_model.load_state_dict(update_server_w)
-        loss_avg = sum(local_loss)/ len(local_loss)
-        train_loss.append(loss_avg)   # 计算所有客户端和服务器一起的平均损
-
-
-        # 新的测试（针对全部测试数据进行）
-        test_acc.append(test_inference(test_model, test_dataset))
-
-        # 按照server训练的方向，进行mutation
-        w_delta = FedSub(update_server_w, w_old, 1.0)
-        # 计算模型更新w_delta的L2范数（平方和），衡量模型更新程度的大小
-        rank = delta_rank(w_delta)
-        # print(rank)
-        if rank > max_rank:
-            max_rank = rank
-        alpha = radius  # 论文中的alpha，衡量Mutation的幅度
-        # alpha = min(max(args.radius, max_rank/rank),(10.0-args.radius) * (1 - iter/args.epochs) + args.radius)
-        w_locals = mutation_spread(
-            round, update_server_w, M, w_delta, alpha
-        )
-
-    return test_acc, train_loss
 
 
 
@@ -1534,125 +1352,18 @@ def delta_rank(delta_dict):
 
 
 
-# 250327 修改为平滑后的ctrl
-def mutation_spread_new(iter, w_glob, m, w_delta, alpha):
-
-    w_locals_new = []
-    ctrl_cmd_list = []
-    ctrl_rate = mut_acc_rate * (
-        1.0 - min(iter * 1.0 / mut_bound, 1.0)
-    )  # 论文中的βt，随着iter逐渐从β0减小到0
-
-    # k代表模型中的参数数量，对每个参数按照client数量分配v（论文中是按照每一层分配）
-    for k in w_glob.keys():
-        ctrl_list = []
-        for i in range(0, int(m / 2)):
-            ctrl = random.random()  # 随机数，范围：[0,1)
-            if ctrl > 1 - ctrl_rate:
-                ctrl_list.append(ctrl)
-                ctrl_list.append(1.0 * (-1.0 + ctrl_rate))
-            else:
-                ctrl_list.append(-ctrl)
-                ctrl_list.append(ctrl)
-        random.shuffle(ctrl_list)  # 打乱列表
-        ctrl_cmd_list.append(ctrl_list)
-    cnt = 0
-    for j in range(m):
-        w_sub = copy.deepcopy(w_glob)
-        if not (cnt == m - 1 and m % 2 == 1):
-            ind = 0
-            for k in w_sub.keys():
-                w_sub[k] = w_sub[k] + w_delta[k] * ctrl_cmd_list[ind][j] * alpha
-                ind += 1
-        cnt += 1
-        w_locals_new.append(w_sub)
-
-    return w_locals_new
-
-
-def FedMut_new(net_glob, global_round, eta, K, M):
-    
-    net_glob.train()
-    
-    if origin_model == 'resnet':
-        test_model = ResNet18_cifar10().to(device)
-    elif origin_model == "lstm":
-        test_model = CharLSTM().to(device)
-    elif origin_model == 'vgg':
-        test_model = VGG16(num_classes, 3).to(device)
-        
-    train_w = copy.deepcopy(net_glob.state_dict())
-    test_acc = []
-    train_loss = []
-    
-    w_locals = []
-    for i in range(M):
-        w_locals.append(copy.deepcopy(net_glob.state_dict()))
-        
-    max_rank = 0
-    
-    for round in tqdm(range(global_round)):
-        w_old = copy.deepcopy(net_glob.state_dict())
-        
-        # 学习率衰减，这里默认注释掉了
-        # if eta > 0.001:
-        #     eta = eta * 0.99
-        # if gamma > 0.001:
-        #     gamma = gamma * 0.99
-        local_weights, local_loss = [], []
-        # Client side local training
-        # 从总共client_num客户端中选择M个训练
-        idxs_users = np.random.choice(range(client_num), M, replace=False)
-        for i, idx in enumerate(idxs_users):
-            net_glob.load_state_dict(w_locals[i])
-            
-            update_client_w, client_round_loss, _ = update_weights(copy.deepcopy(net_glob.state_dict()), client_data[idx], eta, K)
-            w_locals[i] = copy.deepcopy(update_client_w)
-            local_loss.append(client_round_loss)
-
-        # Global Model Generation
-        w_agg = Aggregation(w_locals, None)  
-        
-        # copy weight to net_glob
-        net_glob.load_state_dict(w_agg)
-        
-        # Test Accuracy
-        test_model.load_state_dict(w_agg)
-        loss_avg = sum(local_loss)/ len(local_loss)
-        train_loss.append(loss_avg)   # 计算所有客户端的平均损失
-
-        # 新的测试（针对全部测试数据进行）
-        test_acc.append(test_inference(test_model, test_dataset))
-
-        # 按照server训练的方向，进行mutation
-        w_delta = FedSub(w_agg, w_old, 1.0)
-        # 计算模型更新w_delta的L2范数（平方和），衡量模型更新程度的大小
-        rank = delta_rank(w_delta)
-        # print(rank)
-        if rank > max_rank:
-            max_rank = rank
-        alpha = radius  # 论文中的alpha，衡量Mutation的幅度
-        # alpha = min(max(args.radius, max_rank/rank),(10.0-args.radius) * (1 - iter/args.epochs) + args.radius)
-        w_locals = mutation_spread_new(
-            round, w_agg, M, w_delta, alpha
-        )
-
-    return test_acc, train_loss   
-
-
-
-
 
 # %%
-def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1):
+def FedATMV(net_glob, global_round, eta, gamma, K, E, M, lambda_val=1):
 
-    
     net_glob.train()
     
     if origin_model == 'resnet':
         test_model = ResNet18_cifar10().to(device)
     elif origin_model == "lstm":
         test_model = CharLSTM().to(device)
+    elif origin_model == "cnn":
+        test_model = cnncifar().to(device)
     elif origin_model == 'vgg':
         test_model = VGG16(num_classes, 3).to(device)
     
@@ -1700,7 +1411,7 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
     D_P_0 = calculate_js_divergence(P_0, P)
     
     # 输出初始设置
-    print("FedATMV初始设置:")
+    print("FedDU-Mut初始设置:")
     print(f"  服务器数据量: {n_0}")
     print(f"  服务器数据非IID度: {D_P_0:.6f}")
     print(f"  Mutation幅度(radius): {radius}")
@@ -1827,9 +1538,7 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
         if rank > max_rank:
             max_rank = rank
             
-        # 250327：加上根据alpha_new的动态调节radius
-        tmp_radius = radius*(1 + ratio * alpha_new)
-        # print(f"Round {round}: tmp_radius: {tmp_radius}")
+        tmp_radius = radius*(1 + scal_ratio * alpha_new)
             
         # Mutation扩散，为下一轮准备初始模型
         w_locals = mutation_spread(round, final_model, M, w_delta, tmp_radius)
@@ -1857,6 +1566,10 @@ def FedATMV(net_glob, global_round, eta, gamma, K, E, M, ratio=0.3, lambda_val=1
 
     return test_acc, train_loss
 
+
+
+
+
 # %%
 # 全局参数
 data_random_fix = False  # 是否固定数据采样的随机性
@@ -1865,16 +1578,18 @@ seed_num = 42
 random_fix = True
 seed = 2
 
-GPU = 1  # 决定使用哪个gpu 0或1
+GPU = 0  # 决定使用哪个gpu 0或1
 verbose = False  # 调试模式，输出一些中间信息
 
 client_num = 100
 size_per_client = 400  # 每个客户端的数据量（训练）
 is_iid = False  # True表示client数据IID分布，False表示Non-IID分布
-non_iid = 0.5  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
+non_iid = 0.1  # Dirichlet 分布参数，数值越小数据越不均匀可根据需要调整
 
-server_iid = False # True代表server数据iid分布，否则为Non-iid分布（默认为0.5）
+server_iid = False
+server_dir = 0.5
 server_percentage = 0.1  # 服务器端用于微调的数据比例
+server_fill = True #是否补充server缺少的数据
 
 # 模型相关
 origin_model = 'resnet' # 采用模型
@@ -1894,16 +1609,15 @@ K = 5  # 客户端本地训练轮数，从1，3，5中选
 E = 1  # 服务器本地训练轮数，从1，3，5中选
 M = 10  # 每一轮抽取客户端
 
-# FedMut中参数
+# DUMut中参数
+du_C = 5
 radius = 4.0  # alpha，控制mutation的幅度
+scal_ratio=0.3
 mut_acc_rate = 0.5  # 论文中的β0
 mut_bound = 50  # Tb
 
 # FedDU_modify中参数
 decay_rate = 0.99  # 稍微提高衰减率以降低波动
-
-# DUMut中参数
-du_C = 5
 
 
 # %%
@@ -1941,10 +1655,8 @@ if dataset == 'cifar100':
         server_images, server_labels = select_server_subset(cifar, percentage=server_percentage, mode='iid')
     else:
         server_images, server_labels = select_server_subset(cifar, percentage=server_percentage,
-                                                        mode='non-iid', dirichlet_alpha=0.5)
+                                                        mode='non-iid', dirichlet_alpha=server_dir)
 
-    init_model = ResNet18_cifar10().to(device)
-    initial_w = copy.deepcopy(init_model.state_dict())
     
     # VGG网络
     init_model = VGG16(num_classes, 3).to(device)
@@ -1993,7 +1705,7 @@ elif dataset =='shake':
                                                       mode='iid')
     else:
         server_images, server_labels = select_server_subset(shake, percentage=server_percentage,
-                                                        mode='non-iid', dirichlet_alpha=0.5)
+                                                        mode='non-iid', dirichlet_alpha=server_dir)
 
     # LSTM
     init_model = CharLSTM().to(device)
@@ -2042,10 +1754,13 @@ elif dataset == "cifar10":
         )
     else:
         server_images, server_labels = select_server_subset(
-            cifar, percentage=server_percentage, mode="non-iid", dirichlet_alpha=0.5
+            cifar, percentage=server_percentage, mode="non-iid", dirichlet_alpha=server_dir
         )
     
-    if origin_model == 'resnet':
+    if origin_model == 'cnn':    
+        # 初始化基于 CNN 的模型，这里使用你已定义好的 CNNCifar 网络
+        init_model = cnncifar().to(device)
+    elif origin_model == 'resnet':
         init_model = ResNet18_cifar10().to(device)
     
     initial_w = copy.deepcopy(init_model.state_dict())
@@ -2090,22 +1805,7 @@ for i, (imgs, lbls) in enumerate(client_data[:10]):
     print("Client {}: {}".format(i, " ".join([str(total_count)] + [str(c) for c in class_counts])))
     
 
-# 为了与后续代码兼容，这里将 server_data 定义为一个列表：[images, labels]
 server_data = [server_images, server_labels]
-
-# Data_Sharing (Data-Sharing使用)
-client_data_mixed = build_mixed_client_data(client_data,
-                                            server_data,
-                                            share_ratio=1.0,   # 按需调整
-                                            seed=None)
-
-# # 输出测试集数据
-# total_count = len(test_dataset)
-# labels = np.array(test_dataset.label)
-# _, counts = np.unique(labels, return_counts=True)
-
-# print(f"测试集总数量 {total_count}")
-# print(", ".join(str(c) for c in counts))
 
 # 打印服务器数据情况
 s_imgs, s_lbls = server_data
@@ -2118,10 +1818,7 @@ class_counts = [0] * classes
 
 for cls, cnt in zip(unique_classes, counts):
     class_counts[cls] = cnt
-# 输出格式: Server: 总数 类别0计数 类别1计数 ... 类别19计数
 print("Server: {}".format(" ".join([str(total_count)] + [str(c) for c in class_counts])))
-# print("  前5个标签: ", lbls[:5])
-# print("  前5个数据形状: ", [server_data[0][j].shape for j in range(min(5, len(server_data[0])))])
 
 
 
@@ -2133,17 +1830,17 @@ def run_once():
     results_test_acc = {}
     results_train_loss = {}
 
+
     # FedMut 训练
     test_acc_FedMut, train_loss_FedMut = FedMut(copy.deepcopy(init_model), global_round, eta, K, M)
     results_test_acc['FedMut'] = test_acc_FedMut
     results_train_loss['FedMut'] = train_loss_FedMut
 
-    # print("测试radius为：", radius)
 
     # Server-only 训练
     test_acc_server_only, train_loss_server_only = server_only(initial_w, global_round, gamma, E)
-    results_test_acc['Server_only'] = test_acc_server_only
-    results_train_loss['Server_only'] = train_loss_server_only
+    results_test_acc['Server-Only'] = test_acc_server_only
+    results_train_loss['Server-Only'] = train_loss_server_only
 
     # FedAvg 训练
     test_acc_fedavg, train_loss_fedavg = fedavg(initial_w, global_round, eta, K, M)
@@ -2151,39 +1848,36 @@ def run_once():
     results_train_loss['FedAvg'] = train_loss_fedavg
 
     # HybridFl训练
-    test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, M)
-    results_test_acc['HybridFL'] = test_acc_hybridFL
-    results_train_loss['HybridFL'] = train_loss_hybridFL
-
-    # Data_Sharing训练
-    test_acc_Data_Sharing, train_loss_Data_Sharing = Data_Sharing(initial_w, global_round, eta, K, M, share_ratio=1.0)
-    results_test_acc['Data_Sharing']  = test_acc_Data_Sharing
-    results_train_loss['Data_Sharing'] = train_loss_Data_Sharing
+    test_acc_hybridFL, train_loss_hybridFL = hybridFL(initial_w, global_round, eta, K, E, M)
+    results_test_acc['Hybrid-FL'] = test_acc_hybridFL
+    results_train_loss['Hybrid-FL'] = train_loss_hybridFL
 
     # CLG_SGD 训练
     test_acc_CLG_SGD, train_loss_CLG_SGD = CLG_SGD(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['CLG_SGD'] = test_acc_CLG_SGD
-    results_train_loss['CLG_SGD'] = train_loss_CLG_SGD
+    results_test_acc['CLG-SGD'] = test_acc_CLG_SGD
+    results_train_loss['CLG-SGD'] = train_loss_CLG_SGD
 
-    # FedCLG_C 训练
-    test_acc_FedCLG_C, train_loss_FedCLG_C = FedCLG_C(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['FedCLG_C'] = test_acc_FedCLG_C
-    results_train_loss['FedCLG_C'] = train_loss_FedCLG_C
+    # Fed_C 训练
+    test_acc_Fed_C, train_loss_Fed_C = Fed_C(initial_w, global_round, eta, gamma, K, E, M)
+    results_test_acc['FedCLG-C'] = test_acc_Fed_C
+    results_train_loss['FedCLG-C'] = train_loss_Fed_C
 
-    # FedCLG_S 训练
-    test_acc_FedCLG_S, train_loss_FedCLG_S = FedCLG_S(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['FedCLG_S'] = test_acc_FedCLG_S
-    results_train_loss['FedCLG_S'] = train_loss_FedCLG_S
+    # Fed_S 训练
+    test_acc_Fed_S, train_loss_Fed_S = Fed_S(initial_w, global_round, eta, gamma, K, E, M)
+    results_test_acc['FedCLG-S'] = test_acc_Fed_S
+    results_train_loss['FedCLG-S'] = train_loss_Fed_S
 
     # FedDU 训练
-    test_acc_CLG_SGD, train_loss_CLG_SGD = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
-    results_test_acc['FedDU'] = test_acc_CLG_SGD
-    results_train_loss['FedDU'] = train_loss_CLG_SGD
+    test_acc_FedDU, train_loss_FedDU = FedDU_modify(initial_w, global_round, eta, gamma, K, E, M)
+    results_test_acc['FedDU'] = test_acc_FedDU
+    results_train_loss['FedDU'] = train_loss_FedDU
 
     # FedATMV 训练
     test_acc_FedATMV, train_loss_FedATMV = FedATMV(copy.deepcopy(init_model), global_round, eta, gamma, K, E, M)
     results_test_acc['FedATMV'] = test_acc_FedATMV
     results_train_loss['FedATMV'] = train_loss_FedATMV
+    
+    
 
     # 如果存在至少20轮训练，则输出第二十轮的测试精度和训练损失
     for algo in results_test_acc:
@@ -2248,7 +1942,4 @@ def run_once():
 
 
 results_test_acc, results_train_loss = run_once()
-
-
-
 

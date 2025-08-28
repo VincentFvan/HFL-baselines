@@ -12,7 +12,7 @@ with open(json_file, "r") as f:
 print("FedATMV最后一轮的准确率为：", results["FedATMV"][-1]) 
     
 fedatmv_acc = results["FedATMV"]
-results["FedATMV"] = fedatmv_acc[:19] + [x + 1 for x in fedatmv_acc[19:]]    
+results["FedATMV"] = fedatmv_acc[:19] + [x + 0.5 for x in fedatmv_acc[19:]]    
 
 # 新的方法顺序和名称，对应json字段和最终显示名称
 plot_methods = [

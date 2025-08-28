@@ -11,8 +11,8 @@ with open(json_file, "r") as f:
     
 print("FedATMV最后一轮的准确率为：", results["FedDU_Mut"][-1])    
     
-fedatmv_acc = results["FedDU_Mut"]
-results["FedDU_Mut"] = fedatmv_acc[:22] + [x + 0.5 for x in fedatmv_acc[22:]]
+# fedatmv_acc = results["FedDU_Mut"]
+# results["FedDU_Mut"] = fedatmv_acc[:22] + [x + 0 for x in fedatmv_acc[22:]]
 
 
 # 新的方法顺序和名称，对应json字段和最终显示名称
