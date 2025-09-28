@@ -1,31 +1,0 @@
-nohup: 忽略输入
-Torch version: 2.7.0+cu118
-CUDA available: True
-Device: cuda:0
-Dataset: cifar10, Model: resnet, Num clients: 100, Num classes: 10
-Server data size: 5000
-Client data sizes (first 5): [397, 398, 398, 397, 397], Total client samples: 39642
-Starting run_once: dataset=cifar10, model=resnet, rounds=2, M=10, K=5, E=1, lr_client=0.01, lr_server=0.01
-FedAvg:   0%|          | 0/2 [00:00<?, ?it/s]FedAvg:  50%|█████     | 1/2 [00:50<00:50, 50.27s/it]FedAvg: 100%|██████████| 2/2 [01:32<00:00, 45.79s/it]FedAvg: 100%|██████████| 2/2 [01:32<00:00, 46.46s/it]
-HybridFL:   0%|          | 0/2 [00:00<?, ?it/s]HybridFL:  50%|█████     | 1/2 [00:41<00:41, 41.38s/it]HybridFL: 100%|██████████| 2/2 [01:25<00:00, 42.94s/it]HybridFL: 100%|██████████| 2/2 [01:25<00:00, 42.71s/it]
-CLG-SGD:   0%|          | 0/2 [00:00<?, ?it/s]CLG-SGD:  50%|█████     | 1/2 [00:38<00:38, 38.80s/it]CLG-SGD: 100%|██████████| 2/2 [01:19<00:00, 40.18s/it]CLG-SGD: 100%|██████████| 2/2 [01:19<00:00, 39.98s/it]
-Fed-C:   0%|          | 0/2 [00:00<?, ?it/s]Fed-C:  50%|█████     | 1/2 [00:56<00:56, 56.36s/it]Fed-C: 100%|██████████| 2/2 [01:53<00:00, 56.94s/it]Fed-C: 100%|██████████| 2/2 [01:53<00:00, 56.85s/it]
-Fed-S:   0%|          | 0/2 [00:00<?, ?it/s]Fed-S:  50%|█████     | 1/2 [00:53<00:53, 53.75s/it]Fed-S: 100%|██████████| 2/2 [01:45<00:00, 52.63s/it]Fed-S: 100%|██████████| 2/2 [01:45<00:00, 52.80s/it]
-FedDU:   0%|          | 0/2 [00:00<?, ?it/s]FedDU:  50%|█████     | 1/2 [00:42<00:42, 42.94s/it]FedDU: 100%|██████████| 2/2 [01:46<00:00, 55.26s/it]FedDU: 100%|██████████| 2/2 [01:46<00:00, 53.41s/it]
-FedMut:   0%|          | 0/2 [00:00<?, ?it/s]FedMut:  50%|█████     | 1/2 [00:47<00:47, 47.95s/it]FedMut: 100%|██████████| 2/2 [01:35<00:00, 47.69s/it]FedMut: 100%|██████████| 2/2 [01:35<00:00, 47.73s/it]
-FedATMV:   0%|          | 0/2 [00:00<?, ?it/s]FedATMV:  50%|█████     | 1/2 [01:03<01:03, 63.12s/it]FedATMV: 100%|██████████| 2/2 [02:07<00:00, 63.78s/it]FedATMV: 100%|██████████| 2/2 [02:07<00:00, 63.68s/it]
-
---- Accuracy & Loss at specific rounds/final ---
-FedAvg - Final Acc: 21.46%, Final Loss: 0.0107
-HybridFL - Final Acc: 15.19%, Final Loss: 0.0118
-CLG-SGD - Final Acc: 16.17%, Final Loss: 0.0123
-Fed-C - Final Acc: 22.74%, Final Loss: 0.0163
-Fed-S - Final Acc: 21.90%, Final Loss: 0.0139
-FedDU - Final Acc: 20.64%, Final Loss: 0.0130
-FedMut - Final Acc: 17.27%, Final Loss: 0.0118
-FedATMV - Final Acc: 17.80%, Final Loss: 0.0277
-
-Comm vs. Acc plot & data saved in /home/fyf/HybridFL-baseline/FedCLG-origin/output/FLOPs
-FLOPs vs. Acc plot & data saved in /home/fyf/HybridFL-baseline/FedCLG-origin/output/FLOPs
-
-run_once execution complete.

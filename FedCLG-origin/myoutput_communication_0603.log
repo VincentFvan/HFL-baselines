@@ -1,33 +1,0 @@
-nohup: 忽略输入
-Torch version: 2.7.0+cu118
-CUDA available: True
-Warning: Class 8 has insufficient samples. Requested 5125, available 5000. Taking all available.
-Dataset: cifar10, Model: resnet, Num clients: 100, Num classes: 10
-Server data size: 5000
-Client data sizes (first 5): [397, 398, 398, 397, 397], Total client samples: 39642
-Starting run_once with dataset: cifar10, model: resnet
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:11<00:11, 11.06s/it]100%|██████████| 2/2 [00:19<00:00,  9.40s/it]100%|██████████| 2/2 [00:19<00:00,  9.65s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:22<00:22, 22.23s/it]100%|██████████| 2/2 [00:43<00:00, 21.94s/it]100%|██████████| 2/2 [00:43<00:00, 21.98s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:23<00:23, 23.06s/it]100%|██████████| 2/2 [00:45<00:00, 22.41s/it]100%|██████████| 2/2 [00:45<00:00, 22.51s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:24<00:24, 24.28s/it]100%|██████████| 2/2 [00:49<00:00, 24.91s/it]100%|██████████| 2/2 [00:49<00:00, 24.82s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:40<00:40, 40.42s/it]100%|██████████| 2/2 [01:21<00:00, 40.55s/it]100%|██████████| 2/2 [01:21<00:00, 40.53s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:41<00:41, 41.09s/it]100%|██████████| 2/2 [01:18<00:00, 38.91s/it]100%|██████████| 2/2 [01:18<00:00, 39.24s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:32<00:32, 32.38s/it]100%|██████████| 2/2 [01:07<00:00, 34.13s/it]100%|██████████| 2/2 [01:07<00:00, 33.87s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:21<00:21, 21.95s/it]100%|██████████| 2/2 [00:43<00:00, 21.96s/it]100%|██████████| 2/2 [00:43<00:00, 21.96s/it]
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:28<00:28, 28.73s/it]100%|██████████| 2/2 [00:57<00:00, 28.96s/it]100%|██████████| 2/2 [00:57<00:00, 28.93s/it]
-
---- Accuracy & Loss at specific rounds/final (Original Metrics) ---
-Server-Only - Final Test Acc: 29.95%, Final Train Loss: 0.0266
-FedAvg - Final Test Acc: 20.92%, Final Train Loss: 0.0106
-HybridFL - Final Test Acc: 16.74%, Final Train Loss: 0.0125
-CLG-SGD - Final Test Acc: 31.67%, Final Train Loss: 0.0097
-Fed-C - Final Test Acc: 30.54%, Final Train Loss: 0.0132
-Fed-S - Final Test Acc: 30.22%, Final Train Loss: 0.0112
-FedDU - Final Test Acc: 10.00%, Final Train Loss: 0.0129
-FedMut - Final Test Acc: 10.00%, Final Train Loss: 0.0116
-FedATMV - Final Test Acc: 32.35%, Final Train Loss: 0.0197
-
-Communication vs. Accuracy plot saved to: ./output/communication/all_algos_comm_vs_acc_cifar10_resnet_20250603_173225.png
-Communication vs. Accuracy raw data saved to: ./output/communication/all_algos_comm_vs_acc_data_cifar10_resnet_20250603_173225.json
-
-run_once execution complete.
